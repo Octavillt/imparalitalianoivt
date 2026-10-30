@@ -62,7 +62,12 @@ describe("App — selector de color y niveles", () => {
 
   it("la barra de temas muestra solo los temas disponibles de Básico I", () => {
     render(<App />);
-    expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual(["🔢 Números y alfabeto", "🕐 La hora"]);
+    expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual([
+      "🔢 Números y alfabeto", "✅ Essere y avere", "🌎 Países y nacionalidades", "👪 La familia",
+      "➕ Género y plural", "👉 Demostrativos", "🍎 Frutas y verduras", "📍 Preposiciones de lugar",
+      "🕐 La hora", "📅 Días, meses y fechas", "🏃 Verbos de uso diario", "🌀 Stare + gerundio",
+      "👷 Oficios y profesiones", "🗣️ Conversación y vocabulario",
+    ]);
   });
 
   it("Números incluye cifras, alfabeto, vocales y pronunciación", async () => {
@@ -104,6 +109,17 @@ describe("App — lecciones interactivas", () => {
     expect(screen.getByRole("heading", { name: TIME_HEADING })).toBeInTheDocument();
     expect(document.querySelector("main").textContent).toMatch(/sono le (dieci|nove|quattro|tre)/);
     expect(document.querySelector("main").textContent).not.toMatch(/o'clock|hour hand/);
+  });
+});
+
+describe("App — enlaces entre temas", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("no muestra enlaces a módulos bloqueados", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(topics().getByRole("button", { name: "🏃 Verbos de uso diario" }));
+    expect(screen.queryByRole("button", { name: /Consulta los/ })).not.toBeInTheDocument();
   });
 });
 

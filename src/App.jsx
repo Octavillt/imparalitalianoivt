@@ -8,7 +8,19 @@ import { scrollToAndHighlight } from "./constants/highlightMatch";
 import ThemePicker from "./components/ThemePicker";
 import GlobalSearch from "./components/GlobalSearch";
 import NumbersSection     from "./features/numbers/NumbersSection";
+import EssereAvereSection from "./features/essereAvere/EssereAvereSection";
+import CountriesSection   from "./features/countries/CountriesSection";
+import FamilySection      from "./features/family/FamilySection";
+import PluralSection      from "./features/plural/PluralSection";
+import DemosSection       from "./features/demonstratives/DemosSection";
+import FruitsSection      from "./features/fruits/FruitsSection";
+import PrepositionsSection from "./features/prepositions/PrepositionsSection";
 import TimeSection        from "./features/time/TimeSection";
+import DatesSection       from "./features/dates/DatesSection";
+import VerbsSection       from "./features/verbs/VerbsSection";
+import StareGerundioSection from "./features/stareGerundio/StareGerundioSection";
+import JobsSection        from "./features/jobs/JobsSection";
+import VocabularySection  from "./features/vocabulary/VocabularySection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -20,7 +32,19 @@ import LessonFooter from "./components/LessonFooter";
 
 const SECTIONS = {
   numbers:        NumbersSection,
+  essereAvere:    EssereAvereSection,
+  countries:      CountriesSection,
+  family:         FamilySection,
+  plural:         PluralSection,
+  demonstratives: DemosSection,
+  fruits:         FruitsSection,
+  prepositions:   PrepositionsSection,
   time:           TimeSection,
+  dates:          DatesSection,
+  verbs:          VerbsSection,
+  stareGerundio:  StareGerundioSection,
+  jobs:           JobsSection,
+  vocabulary:     VocabularySection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
 };

@@ -8,13 +8,13 @@ import { scrollToAndHighlight } from "./constants/highlightMatch";
 
 // Pertenencia exacta de las lecciones ya migradas; crece con cada etapa.
 const membership = {
-  basico1: "numbers time",
+  basico1: "numbers essereAvere countries family plural demonstratives fruits prepositions time dates verbs stareGerundio jobs vocabulary",
   basico2: "",
   basico3: "",
   basico4: "",
   basico5: "",
 };
-const TOTAL_LESSONS = 2;
+const TOTAL_LESSONS = 14;
 const studyLevels = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
 const openLevels = studyLevels.filter(level => level.available);
 
@@ -63,9 +63,10 @@ describe("Recorrido de aprendizaje", () => {
 
   it("avanza dentro del módulo y sin siguiente módulo lleva al repaso", () => {
     render(<App />);
-    fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*La hora/ }));
-    expect(screen.getByRole("heading", { level: 2, name: /La hora/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*Essere y avere/ }));
+    expect(screen.getByRole("heading", { level: 2, name: /Essere y avere/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Tema anterior.*Números/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Conversación y vocabulario/ }));
     fireEvent.click(screen.getByRole("button", { name: "Repasar todos los módulos →" }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
   });

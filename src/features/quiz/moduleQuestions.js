@@ -1,4 +1,16 @@
 import { VERB_BANK } from "../verbFinder/data";
+import { PRACTICE as ESSERE_AVERE } from "../essereAvere/data";
+import { PRACTICE as COUNTRIES } from "../countries/data";
+import { PRACTICE as FAMILY } from "../family/data";
+import { PRACTICE as PLURAL } from "../plural/data";
+import { PRACTICE as DEMONSTRATIVES } from "../demonstratives/data";
+import { PRACTICE as FRUITS } from "../fruits/data";
+import { PRACTICE as PREPOSITIONS } from "../prepositions/data";
+import { PRACTICE as DATES } from "../dates/data";
+import { PRACTICE as VERBS } from "../verbs/data";
+import { PRACTICE as STARE_GERUNDIO } from "../stareGerundio/data";
+import { PRACTICE as JOBS } from "../jobs/data";
+import { PRACTICE as VOCABULARY } from "../vocabulary/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -70,5 +82,17 @@ function verbBankQuestions(v) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...ESSERE_AVERE.map(row => ({ ...row, topic: "essereAvere" })),
+  ...COUNTRIES.map(row => ({ ...row, topic: "countries" })),
+  ...FAMILY.map(row => ({ ...row, topic: "family" })),
+  ...PLURAL.map(row => ({ ...row, topic: "plural" })),
+  ...DEMONSTRATIVES.map(row => ({ ...row, topic: "demonstratives" })),
+  ...FRUITS.map(row => ({ ...row, topic: "fruits" })),
+  ...PREPOSITIONS.map(row => ({ ...row, topic: "prepositions" })),
+  ...DATES.map(row => ({ ...row, topic: "dates" })),
+  ...VERBS.map(row => ({ ...row, topic: "verbs" })),
+  ...STARE_GERUNDIO.map(row => ({ ...row, topic: "stareGerundio" })),
+  ...JOBS.map(row => ({ ...row, topic: "jobs" })),
+  ...VOCABULARY.map(row => ({ ...row, topic: "vocabulary" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];
