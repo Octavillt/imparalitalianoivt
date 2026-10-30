@@ -302,4 +302,64 @@ export const TOPIC_FORMULAS = {
       row("Con essere", "essere + adjetivo", "Octavio è lento.", "Octavio es lento."),
     ],
   },
+  passatoProssimo: {
+    note: "Con avere y el objeto después, el participio queda en -o. Con essere, concuerda con el sujeto. Una misma frase cubre comí y he comido.",
+    rows: [
+      row("Con avere", "auxiliar de avere + participio", "Ho mangiato la pizza.", "Comí pizza."),
+      row("Con essere", "auxiliar de essere + participio", "Sono andato a Roma.", "Fui a Roma."),
+      row("Concordancia", "participio en -o, -a, -i o -e", "Leslie è andata a Roma.", "Leslie fue a Roma."),
+      row("Negación", "non + auxiliar + participio", "Non sono andata.", "No fui."),
+      row("Pregunta", "(palabra interrogativa +) auxiliar + participio + ?", "Dove sei andato?", "¿Adónde fuiste?"),
+    ],
+  },
+  imperfetto: {
+    note: "El imperfetto se parece al copretérito. Un hecho ya cerrado, en un momento concreto, va en passato prossimo.",
+    rows: [
+      row("Hábito", "da bambino o da bambina + imperfetto", "Da bambina abitavo a Napoli.", "De niña vivía en Nápoles."),
+      row("Descripción", "imperfetto de essere + cualidad", "Era una bella giornata.", "Hacía un día bonito."),
+      row("En curso", "mentre + imperfetto", "Mentre mangiavo, leggevo.", "Mientras comía, leía."),
+      row("Hecho cerrado", "marcador concreto + passato prossimo", "Ieri ho mangiato una pizza.", "Ayer comí una pizza."),
+      row("Fondo y hecho", "mentre + imperfetto, y un passato prossimo", "Mentre studiavo, Leslie è arrivata.", "Mientras yo estudiaba, Leslie llegó."),
+    ],
+  },
+  futuro: {
+    note: "En -are, la a pasa a e. Con un marcador de tiempo, el presente también sitúa un plan.",
+    rows: [
+      row("Plan", "marcador + futuro semplice", "L'anno prossimo andrò in Italia.", "El año que viene iré a Italia."),
+      row("Predicción", "futuro de lo que se anticipa", "Domani pioverà.", "Mañana lloverá."),
+      row("Hipótesis", "futuro sobre lo que pasa ahora", "Sarà a casa.", "Debe de estar en casa."),
+      row("Plan en presente", "marcador + presente", "Domani vado a Roma.", "Mañana voy a Roma."),
+      row("Negación", "non + futuro", "Non andrò a Roma.", "No iré a Roma."),
+    ],
+  },
+  socialCollocations: {
+    note: "La colocación se aprende entera. El verbo sí se conjuga.",
+    rows: [
+      row("Con fare", "fare + la combinación fija", "Ieri ho fatto una festa.", "Ayer hice una fiesta."),
+      row("Con prendere", "prendere + la combinación fija", "Prendo un caffè a Roma.", "Tomo un café en Roma."),
+      row("Con dare", "dare + la combinación fija", "Darò una mano a Leslie.", "Le echaré una mano a Leslie."),
+      row("Con avere", "avere + la combinación fija", "Ho voglia di un gelato.", "Tengo ganas de un helado."),
+      row("En futuro", "futuro del verbo de la colocación", "Sabato usciremo con gli amici.", "El sábado saldremos con los amigos."),
+    ],
+  },
+  moneyCareer: {
+    note: "En estas frases, euro se escribe igual en plural. Probabilmente es probablemente; forse es quizá.",
+    rows: [
+      row("Precio", "Quanto costa? + número + euro", "Costa venti euro.", "Cuesta veinte euros."),
+      row("Pago", "Pago in contanti o con la carta", "Pago in contanti.", "Pago en efectivo."),
+      row("Ahorro", "Risparmio per + meta", "Risparmio per una macchina nuova.", "Ahorro para un carro nuevo."),
+      row("Plan", "futuro + plan de trabajo", "Leslie aprirà un'attività.", "Leslie abrirá un negocio."),
+      row("Probabilidad", "Probabilmente o forse + futuro", "Forse cambierò lavoro.", "Quizá cambie de trabajo."),
+    ],
+  },
+  comparatives: {
+    note: "Di se contrae con el artículo. Che compara dos partes del mismo sujeto.",
+    rows: [
+      row("Superioridad", "più + adjetivo + di", "Leslie è più alta di Octavio.", "Leslie es más alta que Octavio."),
+      row("Inferioridad", "meno + adjetivo + di", "Il treno è meno caro dell'aereo.", "El tren es menos caro que el avión."),
+      row("Dos cualidades", "più + adjetivo + che + adjetivo", "Leslie è più simpatica che bella.", "Leslie es más simpática que bonita."),
+      row("Con come", "adjetivo + come", "Leslie è alta come Octavio.", "Leslie es tan alta como Octavio."),
+      row("Con quanto", "tanto + adjetivo + quanto", "Octavio è tanto alto quanto Leslie.", "Octavio es tan alto como Leslie."),
+    ],
+  },
 };

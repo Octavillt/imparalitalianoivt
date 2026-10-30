@@ -187,4 +187,40 @@ export const LEARNING_GUIDE = {
     task: "Di que Leslie es una buena cantante, que canta bien y que Octavio habla despacio.",
     answer: "Leslie è una buona cantante. Leslie canta bene. Octavio parla lentamente. Con essere va el adjetivo; con los demás verbos de la lección, el adverbio.",
   },
+  passatoProssimo: {
+    goal: "Contar un hecho ya pasado con avere o essere y el participio, y concordar cuando el auxiliar es essere.",
+    recall: ["irregularVerbs", "presenteIndicativo", "routineRiflessivi"],
+    task: "Di que ayer comiste una pizza, que Leslie fue a Roma y que Argelia y Leslie llegaron.",
+    answer: "Ieri ho mangiato una pizza. Leslie è andata a Roma. Argelia e Leslie sono arrivate. La pizza va con avere. Las otras dos van con essere, y el participio concuerda.",
+  },
+  imperfetto: {
+    goal: "Describir un hábito, una escena o una acción de fondo, y distinguirlos de un hecho ya cerrado.",
+    recall: ["passatoProssimo", "presenteIndicativo"],
+    task: "Di que Leslie, de niña, vivía en Nápoles, que la casa era grande y que ayer comió una pizza.",
+    answer: "Da bambina, Leslie abitava a Napoli. La casa era grande. Ieri Leslie ha mangiato una pizza. El hábito y la casa van en imperfetto. La pizza de ayer va en passato prossimo.",
+  },
+  futuro: {
+    goal: "Hablar de un plan o una predicción con el futuro semplice, y usar el presente cuando el plan ya tiene fecha.",
+    recall: ["imperfetto", "passatoProssimo", "presenteIndicativo"],
+    task: "Di que el año que viene irás a Italia, que mañana lloverá y que esta noche comes pizza.",
+    answer: "L'anno prossimo andrò in Italia. Domani pioverà. Stasera mangio la pizza. El viaje y la lluvia van en futuro. La pizza, con stasera, va en presente.",
+  },
+  socialCollocations: {
+    goal: "Usar colocaciones con fare, prendere, dare y avere, y hablar de la vida social en passato prossimo y en futuro.",
+    recall: ["futuro", "passatoProssimo", "verbs"],
+    task: "Di que ayer hiciste una fiesta, que nos divertimos y que el sábado saldremos con los amigos.",
+    answer: "Ieri ho fatto una festa. Ci siamo divertiti. Sabato usciremo con gli amici. La fiesta va con avere. Divertirsi va con essere, y el participio concuerda.",
+  },
+  moneyCareer: {
+    goal: "Hablar de precios en euros, de pagos y de planes de trabajo.",
+    recall: ["socialCollocations", "futuro", "adjectives"],
+    task: "Di que el helado cuesta tres euros. Después, en primera persona: pago en efectivo, y quizá cambiaré de trabajo.",
+    answer: "Il gelato costa tre euro. Pago in contanti. Forse cambierò lavoro. Euro se escribe igual en plural. Forse es quizá.",
+  },
+  comparatives: {
+    goal: "Comparar personas, animales y cosas con più, meno, di, che, come y quanto.",
+    recall: ["adjectives", "moneyCareer", "imperfetto", "futuro"],
+    task: "Di que Leslie es más alta que Octavio, que el tren es menos caro que el avión y que ayer hacía más calor que hoy.",
+    answer: "Leslie è più alta di Octavio. Il treno è meno caro dell'aereo. Ieri faceva più caldo di oggi. Con artículo, di se contrae: dell'aereo.",
+  },
 };

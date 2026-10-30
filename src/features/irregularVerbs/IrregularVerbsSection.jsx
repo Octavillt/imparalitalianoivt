@@ -5,6 +5,7 @@ import FilterableList from "../../components/FilterableList";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import SectionTitle from "../../components/SectionTitle";
 import Token from "../../components/Token";
 import { C } from "../../styles/colors";
@@ -24,6 +25,8 @@ function fold(value) {
 
 function VerbTable({ rows }) {
   return (
+    <>
+    <ScrollHint />
     <div style={{ overflowX: "auto", borderRadius: "10px" }}>
       <div style={{ minWidth: "680px" }}>
         <div style={{ display: "grid", gridTemplateColumns: GRID, gap: "8px" }}>
@@ -77,6 +80,7 @@ function VerbTable({ rows }) {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

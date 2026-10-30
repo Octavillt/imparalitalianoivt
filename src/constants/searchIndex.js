@@ -361,6 +361,52 @@ const SEARCH_KEYWORDS = {
     "buona cantante", "canta bene", "molto bene", "come canta", "adverbio",
     "lentamente", "despacio", "bien", "mal", "modo",
   ],
+  passatoProssimo: [
+    "passato prossimo", "participio", "ausiliare", "avere", "essere", "ho mangiato",
+    "sono andato", "sono andata", "è andata", "siamo arrivati", "sono arrivate",
+    "mi sono alzata", "parlato", "creduto", "dormito", "fatto", "detto", "preso",
+    "letto", "scritto", "visto", "aperto", "chiuso", "bevuto", "venuto", "stato",
+    "non ho mangiato", "non sono andata", "hai mangiato", "che cosa hai fatto",
+    "ieri", "ieri sera", "stamattina", "settimana scorsa", "mese scorso",
+    "anno scorso", "giorni fa", "nel 2020", "mai", "comí", "he comido", "ayer",
+    "anoche", "concordancia", "auxiliar",
+  ],
+  imperfetto: [
+    "imperfetto", "parlavo", "parlavi", "parlava", "parlavamo", "parlavate",
+    "parlavano", "credevo", "dormivo", "ero", "eri", "era", "eravamo", "erano",
+    "facevo", "bevevo", "dicevo", "da bambina", "da bambino", "di solito",
+    "ogni estate", "mentre", "abitavo", "mangiavo", "copretérito", "hablaba",
+    "hábito", "descripción", "fondo",
+  ],
+  futuro: [
+    "futuro semplice", "futuro", "parlerò", "parlerai", "parlerà", "parleremo",
+    "parlerete", "parleranno", "crederò", "dormirò", "cercherò", "mangerò",
+    "pagherò", "comincerò", "sarò", "avrò", "andrò", "farò", "darò", "starò",
+    "verrò", "vedrò", "potrò", "vorrò", "dovrò", "saprò", "berrò", "pioverà",
+    "domani", "dopodomani", "stasera", "settimana prossima", "anno prossimo",
+    "tra due giorni",     "domani vado", "iré", "lloverá", "plan", "predicción",
+  ],
+  socialCollocations: [
+    "colocación", "collocazione", "fare una festa", "fare colazione", "fare la spesa",
+    "fare una foto", "fare tardi", "fare due chiacchiere", "prendere un caffè",
+    "prendere una decisione", "dare una mano", "dare un esame", "avere voglia",
+    "avere fretta", "uscire", "divertirsi", "perdersi", "mangiare fuori",
+    "desayunar", "súper", "fiesta", "aventón", "ganas",
+  ],
+  moneyCareer: [
+    "soldi", "denaro", "euro", "contanti", "bancomat", "stipendio", "sconto",
+    "affitto", "bollette", "risparmio", "comprare", "vendere", "spendere",
+    "risparmiare", "guadagnare", "caro", "economico", "saldo", "gratis",
+    "colloquio", "curriculum", "promozione", "contratto", "collega",
+    "attività", "pensione", "laurearsi", "probabilmente", "forse",
+    "dinero", "sueldo", "oferta", "entrevista", "jubilarse", "quizá",
+  ],
+  comparatives: [
+    "comparativo", "più", "meno", "migliore", "peggiore", "maggiore", "minore",
+    "meglio", "peggio", "come", "quanto", "coniglio", "criceto", "coccodrillo",
+    "pantera", "bellissimo", "più alto", "la più alta", "hermano mayor",
+    "hermana menor", "más alto", "menos caro", "hámster",
+  ],
 };
 
 function buildIndex() {
