@@ -65,11 +65,11 @@ export const PLURAL_RULES = [
     ],
   },
   {
-    rule: "-io → -i (se quita la o)",
+    rule: "-io → -i (si la i lleva el golpe de voz, se conserva: zio → zii)",
     color: "#22d3ee",
     pairs: [
       { s: "il figlio", p: ["i figl", "i"], esp: "el hijo → los hijos" },
-      { s: "lo zio", p: ["gli z", "i"], esp: "el tío → los tíos" },
+      { s: "lo zio", p: ["gli zi", "i"], esp: "el tío → los tíos" },
     ],
   },
 ];
@@ -79,12 +79,12 @@ export const IRREGULARS = [
   { s: "la mano", p: "le mani", esp: "la mano → las manos" },
 ];
 
-// Excepciones de género: terminan «a», pero son masculinos.
+// Excepciones de género: el final engaña.
 export const GENDER_TRAPS = [
   { word: "la mano", esp: "la mano", note: "Femenina, aunque termine en -o." },
-  { word: "il problema", esp: "el problema", note: "Masculino, como todos los -ma griegos." },
+  { word: "il problema", esp: "el problema", note: "Masculino, como otras palabras en -ma de origen griego." },
   { word: "il cinema", esp: "el cine", note: "Masculino." },
-  { word: "il sistema", esp: "el sistema", note: "Masculino, como todos los -ma." },
+  { word: "il sistema", esp: "el sistema", note: "Masculino, igual que il problema." },
 ];
 
 // Sustantivos cuyo género difiere del español.

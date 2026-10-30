@@ -10,8 +10,8 @@ export const ESSERE_CONJ = [
   { subj: "tu", form: "sei", esp: "eres / estás" },
   { subj: "lui / lei", form: "è", esp: "es / está" },
   { subj: "noi", form: "siamo", esp: "somos / estamos" },
-  { subj: "voi", form: "siete", esp: "sois / estáis" },
-  { subj: "loro", form: "sono", esp: "son / están" },
+  { subj: "voi", form: "siete", esp: "ustedes son / están" },
+  { subj: "loro", form: "sono", esp: "ellos son / están" },
 ];
 
 export const AVERE_CONJ = [
@@ -19,8 +19,8 @@ export const AVERE_CONJ = [
   { subj: "tu", form: "hai", esp: "tienes" },
   { subj: "lui / lei", form: "ha", esp: "tiene" },
   { subj: "noi", form: "abbiamo", esp: "tenemos" },
-  { subj: "voi", form: "avete", esp: "tenéis" },
-  { subj: "loro", form: "hanno", esp: "tienen" },
+  { subj: "voi", form: "avete", esp: "ustedes tienen" },
+  { subj: "loro", form: "hanno", esp: "ellos tienen" },
 ];
 
 // Affermazioni: el sujeto se omite cuando el verbo ya lo cuenta.
@@ -28,9 +28,9 @@ export const ESSERE_AFF = [
   { pts: [es("Sono"), " Octavio."], esp: "Soy Octavio." },
   { pts: [su("Octavio"), " ", es("è"), " stanco."], esp: "Octavio está cansado." },
   { pts: [su("Leslie"), " ", es("è"), " stanca."], esp: "Leslie está cansada." },
-  { pts: [su("Argelia"), " ", es("è"), " di ", pr("Roma"), "."], esp: "Argelia es de Roma." },
-  { pts: [es("Sono"), " a ", pr("Roma"), "."], esp: "(Yo) estoy en Roma." },
-  { pts: [es("Siamo"), " a ", pr("casa"), "."], esp: "(Nosotros) estamos en casa." },
+  { pts: [su("Argelia"), " ", es("è"), pr(" di "), "Roma."], esp: "Argelia es de Roma." },
+  { pts: [es("Sono"), pr(" a "), "Roma."], esp: "(Yo) estoy en Roma." },
+  { pts: [es("Siamo"), pr(" a "), "casa."], esp: "(Nosotros) estamos en casa." },
 ];
 
 export const ESSERE_NEG = [
@@ -68,7 +68,7 @@ export const AVERE_EXPR = [
 // La h no suena: estas parejas se distinguen solo por ella.
 export const H_PAIRS = [
   ["ho", "tengo", "o", "o (conjunción)"],
-  ["hai", "tienes", "ai", "a los / a las (a + i)"],
+  ["hai", "tienes", "ai", "a los (a + i)"],
   ["ha", "tiene", "a", "a (preposición)"],
   ["hanno", "tienen", "anno", "año"],
 ];

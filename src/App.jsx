@@ -14,7 +14,13 @@ import FamilySection      from "./features/family/FamilySection";
 import PluralSection      from "./features/plural/PluralSection";
 import DemosSection       from "./features/demonstratives/DemosSection";
 import FruitsSection      from "./features/fruits/FruitsSection";
+import PrepositionsSection from "./features/prepositions/PrepositionsSection";
 import TimeSection        from "./features/time/TimeSection";
+import DatesSection       from "./features/dates/DatesSection";
+import VerbsSection       from "./features/verbs/VerbsSection";
+import StareGerundioSection from "./features/stareGerundio/StareGerundioSection";
+import JobsSection        from "./features/jobs/JobsSection";
+import VocabularySection  from "./features/vocabulary/VocabularySection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -32,7 +38,13 @@ const SECTIONS = {
   plural:         PluralSection,
   demonstratives: DemosSection,
   fruits:         FruitsSection,
+  prepositions:   PrepositionsSection,
   time:           TimeSection,
+  dates:          DatesSection,
+  verbs:          VerbsSection,
+  stareGerundio:  StareGerundioSection,
+  jobs:           JobsSection,
+  vocabulary:     VocabularySection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
 };

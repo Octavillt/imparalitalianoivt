@@ -103,7 +103,7 @@ export const PRACTICE = [
   { question: "Traduce al italiano: ¿Tienes hermanos?", answers: ["Hai fratelli?"], hint: "Avere → hai", explanation: "¿Tienes hermanos? = Hai fratelli?" },
   { question: "Traduce al italiano: No tengo hermanos.", answers: ["Non ho fratelli", "Non ho fratelli."], hint: "Non antes del verbo", explanation: "No tengo hermanos = Non ho fratelli." },
   { question: "Escribe en italiano: la esposa.", answers: ["la moglie"], hint: "No se parece al español", explanation: "la moglie = la esposa." },
-  { question: "Escribe en italiano: el esposo.", answers: ["il marito"], hint: "No se parece al español", explanation: "il marito = el esposo." },
+  { question: "Escribe en italiano: el esposo.", answers: ["il marito"], hint: "Se parece a «marido»", explanation: "il marito = el esposo." },
   { question: "Traduce al italiano: Esta es mi hermana.", answers: ["Questa è mia sorella", "Questa è mia sorella."], hint: "Questa è…", explanation: "Esta es mi hermana = Questa è mia sorella." },
   { question: "Completa: la ___ madre (de ellos). Lleva artículo.", answers: ["loro"], hint: "Posesivo de ellos", explanation: "la loro madre = su madre (de ellos). Loro siempre lleva artículo." },
 ];

@@ -22,7 +22,7 @@ export default function FamilyTree() {
       <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, textAlign: "center", marginBottom: "14px" }}>
         🌳 L'albero genealogico — de arriba (mayores) a abajo (menores)
       </div>
-      <div style={{ minWidth: "640px" }}>
+      <div>
         {FAMILY_TREE.map((level, i) => (
           <div key={level.gen}>
             {i > 0 && <Connector />}

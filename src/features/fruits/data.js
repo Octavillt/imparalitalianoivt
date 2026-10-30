@@ -62,8 +62,8 @@ export const PLURAL_HIGHLIGHTS = [
 ];
 
 export const FRUIT_PHRASES = [
-  { pts: [dm("Questa"), " ", es("è"), " ", art("una"), " mela."], esp: "Ésta es una manzana." },
-  { pts: [dm("Quelle"), " ", es("sono"), " arance."], esp: "Ésas son naranjas." },
+  { pts: [dm("Questa"), " ", es("è"), " ", art("una"), " mela."], esp: "Esta es una manzana." },
+  { pts: [dm("Quelle"), " ", es("sono"), " arance."], esp: "Esas son naranjas." },
   { pts: ["Ho due banane."], esp: "Tengo dos plátanos." },
 ];
 
@@ -76,11 +76,11 @@ export const PRACTICE = [
   { question: "Escribe el plural: la mela.", answers: ["le mele"], hint: "-a → -e", explanation: "la mela → le mele." },
   { question: "Escribe el plural: il pomodoro.", answers: ["i pomodori"], hint: "-o → -i", explanation: "il pomodoro → i pomodori." },
   { question: "Escribe el plural: il fungo.", answers: ["i funghi"], hint: "-go → -ghi", explanation: "il fungo → i funghi: la h mantiene la G fuerte." },
-  { question: "Traduce al italiano: Ésas son naranjas.", answers: ["Quelle sono arance", "Quelle sono arance."], hint: "Quelle + sono", explanation: "Ésas son naranjas = Quelle sono arance." },
+  { question: "Traduce al italiano: Esas son naranjas.", answers: ["Quelle sono arance", "Quelle sono arance."], hint: "Quelle + sono", explanation: "Esas son naranjas = Quelle sono arance." },
   { question: "Traduce al italiano: Tengo dos plátanos.", answers: ["Ho due banane", "Ho due banane."], hint: "Avere → ho", explanation: "Tengo dos plátanos = Ho due banane." },
   { question: "Elige el significado de «il peperone».", answers: ["pimiento"], answerLang: "es", hint: "No es picante", explanation: "il peperone = el pimiento. Para el chile se dice peperoncino." },
   { question: "Elige el significado de «il peperoncino».", answers: ["chile"], answerLang: "es", hint: "El picante", explanation: "il peperoncino = el chile." },
-  { question: "Completa la fruta colectiva: l'___ (no va en plural).", answers: ["uva"], explanation: "l'uva = la uva; es colectiva: nunca «le uve»." },
-  { question: "Traduce al italiano: Quiero un kilo de jitomates.", answers: ["Vorrei un chilo di pomodori", "Vorrei un chilo di pomodori."], hint: "Fórmula de cortesía", explanation: "Quiero un kilo de jitomates = Vorrei un chilo di pomodori. «Vorrei» es cortesía fija; el condicional se ve en niveles avanzados." },
+  { question: "Completa la fruta colectiva: l'___ (no va en plural).", answers: ["uva"], explanation: "l'uva = la uva; es colectiva y va en singular." },
+  { question: "Traduce al italiano: Quisiera un kilo de jitomates.", answers: ["Vorrei un chilo di pomodori", "Vorrei un chilo di pomodori."], hint: "Fórmula de cortesía", explanation: "Quisiera un kilo de jitomates = Vorrei un chilo di pomodori. «Vorrei» equivale a «quisiera»; el condicional se ve en niveles avanzados." },
   { question: "Elige el artículo correcto: (gli / i) spinaci.", answers: ["gli"], hint: "Empieza con sp", explanation: "gli spinaci: sp- lleva gli (artículo que se ve a fondo en Básico II)." },
 ];

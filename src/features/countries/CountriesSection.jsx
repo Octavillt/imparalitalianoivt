@@ -59,7 +59,7 @@ export default function CountriesSection() {
       <SectionTitle color="#38bdf8">🌍 Paesi e nazionalità</SectionTitle>
       <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "10px" }}>
         Como en español, los <strong style={{ color: "#f8fafc" }}>países llevan mayúscula</strong> y las <strong style={{ color: "#f8fafc" }}>nacionalidades van en minúscula</strong>.{" "}
-        En italiano casi todos los países llevan <strong style={{ color: "#a3e635" }}>artículo</strong>: no se dice «Italia» suelto, sino <strong lang="it" style={{ color: "#e2e8f0" }}>l'Italia</strong>.
+        En italiano casi todos los países llevan <strong style={{ color: "#a3e635" }}>artículo</strong>: se dice <strong lang="it" style={{ color: "#e2e8f0" }}>L'Italia è bella</strong>, no «Italia è bella».
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(195px, 1fr))", gap: "6px", marginBottom: "16px" }}>
         {COUNTRIES.map(c => (

@@ -52,7 +52,7 @@ export default function FruitsSection() {
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Lee cada tarjeta en voz alta: artículo + palabra. Fíjate en que{" "}
         <strong lang="it" style={{ color: "#f8fafc" }}>la frutta</strong> y <strong lang="it" style={{ color: "#f8fafc" }}>la verdura</strong> son{" "}
-        <strong style={{ color: "#f8fafc" }}>singulares colectivos</strong>: se hablan de todas las frutas como «la fruta», igual que en español.
+        <strong style={{ color: "#f8fafc" }}>singulares colectivos</strong>: nombran todas las frutas o verduras en conjunto, como «la fruta» en español.
       </div>
 
       <SectionTitle color={ORANGE}>🍎 Frutta — las frutas</SectionTitle>
@@ -64,7 +64,7 @@ export default function FruitsSection() {
       <RuleBox icon="🧐" rule="Palabras con truco" color="#fbbf24">
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
-            🍇 <strong lang="it" style={{ color: "#e2e8f0" }}>l'uva</strong> es colectiva: nunca «le uve». 🇲🇽 la uva.
+            🍇 <strong lang="it" style={{ color: "#e2e8f0" }}>l'uva</strong> es colectiva y va en singular. 🇲🇽 la uva.
           </div>
           <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
             🍑 <strong lang="it" style={{ color: "#e2e8f0" }}>la pesca</strong> con <strong style={{ color: "#f8fafc" }}>e abierta</strong> es el durazno; con{" "}
@@ -100,7 +100,7 @@ export default function FruitsSection() {
         </div>
       ))}
       <p style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>
-        🛒 <strong lang="it" style={{ color: "#e2e8f0" }}>Vorrei un chilo di pomodori.</strong> 🇲🇽 Quiero un kilo de jitomates.{" "}
+        🛒 <strong lang="it" style={{ color: "#e2e8f0" }}>Vorrei un chilo di pomodori.</strong> 🇲🇽 Quisiera un kilo de jitomates.{" "}
         «Vorrei» es la fórmula cortés de pedir (el condicional se estudia en niveles avanzados): úsala tal cual en la frutería.
       </p>
     </div>
