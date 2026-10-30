@@ -39,7 +39,7 @@ describe("Sin restos del proyecto de inglés", () => {
     ["idioma inglés", /\bingl[eé]s\b|\benglish\b/i],
     ["lang en", /lang="en"|en-US/],
     ["clave antigua", /learningles/],
-    ["bandera de Estados Unidos", /🇺🇸/],
+    ["bandera de Estados Unidos fuera de la tabla de países", /^(?!.*Stati Uniti).*🇺🇸/],
     ["campos antiguos", /\.base\b|verb_be|\.english\b/],
     ["expresiones inglesas", /o'clock|going to|to be\b|hour hand/i],
   ])("sin %s", (_name, pattern) => {
