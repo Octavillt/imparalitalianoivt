@@ -1,41 +1,34 @@
 // Lógica de búsqueda del módulo «Verbos a la mano»: funciones puras, sin
 // React, para poder consultarlas también desde el buscador global.
 
-import { VERB_BANK } from "./data";
-import { VERBS } from "../verbs/data";
-import { IRREGULAR_VERBS } from "../irregularVerbs/data";
-import { VERBS_ING } from "../gerunds/data";
 import { EXERCISE_WORDS } from "../exerciseWords/data";
-import { IRREGULARS, ED_PRONUNCIATION } from "../simplePast/data";
+import { IRREGULAR_VERBS } from "../irregularVerbs/data";
+import { ESSERE_VERBS, IRREGULAR_PARTICIPLES } from "../passatoProssimo/data";
+import { CONJUGATION_MODELS, ISC_MODELS } from "../presenteIndicativo/data";
+import { ROUTINE_VERBS } from "../routineRiflessivi/data";
+import { VERB_PATTERNS } from "../verbiInfinito/data";
+import { VERBS } from "../verbs/data";
+import { VERB_BANK } from "./data";
 
 export function normalize(str) {
   return str
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[̀-ͯ]/g, "");
 }
 
-// Patrón de las tres formas (con la primera de cada columna). Los regulares
-// tienen el suyo («regular»); los irregulares se agrupan por cuántas formas
-// comparten, que es como se memorizan mejor.
-export function verbPattern(verb) {
-  if (verb.kind === "regular") return "regular";
-  const [base, past, participle] = [verb.base, verb.past[0], verb.participle[0]];
-  if (base === past && past === participle) return "AAA";
-  if (past === participle) return "ABB";
-  if (base === participle) return "ABA";
-  return "ABC";
-}
-
-// Metadatos de cada patrón para la UI (chips y ficha del verbo).
-export const PATTERNS = [
-  { id: "AAA", label: "Las tres iguales", example: "cut · cut · cut" },
-  { id: "ABB", label: "Pasado = participio", example: "buy · bought · bought" },
-  { id: "ABA", label: "Base = participio", example: "come · came · come" },
-  { id: "ABC", label: "Tres formas distintas", example: "go · went · gone" },
+// Grupos de conjugación: la terminación del infinitivo decide cómo se
+// conjuga el presente. Los metadatos alimentan los chips de la UI.
+export const GROUPS = [
+  { id: "are", label: "Grupo -are", example: "parlare · parlo · parlato" },
+  { id: "ere", label: "Grupo -ere", example: "credere · credo · creduto" },
+  { id: "ire", label: "Grupo -ire", example: "dormire · dormo · dormito" },
+  { id: "isc", label: "Grupo -isc-", example: "capire · capisco · capito" },
 ];
 
-export const PATTERN_BY_ID = Object.fromEntries(PATTERNS.map(p => [p.id, p]));
+export function verbGroup(verb) {
+  return verb.gruppo;
+}
 
 // Las coincidencias «contiene» solo valen a partir de 3 letras: con 1 o 2,
 // devolver medio banco enturbia los resultados.
@@ -54,74 +47,53 @@ function writtenWord(text, normalizedWord) {
   return tokens.find(token => normalize(token) === normalizedWord) ?? normalizedWord;
 }
 
-// Mismas reglas para el infinitivo (es) y el pretérito (esPast): palabra exacta
-// en rango 4 y, desde 3 letras, palabra que empieza con la consulta en rango 5.
-function spanishHit(text, field, query) {
-  if (!text) return null;
-  const words = esWords(text);
+// Coincidencia en español: palabra exacta en rango 4 y, desde 3 letras,
+// palabra que empieza con la consulta en rango 5.
+function spanishHit(es, query) {
+  if (!es) return null;
+  const words = esWords(es);
   const exact = words.find(item => item === query);
-  if (exact) {
-    return {
-      rank: 4,
-      matchedForm: field === "esPast" ? writtenWord(text, exact) : exact,
-      matchedField: field,
-    };
-  }
-  if (normalize(text) === query) return { rank: 4, matchedForm: text, matchedField: field };
+  if (exact) return { rank: 4, matchedForm: writtenWord(es, exact), matchedField: "es" };
   if (query.length >= MIN_PARTIAL) {
     const starts = words.find(item => item.startsWith(query));
-    if (starts) {
-      return {
-        rank: 5,
-        matchedForm: field === "esPast" ? writtenWord(text, starts) : starts,
-        matchedField: field,
-      };
-    }
+    if (starts) return { rank: 5, matchedForm: writtenWord(es, starts), matchedField: "es" };
   }
   return null;
 }
 
-// Si el infinitivo y el pretérito empatan en rango, gana el infinitivo.
-function preferSpanish(baseHit, pastHit) {
-  if (!baseHit) return pastHit;
-  if (!pastHit) return baseHit;
-  return pastHit.rank < baseHit.rank ? pastHit : baseHit;
-}
-
 // Mejor coincidencia de un verbo contra la query ya normalizada. El rango
-// ordena la relevancia: exacto en inglés > base empieza > pasado/participio
-// empieza > contiene en inglés > palabra exacta en español > palabra empieza.
+// ordena la relevancia: exacto en italiano > infinito empieza > presente o
+// participio empieza > contiene en italiano > palabra exacta en español >
+// palabra que empieza.
 function bestMatch(verb, query) {
-  if (verb.base === query) return { rank: 0, matchedForm: verb.base, matchedField: "base" };
-  for (const past of verb.past) {
-    if (past === query) return { rank: 0, matchedForm: past, matchedField: "past" };
+  if (verb.infinito === query) return { rank: 0, matchedForm: verb.infinito, matchedField: "infinito" };
+  for (const presente of verb.presente) {
+    if (presente === query) return { rank: 0, matchedForm: presente, matchedField: "presente" };
   }
-  for (const participle of verb.participle) {
-    if (participle === query) return { rank: 0, matchedForm: participle, matchedField: "participle" };
+  for (const participio of verb.participio) {
+    if (participio === query) return { rank: 0, matchedForm: participio, matchedField: "participio" };
   }
-  if (verb.base.startsWith(query)) return { rank: 1, matchedForm: verb.base, matchedField: "base" };
-  for (const past of verb.past) {
-    if (past.startsWith(query)) return { rank: 2, matchedForm: past, matchedField: "past" };
+  if (verb.infinito.startsWith(query)) return { rank: 1, matchedForm: verb.infinito, matchedField: "infinito" };
+  for (const presente of verb.presente) {
+    if (presente.startsWith(query)) return { rank: 2, matchedForm: presente, matchedField: "presente" };
   }
-  for (const participle of verb.participle) {
-    if (participle.startsWith(query)) return { rank: 2, matchedForm: participle, matchedField: "participle" };
+  for (const participio of verb.participio) {
+    if (participio.startsWith(query)) return { rank: 2, matchedForm: participio, matchedField: "participio" };
   }
   if (query.length >= MIN_PARTIAL) {
-    if (verb.base.includes(query)) return { rank: 3, matchedForm: verb.base, matchedField: "base" };
-    for (const past of verb.past) {
-      if (past.includes(query)) return { rank: 3, matchedForm: past, matchedField: "past" };
+    if (verb.infinito.includes(query)) return { rank: 3, matchedForm: verb.infinito, matchedField: "infinito" };
+    for (const presente of verb.presente) {
+      if (presente.includes(query)) return { rank: 3, matchedForm: presente, matchedField: "presente" };
     }
-    for (const participle of verb.participle) {
-      if (participle.includes(query)) return { rank: 3, matchedForm: participle, matchedField: "participle" };
+    for (const participio of verb.participio) {
+      if (participio.includes(query)) return { rank: 3, matchedForm: participio, matchedField: "participio" };
     }
   }
-  return preferSpanish(spanishHit(verb.es, "es", query), spanishHit(verb.esPast, "esPast", query));
+  return spanishHit(verb.es, query);
 }
 
 export function searchVerbs(query, { limit } = {}) {
-  const raw = normalize(query ?? "").trim();
-  // El «to» del infinitivo no aporta nada a la búsqueda: to go → go.
-  const q = raw.startsWith("to ") ? raw.slice(3) : raw;
+  const q = normalize(query ?? "").trim();
   if (!q) return [];
 
   const matches = [];
@@ -129,41 +101,30 @@ export function searchVerbs(query, { limit } = {}) {
     const match = bestMatch(verb, q);
     if (match) matches.push({ verb, ...match });
   }
-  matches.sort((a, b) => a.rank - b.rank || a.verb.base.localeCompare(b.verb.base));
-  const results = matches.map(({ verb, matchedForm, matchedField }) => ({ verb, matchedForm, matchedField }));
+  matches.sort((a, b) => a.rank - b.rank || a.verb.infinito.localeCompare(b.verb.infinito));
+  // Si la consulta es una forma entera (andare, vado, andato), no arrastres
+  // infinitivos que solo la contienen, como mandare o domandare.
+  const exact = matches.filter(item => item.rank === 0);
+  const chosen = exact.length > 0 ? exact : matches;
+  const results = chosen.map(({ verb, matchedForm, matchedField }) => ({ verb, matchedForm, matchedField }));
   return limit ? results.slice(0, limit) : results;
 }
 
-// —— Lecciones donde aparece cada verbo ————————————————————————————————
-// Se calcula desde los datos de las lecciones (no a mano), así un verbo nuevo
-// en una lección aparece aquí sin tocar este archivo.
-
-const pastToBase = new Map(VERB_BANK.flatMap(verb => verb.past.map(past => [past, verb.base])));
-
-// «don't mind» (gerundios) cuenta como mind.
-const withoutDont = verb => verb.toLowerCase().replace(/^don['’]t /, "");
-// «go → went» (pasado simple) deja solo su forma base.
-const baseSide = forms => forms.split("→")[0].trim().toLowerCase();
-
+// Lecciones donde aparece cada verbo. Los infinitivos salen de los datos
+// de la lección, no de una lista escrita a mano.
 const LESSON_SOURCES = [
-  { levelId: "basico1", topicId: "verbs", bases: new Set(VERBS.map(([en]) => en.toLowerCase())) },
-  { levelId: "basico2", topicId: "irregularVerbs", bases: new Set(IRREGULAR_VERBS.map(([inf]) => inf.toLowerCase())) },
-  { levelId: "basico2", topicId: "gerunds", bases: new Set(VERBS_ING.flatMap(group => group.verbs.map(withoutDont))) },
-  { levelId: "basico4", topicId: "exerciseWords", bases: new Set(EXERCISE_WORDS.map(word => word.en.toLowerCase())) },
-  {
-    levelId: "basico5",
-    topicId: "simplePast",
-    bases: new Set([
-      ...IRREGULARS.map(([forms]) => baseSide(forms)),
-      // Los ejemplos de -ed son pasados: se resuelven a su verbo base.
-      ...ED_PRONUNCIATION.flatMap(group => group.examples.map(past => pastToBase.get(past))),
-    ]),
-  },
+  { levelId: "basico1", topicId: "verbs", infinitos: new Set(VERBS.map(([infinito]) => infinito)) },
+  { levelId: "basico2", topicId: "presenteIndicativo", infinitos: new Set([...CONJUGATION_MODELS, ...ISC_MODELS].map(item => item.verb)) },
+  { levelId: "basico2", topicId: "irregularVerbs", infinitos: new Set(IRREGULAR_VERBS.map(item => item.inf)) },
+  { levelId: "basico2", topicId: "verbiInfinito", infinitos: new Set(VERB_PATTERNS.map(item => item.verb)) },
+  { levelId: "basico3", topicId: "routineRiflessivi", infinitos: new Set(ROUTINE_VERBS.map(([infinito]) => infinito)) },
+  { levelId: "basico4", topicId: "exerciseWords", infinitos: new Set(EXERCISE_WORDS.map(item => item.it)) },
+  { levelId: "basico5", topicId: "passatoProssimo", infinitos: new Set([...IRREGULAR_PARTICIPLES, ...ESSERE_VERBS].map(([infinito]) => infinito)) },
 ];
 
 export function lessonsFor(verb) {
-  const base = typeof verb === "string" ? verb : verb.base;
+  const infinito = typeof verb === "string" ? verb : verb.infinito;
   return LESSON_SOURCES
-    .filter(source => source.bases.has(base))
+    .filter(source => source.infinitos.has(infinito))
     .map(({ levelId, topicId }) => ({ levelId, topicId }));
 }

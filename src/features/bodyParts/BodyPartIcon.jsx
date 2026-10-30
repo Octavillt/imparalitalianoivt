@@ -21,8 +21,10 @@ function Head({ part }) {
     <path d="M39 47q6-4 12 0m18 0q6-4 12 0" />
     <ellipse cx="46" cy="54" rx="2.2" ry="3" fill={HAIR} stroke="none" />
     <ellipse cx="74" cy="54" rx="2.2" ry="3" fill={HAIR} stroke="none" />
-    <path d="m59 54-3 10q4 3 8 0m-14 9q10 7 20 0" />
+    <path d="m59 54-3 10q4 3 8 0m-14 9q10 7 20 0" stroke={part === "nose" ? TEAL : INK} strokeWidth={part === "nose" ? 3 : 1.5} />
     <path d="M38 64h7m30 0h7" stroke="#dc9a8d" strokeWidth="3" opacity="0.6" />
+    {part === "chin" && <ellipse cx="60" cy="80" rx="12" ry="7" fill={LIGHT} stroke={TEAL} />}
+    {part === "cheek" && <ellipse cx="38" cy="66" rx="9" ry="7" fill={LIGHT} stroke={TEAL} />}
     {part === "head" && <path d="M24 22q-7 14-4 36m76-36q7 14 4 36" stroke={TEAL} strokeWidth="3" />}
   </>;
 }
@@ -70,7 +72,7 @@ function Hand({ part }) {
   </>;
 }
 
-const torsoParts = ["neck", "shoulder", "chest", "back", "waist"];
+const torsoParts = ["neck", "shoulder", "chest", "back", "waist", "belly", "side"];
 function Torso({ part }) {
   const back = part === "back";
   return <>
@@ -86,6 +88,8 @@ function Torso({ part }) {
       {part === "shoulder" && <Mark x="30" y="48" rx="11" ry="9" />}
       {part === "chest" && <path d="M39 51q21-6 42 0l-3 18q-18 5-36 0Z" fill={LIGHT} fillOpacity="0.9" stroke={TEAL} />}
       {part === "waist" && <path d="M39 85q21 6 42 0l1 8q-22 6-44 0Z" fill={LIGHT} stroke={TEAL} />}
+      {part === "belly" && <ellipse cx="60" cy="78" rx="16" ry="12" fill={LIGHT} stroke={TEAL} />}
+      {part === "side" && <ellipse cx="34" cy="72" rx="8" ry="14" fill={LIGHT} stroke={TEAL} />}
     </>}
     <path d="M34 104q26 5 52 0v9H34Z" fill="#a9c4d1" stroke="none" />
   </>;
@@ -134,23 +138,42 @@ function Body() {
   </>;
 }
 
+// La tarjeta manda el nombre en italiano. Aquí se traduce a la clave del dibujo.
+const ICON_PART = {
+  testa: "head", faccia: "face", capelli: "hair", occhio: "eye", sopracciglio: "eyebrow",
+  orecchio: "ear", naso: "nose", bocca: "mouth", labbro: "lip", dente: "tooth",
+  lingua: "tongue", mento: "chin", guancia: "cheek", collo: "neck", spalla: "shoulder",
+  petto: "chest", pancia: "belly", schiena: "back", fianco: "side", braccio: "arm",
+  gomito: "elbow", polso: "wrist", mano: "hand", dito: "finger", pollice: "thumb",
+  gamba: "leg", ginocchio: "knee", caviglia: "ankle", piede: "foot", pelle: "skin", osso: "bone",
+};
+
 export default function BodyPartIcon({ part }) {
+  const key = ICON_PART[part] ?? part;
   let drawing;
-  if (torsoParts.includes(part)) drawing = <Torso part={part} />;
-  else if (["arm", "elbow", "wrist"].includes(part)) drawing = <Arm part={part} />;
-  else if (["leg", "thigh", "knee", "ankle"].includes(part)) drawing = <Leg part={part} />;
-  else if (part in digits || part === "hand") drawing = <Hand part={part} />;
-  else if (["eye", "eyebrow", "eyelash"].includes(part)) drawing = <Eye part={part} />;
-  else if (["mouth", "lip", "tongue"].includes(part)) drawing = <Mouth part={part} />;
-  else if (["head", "face", "hair"].includes(part)) drawing = <Head part={part} />;
-  else if (["foot", "toe"].includes(part)) drawing = <Foot part={part} />;
-  else if (part === "body") drawing = <Body />;
-  else if (part === "ear") drawing = <>
+  if (torsoParts.includes(key)) drawing = <Torso part={key} />;
+  else if (["arm", "elbow", "wrist"].includes(key)) drawing = <Arm part={key} />;
+  else if (["leg", "thigh", "knee", "ankle"].includes(key)) drawing = <Leg part={key} />;
+  else if (key in digits || key === "hand") drawing = <Hand part={key} />;
+  else if (["eye", "eyebrow", "eyelash"].includes(key)) drawing = <Eye part={key} />;
+  else if (["mouth", "lip", "tongue"].includes(key)) drawing = <Mouth part={key} />;
+  else if (["head", "face", "hair", "nose", "chin", "cheek"].includes(key)) drawing = <Head part={key} />;
+  else if (["foot", "toe"].includes(key)) drawing = <Foot part={key} />;
+  else if (key === "body") drawing = <Body />;
+  else if (key === "skin") drawing = <>
+    <circle cx="60" cy="60" r="36" fill={SKIN} stroke={TEAL} strokeWidth="3" />
+    <path d="M36 50c10 8 16 2 24 8s12 2 22-6" stroke={SHADE} />
+    <path d="M34 70c14 6 22 2 32 8" stroke={TEAL} />
+  </>;
+  else if (key === "bone") drawing = <>
+    <path d="M36 74c-10 8-8 20 4 18 6-8 8-14 10-14 8 0 16 2 22 8 8 2 14-8 6-16-6-4-8-12-2-18-8 4-16 8-22 4-8-2-12-10-20-8-8 6-6 16 2 26Z" fill="#fffefa" stroke={TEAL} strokeWidth="2" />
+  </>;
+  else if (key === "ear") drawing = <>
     <path d="M38 79C11 45 32 14 58 14c32-2 38 34 20 52-10 10-7 33-25 35-13 1-19-12-15-22Z" fill={SKIN} />
     <path d="M38 59C23 33 58 16 73 34c15 21-13 24-14 40-1 12-13 12-12 1" fill={LIGHT} stroke={TEAL} strokeWidth="2" />
     <path d="M43 44q14-14 20 0l-13 13 1 10m-13 0q12-10 17 1" />
   </>;
-  else if (part === "tooth") drawing = <>
+  else if (key === "tooth") drawing = <>
     <path d="M60 26C18 3 20 44 30 61c6 10 4 40 16 42 10 0 5-35 14-35s4 35 14 35c12-2 10-32 16-42C100 44 102 3 60 26Z" fill="#fffefa" stroke={TEAL} strokeWidth="2" />
     <path d="m60 26 12 4M37 34q-4 12 2 20" stroke="#c5e5df" strokeWidth="5" />
     <path d="M91 15v10m-5-5h10" stroke={TEAL} />

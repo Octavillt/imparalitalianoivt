@@ -1,75 +1,128 @@
+import { Fragment } from "react";
 import TopicHeading from "../../components/TopicHeading";
+import ExampleCard from "../../components/ExampleCard";
+import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import SectionTitle from "../../components/SectionTitle";
-import { EXERCISE_WORDS, MOVEMENT_PHRASES, EXAMPLES } from "./data";
+import { C } from "../../styles/colors";
+import {
+  ABILITY,
+  EXERCISE_WORDS,
+  GROUP_ORDERS,
+  NEGATIVE,
+  ONGOING,
+  VOCAB,
+  VOI_FORMS,
+} from "./data";
 
 const COLOR = "#A78BFA";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
 
+const COLUMNS = ["Infinitivo", "Tú", "Usted", "Ustedes", "Gerundio"];
+
 export default function ExerciseWordsSection() {
   return (
     <div>
       <TopicHeading topicId="exerciseWords" />
-      <p style={{ ...card, ...text }}>🏋️ <strong>Exercise words</strong> son palabras para hablar de ejercicio y movimiento. En la lección <strong>Exercising</strong> aparecen ocho verbos que puedes combinar con partes del cuerpo, objetos y direcciones.</p>
+      <p style={{ ...card, ...text }}>
+        🏋️ Estas palabras sirven para dar una clase y para decir qué movimiento va ahora. <span lang="it">Voi</span> es ustedes, el grupo.
+      </p>
+      <Legend roles={["verb", "inf", "gerundio", "neg", "essere", "subject", "art", "prep"]} />
 
-      <SectionTitle color={COLOR}>📖 Los ocho verbos de la imagen</SectionTitle>
-      <p style={text}>La numeración sigue las fotografías de la actividad A: 1 stretch, 2 pull, 3 lift, 4 bend, 5 push, 6 turn, 7 stand y 8 twist.</p>
+      <SectionTitle color={COLOR}>📖 Los nueve verbos</SectionTitle>
+      <ScrollHint />
+      <div style={{ overflowX: "auto", margin: "8px 0 16px" }}>
+        <div style={{ minWidth: "680px", display: "grid", gridTemplateColumns: "1.3fr repeat(4, 1fr)", gap: "4px" }}>
+          {COLUMNS.map(label => (
+            <div key={label} style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 800 }}>{label}</div>
+          ))}
+          {EXERCISE_WORDS.map(word => (
+            <Fragment key={word.it}>
+              <div style={{ padding: "8px 4px" }}>
+                <div lang="it" style={{ color: COLOR, fontWeight: 800 }}>{word.it}</div>
+                <div style={{ color: "#94a3b8", fontSize: "12px" }}>{word.es}</div>
+              </div>
+              <div lang="it" style={{ color: C.verb.fg, fontWeight: 800, padding: "8px 4px" }}>{word.tu}</div>
+              <div lang="it" style={{ color: C.verb.fg, fontWeight: 800, padding: "8px 4px" }}>{word.lei}</div>
+              <div lang="it" style={{ color: C.verb.fg, fontWeight: 800, padding: "8px 4px" }}>{VOI_FORMS[word.it]}</div>
+              <div lang="it" style={{ color: C.gerundio.fg, fontWeight: 800, padding: "8px 4px" }}>{word.gerundio}</div>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+
       {EXERCISE_WORDS.map((word, index) => (
-        <RuleBox key={word.en} icon="🏃" rule={`${index + 1}. ${word.en} — ${word.es}`} color={COLOR}>
+        <RuleBox key={word.it} icon="🏃" rule={`${index + 1}. ${word.it} — ${word.es}`} color={COLOR}>
           <p style={text}>{word.note}</p>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{word.instruction}</div>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{word.instruction}</div>
           <div style={translation}>🇲🇽 {word.meaning}</div>
-          <p style={text}>Forma <strong>-ing</strong>: <span lang="en">{word.en} → {word.ing}</span>.</p>
+          <p style={text}>Gerundio: <span lang="it">{word.gerundio}</span>.</p>
         </RuleBox>
       ))}
 
-      <RuleBox icon="🔎" rule="Diferencias que ayudan a recordarlos" color={COLOR}>
+      <RuleBox icon="🔎" rule="Pares que conviene no mezclar" color={COLOR}>
         <ul style={{ ...text, paddingLeft: "20px" }}>
-          <li><strong>Push / pull:</strong> empujar / jalar. También aparecen en puertas: PUSH = empuje; PULL = jale.</li>
-          <li><strong>Bend / stretch:</strong> flexionar / estirar. Compara <span lang="en">Bend your arms</span> (Flexiona los brazos) con <span lang="en">Stretch your arms</span> (Estira los brazos).</li>
-          <li><strong>Turn / twist:</strong> ambos pueden traducirse como girar. Turn suele indicar un cambio de orientación; twist destaca la rotación de una parte respecto a otra, como el torso respecto a las caderas. El contexto ayuda a elegir.</li>
-          <li><strong>Stand / stand up:</strong> estar de pie / ponerse de pie. <span lang="en">He is standing</span> describe su postura; <span lang="en">Stand up</span> pide que se levante.</li>
-          <li><strong>Lift / stand up:</strong> <span lang="en">lift a weight</span> es levantar una pesa; <span lang="en">stand up</span> es levantarse uno mismo.</li>
+          <li><span lang="it">Alzare</span> levanta una parte del cuerpo: <span lang="it">alza le braccia</span>. <span lang="it">Sollevare</span>, aquí, levanta la pesa: <span lang="it">solleva il peso</span>.</li>
+          <li><span lang="it">Spingere</span> es empujar. <span lang="it">Tirare</span> es jalar.</li>
+          <li><span lang="it">Piegare</span> es doblar. <span lang="it">Stendere</span> es estirar.</li>
         </ul>
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📣 Dar instrucciones: el imperativo</SectionTitle>
-      <RuleBox icon="💬" rule="Verbo base, normalmente sin you" color={COLOR}>
-        <p style={text}>Para dar una instrucción, empieza con el verbo: <span lang="en">Lift your arms</span> (Levanta los brazos). Para indicar qué no hacer, usa <strong>don't + verbo base</strong>: <span lang="en">Don't push the door</span> (No empujes la puerta). Puedes añadir <strong>please</strong>: <span lang="en">Please stand up</span> (Ponte de pie, por favor).</p>
-        <p style={text}>Con partes del cuerpo se usa mucho <strong>your</strong>, aunque en español digamos «los» o «las»: <span lang="en">Bend your knees</span> = Flexiona las rodillas. Aprende también <strong>arms</strong> (brazos), <strong>legs</strong> (piernas), <strong>head</strong> (cabeza), <strong>feet</strong> (pies), <strong>hips</strong> (caderas) y <strong>upper body</strong> (parte superior del cuerpo).</p>
-        <RelatedTopic levelId="basico4" topicId="bodyParts" label="Repasar las partes del cuerpo" />
+      <SectionTitle color={COLOR}>📣 El imperativo</SectionTitle>
+      <RuleBox icon="💬" rule="Tú y usted no usan la misma terminación" color={COLOR}>
+        <p style={text}>
+          En un verbo en <span lang="it">-are</span>, la orden de tú termina en <span lang="it">-a</span> y la de usted en <span lang="it">-i</span>: <span lang="it">alza / alzi</span>, <span lang="it">piega / pieghi</span>. En uno en <span lang="it">-ere</span>, tú termina en <span lang="it">-i</span> y usted en <span lang="it">-a</span>: <span lang="it">stendi / stenda</span>, <span lang="it">spingi / spinga</span>.
+        </p>
+        <p style={text}>
+          <span lang="it">Piegare</span> escribe h en <span lang="it">pieghi</span> para que la g suene fuerte. Con ustedes: <span lang="it">Alzate le braccia. Piegate le ginocchia.</span>
+        </p>
+        <RelatedTopic levelId="basico4" topicId="bodyParts" />
+        <RelatedTopic levelId="basico3" topicId="directions" />
       </RuleBox>
-
-      <SectionTitle color={COLOR}>↔️ Direcciones y expresiones útiles</SectionTitle>
-      {MOVEMENT_PHRASES.map(([en, es]) => (
-        <div key={en} style={card}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
+      {GROUP_ORDERS.map(([it, es]) => (
+        <div key={it} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{it}</div>
           <div style={translation}>🇲🇽 {es}</div>
         </div>
       ))}
-      <p style={text}>Combina estas expresiones con los verbos: <span lang="en">Turn to the right</span> (Gira a la derecha), <span lang="en">Bend forward</span> (Inclínate hacia adelante) y <span lang="en">Lift your arms slowly</span> (Levanta los brazos despacio).</p>
 
-      <SectionTitle color={COLOR}>🌀 Describir lo que ocurre ahora</SectionTitle>
-      <p style={text}>Usa <strong>am/is/are + verbo-ing</strong>. Los ocho verbos de esta lección forman -ing añadiendo esa terminación sin cambiar su base: stretch → stretching, pull → pulling. No omitas to be: <span lang="en">She is lifting</span>, no «She lifting».</p>
-      {EXAMPLES.map(([en, es]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
+      <RuleBox icon="🚫" rule="La negativa de tú usa el infinitivo" color={COLOR}>
+        <p style={text}>
+          <span lang="it">Non piegare le ginocchia</span> es de tú. <span lang="it">Non pieghi le ginocchia</span> es de usted. Con ustedes, <span lang="it">non</span> va antes de la forma del grupo: <span lang="it">Non alzate le braccia</span>.
+        </p>
+      </RuleBox>
+      {NEGATIVE.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+
+      <SectionTitle color={COLOR}>🤸 Con el cuerpo</SectionTitle>
+      <p style={text}>
+        <span lang="it">Alza le braccia. Stendi le gambe. Gira la testa a sinistra.</span> <span lang="it">Le braccia</span> y <span lang="it">le ginocchia</span> son los plurales femeninos en -a.
+      </p>
+
+      <SectionTitle color={COLOR}>🏋️ En el gimnasio</SectionTitle>
+      {VOCAB.map(([it, es]) => (
+        <div key={it} style={card}>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{it}</div>
           <div style={translation}>🇲🇽 {es}</div>
         </div>
       ))}
-      <RelatedTopic levelId="basico1" topicId="progressive" label="Repasar el presente progresivo" />
+      <p style={text}>
+        <span lang="it">Andare in palestra</span> es la frase de esta lección. <span lang="it">Andare alla palestra</span> también se usa: <span lang="it">alla</span> une a + la.
+      </p>
 
-      <RuleBox icon="💪" rule="Habilidad con can; acción actual con be + -ing" color={COLOR}>
-        <p style={text}><span lang="en">I can lift this weight</span> = Puedo levantar esta pesa (capacidad). <span lang="en">I am lifting this weight</span> = Estoy levantando esta pesa (acción actual).</p>
-        <p style={text}><span lang="en">Can you bend your knees? — Yes, I can.</span> = ¿Puedes flexionar las rodillas? — Sí. Después de can usa <strong>bend</strong>, no «bending» ni «to bend».</p>
-        <RelatedTopic levelId="basico4" topicId="can" label="Repasar can, can't y respuestas cortas" />
-      </RuleBox>
+      <SectionTitle color={COLOR}>🌀 Lo que ocurre ahora</SectionTitle>
+      <p style={text}>
+        <span lang="it">Stare</span> más el gerundio dice la acción en curso. <span lang="it">Fare</span> hace <span lang="it">facendo</span>.
+      </p>
+      {ONGOING.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+      <RelatedTopic levelId="basico1" topicId="stareGerundio" />
 
-      <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
-      <p style={text}>Vuelve a la imagen y nombra los ocho movimientos sin mirar la lista. Después escribe tres instrucciones con partes del cuerpo, describe dos fotografías con is + -ing y formula una pregunta con can. Usa la autoevaluación de abajo y el Quiz para comprobar tus respuestas.</p>
+      <SectionTitle color={COLOR}>💪 Saber y lograr</SectionTitle>
+      {ABILITY.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+      <RelatedTopic levelId="basico4" topicId="potereSapere" />
     </div>
   );
 }

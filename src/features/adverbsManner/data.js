@@ -1,65 +1,123 @@
+// Adverbios de modo. El par es [adjetivo, adverbio].
+// En vocal + le/re se pierde la e antes de mente. Bene y male son las
+// formas básicas de bien y mal; cattivamente tiene un sentido propio.
+const su = t => ({ t, r: "subject" });
+const vb = t => ({ t, r: "verb" });
+const es = t => ({ t, r: "essere" });
+const adj = t => ({ t, r: "adj" });
+const wh = t => ({ t, r: "wh" });
+const art = t => ({ t, r: "art" });
+
 export const FORMATION_RULES = [
-  { title: "Regla frecuente: adjetivo + -ly", description: "Muchos adverbios de modo se forman añadiendo -ly al adjetivo. Conserva la l de beautiful y careful: el resultado termina en -fully.", examples: [
-    ["beautiful → beautifully", "hermoso/a → hermosamente / maravillosamente"],
-    ["quick → quickly", "rápido/a → rápidamente"],
-    ["careful → carefully", "cuidadoso/a → con cuidado"],
-    ["slow → slowly", "lento/a → lentamente / despacio"],
-    ["amazing → amazingly", "asombroso/a → asombrosamente"],
-  ] },
-  { title: "Consonante + y: cambia y por i y añade -ly", description: "Es un patrón frecuente en palabras como happy y easy; no lo apliques a todas las palabras que terminan en y.", examples: [
-    ["happy → happily", "feliz → felizmente / con alegría"],
-    ["easy → easily", "fácil → fácilmente"],
-    ["angry → angrily", "enojado/a → con enojo"],
-  ] },
-  { title: "Consonante + -le: sustituye la e final por y", description: "En palabras como gentle y simple, conserva la l: gentle → gently, no «gentlely».", examples: [
-    ["gentle → gently", "suave / delicado/a → suavemente / con delicadeza"],
-    ["simple → simply", "simple → de manera simple"],
-  ] },
-  { title: "Irregular: good → well", description: "Good es el adjetivo habitual para describir algo bueno. Well describe que una acción se realiza bien.", examples: [
-    ["good → well", "bueno/a → bien"],
-  ] },
-  { title: "Misma forma: fast → fast, hard → hard", description: "Estos adverbios no necesitan -ly. Aprende cada palabra con una oración, porque añadir -ly puede cambiar el significado.", examples: [
-    ["fast → fast", "rápido/a → rápido / rápidamente"],
-    ["hard → hard", "duro/a → con esfuerzo / intensamente (según el contexto)"],
-  ] },
+  {
+    title: "Adjetivo en -o: femenino + mente",
+    description: "Estos pasan por el femenino y luego reciben mente. Sicuramente, en muchas frases, significa «seguramente».",
+    examples: [
+      ["lento → lenta → lentamente", "lento → despacio"],
+      ["attento → attenta → attentamente", "atento → con atención"],
+      ["sicuro → sicura → sicuramente", "seguro → seguramente"],
+    ],
+  },
+  {
+    title: "Adjetivo en -e: se añade mente",
+    description: "Vale para los que terminan en -e y no en -le ni en -re. La e del adjetivo se queda.",
+    examples: [
+      ["veloce → velocemente", "rápido → rápido"],
+      ["felice → felicemente", "feliz → con alegría"],
+    ],
+  },
+  {
+    title: "En -le o -re precedidos de vocal se pierde la e",
+    description: "Si -le o -re van precedidos de vocal, se elimina la e final: facile → facilmente, regolare → regolarmente. No se generaliza a celebre → celebremente.",
+    examples: [
+      ["facile → facilmente", "fácil → con facilidad"],
+      ["gentile → gentilmente", "amable → con amabilidad"],
+      ["regolare → regolarmente", "regular → con regularidad"],
+      ["difficile → difficilmente", "difícil → difícilmente"],
+    ],
+  },
+  {
+    title: "Buono y cattivo",
+    description: "Para decir «bien» y «mal» se usan bene y male.",
+    examples: [
+      ["buono → bene", "bueno → bien"],
+      ["cattivo → male", "malo → mal"],
+    ],
+  },
+];
+
+export const ADVERB_PAIRS = [
+  ["lento", "lentamente"],
+  ["attento", "attentamente"],
+  ["sicuro", "sicuramente"],
+  ["veloce", "velocemente"],
+  ["felice", "felicemente"],
+  ["facile", "facilmente"],
+  ["gentile", "gentilmente"],
+  ["regolare", "regolarmente"],
+  ["difficile", "difficilmente"],
+  ["buono", "bene"],
+  ["cattivo", "male"],
+];
+
+export const WITHOUT_MENTE = [
+  ["piano", "en voz baja", "Parla piano.", "Habla en voz baja."],
+  ["forte", "fuerte", "Canta forte.", "Canta fuerte."],
+  ["bene", "bien", "Leslie canta bene.", "Leslie canta bien."],
+  ["male", "mal", "Octavio canta male.", "Octavio canta mal."],
+  ["insieme", "juntos", "Cantiamo insieme.", "Cantamos juntos."],
+  ["volentieri", "con gusto", "Vengo volentieri.", "Vengo con gusto."],
+  ["presto", "temprano", "Arrivo presto.", "Llego temprano."],
+  ["tardi", "tarde", "Arrivo tardi.", "Llego tarde."],
 ];
 
 export const CONTRASTS = [
-  ["He is a good singer.", "Él es un buen cantante.", "He sings well.", "Él canta bien."],
-  ["She is a careful driver.", "Ella es una conductora cuidadosa.", "She drives carefully.", "Ella conduce con cuidado."],
-  ["He is a fast runner.", "Él es un corredor rápido.", "He runs fast.", "Él corre rápido."],
+  { pts: [su("Leslie"), " ", es("è"), " una ", adj("buona"), " cantante."], esp: "Leslie es una buena cantante." },
+  { pts: [su("Leslie"), " ", vb("canta"), " bene."], esp: "Leslie canta bien." },
+  { pts: [art("La"), " pizza ", es("è"), " ", adj("buona.")], esp: "La pizza está buena." },
+  { pts: [vb("Cucini"), " bene."], esp: "Cocinas bien." },
+  { pts: [su("Octavio"), " ", es("è"), " ", adj("lento.")], esp: "Octavio es lento." },
+  { pts: [su("Octavio"), " ", vb("parla"), " lentamente."], esp: "Octavio habla despacio." },
 ];
 
-export const EXAMPLES = [
-  ["He sings beautifully.", "Él canta maravillosamente."],
-  ["He runs fast.", "Él corre rápido."],
-  ["He can speak fast.", "Él puede hablar rápido."],
-  ["I can eat quickly.", "Puedo comer rápidamente."],
-  ["Dogs can learn tricks easily.", "Los perros pueden aprender trucos fácilmente."],
-  ["Octavio can play soccer well.", "Octavio puede jugar fútbol bien."],
-  ["She smiles happily.", "Ella sonríe con alegría."],
-  ["Move your arms gently.", "Mueve los brazos suavemente."],
-  ["Lift the weights carefully.", "Levanta las pesas con cuidado."],
-  ["They work hard.", "Ellos trabajan con esfuerzo."],
+export const POSITION = [
+  { pts: [vb("Parla"), " lentamente."], esp: "Habla despacio." },
+  { pts: [vb("Parla"), " molto bene."], esp: "Habla muy bien." },
+  { pts: [vb("Alza"), " ", art("le"), " braccia lentamente."], esp: "Levanta los brazos despacio." },
+];
+
+export const COME = [
+  { pts: [wh("Come"), " ", vb("canta"), " ", su("Octavio?")], esp: "¿Cómo canta Octavio?" },
+  { pts: [vb("Canta"), " bene."], esp: "Canta bien." },
 ];
 
 export const PRACTICE = [
-  ...[
-    ["beautiful", "beautifully"], ["quick", "quickly"], ["careful", "carefully"],
-    ["happy", "happily"], ["easy", "easily"], ["gentle", "gently"],
-    ["good", "well"], ["fast", "fast"], ["hard", "hard"],
-  ].map(([adjective, adverb]) => ({
-    question: `Escribe el adverbio de modo correspondiente a ${adjective}.`,
-    answers: [adverb],
-    explanation: `${adjective} → ${adverb}. ${adjective === adverb ? "Mantiene la misma forma; no añadas -ly." : adjective === "good" ? "Good → well es irregular." : "El adverbio describe cómo se realiza una acción."}`,
-  })),
-  { question: "Completa con good o well: He is a ___ singer.", answers: ["good"], explanation: "Good describe al sustantivo singer: He is a good singer." },
-  { question: "Completa con good o well: He sings ___.", answers: ["well"], explanation: "Well describe cómo canta: He sings well." },
-  { question: "Completa con careful o carefully: Lift the weights ___.", answers: ["carefully"], explanation: "Carefully describe cómo levantar las pesas. Va después del objeto the weights." },
-  { question: "Completa: Dogs can ___ (learn) tricks easily.", answers: ["learn"], explanation: "Después de can usa el verbo base: Dogs can learn tricks easily." },
-  { question: "Completa: How ___ he play soccer? (do / does)", answers: ["does"], explanation: "How does he play soccer? Con he usa does y el verbo base play." },
-  { question: "Ordena con el adverbio al final: sings / She / beautifully / .", answers: ["She sings beautifully."], explanation: "Sujeto + verbo + adverbio: She sings beautifully." },
-  { question: "Ordena con el adverbio al final: can / Octavio / soccer / play / well / .", answers: ["Octavio can play soccer well."], explanation: "Sujeto + can + verbo base + objeto + adverbio. No separes play de soccer." },
-  { question: "¿Qué significa He hardly works?", options: ["Él trabaja con esfuerzo.", "Él apenas trabaja.", "Él trabaja rápidamente."], answers: ["Él apenas trabaja."], explanation: "Hardly significa apenas o casi no. He works hard significa que trabaja con esfuerzo." },
-  { question: "¿Cuál pregunta pide el modo de realizar una acción?", options: ["How does she sing?", "How often does she sing?", "When does she sing?"], answers: ["How does she sing?"], explanation: "How pregunta cómo; how often pregunta con qué frecuencia; when pregunta cuándo." },
+  { question: "Escribe el adverbio de lento.", answers: ["lentamente"], hint: "El femenino es lenta; después va mente.", explanation: "Lento → lenta → lentamente." },
+  { question: "Escribe el adverbio de veloce.", answers: ["velocemente"], hint: "Termina en -e y no en -le ni en -re: se añade mente.", explanation: "Veloce → velocemente." },
+  { question: "Escribe el adverbio de attento.", answers: ["attentamente"], hint: "El femenino es attenta.", explanation: "Attento → attenta → attentamente." },
+  { question: "Escribe el adverbio de sicuro.", answers: ["sicuramente"], hint: "El femenino es sicura. En muchas frases significa seguramente.", explanation: "Sicuro → sicura → sicuramente." },
+  { question: "Escribe el adverbio de facile.", answers: ["facilmente"], hint: "Termina en -le: se pierde la e.", explanation: "Facile → facilmente. Facil + mente." },
+  { question: "Escribe el adverbio de gentile.", answers: ["gentilmente"], hint: "Termina en -le: se pierde la e.", explanation: "Gentile → gentilmente." },
+  { question: "Escribe el adverbio de regolare.", answers: ["regolarmente"], hint: "Termina en -re: se pierde la e.", explanation: "Regolare → regolarmente." },
+  { question: "Escribe el adverbio de difficile.", answers: ["difficilmente"], hint: "Termina en -le: se pierde la e.", explanation: "Difficile → difficilmente." },
+  { question: "Escribe el adverbio de felice.", answers: ["felicemente"], hint: "Termina en -e: la e se queda y se añade mente.", explanation: "Felice → felicemente." },
+  { question: "Escribe el adverbio de buono.", answers: ["bene"], hint: "No lleva -mente.", explanation: "Buono → bene." },
+  { question: "Escribe el adverbio básico que significa mal, opuesto de bene.", answers: ["male"], hint: "La respuesta de este ejercicio es male, sin -mente", explanation: "Para decir mal se usa male. También existe cattivamente, con el sentido de con maldad o de mala manera." },
+  { question: "Escribe en italiano: Leslie es una buena cantante.", answers: ["Leslie è una buona cantante"], hint: "Con essere va el adjetivo, en femenino: buona.", explanation: "Leslie es una buena cantante = Leslie è una buona cantante." },
+  { question: "Escribe en italiano: Leslie canta bien.", answers: ["Leslie canta bene"], hint: "Con cantare va el adverbio bene.", explanation: "Leslie canta bien = Leslie canta bene." },
+  { question: "Escribe en italiano: La pizza está buena.", answers: ["La pizza è buona"], hint: "Pizza es femenino: buona.", explanation: "La pizza está buena = La pizza è buona." },
+  { question: "Escribe en italiano: Cocinas bien.", answers: ["Cucini bene", "Tu cucini bene"], hint: "Tú de cucinare es cucini. El adverbio es bene.", explanation: "Cocinas bien = Cucini bene." },
+  { question: "Escribe en italiano: Octavio es lento.", answers: ["Octavio è lento"], hint: "Con essere va el adjetivo.", explanation: "Octavio es lento = Octavio è lento." },
+  { question: "Escribe en italiano: Octavio habla despacio.", answers: ["Octavio parla lentamente", "Octavio parla piano"], hint: "El adverbio de lento es lentamente. Piano también puede ser despacio.", explanation: "Octavio habla despacio = Octavio parla lentamente. Octavio parla piano también se dice." },
+  { question: "Escribe en italiano: Habla muy bien.", answers: ["Parla molto bene"], hint: "Molto va antes del adverbio.", explanation: "Habla muy bien = Parla molto bene." },
+  { question: "Escribe en italiano: ¿Cómo canta Octavio?", answers: ["Come canta Octavio?"], hint: "Come pregunta cómo.", explanation: "¿Cómo canta Octavio? = Come canta Octavio?" },
+  { question: "Escribe la respuesta: Come canta Octavio? Canta bien.", answers: ["Canta bene"], hint: "Bien, con un verbo, es bene.", explanation: "Canta bien = Canta bene." },
+  { question: "Escribe en italiano: Habla en voz baja.", answers: ["Parla piano"], hint: "Piano no lleva -mente. También puede significar despacio.", explanation: "Habla en voz baja = Parla piano." },
+  { question: "Escribe en italiano: Canta fuerte.", answers: ["Canta forte"], hint: "Forte no lleva -mente.", explanation: "Canta fuerte = Canta forte." },
+  { question: "Escribe en italiano: Cantamos juntos.", answers: ["Cantiamo insieme", "Noi cantiamo insieme"], hint: "Insieme no lleva -mente.", explanation: "Cantamos juntos = Cantiamo insieme." },
+  { question: "Escribe en italiano: Vengo con gusto.", answers: ["Vengo volentieri", "Io vengo volentieri"], hint: "Volentieri no lleva -mente.", explanation: "Vengo con gusto = Vengo volentieri." },
+  { question: "Escribe en italiano: Llego temprano.", answers: ["Arrivo presto", "Io arrivo presto"], hint: "Presto puede ser temprano. En otra frase puede ser pronto: Torno presto.", explanation: "Llego temprano = Arrivo presto." },
+  { question: "Escribe en italiano: Regreso pronto.", answers: ["Torno presto", "Io torno presto"], hint: "En esta frase presto es pronto.", explanation: "Regreso pronto = Torno presto." },
+  { question: "Escribe en italiano: Llego tarde.", answers: ["Arrivo tardi", "Io arrivo tardi"], hint: "Tardi no lleva -mente.", explanation: "Llego tarde = Arrivo tardi." },
+  { question: "Escribe en italiano: Levanta los brazos despacio.", answers: ["Alza le braccia lentamente", "Alza le braccia piano"], hint: "Braccia es el plural de il braccio.", explanation: "Levanta los brazos despacio = Alza le braccia lentamente. Alza le braccia piano también se dice." },
 ];

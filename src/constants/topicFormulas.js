@@ -1,210 +1,365 @@
 // Las fórmulas describen estructuras; los ejemplos son oraciones completas.
 // En vocabulario se muestran patrones de uso, no reglas para formar palabras.
 const row = (label, pattern, example, translation) => ({ label, pattern, example, translation });
-const be = [
-  row("Afirmación", "Sujeto + am/is/are + complemento", "She is a student.", "Ella es estudiante."),
-  row("Negación", "Sujeto + am/is/are + not + complemento", "She is not a student.", "Ella no es estudiante."),
-  row("Pregunta", "Am/Is/Are + sujeto + complemento + ?", "Is she a student?", "¿Ella es estudiante?"),
-];
-const progressive = [
-  row("Afirmación", "Sujeto + am/is/are + verbo-ing + complemento", "She is reading a book.", "Ella está leyendo un libro."),
-  row("Negación", "Sujeto + am/is/are + not + verbo-ing + complemento", "She is not reading a book.", "Ella no está leyendo un libro."),
-  row("Pregunta", "Am/Is/Are + sujeto + verbo-ing + complemento + ?", "Is she reading a book?", "¿Ella está leyendo un libro?"),
-];
-const simplePresent = [
-  row("Afirmación: I/you/we/they", "Sujeto + verbo base + complemento", "They work here.", "Ellos trabajan aquí."),
-  row("Afirmación: he/she/it", "Sujeto + verbo en tercera persona + complemento", "She works here.", "Ella trabaja aquí."),
-  row("Negación", "Sujeto + do/does + not + verbo base + complemento", "She does not work here.", "Ella no trabaja aquí."),
-  row("Pregunta", "Do/Does + sujeto + verbo base + complemento + ?", "Does she work here?", "¿Ella trabaja aquí?"),
-];
-const frequency = [
-  row("Pedir información", "WH + do/does + sujeto + verbo base + complemento + ?", "Where does she work?", "¿Dónde trabaja ella?"),
-  row("Frecuencia con un verbo principal", "Sujeto + adverbio de frecuencia + verbo + complemento", "She usually works at home.", "Ella normalmente trabaja en casa."),
-  row("Frecuencia con to be", "Sujeto + am/is/are + adverbio de frecuencia + complemento", "She is always busy.", "Ella siempre está ocupada."),
-];
 
 export const TOPIC_FORMULAS = {
-  adverbsManner: { note: "El adverbio de modo responde a how (¿cómo?). En estos patrones va después del verbo o de su objeto. Con can usa el verbo base; con he/she/it en presente simple afirmativo, conjuga el verbo.", rows: [
-    row("Describir una acción", "Sujeto + verbo + adverbio de modo", "He sings beautifully.", "Él canta maravillosamente."),
-    row("Con objeto", "Sujeto + verbo + objeto + adverbio de modo", "She lifts the weights carefully.", "Ella levanta las pesas con cuidado."),
-    row("Habilidad y modo", "Sujeto + can + verbo base + (objeto) + adverbio de modo", "Octavio can play soccer well.", "Octavio puede jugar fútbol bien."),
-    row("Preguntar cómo", "How + do/does + sujeto + verbo base + (objeto) + ?", "How does he play soccer?", "¿Cómo juega él al fútbol?"),
-    row("Instrucción con modo", "Verbo base + (objeto) + adverbio de modo", "Bend your knees slowly.", "Flexiona las rodillas despacio."),
-  ] },
-  exerciseWords: { note: "Las instrucciones usan el verbo base y normalmente omiten you. En el progresivo usa am/is/are + verbo-ing; después de can conserva el verbo base.", rows: [
-    row("Dar una instrucción", "Verbo base + (complemento)", "Bend your knees.", "Flexiona las rodillas."),
-    row("Indicar qué no hacer", "Don't + verbo base + (complemento)", "Don't pull the door.", "No jales la puerta."),
-    row("Describir una acción en curso", "Sujeto + am/is/are + verbo-ing + (complemento)", "She is lifting a weight.", "Ella está levantando una pesa."),
-    row("Expresar una habilidad", "Sujeto + can/can't + verbo base + (complemento)", "I can bend my knees.", "Puedo flexionar las rodillas."),
-    row("Preguntar por una habilidad", "Can + sujeto + verbo base + (complemento) + ?", "Can you lift this weight?", "¿Puedes levantar esta pesa?"),
-  ] },
-  foodGroups: { title: "Patrones para hablar de comida", note: "Para hablar de gustos generales usa plurales contables o incontables sin a/an: I like apples. I like rice. Con he/she/it usa likes; después de does, like.", rows: [
-    row("Identificar un grupo", "Alimento + is/are + clasificación", "Milk is a dairy product.", "La leche es un producto lácteo."),
-    row("Describir", "Alimento + is/are + adjetivo", "These apples are sweet.", "Estas manzanas son dulces."),
-    row("Expresar gustos", "Sujeto + like/likes + alimento", "I like spicy food.", "Me gusta la comida picante."),
-    row("Expresar desagrado", "Sujeto + don't/doesn't + like + alimento", "She doesn't like fish.", "A ella no le gusta el pescado."),
-    row("Preguntar por gustos", "Do/Does + sujeto + like + alimento + ?", "Do you like vegetables?", "¿Te gustan las verduras?"),
-    row("Pedir comida", "Can I have + alimento o cantidad + please + ?", "Can I have some rice, please?", "¿Me das un poco de arroz, por favor?"),
-  ] },
-  countable: { note: "How many acompaña a contables plurales; how much, a incontables. Usa do con I/you/we/they y does con he/she/it; el verbo principal queda en forma base.", rows: [
-    row("Contable singular", "A/An + sustantivo contable singular", "I want an egg.", "Quiero un huevo."),
-    row("Contable plural", "Número + sustantivo contable plural", "I need three apples.", "Necesito tres manzanas."),
-    row("Cantidad no exacta", "Some + contable plural o incontable", "I need some water.", "Necesito un poco de agua."),
-    row("Preguntar: contables", "How many + sustantivo plural + do/does + sujeto + verbo base + (complemento) + ?", "How many tacos do you usually eat?", "¿Cuántos tacos comes normalmente?"),
-    row("Preguntar: incontables", "How much + sustantivo incontable + do/does + sujeto + verbo base + (complemento) + ?", "How much rice does she need?", "¿Cuánto arroz necesita ella?"),
-  ] },
-  can: { note: "Can expresa habilidad: poder o saber hacer algo. Usa el verbo base sin to ni -s/-es. El complemento es opcional según el verbo.", rows: [
-    row("Afirmación", "Sujeto + can + verbo base + complemento", "He can produce music.", "Él puede producir música."),
-    row("Negación", "Sujeto + cannot / can't + verbo base + complemento", "Cats can't bark.", "Los gatos no pueden ladrar."),
-    row("Pregunta sí/no", "Can + sujeto + verbo base + complemento + ?", "Can you swim?", "¿Sabes nadar?"),
-    row("Pregunta de información", "WH + can + sujeto + verbo base + complemento + ?", "What can dogs do?", "¿Qué pueden hacer los perros?"),
-  ] },
   numbers: {
-    note: "El guion une decenas y unidades del 21 al 99 cuando la unidad no es cero. Al deletrear, di el nombre de cada letra.",
     rows: [
-      row("Número compuesto", "Decena + guion + unidad", "Twenty-five", "Veinticinco"),
-      row("Pedir deletreo", "How do you spell + palabra o nombre + ?", "How do you spell your name?", "¿Cómo se escribe tu nombre?"),
+      row("Contar", "Sono + número + sustantivo", "Sono ventotto studenti.", "Son veintiocho estudiantes."),
+      row("Preguntar el deletreo", "Come si scrive + palabra + ?", "Come si scrive Leslie?", "¿Cómo se escribe Leslie?"),
+      row("Deletrear con ciudades", "Letra + come + ciudad", "L come Livorno", "L de Livorno"),
     ],
   },
-  tobe: { note: "I → am; he/she/it → is; you/we/they → are. El complemento puede describir identidad, estado o lugar.", rows: be },
-  countries: { title: "Patrones para hablar de origen", rows: [
-    row("País de origen", "Sujeto + am/is/are + from + país", "She is from Mexico.", "Ella es de México."),
-    row("Nacionalidad", "Sujeto + am/is/are + nacionalidad", "She is Mexican.", "Ella es mexicana."),
-    row("Residencia", "Sujeto + live/lives + in + ciudad o país", "I live in Mexico City.", "Vivo en Ciudad de México."),
-  ], note: "From va con el origen, no delante de la nacionalidad. Live/lives anticipa el presente simple de Básico II." },
-  family: { title: "Patrones para presentar a la familia", rows: [
-    row("Una persona", "This is + posesivo + familiar en singular", "This is my sister.", "Esta es mi hermana."),
-    row("Varias personas", "These are + posesivo + familiares en plural", "These are my parents.", "Estos son mis padres."),
-  ] },
-  plural: { note: "Son patrones frecuentes, no reglas sin excepciones: child → children, man → men. Consulta las excepciones de la lección.", rows: [
-    row("Regla general", "Sustantivo singular + -s", "Book → books", "Libro → libros"),
-    row("Terminaciones -s, -sh, -ch, -x, -z", "Sustantivo + -es (con ajustes de escritura cuando corresponda)", "Box → boxes", "Caja → cajas"),
-    row("Consonante + y", "Quitar y + añadir -ies", "Baby → babies", "Bebé → bebés"),
-    row("Vocal + y", "Conservar y + añadir -s", "Toy → toys", "Juguete → juguetes"),
-  ] },
-  demonstratives: { note: "This/these señalan cerca; that/those señalan lejos. En preguntas invierte is/are y el demostrativo: Is this your book?", rows: [
-    row("Singular", "This/That + is + complemento singular", "This is a book.", "Este es un libro."),
-    row("Plural", "These/Those + are + complemento plural", "Those are books.", "Esos son libros."),
-  ] },
-  fruits: { title: "Patrones para usar el vocabulario", note: "Usa a/an con nombres contables singulares; elige según el sonido que sigue. En plural, cambia también is por are.", rows: [
-    row("Identificar una fruta o verdura", "This is + a/an + nombre singular", "This is an onion.", "Esta es una cebolla."),
-    row("Identificar varias", "These are + cantidad + nombre plural", "These are three apples.", "Estas son tres manzanas."),
-  ] },
-  prepositions: { rows: [
-    row("Ubicar", "Sujeto + am/is/are + preposición de lugar + referencia", "The book is on the table.", "El libro está sobre la mesa."),
-    row("Preguntar por ubicación", "Where + am/is/are + sujeto + ?", "Where are the books?", "¿Dónde están los libros?"),
-  ] },
-  time: { note: "Con to se nombra la hora siguiente. Usa o'clock en horas exactas; a quarter equivale a 15 minutos y half a 30.", rows: [
-    row("Lectura directa", "It's + hora + minutos", "It's nine forty-five.", "Son las nueve cuarenta y cinco."),
-    row("Minutos transcurridos", "It's + minutos + past + hora actual", "It's ten past nine.", "Son las nueve y diez."),
-    row("Minutos que faltan", "It's + minutos restantes + to + hora siguiente", "It's a quarter to ten.", "Son las diez menos cuarto."),
-  ] },
-  dates: { note: "Este patrón de fecha usa mes antes del día. El día se lee como ordinal; el número escrito puede ser cardinal: July 21.", rows: [
-    row("Día de la semana", "Today is + día", "Today is Monday.", "Hoy es lunes."),
-    row("Fecha al hablar", "Mes + número ordinal", "July twenty-first", "Veintiuno de julio"),
-    row("Evento en una fecha", "Evento + is + on + fecha", "My birthday is on July 21.", "Mi cumpleaños es el veintiuno de julio."),
-  ] },
-  verbs: { title: "Patrón para usar los verbos", note: "Este modelo introductorio usa I/you/we/they en presente simple. He/she/it requiere la forma de tercera persona, desarrollada en Básico II.", rows: [
-    row("Acción y complemento", "I/You/We/They + verbo base + complemento", "They study English.", "Ellos estudian inglés."),
-  ] },
-  progressive: { note: "Elige am/is/are según el sujeto. La forma -ing sigue las reglas de escritura de la lección; no omitas to be.", rows: progressive },
-  jobs: { title: "Patrones para hablar del trabajo", note: "A/an depende del sonido del oficio. Works expresa un hábito; is + -ing, una acción en curso.", rows: [
-    row("Profesión", "Sujeto + am/is/are + a/an + profesión", "She is an engineer.", "Ella es ingeniera."),
-    row("Lugar habitual de trabajo", "Sujeto + work/works + expresión de lugar", "She works in an office.", "Ella trabaja en una oficina."),
-    row("Acción actual", "Sujeto + am/is/are + verbo-ing + complemento", "She is writing a report.", "Ella está escribiendo un informe."),
-  ] },
-  articles: { note: "A/an: contable singular y sonido inicial. The: referente identificado por el contexto. Ø significa que no se escribe artículo.", rows: [
-    row("Presentar un referente", "A/An + (adjetivo) + sustantivo contable singular", "An interesting book", "Un libro interesante"),
-    row("Identificar un referente", "The + (adjetivo) + sustantivo", "The book on the table", "El libro sobre la mesa"),
-    row("Generalizar", "Ø + plural o sustantivo incontable", "Books are useful. Water is important.", "Los libros son útiles. El agua es importante."),
-  ] },
-  adjectives: { note: "El adjetivo mantiene su forma aunque el sustantivo sea plural. El artículo depende del contexto.", rows: [
-    row("Antes de un sustantivo", "Determinante + adjetivo + sustantivo", "A red car", "Un carro rojo"),
-    row("Después de to be", "Sujeto + am/is/are + adjetivo", "The cars are red.", "Los carros son rojos."),
-  ] },
-  possessiveAdjectives: { note: "El posesivo depende del poseedor. My/your/his/her/its/our/their acompañan al sustantivo; mine/yours/his/hers/ours/theirs lo sustituyen.", rows: [
-    row("Con sustantivo", "Adjetivo posesivo + (adjetivo) + sustantivo", "My new book", "Mi libro nuevo"),
-    row("Sin repetir el sustantivo", "Sujeto + am/is/are + pronombre posesivo", "This book is mine.", "Este libro es mío."),
-  ] },
-  possessiveNouns: { rows: [
-    row("Poseedor singular", "Poseedor + 's + cosa poseída", "The student's book", "El libro del estudiante"),
-    row("Poseedores: plural terminado en s", "Poseedores + apóstrofe (') + cosa poseída", "The students' books", "Los libros de los estudiantes"),
-    row("Plural irregular sin s", "Poseedores + 's + cosa poseída", "The children's toys", "Los juguetes de los niños"),
-  ] },
-  whQuestions: { note: "Modelo para preguntas con to be en las que el sujeto se expresa después del verbo. Who como sujeto tiene otro orden: Who is here?", rows: [
-    row("Información con to be", "WH + am/is/are + sujeto + (complemento) + ?", "Where is Argelia?", "¿Dónde está Argelia?"),
-    row("Pertenencia", "Whose + sustantivo + is/are + this/that/these/those + ?", "Whose backpack is this?", "¿De quién es esta mochila?"),
-  ] },
-  simplePresent: { note: "Do: I/you/we/they. Does: he/she/it. Tras do/does el verbo vuelve a su forma base. To be usa am/is/are y no necesita do/does.", rows: simplePresent },
-  gerunds: { note: "La elección depende del primer verbo o de la preposición. Like admite -ing o to + verbo; enjoy exige -ing en este patrón. Un infinitivo también puede funcionar como sujeto.", rows: [
-    row("Actividad como sujeto", "Verbo-ing + verbo conjugado + complemento", "Reading is fun.", "Leer es divertido."),
-    row("Después de enjoy", "Sujeto + enjoy/enjoys + verbo-ing + complemento", "I enjoy reading books.", "Disfruto leer libros."),
-    row("Después de una preposición", "Preposición + verbo-ing", "She is good at drawing.", "Ella es buena dibujando."),
-    row("Infinitivo con want", "Sujeto + want/wants + to + verbo base", "I want to read.", "Quiero leer."),
-  ] },
-  irregularVerbs: { title: "Referencia de formas y estructuras", note: "No hay una fórmula única para formar los verbos irregulares: aprende sus tres formas. Los siguientes usos son una ampliación, no una regla de transformación.", rows: [
-    row("Tres formas", "Forma base → pasado simple → participio pasado", "Go → went → gone", "Ir: forma base, pasado y participio"),
-    row("Pasado afirmativo", "Sujeto + verbo en pasado + complemento", "She went home.", "Ella fue a casa."),
-    row("Presente perfecto afirmativo", "Sujeto + have/has + participio pasado + complemento", "She has gone home.", "Ella se ha ido a casa."),
-  ] },
-  vocabulary: { title: "Patrones para una conversación", note: "Los saludos y despedidas se aprenden como expresiones completas; estos patrones ayudan a enlazarlos con tu presentación.", rows: [
-    row("Decir tu nombre", "My name is + nombre", "My name is Argelia.", "Me llamo Argelia."),
-    row("Presentarte por profesión", "I'm + a/an + profesión", "I'm a teacher.", "Soy maestra."),
-    row("Despedirte", "See you + momento", "See you tomorrow.", "Nos vemos mañana."),
-  ] },
-  simplePresentAdvanced: { note: "Estos son órdenes habituales. Si who pregunta por el sujeto, no uses do/does: Who works here? Los complementos dependen de lo que quieras comunicar.", rows: frequency },
-  inOnAt: { note: "Son usos frecuentes, no una regla universal de tamaño. Aprende las expresiones de lugar: at home, in a room, on the wall.", rows: [
-    row("Hora", "Oración + at + hora", "I start work at eight.", "Empiezo a trabajar a las ocho."),
-    row("Día o fecha", "Oración + on + día/fecha", "I study on Mondays.", "Estudio los lunes."),
-    row("Mes o año", "Oración + in + mes/año", "My birthday is in July.", "Mi cumpleaños es en julio."),
-    row("Cantidad de veces", "Once/twice + a + periodo; o número + times + a + periodo", "I exercise three times a week.", "Hago ejercicio tres veces por semana."),
-  ] },
-  directions: { note: "El imperativo normalmente omite el sujeto. Usa left/right desde la perspectiva de quien camina, según el punto de partida.", rows: [
-    row("Pedir una ruta", "How do I get to + destino + ?", "How do I get to the hospital?", "¿Cómo llego al hospital?"),
-    row("Dar una instrucción", "Verbo base + dirección o referencia", "Turn right onto Main Street.", "Gira a la derecha para entrar a Main Street."),
-    row("Ubicar el destino", "Lugar + is + expresión de ubicación", "The hospital is on your left.", "El hospital está a tu izquierda."),
-  ] },
-  bodyParts: { title: "Patrones para hablar del cuerpo", note: "Combina los nombres con posesivos y plurales. Algunos plurales son irregulares: foot → feet, tooth → teeth.", rows: [
-    row("Identificar", "This is / These are + posesivo + parte(s) del cuerpo", "These are my feet.", "Estos son mis pies."),
-    row("Describir", "Parte(s) del cuerpo + is/are + adjetivo", "My eyes are brown.", "Mis ojos son cafés."),
-    row("Dar una instrucción", "Verbo base + your + parte(s) del cuerpo", "Raise your arms.", "Levanta los brazos."),
-  ] },
-  simplePast: { note: "Did y didn't ya marcan el pasado: el verbo principal vuelve a su forma base. La expresión de tiempo es opcional. Verbos regulares: agrega -ed; irregulares: memoriza su forma.", rows: [
-    row("Afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
-    row("Negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't drink mezcal yesterday.", "Ella no tomó mezcal ayer."),
-    row("Pregunta sí/no", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Octa eat cemitas?", "¿Octa comió cemitas?"),
-    row("Pregunta negativa", "Didn't + sujeto + verbo base + complemento + ?", "Didn't Eduardo eat a sandwich?", "¿Eduardo no comió un sándwich?"),
-    row("Pregunta de información", "Palabra WH + did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "What did you do yesterday?", "¿Qué hiciste ayer?"),
-    row("Respuesta corta", "Yes, + sujeto + did. / No, + sujeto + didn't.", "Yes, she did. / No, she didn't.", "Sí, lo hizo. / No, no lo hizo."),
-  ] },
-  goingTo: { note: "Elige am/is/are según el sujeto y conserva el verbo en forma base después de going to. Gonna es la forma informal y oral de going to, solo antes de un verbo.", rows: [
-    row("Afirmación", "Sujeto + am/is/are + going to + verbo base + complemento + (expresión de tiempo)", "I'm going to eat seafood.", "Voy a comer mariscos."),
-    row("Afirmación con go", "Sujeto + am/is/are + going to + go + complemento + (expresión de tiempo)", "I am going to go to Acapulco in December.", "Voy a ir a Acapulco en diciembre."),
-    row("Negación", "Sujeto + am/is/are + not + going to + verbo base + complemento + (expresión de tiempo)", "We aren't going to arrive late to class tomorrow.", "No vamos a llegar tarde a la clase de mañana."),
-    row("Pregunta sí/no", "Am/Is/Are + sujeto + going to + verbo base + complemento + ?", "Are you going to study your verbs in simple past?", "¿Vas a estudiar tus verbos en pasado simple?"),
-    row("Pregunta de información", "WH + am/is/are + sujeto + going to + verbo base + complemento + ?", "Where are you going to study?", "¿Dónde vas a estudiar?"),
-    row("Respuesta corta", "Yes, + sujeto + am/is/are. / No, + sujeto + am/is/are + not.", "Yes, he is. / No, he isn't.", "Sí. / No."),
-  ] },
-  socialCollocations: { title: "Patrones para usar las colocaciones", note: "Las colocaciones son combinaciones fijas: aprende cada una como una sola unidad y no las traduzcas palabra por palabra.", rows: [
-    row("Vida social", "Go out + verbo-ing / go on + a + sustantivo", "Let's go out dancing.", "Salgamos a bailar."),
-    row("Plan a futuro", "Sujeto + am/is/are + going to + colocación de vida social", "We're going to eat out at a restaurant tonight.", "Vamos a comer fuera en un restaurante esta noche."),
-    row("Experiencia pasada", "Sujeto + colocación en pasado simple + complemento", "We got lost on the way to the club.", "Nos perdimos en el camino al club."),
-    row("Cambio o estado con get", "Sujeto + get + adjetivo o participio + complemento", "They got married two years later.", "Se casaron dos años después."),
-    row("Acción con have o make", "Sujeto + have/make + sustantivo de la colocación", "She made a decision.", "Ella tomó una decisión."),
-  ] },
-  moneyCareer: { title: "Patrones para hablar de dinero y de tu carrera", note: "Aprende las colocaciones de dinero y de carrera como bloques fijos: combinan igual en pasado simple y después de going to.", rows: [
-    row("Gastar en", "Sujeto + spend + cantidad/money + on + cosa", "Leslie spends a lot of money on clothes.", "Leslie gasta mucho dinero en ropa."),
-    row("Ahorrar para", "Sujeto + save (money) + for + meta", "I'm saving money for a new car.", "Estoy ahorrando dinero para un coche nuevo."),
-    row("Plan de carrera", "Sujeto + am/is/are + going to + colocación de carrera", "Israel is going to work outdoors.", "Israel va a trabajar al aire libre."),
-    row("Plan probable", "Sujeto + am/is/are + probably + going to + verbo base", "Argelia is probably going to manage people.", "Argelia probablemente va a dirigir personal."),
-    row("Deseo", "Sujeto + want(s) to + colocación de carrera", "Eduardo wants to work overseas.", "Eduardo quiere trabajar en el extranjero."),
-  ] },
-  comparatives: { title: "Fórmulas de los comparativos", note: "Los comparativos comparan dos personas, animales o cosas. Cuenta las sílabas: adjetivo corto → -er + than; adjetivo largo → more + adjetivo + than.", rows: [
-    row("Adjetivo corto", "Sujeto + am/is/are + adjetivo + -er + than + complemento", "A rabbit is bigger than a hamster.", "Un conejo es más grande que un hámster."),
-    row("Adjetivo largo", "Sujeto + am/is/are + more + adjetivo + than + complemento", "Crocodiles are more dangerous than panthers.", "Los cocodrilos son más peligrosos que las panteras."),
-    row("Menos que", "Sujeto + am/is/are + less + adjetivo + than + complemento", "A motorcycle is less expensive than a car.", "Una motocicleta es menos cara que un coche."),
-    row("Tan … como", "Sujeto + am/is/are (+ not) + as + adjetivo + as + complemento", "Israel is as tall as Eduardo.", "Israel es tan alto como Eduardo."),
-    row("Pregunta", "Am/Is/Are + sujeto + comparativo + than + complemento + ?", "Is a rabbit bigger than a hamster?", "¿Un conejo es más grande que un hámster?"),
-    row("En pasado", "Sujeto + was/were + comparativo + than + complemento", "Yesterday was hotter than today.", "Ayer hizo más calor que hoy."),
-  ] },
+  time: {
+    note: "La una va en singular: è l'una. Las demás horas van en plural: sono le tre.",
+    rows: [
+      row("Preguntar la hora", "Che ora è? / Che ore sono?", "Che ore sono?", "¿Qué hora es?"),
+      row("La una", "È + l'una", "È l'una.", "Es la una."),
+      row("Las demás horas", "Sono le + hora", "Sono le tre.", "Son las tres."),
+      row("Minutos después", "Sono le + hora + e + minutos", "Sono le tre e dieci.", "Son las tres y diez."),
+      row("Minutos antes", "Sono le + hora siguiente + meno + minutos", "Sono le quattro meno dieci.", "Son diez para las cuatro."),
+    ],
+  },
+  essereAvere: {
+    note: "El sujeto se omite cuando el verbo ya lo indica. Non va siempre antes del verbo; la pregunta no cambia el orden.",
+    rows: [
+      row("Afirmación", "(Sujeto) + essere + complemento", "Sono a casa.", "(Yo) estoy en casa."),
+      row("Negación", "(Sujeto) + non + verbo + complemento", "Non ho fame.", "No tengo hambre."),
+      row("Pregunta", "(Sujeto) + verbo + complemento + ?", "Sei italiana?", "¿Eres italiana?"),
+      row("Edad", "Ho + número + anni", "Ho trent'anni.", "Tengo treinta años."),
+      row("Usted", "Lei + è + complemento", "Lei è di Roma?", "¿Es usted de Roma?"),
+    ],
+  },
+  countries: {
+    note: "Como pauta general, a con ciudades e in con países; hay excepciones: a Cuba, negli Stati Uniti. Para la procedencia se usa da y el artículo cuando el topónimo lo lleva: vengo dal Messico, vengo da Cuba.",
+    rows: [
+      row("Origen (ciudad)", "Sono di + ciudad", "Sono di Puebla.", "Soy de Puebla."),
+      row("Origen (país)", "Vengo da + artículo + país", "Vengo dal Messico.", "Vengo de México."),
+      row("Nacionalidad", "Sono + nacionalidad", "Sono messicano.", "Soy mexicano."),
+      row("Residencia (ciudad)", "Abito a + ciudad", "Abito a Roma.", "Vivo en Roma."),
+      row("Residencia (país)", "Abito in + país", "Abito in Italia.", "Vivo en Italia."),
+    ],
+  },
+  family: {
+    note: "Con parentesco singular normalmente se omite el artículo: mia madre. En plural y con loro se usa: i miei genitori, la loro madre.",
+    rows: [
+      row("Presentar (sing.)", "Questa/Questo è + posesivo + familiar", "Questa è mia sorella.", "Esta es mi hermana."),
+      row("Presentar (pl.)", "Questi sono + artículo + posesivo + familiares", "Questi sono i miei genitori.", "Estos son mis padres."),
+      row("Preguntar por la familia", "Hai + familiares en plural + ?", "Hai fratelli?", "¿Tienes hermanos?"),
+    ],
+  },
+  plural: {
+    note: "El plural depende de la terminación y del género que marca el artículo. Hay irregulares que conviene memorizar.",
+    rows: [
+      row("Masculino en -o", "il + sustantivo → i + sustantivo en -i", "il libro → i libri", "el libro → los libros"),
+      row("Femenino en -a", "la + sustantivo → le + sustantivo en -e", "la casa → le case", "la casa → las casas"),
+      row("-ca / -ga", "-ca / -ga → -che / -ghe", "l'amica → le amiche", "la amiga → las amigas"),
+      row("Acento final", "Sustantivo con acento final → igual en plural", "la città → le città", "la ciudad → las ciudades"),
+    ],
+  },
+  demonstratives: {
+    note: "Questo señala cerca; quello, lejos (ese y aquel). Ante sustantivo, quello cambia como el artículo.",
+    rows: [
+      row("Cerca (sing.)", "Questo/Questa + è + sustantivo", "Questo è un libro.", "Este es un libro."),
+      row("Cerca (pl.)", "Questi/Queste + sono + sustantivo", "Questi sono i miei amici.", "Estos son mis amigos."),
+      row("Lejos sin sustantivo", "Quello/Quella/Quelli/Quelle + verbo", "Quello è mio.", "Ese es mío."),
+      row("Preguntar qué", "Che cos'è + demostrativo + ?", "Che cos'è questo?", "¿Qué es esto?"),
+      row("Ubicar", "Sujeto + è + qui / lì", "Il caffè è qui.", "El café está aquí."),
+    ],
+  },
+  fruits: {
+    note: "La frutta y la verdura son singulares colectivos. Los plurales siguen las reglas de género y plural.",
+    rows: [
+      row("Identificar", "Questo/Questa è + un/una + fruta", "Questa è una mela.", "Esta es una manzana."),
+      row("Señalar (pl.)", "Quelli/Quelle sono + fruta en plural", "Quelle sono arance.", "Esas son naranjas."),
+      row("Cantidad", "Ho + número + fruta en plural", "Ho due banane.", "Tengo dos plátanos."),
+      row("Pedir con cortesía", "Vorrei + cantidad + di + plural", "Vorrei un chilo di pomodori.", "Quisiera un kilo de jitomates."),
+    ],
+  },
+  prepositions: {
+    note: "Las preposiciones de lugar ubican con essere; c'è y ci sono equivalen a «hay». Las formas contraídas se aprenden como fórmulas fijas.",
+    rows: [
+      row("Preguntar dónde", "Dov'è / Dove sono + sustantivo + ?", "Dov'è il libro?", "¿Dónde está el libro?"),
+      row("Ubicar", "Sujeto + essere + preposición + lugar", "Il libro è sotto il tavolo.", "El libro está debajo de la mesa."),
+      row("Hay (sing.)", "C'è + sustantivo singular", "C'è una sedia in cucina.", "Hay una silla en la cocina."),
+      row("Hay (pl.)", "Ci sono + sustantivo plural", "Ci sono due libri sul tavolo.", "Hay dos libros sobre la mesa."),
+      row("Forma contraída", "in + la = nella / a + il = al", "Le chiavi sono nella borsa.", "Las llaves están en la bolsa."),
+    ],
+  },
+  dates: {
+    note: "Días y meses van en minúscula. La fecha usa il + número + mes; solo el día 1 va en ordinal (il primo).",
+    rows: [
+      row("Preguntar el día", "Che giorno è oggi? / Che data è oggi?", "Che giorno è oggi?", "¿Qué día es hoy?"),
+      row("Fecha", "Oggi è il + número + mes", "Oggi è il 30 ottobre.", "Hoy es 30 de octubre."),
+      row("Día 1", "Il primo + mes", "Il primo maggio.", "El 1 de mayo."),
+      row("Ante vocal", "L' + número + mes", "L'8 marzo.", "El 8 de marzo."),
+      row("Cumpleaños", "Il mio compleanno è il + número + mes", "Il mio compleanno è il 3 aprile.", "Mi cumpleaños es el 3 de abril."),
+    ],
+  },
+  verbs: {
+    note: "El infinitivo termina en -are, -ere o -ire. La conjugación completa se ve en Básico II; aquí se reconocen las formas de io y lui/lei.",
+    rows: [
+      row("Oración básica", "Sujeto + verbo + complemento", "Leslie studia italiano.", "Leslie estudia italiano."),
+      row("Forma de io", "Io + verbo en -o", "Io cucino la pasta.", "(Yo) cocino la pasta."),
+      row("Forma de lui/lei", "Lui / lei + verbo en -a o -e", "Argelia legge un libro.", "Argelia lee un libro."),
+      row("Falso amigo", "guardare = mirar", "Octavio guarda la televisione.", "Octavio mira la televisión."),
+    ],
+  },
+  stareGerundio: {
+    note: "Stare + gerundio marca una acción en curso: -are forma -ando; -ere e -ire forman -endo. No existe -iendo.",
+    rows: [
+      row("Afirmación", "(Sujeto) + stare + verbo-ando/-endo", "Sto mangiando.", "Estoy comiendo."),
+      row("Tercera persona", "Sujeto + sta + verbo-ando/-endo", "Leslie sta leggendo.", "Leslie está leyendo."),
+      row("Negación", "Non + stare + gerundio", "Non sto dormendo.", "No estoy durmiendo."),
+      row("Irregular", "fare → facendo / bere → bevendo", "Che cosa stai facendo?", "¿Qué estás haciendo?"),
+    ],
+  },
+  jobs: {
+    note: "Con essere la profesión va sin artículo (sono insegnante); con fare lleva artículo (faccio l'insegnante).",
+    rows: [
+      row("Profesión (essere)", "Sono + profesión (sin artículo)", "Sono insegnante.", "Soy maestro."),
+      row("Profesión (fare)", "Faccio + artículo + profesión", "Faccio l'insegnante.", "Me dedico a la enseñanza."),
+      row("Preguntar", "Che lavoro fai? / Dove lavori?", "Dove lavori?", "¿Dónde trabajas?"),
+      row("Lugar", "Lavoro + in + lugar", "Lavoro in un ospedale.", "Trabajo en un hospital."),
+      row("Acción actual", "Sujeto + stare + gerundio", "Sta aiutando un paziente.", "Está ayudando a un paciente."),
+    ],
+  },
+  vocabulary: {
+    note: "Con amigos y familia usa tu; con desconocidos y en situaciones formales, Lei. Los saludos se aprenden como expresiones completas.",
+    rows: [
+      row("Saludar", "Ciao! / Buongiorno! / Buonasera!", "Buongiorno!", "¡Buenos días!"),
+      row("Presentarse", "Mi chiamo + nombre", "Mi chiamo Octavio.", "Me llamo Octavio."),
+      row("Cómo estás", "Come stai? — Sto bene, grazie.", "Come stai?", "¿Cómo estás?"),
+      row("Despedirse", "Arrivederci! / A domani!", "A domani!", "¡Hasta mañana!"),
+    ],
+  },
+  articles: {
+    note: "El plural «unos» (dei, degli, delle) se ve en Básico IV.",
+    rows: [
+      row("Determinativo", "Artículo + sustantivo", "Il caffè è buono.", "El café está bueno."),
+      row("s + consonante, z, gn, ps, y", "lo / uno + sustantivo", "Lo studente è di Milano.", "El estudiante es de Milán."),
+      row("Ante vocal", "l' + sustantivo; un + masculino; un' + femenino", "Un amico e un'amica.", "Un amigo y una amiga."),
+      row("Sin artículo", "Ø + nombre, ciudad o profesión con essere", "Roma è bella.", "Roma es bonita."),
+    ],
+  },
+  adjectives: {
+    note: "Bello, ante sustantivo, cambia como el artículo. Buono, en singular, cambia como un.",
+    rows: [
+      row("Después del sustantivo", "Artículo + sustantivo + adjetivo", "Una macchina rossa.", "Un carro rojo."),
+      row("Antes del sustantivo", "Artículo + adjetivo frecuente + sustantivo", "Un nuovo libro.", "Un libro nuevo."),
+      row("Después de essere", "Sujeto + essere + adjetivo", "I gelati sono buoni.", "Los helados están buenos."),
+      row("Grupo mixto", "Persona + e + persona + sono + plural masculino", "Octavio e Leslie sono stanchi.", "Octavio y Leslie están cansados."),
+      row("Contrarios", "Adjetivo / su contrario", "Caldo o freddo.", "Caliente o frío."),
+    ],
+  },
+  possessiveAdjectives: {
+    note: "Con parentesco singular normalmente se omite el artículo, salvo con loro. En plural se usa: le mie sorelle.",
+    rows: [
+      row("Con objeto", "Artículo + posesivo + sustantivo", "Il mio libro è qui.", "Mi libro está aquí."),
+      row("Según lo poseído", "Artículo de la cosa + posesivo", "La sua casa è grande.", "Su casa es grande."),
+      row("Loro", "Artículo + loro + sustantivo", "I loro libri sono nuovi.", "Sus libros son nuevos."),
+      row("Después de essere", "Sustantivo + essere + posesivo", "Questo libro è mio.", "Este libro es mío."),
+      row("Familiar en singular", "Posesivo + familiar", "Mia madre è di Roma.", "Mi madre es de Roma."),
+    ],
+  },
+  preposizioniArticolate: {
+    note: "Per, tra y fra se mantienen separados del artículo. Con admite con il / col y con i / coi; las formas separadas siempre son correctas. Los nombres propios de persona de estos ejemplos no llevan artículo.",
+    rows: [
+      row("Pertenencia", "Sustantivo + di + nombre", "Il libro di Leslie.", "El libro de Leslie."),
+      row("Di + artículo", "di + il = del", "La macchina del professore.", "El carro del profesor."),
+      row("A + artículo", "a + il = al", "Vado al bar.", "Voy al bar."),
+      row("Da + artículo", "da + il = dal", "Vengo dal Messico.", "Vengo de México."),
+      row("In + artículo", "in + la = nella", "Le chiavi sono nella borsa.", "Las llaves están en la bolsa."),
+    ],
+  },
+  whQuestions: {
+    note: "Perché lleva acento agudo y sirve para preguntar y para responder. Qual è va sin apóstrofo.",
+    rows: [
+      row("Orden", "Palabra interrogativa + verbo + sujeto", "Dov'è Leslie?", "¿Dónde está Leslie?"),
+      row("Causa", "Perché + pregunta — Perché + respuesta", "Perché studio italiano.", "Porque estudio italiano."),
+      row("Cantidad", "Quanto, quanta, quanti o quante + sustantivo", "Quante sorelle hai?", "¿Cuántas hermanas tienes?"),
+      row("Número", "Quale + singular; quali + plural", "Quali pizze prendi?", "¿Cuáles pizzas pides?"),
+      row("Origen", "Di dove + è", "Di dov'è Octavio?", "¿De dónde es Octavio?"),
+    ],
+  },
+  presenteIndicativo: {
+    note: "Voi equivale a ustedes. En loro, parlano, credono y dormono llevan el golpe al inicio: PAR-la-no. Ese acento no se escribe.",
+    rows: [
+      row("Modelo -are", "raíz + o, i, a, iamo, ate, ano", "Io parlo italiano.", "Yo hablo italiano."),
+      row("Negación", "Non + verbo en presente", "Non lavoro il sabato.", "No trabajo los sábados."),
+      row("Pregunta", "Verbo en presente + ?", "Lavori a Roma?", "¿Trabajas en Roma?"),
+      row("Hábito", "Presente + complemento de rutina", "Studio italiano ogni giorno.", "Estudio italiano todos los días."),
+      row("Ahora", "Che cosa fai? — respuesta en presente", "Mangio una pizza.", "Como una pizza."),
+    ],
+  },
+  verbiInfinito: {
+    note: "Sapere más infinitivo es saber hacer algo. La diferencia con potere se ve en Básico IV.",
+    rows: [
+      row("Gustar", "Mi piace + infinitivo", "Mi piace leggere.", "Me gusta leer."),
+      row("Plural", "Mi piacciono + sustantivo plural", "Mi piacciono le fragole.", "Me gustan las fresas."),
+      row("Sin preposición", "Volere, potere, dovere, sapere o preferire + infinitivo", "Devo studiare.", "Debo estudiar."),
+      row("Con a", "Verbo + a + infinitivo", "Vado a mangiare.", "Voy a comer."),
+      row("Con di", "Verbo + di + infinitivo", "Cerco di studiare.", "Intento estudiar."),
+    ],
+  },
+  irregularVerbs: {
+    note: "El participio entra en el passato prossimo, en Básico V. La muestra de esta lección es Ho mangiato, Ho fatto y Sono andato.",
+    rows: [
+      row("Presente", "Infinitivo irregular → forma de io", "Andare → vado.", "Ir → voy."),
+      row("Acento", "Dà, con acento grave", "Leslie dà un gelato.", "Leslie da un helado."),
+      row("Participio", "Infinitivo → participio passato", "Scrivere → scritto.", "Escribir → escrito."),
+      row("Con avere", "Ho + participio", "Ho fatto.", "He hecho."),
+      row("Con essere", "Sono + participio", "Sono andato.", "He ido."),
+    ],
+  },
+  routineRiflessivi: {
+    note: "Voi equivale a ustedes. Non va antes del pronombre. En la negación, mai va con non.",
+    rows: [
+      row("Pronombre", "pronombre + verbo", "Mi alzo alle sette.", "Me levanto a las siete."),
+      row("Negación", "Non + pronombre + verbo", "Non mi alzo presto.", "No me levanto temprano."),
+      row("Frecuencia", "verbo + adverbio", "Mi alzo sempre alle sette.", "Me levanto siempre a las siete."),
+      row("Mai", "Non + verbo + mai", "Non bevo mai il caffè.", "No tomo nunca café."),
+      row("Ahora y rutina", "Di solito + presente, ma adesso + stare + gerundio", "Di solito lavoro a Roma, ma adesso sto lavorando a Milano.", "Normalmente trabajo en Roma, pero ahora estoy trabajando en Milán."),
+    ],
+  },
+  preposizioniTempo: {
+    note: "Alle, dal, nel y sul ya traen la preposición y el artículo. Tra y fra funcionan igual.",
+    rows: [
+      row("Ciudad y hora", "a + ciudad / alle + hora", "Arrivo a Roma alle otto.", "Llego a Roma a las ocho."),
+      row("País y transporte", "in + país / in + medio", "Vado in Italia in treno.", "Voy a Italia en tren."),
+      row("Desde cuándo", "presente + da + duración", "Studio italiano da due anni.", "Estudio italiano desde hace dos años."),
+      row("Dentro de", "tra o fra + plazo", "Parto tra un'ora.", "Salgo dentro de una hora."),
+      row("Cada cuánto", "volta o volte + al o alla + periodo", "Vado due volte alla settimana.", "Voy dos veces a la semana."),
+    ],
+  },
+  directions: {
+    note: "Scusi es de usted; scusa, de tú. Con artículo, accanto a se escribe accanto al.",
+    rows: [
+      row("Preguntar", "Scusi, dov'è + lugar?", "Scusi, dov'è la stazione?", "Disculpe, ¿dónde está la estación?"),
+      row("Tú", "imperativo de tú + dirección", "Gira a destra.", "Gira a la derecha."),
+      row("Usted", "imperativo de usted + dirección", "Vada sempre dritto.", "Siga siempre derecho."),
+      row("Ubicar", "lugar + è + referencia", "La farmacia è accanto al museo.", "La farmacia está junto al museo."),
+      row("La calle que toca", "Prendi + la prima o la seconda", "Prendi la prima a destra.", "Toma la primera a la derecha."),
+    ],
+  },
+  bodyParts: {
+    note: "Le braccia, le dita, le ginocchia, le labbra, le ossa y le sopracciglia son femeninos en plural. Con el cuerpo, el reflexivo lleva artículo.",
+    rows: [
+      row("Nombrar", "artículo + parte", "La testa.", "La cabeza."),
+      row("Describir", "avere + artículo + parte + adjetivo", "Ha gli occhi verdi.", "Tiene los ojos verdes."),
+      row("Dolor", "Mi fa male + singular / Mi fanno male + plural", "Mi fa male la testa.", "Me duele la cabeza."),
+      row("Aseo", "Mi lavo + artículo + parte", "Mi lavo i denti.", "Me lavo los dientes."),
+      row("Movimiento", "imperativo de tú + artículo + parte", "Alza le braccia.", "Levanta los brazos."),
+    ],
+  },
+  potereSapere: {
+    note: "So no lleva acento. Può lleva acento grave. Ante vocal, a puede escribirse ad.",
+    rows: [
+      row("Habilidad aprendida", "Sapere + infinitivo", "So nuotare.", "Sé nadar."),
+      row("Permiso o posibilidad", "Potere + infinitivo", "Posso entrare?", "¿Puedo entrar?"),
+      row("Lograr", "Riuscire a + infinitivo", "Non riesco a dormire.", "No logro dormir."),
+      row("Ante vocal", "Riuscire ad + infinitivo", "Non riesco ad aprire la porta.", "No logro abrir la puerta."),
+      row("Contraste", "Sapere, ma + poter o riuscire", "So nuotare, ma oggi non posso.", "Sé nadar, pero hoy no puedo."),
+    ],
+  },
+  partitivo: {
+    note: "En la frase negativa de esta lección se omite el partitivo. Abbastanza no cambia. Qualche va con singular.",
+    rows: [
+      row("Partitivo", "di + artículo", "Vorrei del pane.", "Quisiera un poco de pan."),
+      row("Un poco", "un po' di / un po' d'", "Prendo un po' d'acqua.", "Tomo un poco de agua."),
+      row("Varios, en singular", "qualche + singular", "Prendo qualche mela.", "Llevo algunas manzanas."),
+      row("Preguntar", "Quanta, quanti o quanto", "Quanta acqua bevi?", "¿Cuánta agua tomas?"),
+      row("Medida", "unidad + di + alimento", "Prendo un chilo di pomodori.", "Llevo un kilo de jitomates."),
+    ],
+  },
+  foodGroups: {
+    note: "L'uovo hace le uova. Il burro es la mantequilla y l'olio es el aceite.",
+    rows: [
+      row("Grupo", "artículo + nombre del grupo", "La frutta è fresca.", "La fruta está fresca."),
+      row("Gusto singular", "Mi piace + singular", "Mi piace il pesce.", "Me gusta el pescado."),
+      row("Gusto plural", "Non mi piacciono + plural", "Non mi piacciono i funghi.", "No me gustan los hongos."),
+      row("Pedir", "Vorrei + un plato", "Vorrei un piatto di pasta.", "Quisiera un plato de pasta."),
+      row("La cuenta", "Il conto + per favore", "Il conto, per favore.", "La cuenta, por favor."),
+    ],
+  },
+  exerciseWords: {
+    note: "Con ustedes se usa la forma del grupo. La negativa de tú lleva el infinitivo.",
+    rows: [
+      row("Tú, verbo en -are", "orden de tú en -a", "Alza le braccia.", "Levanta los brazos."),
+      row("Usted, verbo en -are", "orden de usted en -i", "Alzi le braccia.", "Levante los brazos."),
+      row("Tú, verbo en -ere", "orden de tú en -i", "Stendi le gambe.", "Estira las piernas."),
+      row("Usted, verbo en -ere", "orden de usted en -a", "Stenda le gambe.", "Estire las piernas."),
+      row("En curso", "stare + gerundio", "Octavio sta sollevando un peso.", "Octavio está levantando una pesa."),
+    ],
+  },
+  adverbsManner: {
+    note: "Molto va antes del adverbio. Piano puede ser en voz baja o despacio.",
+    rows: [
+      row("Desde -o", "femenino + mente", "Parla lentamente.", "Habla despacio."),
+      row("Desde -e", "adjetivo + mente", "Parla velocemente.", "Habla rápido."),
+      row("Desde -le o -re precedidos de vocal", "pierde la e + mente", "Parla facilmente.", "Habla con facilidad."),
+      row("Bien y mal", "bene o male", "Leslie canta bene.", "Leslie canta bien."),
+      row("Con essere", "essere + adjetivo", "Octavio è lento.", "Octavio es lento."),
+    ],
+  },
+  passatoProssimo: {
+    note: "Con avere y el objeto después, el participio queda en -o. Con essere, concuerda con el sujeto. Una misma frase cubre comí y he comido.",
+    rows: [
+      row("Con avere", "auxiliar de avere + participio", "Ho mangiato la pizza.", "Comí pizza."),
+      row("Con essere", "auxiliar de essere + participio", "Sono andato a Roma.", "Fui a Roma."),
+      row("Concordancia", "participio en -o, -a, -i o -e", "Leslie è andata a Roma.", "Leslie fue a Roma."),
+      row("Negación", "non + auxiliar + participio", "Non sono andata.", "No fui."),
+      row("Pregunta", "(palabra interrogativa +) auxiliar + participio + ?", "Dove sei andato?", "¿Adónde fuiste?"),
+    ],
+  },
+  imperfetto: {
+    note: "El imperfetto se parece al copretérito. Un hecho ya cerrado, en un momento concreto, va en passato prossimo.",
+    rows: [
+      row("Hábito", "da bambino o da bambina + imperfetto", "Da bambina abitavo a Napoli.", "De niña vivía en Nápoles."),
+      row("Descripción", "imperfetto de essere + cualidad", "Era una bella giornata.", "Hacía un día bonito."),
+      row("En curso", "mentre + imperfetto", "Mentre mangiavo, leggevo.", "Mientras comía, leía."),
+      row("Hecho cerrado", "marcador concreto + passato prossimo", "Ieri ho mangiato una pizza.", "Ayer comí una pizza."),
+      row("Fondo y hecho", "mentre + imperfetto, y un passato prossimo", "Mentre studiavo, Leslie è arrivata.", "Mientras yo estudiaba, Leslie llegó."),
+    ],
+  },
+  futuro: {
+    note: "En -are, la a pasa a e. Con un marcador de tiempo, el presente también sitúa un plan.",
+    rows: [
+      row("Plan", "marcador + futuro semplice", "L'anno prossimo andrò in Italia.", "El año que viene iré a Italia."),
+      row("Predicción", "futuro de lo que se anticipa", "Domani pioverà.", "Mañana lloverá."),
+      row("Hipótesis", "futuro sobre lo que pasa ahora", "Sarà a casa.", "Debe de estar en casa."),
+      row("Plan en presente", "marcador + presente", "Domani vado a Roma.", "Mañana voy a Roma."),
+      row("Negación", "non + futuro", "Non andrò a Roma.", "No iré a Roma."),
+    ],
+  },
+  socialCollocations: {
+    note: "La colocación se aprende entera. El verbo sí se conjuga.",
+    rows: [
+      row("Con fare", "fare + la combinación fija", "Ieri ho fatto una festa.", "Ayer hice una fiesta."),
+      row("Con prendere", "prendere + la combinación fija", "Prendo un caffè a Roma.", "Tomo un café en Roma."),
+      row("Con dare", "dare + la combinación fija", "Darò una mano a Leslie.", "Le echaré una mano a Leslie."),
+      row("Con avere", "avere + la combinación fija", "Ho voglia di un gelato.", "Tengo ganas de un helado."),
+      row("En futuro", "futuro del verbo de la colocación", "Sabato usciremo con gli amici.", "El sábado saldremos con los amigos."),
+    ],
+  },
+  moneyCareer: {
+    note: "En estas frases, euro se escribe igual en plural. Probabilmente es probablemente; forse es quizá.",
+    rows: [
+      row("Precio", "Quanto costa? + número + euro", "Costa venti euro.", "Cuesta veinte euros."),
+      row("Pago", "Pago in contanti o con la carta", "Pago in contanti.", "Pago en efectivo."),
+      row("Ahorro", "Risparmio per + meta", "Risparmio per una macchina nuova.", "Ahorro para un carro nuevo."),
+      row("Plan", "futuro + plan de trabajo", "Leslie aprirà un'attività.", "Leslie abrirá un negocio."),
+      row("Probabilidad", "Probabilmente o forse + futuro", "Forse cambierò lavoro.", "Quizá cambie de trabajo."),
+    ],
+  },
+  comparatives: {
+    note: "Di se contrae con el artículo. Che compara dos partes del mismo sujeto.",
+    rows: [
+      row("Superioridad", "più + adjetivo + di", "Leslie è più alta di Octavio.", "Leslie es más alta que Octavio."),
+      row("Inferioridad", "meno + adjetivo + di", "Il treno è meno caro dell'aereo.", "El tren es menos caro que el avión."),
+      row("Dos cualidades", "più + adjetivo + che + adjetivo", "Leslie è più simpatica che bella.", "Leslie es más simpática que bonita."),
+      row("Con come", "adjetivo + come", "Leslie è alta come Octavio.", "Leslie es tan alta como Octavio."),
+      row("Con quanto", "tanto + adjetivo + quanto", "Octavio è tanto alto quanto Leslie.", "Octavio es tan alto como Leslie."),
+    ],
+  },
 };

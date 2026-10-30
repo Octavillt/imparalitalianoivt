@@ -1,57 +1,11 @@
 import TopicHeading from "../../components/TopicHeading";
-import ExampleCard from "../../components/ExampleCard";
+import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import { FRUITS, FRUIT_SENTENCES, VEGETABLES, VEGETABLE_SENTENCES } from "./data";
+import Sentence from "../../components/Sentence";
+import { FRUITS, VEGETABLES, PLURAL_HIGHLIGHTS, FRUIT_PHRASES } from "./data";
 
-const GREEN = "#22c55e";
-
-export default function FruitsSection() {
-  return (
-    <div>
-      <TopicHeading topicId="fruits" />
-      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Aprende el nombre de cada fruta y verdura en inglés y en español. Lee las tarjetas en voz alta y usa los ejemplos para nombrar uno o varios alimentos.
-      </div>
-
-      <SectionTitle color="#f97316">🍎 Fruits — Las Frutas</SectionTitle>
-      <ItemGrid items={FRUITS} />
-
-      <SectionTitle color={GREEN}>🥕 Vegetables — Las Verduras</SectionTitle>
-      <ItemGrid items={VEGETABLES} />
-
-      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        🧐 <strong style={{ color: "#fbbf24" }}>Ojo:</strong> en inglés el jitomate rojo es <em>tomato</em> y el tomate verde es <em>tomatillo</em>.
-        Además, el jitomate y el aguacate (<em>avocado</em>) son frutas para la botánica aunque en la cocina se usen como verduras:
-        por eso el jitomate aparece en las dos listas.
-      </div>
-
-      <SectionTitle color="#f97316">📖 Frutas en oraciones</SectionTitle>
-      {FRUIT_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color={GREEN}>📖 Verduras en oraciones</SectionTitle>
-      {VEGETABLE_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color="#f97316">🔤 A / AN con frutas y verduras</SectionTitle>
-      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        Recuerda: usa <strong style={{ color: "#fbbf24" }}>A</strong> antes de sonido consonante y <strong style={{ color: "#34d399" }}>AN</strong> antes de sonido vocal.
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
-        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px" }}>
-          <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>A + sonido consonante</div>
-          {["a banana 🍌","a mango 🥭","a pear 🍐","a grape 🍇","a coconut 🥥","a watermelon 🍉","a carrot 🥕","a potato 🥔","a cucumber 🥒","a mushroom 🍄","a tomato 🍅","a tomatillo 🍏"].map(ex => (
-            <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
-          ))}
-        </div>
-        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px" }}>
-          <div style={{ color: "#34d399", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>AN + sonido vocal</div>
-          {["an apple 🍎","an orange 🍊","an avocado 🥑","an onion 🧅","an eggplant 🍆","an olive 🫒"].map(ex => (
-            <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+const ORANGE = "#ea580c";
+const GREEN = "#16a34a";
 
 function ItemGrid({ items }) {
   return (
@@ -59,11 +13,9 @@ function ItemGrid({ items }) {
       display: "grid",
       gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
       gap: "10px",
-      marginBottom: "28px",
+      marginBottom: "24px",
     }}>
-      {items.map(item => (
-        <FoodCard key={item.name} item={item} />
-      ))}
+      {items.map(item => <FoodCard key={item.it} item={item} />)}
     </div>
   );
 }
@@ -73,22 +25,84 @@ function FoodCard({ item }) {
     <div style={{
       background: "var(--surface, #1e293b)",
       borderRadius: "14px",
-      padding: "18px 10px 14px",
+      padding: "16px 10px 12px",
       textAlign: "center",
       borderBottom: `3px solid ${item.color}`,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: "8px",
+      gap: "6px",
       transition: "transform 0.15s",
       cursor: "default",
     }}
       onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
       onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
     >
-      <span style={{ fontSize: "52px", lineHeight: 1 }}>{item.emoji}</span>
-      <span style={{ color: item.color, fontWeight: 800, fontSize: "14px" }}>{item.name}</span>
-      <span style={{ color: "#94a3b8", fontSize: "12px" }}>{item.esp}</span>
+      <span style={{ fontSize: "44px", lineHeight: 1 }}>{item.emoji}</span>
+      <span lang="it" style={{ color: item.color, fontWeight: 800, fontSize: "14px" }}>{item.it}</span>
+      <span style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {item.esp}</span>
+    </div>
+  );
+}
+
+export default function FruitsSection() {
+  return (
+    <div>
+      <TopicHeading topicId="fruits" />
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+        💡 Lee cada tarjeta en voz alta: artículo + palabra. Fíjate en que{" "}
+        <strong lang="it" style={{ color: "#f8fafc" }}>la frutta</strong> y <strong lang="it" style={{ color: "#f8fafc" }}>la verdura</strong> son{" "}
+        <strong style={{ color: "#f8fafc" }}>singulares colectivos</strong>: nombran todas las frutas o verduras en conjunto, como «la fruta» en español.
+      </div>
+
+      <SectionTitle color={ORANGE}>🍎 Frutta — las frutas</SectionTitle>
+      <ItemGrid items={FRUITS} />
+
+      <SectionTitle color={GREEN}>🥕 Verdura — las verduras</SectionTitle>
+      <ItemGrid items={VEGETABLES} />
+
+      <RuleBox icon="🧐" rule="Palabras con truco" color="#fbbf24">
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
+            🍇 <strong lang="it" style={{ color: "#e2e8f0" }}>L'uva</strong>, como nombre colectivo de la fruta, se usa aquí en singular; <span lang="it">le uve</span> puede referirse a sus variedades.
+          </div>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
+            🍑 <strong lang="it" style={{ color: "#e2e8f0" }}>la pesca</strong> con <strong style={{ color: "#f8fafc" }}>e abierta</strong> es el durazno; con{" "}
+            <strong style={{ color: "#f8fafc" }}>e cerrada</strong> significa «la pesca» (de pescar). 🇲🇽 durazno / pesca.
+          </div>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
+            🫑 <strong lang="it" style={{ color: "#e2e8f0" }}>il peperone</strong> es el pimiento; <strong lang="it" style={{ color: "#e2e8f0" }}>il peperoncino</strong> es el chile. 🇲🇽 pimiento / chile.
+          </div>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
+            🍅 <strong lang="it" style={{ color: "#e2e8f0" }}>il pomodoro</strong> viene de <strong lang="it" style={{ color: "#e2e8f0" }}>pomo d'oro</strong>: «manzana de oro». 🇲🇽 jitomate.
+          </div>
+        </div>
+      </RuleBox>
+
+      <SectionTitle color={ORANGE}>➕ Sus plurales</SectionTitle>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "6px", marginBottom: "16px" }}>
+        {PLURAL_HIGHLIGHTS.map(p => (
+          <div key={p.s} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", textAlign: "center" }}>
+            <span lang="it" style={{ color: "#94a3b8", fontWeight: 600, fontSize: "13px" }}>{p.s}</span>
+            <span style={{ color: "#475569", margin: "0 6px" }}>→</span>
+            <span lang="it" style={{ color: "#e2e8f0", fontWeight: 800, fontSize: "13px" }}>{p.p}</span>
+          </div>
+        ))}
+      </div>
+
+      <SectionTitle color={GREEN}>💬 Frases</SectionTitle>
+      {FRUIT_PHRASES.map((ex, i) => (
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+          <div style={{ lineHeight: 2 }}>
+            <Sentence pts={ex.pts} />
+          </div>
+          <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>
+        </div>
+      ))}
+      <p style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>
+        🛒 <strong lang="it" style={{ color: "#e2e8f0" }}>Vorrei un chilo di pomodori.</strong> 🇲🇽 Quisiera un kilo de jitomates.{" "}
+        «Vorrei» es la fórmula cortés de pedir (el condicional se estudia en niveles avanzados): úsala tal cual en la frutería.
+      </p>
     </div>
   );
 }

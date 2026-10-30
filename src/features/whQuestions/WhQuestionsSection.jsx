@@ -1,91 +1,152 @@
 import TopicHeading from "../../components/TopicHeading";
-import Token from "../../components/Token";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
-import { WH_WORDS, WH_QA, WH_TRANSLATIONS } from "./data";
+import {
+  WH_WORDS,
+  ORDER_EXAMPLES,
+  APOSTROPHE,
+  CAUSA,
+  QUANTO_FORMS,
+  QUALE_FORMS,
+  WH_QA,
+} from "./data";
 
-const COLOR = "#22d3ee";
+const COLOR = "#22D3EE";
 
-function WhWordCard({ word, translation, use, example, esp, relatedTopic }) {
+const WORD_LINKS = {
+  "A che ora": { levelId: "basico1", topicId: "time" },
+  "Di dove": { levelId: "basico1", topicId: "countries" },
+  "Di chi": { levelId: "basico2", topicId: "preposizioniArticolate" },
+  Come: { levelId: "basico1", topicId: "vocabulary" },
+};
+
+function WordCard({ word, es, use, example, esp, link }) {
   return (
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${COLOR}` }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "2px" }}>
-        <span style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{word}?</span>
-        <span style={{ color: "#94a3b8", fontSize: "13px", fontWeight: 600 }}>{translation}</span>
+      <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "2px", flexWrap: "wrap" }}>
+        <span lang="it" style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{word}?</span>
+        <span style={{ color: "#94a3b8", fontSize: "13px", fontWeight: 600 }}>{es}</span>
       </div>
       <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{use}</div>
-      <div style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</div>
+      <div lang="it" style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</div>
       <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {esp}</div>
-      {relatedTopic && <RelatedTopic levelId={relatedTopic.levelId} topicId={relatedTopic.topicId} />}
+      {link && <RelatedTopic levelId={link.levelId} topicId={link.topicId} />}
     </div>
   );
 }
-
-const WH_WORD_LINKS = {
-  "What time": { levelId: "basico1", topicId: "time" },
-};
 
 export default function WhQuestionsSection() {
   return (
     <div>
       <TopicHeading topicId="whQuestions" />
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Las <Token t="WH Questions" r="wh" /> se usan para pedir información específica (no se responden con sí/no). Casi todas empiezan con <strong style={{ color: "#f8fafc" }}>W</strong> o <strong style={{ color: "#f8fafc" }}>H</strong>: what, where, why, how, when, who, which, whose.
+        💡 Las <strong style={{ color: "#f8fafc" }}>palabras interrogativas</strong> piden un dato: persona, cosa, lugar, momento, modo, causa, cantidad o elección.
+        Van <strong style={{ color: "#f8fafc" }}>antes del verbo</strong>. La respuesta puede ser breve:{" "}
+        <span lang="it">È a Roma. Studio italiano. Alle nove.</span>
       </div>
-      <Legend roles={["wh", "verb_be", "subject"]} />
+      <Legend roles={["wh", "essere", "verb", "subject"]} />
 
-      <RuleBox icon="📐" rule="Fórmula general (con Verb To Be)" color={COLOR}>
+      <RuleBox icon="📐" rule="Orden: palabra interrogativa + verbo + sujeto" color={COLOR}>
         <Formula
-          parts={[{ t: "WH word", r: "wh" }, { t: "am / is / are", r: "verb_be" }, { t: "Sujeto", r: "subject" }, { t: "?", color: "#e2e8f0" }]}
-          example={[{ t: "Where", r: "wh" }, { t: "is", r: "verb_be" }, { t: "he", r: "subject" }, { t: "?", color: "#94a3b8" }]}
+          parts={[{ t: "Palabra", r: "wh" }, { t: "verbo", r: "verb" }, { t: "sujeto", r: "subject" }, { t: "?", color: "#e2e8f0" }]}
+          example={[{ t: "Dov'", r: "wh" }, { t: "è", r: "essere" }, { t: "Leslie", r: "subject" }, { t: "?", color: "#94a3b8" }]}
+          color={COLOR}
         />
-        <div style={{ color: "#94a3b8", fontSize: "13px" }}>🇲🇽 ¿Dónde está él?</div>
-        <RelatedTopic levelId="basico1" topicId="tobe" />
+        <p style={{ color: "#94a3b8", fontSize: "13px", margin: "8px 0" }}>
+          Ante <span lang="it">è</span>, <span lang="it">dove, come y cosa</span> suelen elidir la vocal final: <span lang="it">dov'è, com'è, cos'è</span>. También existen las formas sin elisión.
+        </p>
+        {ORDER_EXAMPLES.map(ex => (
+          <div key={ex.esp} style={{ marginBottom: "8px" }}>
+            <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.pts} /></div>
+            <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {ex.esp}</div>
+          </div>
+        ))}
+        <RelatedTopic levelId="basico1" topicId="essereAvere" />
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📋 Las palabras WH</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "10px" }}>
-        {WH_WORDS.map(([word, translation, use, example, esp]) => (
-          <WhWordCard
-            key={word}
-            word={word}
-            translation={translation}
-            use={use}
-            example={example}
-            esp={esp}
-            relatedTopic={WH_WORD_LINKS[word]}
-          />
+      <SectionTitle color={COLOR}>📋 Las palabras</SectionTitle>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "10px", marginBottom: "16px" }}>
+        {WH_WORDS.map(item => (
+          <WordCard key={item.word} {...item} link={WORD_LINKS[item.word]} />
         ))}
       </div>
 
-      <SectionTitle color={COLOR}>❓ Preguntas y respuestas</SectionTitle>
-      {WH_QA.map(({ q, a, esp }, i) => {
-        const whWord = q[0]?.t;
-        const translation = WH_TRANSLATIONS[whWord];
-        return (
-          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
-            <div style={{ lineHeight: 2, display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
-              <Sentence pts={q} />
-              {translation && <span style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 600 }}>({translation})</span>}
+      <RuleBox icon="✏️" rule="Apóstrofo: dov'è, com'è, cos'è" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          <span lang="it">Dove, come y cosa</span> pueden perder la vocal final ante <span lang="it">è</span>: <span lang="it">dov'è, com'è, cos'è</span>.
+          <span lang="it">Quale</span> ante <span lang="it">è</span> se escribe <span lang="it">Qual è</span>, separado y <strong style={{ color: "#f8fafc" }}>sin apóstrofo</strong>.
+          <span lang="it">Che cos'è</span> es <span lang="it">che cosa</span> + <span lang="it">è</span>.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px", marginTop: "8px" }}>
+          {APOSTROPHE.map(item => (
+            <div key={item.written} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px 12px" }}>
+              <div lang="it" style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{item.written}</div>
+              <div lang="it" style={{ color: "#94a3b8", fontSize: "12px" }}>{item.sum}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {item.esp}</div>
             </div>
-            <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
-            <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
-          </div>
-        );
-      })}
-
-      <RuleBox icon="🔑" rule="Bonus — Whose (¿de quién?)" color={COLOR}>
-        <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>
-          <Token t="Whose" r="wh" /> pregunta a quién le pertenece algo. La respuesta normalmente usa un <Token t="posesivo" r="gen" /> con <strong style={{ color: "#f8fafc" }}>'s</strong>.
+          ))}
         </div>
-        <div style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "8px" }}>Whose backpack is this? → It's Israel's.</div>
-        <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 ¿De quién es esta mochila? → Es de Israel.</div>
-        <RelatedTopic levelId="basico2" topicId="possessiveNouns" />
       </RuleBox>
+
+      <RuleBox icon="💬" rule="Perché pregunta y también responde" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          Lleva acento agudo en la e final. Sirve para la pregunta y para la causa.
+        </p>
+        {CAUSA.map(ex => (
+          <div key={ex.esp} style={{ marginTop: "8px" }}>
+            <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.pts} /></div>
+            <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {ex.esp}</div>
+          </div>
+        ))}
+      </RuleBox>
+
+      <RuleBox icon="🔢" rule="Quanto concuerda con el sustantivo" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          Cuando pregunta por una cantidad de forma general, se usa <span lang="it">quanto: Quanto costa?</span> Como adjetivo o pronombre referido a algo concreto, concuerda: <span lang="it">Quante pizze vuoi? / Quante ne vuoi?</span>
+          El masculino singular también es <span lang="it">quanto</span>: <span lang="it">quanto gelato</span>.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px", marginTop: "8px" }}>
+          {QUANTO_FORMS.map(item => (
+            <div key={item.form} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px 12px" }}>
+              <div lang="it" style={{ color: COLOR, fontWeight: 900 }}>{item.form}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>{item.use}</div>
+              <div lang="it" style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "4px" }}>{item.example}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {item.esp}</div>
+            </div>
+          ))}
+        </div>
+      </RuleBox>
+
+      <RuleBox icon="🎯" rule="Quale cambia en número, no en género" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          Singular: <span lang="it">quale</span>, con libro o con pizza. Plural: <span lang="it">quali</span>, con libri o con pizze.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px", marginTop: "8px" }}>
+          {QUALE_FORMS.map(item => (
+            <div key={item.form} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px 12px" }}>
+              <div lang="it" style={{ color: COLOR, fontWeight: 900 }}>{item.form}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>{item.use}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {item.esp}</div>
+            </div>
+          ))}
+        </div>
+      </RuleBox>
+
+      <SectionTitle color={COLOR}>❓ Preguntas y respuestas breves</SectionTitle>
+      {WH_QA.map(item => (
+        <div key={item.esp} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+          <div style={{ lineHeight: 2, display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
+            <Sentence pts={item.q} />
+            <span style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 600 }}>({item.label})</span>
+          </div>
+          <div lang="it" style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {item.a}</div>
+          <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {item.esp}</div>
+        </div>
+      ))}
     </div>
   );
 }

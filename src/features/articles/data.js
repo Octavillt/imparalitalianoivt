@@ -1,79 +1,96 @@
+// Gli articoli: determinativos e indeterminativos según género, número y
+// letra inicial; los casos sin artículo llevan el token Ø con rol zero.
 const art = t => ({ t, r: "art" });
+const masc = t => ({ t, r: "masc" });
+const fem = t => ({ t, r: "fem" });
 const zero = () => ({ t: "Ø", r: "zero" });
 
-// Categorías de sustantivo — qué palabras cuentan como "sustantivo"
-export const NOUN_EXAMPLES = [
-  { icon: "🧑", title: "Personas", words: [["teacher", "maestro/a"], ["student", "estudiante"], ["friend", "amigo/a"]] },
-  { icon: "📍", title: "Lugares", words: [["city", "ciudad"], ["school", "escuela"], ["park", "parque"]] },
-  { icon: "🐶", title: "Animales", words: [["dog", "perro"], ["cat", "gato"], ["bird", "pájaro"]] },
-  { icon: "📦", title: "Cosas / objetos", words: [["book", "libro"], ["car", "carro"], ["phone", "teléfono"]] },
-  { icon: "💭", title: "Ideas / conceptos", words: [["love", "amor"], ["idea", "idea"], ["freedom", "libertad"]] },
+// Determinativos singulares — cada forma con su condición y sus ejemplos.
+export const DEFINITE_SINGULAR = [
+  { form: "il", rule: "Masculino singular que empieza con consonante", examples: ["il libro", "il tavolo", "il caffè"] },
+  { form: "lo", rule: "Masculino singular ante s + consonante, z, gn, ps, y", examples: ["lo studente", "lo zaino", "lo gnocco", "lo psicologo", "lo yogurt"] },
+  { form: "l'", rule: "Cualquier palabra que empieza con vocal (masculino o femenino)", examples: ["l'amico", "l'amica"] },
+  { form: "la", rule: "Femenino singular que empieza con consonante", examples: ["la casa", "la pizza", "la scuola"] },
 ];
 
-// Categorías de "sin artículo" — cada una con su explicación y ejemplos
-export const ZERO_RULES = [
-  {
-    icon: "🔵", title: "Adjetivo solo (sin sustantivo después)",
-    why: "Con to be + adjetivo, sin un sustantivo, no usamos a/an: she is busy. Con un sustantivo sí: she is a busy student.",
-    examples: ["Are you Ø busy?", "Is Eduardo Ø thin?"],
-  },
-  {
-    icon: "🔢", title: "Sustantivos plurales, en general",
-    why: `"a" y "an" significan literalmente "uno" — solo se usan con UN sustantivo en singular. Para hablar de varios en general (no uno específico), no se usa artículo.`,
-    examples: ["Do you like Ø apples?", "I have Ø noisy neighbors."],
-  },
-  {
-    icon: "☁️", title: "Sustantivos incontables / idiomas",
-    why: `Los sustantivos incontables (agua, café, información...) no se pueden contar "uno, dos, tres", así que tampoco pueden llevar "a/an" (= uno). Los idiomas (English, Spanish...) siguen la misma regla.`,
-    examples: ["Kenji is studying Ø English.", "I like Ø coffee."],
-  },
-  {
-    icon: "📍", title: "Nombres propios / lugares",
-    why: "Un nombre propio (una persona, una ciudad, la mayoría de países) ya señala algo específico y único por sí mismo, así que no necesita artículo para identificarlo.",
-    examples: ["He lives in Ø Alaska.", "She is in Ø London."],
-  },
-  {
-    icon: "🙋", title: "Después de un adjetivo posesivo (my, your...)",
-    why: `No combines a/an/the con my, your, his, her, its, our o their delante del mismo sustantivo: my book, no the my book.`,
-    examples: ["Clean my Ø apartment.", "Are these your Ø shoes?"],
-  },
+// Determinativos plurales — de qué singular sale cada uno.
+export const DEFINITE_PLURAL = [
+  { form: "i", rule: "Plural de il", examples: ["i libri", "i tavoli"] },
+  { form: "gli", rule: "Plural de lo y de l' masculino", examples: ["gli studenti", "gli zaini", "gli amici"] },
+  { form: "le", rule: "Plural de la y de l' femenino", examples: ["le case", "le amiche"] },
 ];
 
-// Excepciones del sonido en a/an
-export const SOUND_EXCEPTIONS = [
-  { word: "an hour", why: "La H es muda → suena como vocal", icon: "🤫" },
-  { word: "a university", why: "La U suena \"y\" (/juː/) → suena como consonante", icon: "🗣️" },
-  { word: "a European trip", why: "La EU suena \"y\" → suena como consonante", icon: "🗣️" },
-  { word: "an honest man", why: "La H es muda → suena como vocal", icon: "🤫" },
+// Indeterminativos — equivalen a un / una. Los plurales (dei, degli, delle)
+// se ven hasta Básico IV: aquí solo se mencionan.
+export const INDEFINITE = [
+  { form: "un", rule: "Masculino; también ante vocal, pero sin apóstrofo", examples: ["un libro", "un amico"] },
+  { form: "uno", rule: "Masculino ante s + consonante, z, gn, ps, y", examples: ["uno studente", "uno zaino", "uno gnocco", "uno psicologo", "uno yogurt"] },
+  { form: "una", rule: "Femenino que empieza con consonante", examples: ["una casa", "una pizza"] },
+  { form: "un'", rule: "Femenino ante vocal", examples: ["un'amica", "un'ora"] },
 ];
 
-// Ejercicio completo — [pts, español]
+// Usos donde el italiano sí pone artículo, igual que el español.
+export const WITH_ARTICLE = [
+  { icon: "☕", use: "Cosas concretas de las que hablas", ex: "Il caffè è buono.", esp: "El café está bueno." },
+  { icon: "🗣️", use: "Idiomas que estudias: artículo facultativo en este uso", ex: "Studio (l')italiano.", esp: "Estudio italiano." },
+  { icon: "🍕", use: "Gustos", ex: "Amo la pizza.", esp: "Amo la pizza." },
+  { icon: "🗺️", use: "Países", ex: "L'Italia è bella.", esp: "Italia es bonita." },
+  { icon: "🕒", use: "La hora", ex: "Sono le tre.", esp: "Son las tres." },
+];
+
+// Casos sin artículo: el Ø indica que no se escribe nada.
+export const ZERO_USES = [
+  { icon: "🙋", title: "Nombres de persona", why: "Un nombre propio ya identifica a alguien por sí solo.", examples: ["Leslie è qui.", "Octavio è di Roma."] },
+  { icon: "📍", title: "Ciudades", why: "Las ciudades van sin artículo, igual que en español.", examples: ["Roma è bella.", "Firenze è piccola."] },
+  { icon: "🧑‍🏫", title: "Profesión con essere", why: "Con essere, la profesión va sin artículo.", examples: ["Sono insegnante.", "Octavio è studente."] },
+];
+
+// Las tres preguntas que resuelven cualquier artículo.
+export const DECISION_STEPS = [
+  { n: "1️⃣", q: "¿Masculino o femenino?", a: "il y lo son masculinos; la es femenina. Si empieza con vocal, l' vale para los dos: l'amico, l'amica." },
+  { n: "2️⃣", q: "¿Singular o plural?", a: "Singular: il, lo, l', la. Plural: i (de il), gli (de lo y de l' masculino), le (de la y de l' femenino)." },
+  { n: "3️⃣", q: "¿Cómo empieza la palabra?", a: "Vocal: l'amico y l'amica. En indeterminativo, un amico (sin apóstrofo) y un'amica (con apóstrofo). s + consonante, z, gn, ps o y: lo y uno. Otra consonante: il y un si es masculino; la y una si es femenino." },
+];
+
+// Ejercicio resuelto — oraciones con el artículo destacado.
 export const ARTICLE_EXERCISE = [
-  { pts: ["Look at ", art("the"), " moon."], esp: "Mira la luna." },
-  { pts: ["This is a book. ", art("The"), " book is red."], esp: "Este es un libro. El libro es rojo." },
-  { pts: ["Israel is ", art("a"), " university student."], esp: "Israel es estudiante universitario." },
-  { pts: ["This is ", art("a"), " car."], esp: "Esto es un carro." },
-  { pts: ["Are you ", zero(), " busy?"], esp: "¿Estás ocupado?" },
-  { pts: ["Is Eduardo ", zero(), " thin?"], esp: "¿Eduardo es delgado?" },
-  { pts: ["This is ", art("an"), " Italian sports car."], esp: "Este es un auto deportivo italiano." },
-  { pts: ["Kenji is studying ", zero(), " English."], esp: "Kenji está estudiando inglés." },
-  { pts: ["Are you carrying ", art("an"), " umbrella?"], esp: "¿Estás llevando un paraguas?" },
-  { pts: ["My father is reading ", art("a"), " newspaper."], esp: "Mi papá está leyendo un periódico." },
-  { pts: ["There is ", art("an"), " airport about five miles from here."], esp: "Hay un aeropuerto a unas cinco millas de aquí." },
-  { pts: ["This is ", art("a"), " pair of gloves."], esp: "Este es un par de guantes." },
-  { pts: ["This is ", art("an"), " interesting movie."], esp: "Esta es una película interesante." },
-  { pts: ["This is ", art("a"), " kangaroo."], esp: "Este es un canguro." },
-  { pts: ["Argelia drives ", art("an"), " old car."], esp: "Argelia maneja un carro viejo." },
-  { pts: ["Do you like ", zero(), " apples?"], esp: "¿Te gustan las manzanas?" },
-  { pts: ["He is ", art("an"), " artist."], esp: "Él es artista." },
-  { pts: ["Is there ", art("a"), " big window in your kitchen?"], esp: "¿Hay una ventana grande en tu cocina?" },
-  { pts: ["He lives in ", zero(), " Alaska."], esp: "Él vive en Alaska." },
-  { pts: ["Is Fred reading ", art("an"), " exciting story?"], esp: "¿Fred está leyendo una historia emocionante?" },
-  { pts: ["This is ", art("a"), " liter of grape juice."], esp: "Este es un litro de jugo de uva." },
-  { pts: ["Are these your ", zero(), " shoes?"], esp: "¿Estos son tus zapatos?" },
-  { pts: ["I have ", zero(), " noisy neighbors."], esp: "Tengo vecinos ruidosos." },
-  { pts: ["He is drinking ", art("a"), " cup of coffee."], esp: "Él está tomando una taza de café." },
-  { pts: ["Please help me clean my ", zero(), " apartment."], esp: "Ayúdame a limpiar mi departamento." },
-  { pts: ["Is Albert ", art("a"), " happy man?"], esp: "¿Albert es un hombre feliz?" },
-  { pts: ["The meeting is in ", art("an"), " hour."], esp: "La reunión es dentro de una hora." },
+  { pts: [art("Il"), " ", masc("caffè"), " è buono."], esp: "El café está bueno." },
+  { pts: [art("Lo"), " ", masc("studente"), " è di Milano."], esp: "El estudiante es de Milán." },
+  { pts: [art("Lo"), " ", masc("zaino"), " è sul tavolo."], esp: "La mochila está sobre la mesa." },
+  { pts: [art("Lo"), " ", masc("gnocco"), " è buono."], esp: "El ñoqui está bueno." },
+  { pts: [art("L'"), masc("amico"), " di Octavio è qui."], esp: "El amigo de Octavio está aquí." },
+  { pts: [art("L'"), fem("amica"), " di Leslie è italiana."], esp: "La amiga de Leslie es italiana." },
+  { pts: [art("La"), " ", fem("casa"), " è grande."], esp: "La casa es grande." },
+  { pts: [art("I"), " ", masc("libri"), " sono nuovi."], esp: "Los libros son nuevos." },
+  { pts: [art("Gli"), " ", masc("studenti"), " sono stanchi."], esp: "Los estudiantes están cansados." },
+  { pts: [art("Gli"), " ", masc("amici"), " di Argelia sono qui."], esp: "Los amigos de Argelia están aquí." },
+  { pts: [art("Le"), " ", fem("case"), " sono belle."], esp: "Las casas son bonitas." },
+  { pts: [art("Le"), " ", fem("amiche"), " di Leslie sono qui."], esp: "Las amigas de Leslie están aquí." },
+  { pts: [art("Un"), " ", masc("amico"), " di Argelia è qui."], esp: "Un amigo de Argelia está aquí." },
+  { pts: [art("Uno"), " ", masc("studente"), " è di Napoli."], esp: "Un estudiante es de Nápoles." },
+  { pts: [art("Una"), " ", fem("casa"), " è grande."], esp: "Una casa es grande." },
+  { pts: [art("Un'"), fem("amica"), " di Leslie è qui."], esp: "Una amiga de Leslie está aquí." },
+  { pts: [zero(), " Leslie è qui."], esp: "Leslie está aquí. (sin artículo)" },
+  { pts: [zero(), " ", fem("Roma"), " è bella."], esp: "Roma es bonita. (sin artículo)" },
+  { pts: [zero(), " Sono insegnante."], esp: "Soy maestro. (sin artículo)" },
+];
+
+export const PRACTICE = [
+  { question: "Completa con el artículo determinativo: ___ libro è sul tavolo.", answers: ["il"], hint: "Masculino singular que empieza con consonante", explanation: "Il libro: il acompaña a los masculinos singulares que empiezan con consonante." },
+  { question: "Completa con el artículo determinativo: ___ studente è di Milano.", answers: ["lo"], hint: "Empieza con s + consonante", explanation: "Lo studente: ante s + consonante va lo (y uno)." },
+  { question: "Elige el artículo determinativo: (l' / la) amica di Leslie.", answers: ["l'"], hint: "Empieza con vocal", explanation: "L'amica di Leslie: ante vocal el determinativo es l', en masculino y en femenino." },
+  { question: "Elige la forma correcta: (il / lo) zaino.", answers: ["lo"], hint: "Fíjate en la primera letra", explanation: "Lo zaino: las palabras que empiezan con z llevan lo (y uno)." },
+  { question: "Completa: ___ case sono grandi.", answers: ["le"], hint: "Plural de la", explanation: "Le case: el plural de la es le." },
+  { question: "Completa: ___ amici sono qui.", answers: ["gli"], hint: "Plural de l'", explanation: "Gli amici: lo y l' masculino forman gli en plural." },
+  { question: "Traduce al italiano: Una amiga.", answers: ["Un'amica", "Un'amica."], hint: "Femenino ante vocal", explanation: "Una amiga = un'amica: el femenino ante vocal usa un'." },
+  { question: "Traduce al italiano: Un amigo.", answers: ["Un amico", "Un amico."], hint: "Masculino ante vocal: sin apóstrofo", explanation: "Un amigo = un amico: el masculino ante vocal se queda en un, sin apóstrofo." },
+  { question: "Elige la forma correcta: (uno / un) studente.", answers: ["uno"], hint: "Empieza con s + consonante", explanation: "Uno studente: ante s + consonante va uno." },
+  { question: "Elige la forma correcta: (il / lo) yogurt.", answers: ["lo"], hint: "La y se agrupa con z, gn, ps y s + consonante", explanation: "Lo yogurt: la y lleva lo en determinativo y uno en indeterminativo." },
+  { question: "Elige la forma correcta: (un / uno) gnocco.", answers: ["uno"], hint: "Empieza con gn", explanation: "Uno gnocco: gn se trata como s + consonante, z, ps y y. Lleva uno." },
+  { question: "Completa con el artículo determinativo: Studio ___ italiano.", answers: ["l'"], hint: "El nombre del idioma empieza con vocal", explanation: "Con artículo se dice Studio l'italiano; también es correcto Studio italiano, sin artículo." },
+  { question: "Traduce al italiano: Roma es bonita.", answers: ["Roma è bella", "Roma è bella."], hint: "Las ciudades van sin artículo", explanation: "Roma è bella: las ciudades no llevan artículo." },
+  { question: "Escribe Ø o 0 si no lleva artículo: ___ Leslie è qui.", answers: ["Ø", "0"], hint: "Nombre de persona", explanation: "Leslie è qui: los nombres de persona van sin artículo (Ø)." },
+  { question: "Escribe Ø o 0 si no lleva artículo: Sono ___ insegnante.", answers: ["Ø", "0"], hint: "La profesión con essere", explanation: "Sono insegnante: con essere la profesión va sin artículo (Ø)." },
+  { question: "Completa (3:00): Sono le ___.", answers: ["tre"], hint: "El número tres", explanation: "Sono le tre: a partir de las dos, la hora usa sono le y el número. La una es è l'una." },
+  { question: "Traduce al italiano: El café está bueno.", answers: ["Il caffè è buono", "Il caffè è buono."], hint: "Como en español, lleva artículo", explanation: "El café está bueno = Il caffè è buono." },
 ];

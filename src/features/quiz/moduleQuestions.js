@@ -1,122 +1,119 @@
-import { ARTICLE_EXERCISE } from "../articles/data";
-import { POSSESSIVE_EXERCISE } from "../possessiveAdjectives/data";
-import { JOIN_EXERCISE } from "../possessiveNouns/data";
-import { EXERCISE as GERUNDS } from "../gerunds/data";
-import { EXERCISE as SIMPLE_PRESENT } from "../simplePresent/data";
-import { EXERCISE as IN_ON_AT } from "../inOnAt/data";
-import { SP_ADV_EXERCISE } from "../simplePresentAdvanced/data";
+import { VERB_BANK } from "../verbFinder/data";
+import { PRACTICE as ESSERE_AVERE } from "../essereAvere/data";
+import { PRACTICE as COUNTRIES } from "../countries/data";
+import { PRACTICE as FAMILY } from "../family/data";
+import { PRACTICE as PLURAL } from "../plural/data";
+import { PRACTICE as DEMONSTRATIVES } from "../demonstratives/data";
+import { PRACTICE as FRUITS } from "../fruits/data";
+import { PRACTICE as PREPOSITIONS } from "../prepositions/data";
+import { PRACTICE as DATES } from "../dates/data";
+import { PRACTICE as VERBS } from "../verbs/data";
+import { PRACTICE as STARE_GERUNDIO } from "../stareGerundio/data";
+import { PRACTICE as JOBS } from "../jobs/data";
+import { PRACTICE as VOCABULARY } from "../vocabulary/data";
+import { PRACTICE as ARTICLES } from "../articles/data";
+import { PRACTICE as ADJECTIVES } from "../adjectives/data";
+import { PRACTICE as POSSESSIVE_ADJECTIVES } from "../possessiveAdjectives/data";
+import { PRACTICE as PREPOSIZIONI_ARTICOLATE } from "../preposizioniArticolate/data";
+import { PRACTICE as WH_QUESTIONS } from "../whQuestions/data";
+import { PRACTICE as PRESENTE_INDICATIVO } from "../presenteIndicativo/data";
+import { PRACTICE as VERBI_INFINITO } from "../verbiInfinito/data";
+import { PRACTICE as IRREGULAR_VERBS } from "../irregularVerbs/data";
+import { PRACTICE as ROUTINE } from "../routineRiflessivi/data";
+import { PRACTICE as PREP_TEMPO } from "../preposizioniTempo/data";
 import { PRACTICE as DIRECTIONS } from "../directions/data";
-import { IRREGULAR_VERBS } from "../irregularVerbs/data";
-import { BEFORE_NOUN_SENTENCES, AFTER_VERB_SENTENCES } from "../adjectives/data";
-import { WH_WORDS } from "../whQuestions/data";
-import { GREETINGS, GOODBYES } from "../vocabulary/data";
-import { BODY_WORDS } from "../bodyParts/data";
-import { PRACTICE as CAN } from "../can/data";
-import { PRACTICE as COUNTABLE } from "../countable/data";
+import { PRACTICE as BODY_PARTS } from "../bodyParts/data";
+import { PRACTICE as POTERE_SAPERE } from "../potereSapere/data";
+import { PRACTICE as PARTITIVO } from "../partitivo/data";
 import { PRACTICE as FOOD_GROUPS } from "../foodGroups/data";
 import { PRACTICE as EXERCISE_WORDS } from "../exerciseWords/data";
 import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
-import { PRACTICE as SIMPLE_PAST } from "../simplePast/data";
-import { PRACTICE as GOING_TO } from "../goingTo/data";
+import { PRACTICE as PASSATO_PROSSIMO } from "../passatoProssimo/data";
+import { PRACTICE as IMPERFETTO } from "../imperfetto/data";
+import { PRACTICE as FUTURO } from "../futuro/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
 import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
 import { PRACTICE as COMPARATIVES } from "../comparatives/data";
-import { VERB_BANK } from "../verbFinder/data";
-
-const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
-
-// Reutiliza los ejercicios de las lecciones para mantener una sola fuente.
-function completeSentences(topic, rows) {
-  return rows.map(row => ({
-    topic,
-    question: `Escribe la oración completa en inglés: ${row.q || row.a || row.esp}`,
-    answers: [sentence(row.pts)],
-    hint: row.q || row.a ? row.esp : "Usa el vocabulario de la lección.",
-    explanation: `${sentence(row.pts)} — ${row.esp}`,
-  }));
-}
-
-function missingToken(topic, rows) {
-  return rows.map(row => ({
-    topic,
-    question: `Completa el espacio${topic === "articles" ? " (escribe Ø o 0 si no lleva artículo)" : ""}: ${row.pts.map(p => typeof p === "string" ? p : "___").join("")}`,
-    // Ø no está en el teclado: el 0 cuenta como la misma respuesta.
-    answers: row.pts.filter(p => typeof p !== "string").flatMap(p => p.t === "Ø" ? ["Ø", "0"] : [p.t]),
-    hint: row.esp,
-    explanation: sentence(row.pts),
-  }));
-}
 
 // Una pregunta de cada tipo por verbo del banco de consulta.
 function verbBankQuestions(v) {
-  const { base, past, participle, es, esPast, kind, note } = v;
+  const { infinito, presente, participio, ausiliare, es, note } = v;
   const meanings = es.split(/,\s*(?![^()]*\))/).map(part => part.trim()).filter(Boolean);
+  const plainMeanings = meanings.map(part => part.replace(/\s*\([^)]*\)/g, "").trim()).filter(Boolean);
+  const auxiliaries = ausiliare.split(" / ").map(part => part.trim());
   const noted = text => (note ? `${text} ${note}` : text);
   return [
     {
-      topic: "verbPast",
-      verb: base,
-      question: `Escribe el pasado simple de ${base}.`,
-      answers: [...new Set([past.join(" / "), ...past])],
+      topic: "verbPresent",
+      verb: infinito,
+      question: `Escribe la forma de «io» en presente de ${infinito}.`,
+      answers: [...new Set(presente)],
       hint: `Significa «${es}».`,
-      explanation: noted(`${base} → ${past.join(" / ")} = ${esPast}.`),
+      explanation: noted(`${infinito} → ${presente.join(" / ")}.`),
     },
     {
       topic: "verbParticiple",
-      verb: base,
-      question: `Escribe el participio pasado de ${base}.`,
-      answers: [...new Set([participle.join(" / "), ...participle])],
+      verb: infinito,
+      question: `Escribe el participio passato de ${infinito}.`,
+      answers: [...new Set(participio)],
       hint: `Significa «${es}».`,
-      explanation: noted(`${base} → ${past.join(" / ")} → ${participle.join(" / ")}.${kind === "regular" ? " En los regulares, el participio es igual al pasado." : ""}`),
+      explanation: noted(`${infinito} → ${participio.join(" / ")}.`),
+    },
+    {
+      topic: "verbAux",
+      verb: infinito,
+      question: `¿Qué auxiliar usa ${infinito} en el passato prossimo?`,
+      answers: [...new Set(auxiliaries)],
+      hint: `Significa «${es}».`,
+      explanation: noted(`En el passato prossimo, ${infinito} usa ${ausiliare}.`),
     },
     {
       topic: "verbMeaning",
-      verb: base,
-      question: `¿Qué significa ${base}?`,
-      answers: [...new Set([es, ...meanings])],
+      verb: infinito,
+      question: `¿Qué significa ${infinito}?`,
+      answers: [...new Set([es, ...meanings, ...plainMeanings])],
+      answerLang: "es",
       ...(meanings.length > 1 ? { hint: "Basta con escribir uno de sus significados." } : {}),
-      explanation: noted(`${base} = ${es}.`),
+      explanation: noted(`${infinito} = ${es}.`),
     },
   ];
 }
 
 export const MODULE_QUESTIONS = [
-  ...SIMPLE_PAST.map(row => ({ ...row, topic: "simplePast" })),
-  ...GOING_TO.map(row => ({ ...row, topic: "goingTo" })),
+  ...ESSERE_AVERE.map(row => ({ ...row, topic: "essereAvere" })),
+  ...COUNTRIES.map(row => ({ ...row, topic: "countries" })),
+  ...FAMILY.map(row => ({ ...row, topic: "family" })),
+  ...PLURAL.map(row => ({ ...row, topic: "plural" })),
+  ...DEMONSTRATIVES.map(row => ({ ...row, topic: "demonstratives" })),
+  ...FRUITS.map(row => ({ ...row, topic: "fruits" })),
+  ...PREPOSITIONS.map(row => ({ ...row, topic: "prepositions" })),
+  ...DATES.map(row => ({ ...row, topic: "dates" })),
+  ...VERBS.map(row => ({ ...row, topic: "verbs" })),
+  ...STARE_GERUNDIO.map(row => ({ ...row, topic: "stareGerundio" })),
+  ...JOBS.map(row => ({ ...row, topic: "jobs" })),
+  ...VOCABULARY.map(row => ({ ...row, topic: "vocabulary" })),
+  ...ARTICLES.map(row => ({ ...row, topic: "articles" })),
+  ...ADJECTIVES.map(row => ({ ...row, topic: "adjectives" })),
+  ...POSSESSIVE_ADJECTIVES.map(row => ({ ...row, topic: "possessiveAdjectives" })),
+  ...PREPOSIZIONI_ARTICOLATE.map(row => ({ ...row, topic: "preposizioniArticolate" })),
+  ...WH_QUESTIONS.map(row => ({ ...row, topic: "whQuestions" })),
+  ...PRESENTE_INDICATIVO.map(row => ({ ...row, topic: "presenteIndicativo" })),
+  ...VERBI_INFINITO.map(row => ({ ...row, topic: "verbiInfinito" })),
+  ...IRREGULAR_VERBS.map(row => ({ ...row, topic: "irregularVerbs" })),
+  ...ROUTINE.map(row => ({ ...row, topic: "routineRiflessivi" })),
+  ...PREP_TEMPO.map(row => ({ ...row, topic: "preposizioniTempo" })),
+  ...DIRECTIONS.map(row => ({ ...row, topic: "directions" })),
+  ...BODY_PARTS.map(row => ({ ...row, topic: "bodyParts" })),
+  ...POTERE_SAPERE.map(row => ({ ...row, topic: "potereSapere" })),
+  ...PARTITIVO.map(row => ({ ...row, topic: "partitivo" })),
+  ...FOOD_GROUPS.map(row => ({ ...row, topic: "foodGroups" })),
+  ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
+  ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
+  ...PASSATO_PROSSIMO.map(row => ({ ...row, topic: "passatoProssimo" })),
+  ...IMPERFETTO.map(row => ({ ...row, topic: "imperfetto" })),
+  ...FUTURO.map(row => ({ ...row, topic: "futuro" })),
   ...SOCIAL_COLLOCATIONS.map(row => ({ ...row, topic: "socialCollocations" })),
   ...MONEY_CAREER.map(row => ({ ...row, topic: "moneyCareer" })),
   ...COMPARATIVES.map(row => ({ ...row, topic: "comparatives" })),
-  ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
-  ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
-  ...FOOD_GROUPS.map(row => ({ ...row, topic: "foodGroups" })),
-  ...COUNTABLE.map(row => ({ ...row, topic: "countable" })),
-  ...CAN.map(row => ({ ...row, topic: "can" })),
-  ...BODY_WORDS.map(([en, es]) => ({
-    topic: "bodyParts",
-    question: `Traduce al inglés: ${es}`,
-    answers: en === "pinky" ? [en, "little finger"] : [en],
-    explanation: `${en} = ${es}`,
-  })),
-  ...BODY_WORDS.filter(([, , plural]) => plural).map(([en, , plural]) => ({
-    topic: "bodyParts",
-    question: `Escribe el plural de ${en}.`,
-    answers: [plural],
-    explanation: `${en} → ${plural}`,
-  })),
-  ...missingToken("articles", ARTICLE_EXERCISE),
-  ...missingToken("possessiveAdjectives", POSSESSIVE_EXERCISE),
-  ...completeSentences("possessiveNouns", JOIN_EXERCISE),
-  ...completeSentences("gerunds", GERUNDS),
-  ...completeSentences("simplePresent", SIMPLE_PRESENT),
-  ...completeSentences("inOnAt", IN_ON_AT),
-  ...completeSentences("simplePresentAdvanced", SP_ADV_EXERCISE),
-  ...completeSentences("adjectives", [...BEFORE_NOUN_SENTENCES, ...AFTER_VERB_SENTENCES]),
-  ...IRREGULAR_VERBS.flatMap(([verb, past, participle]) => [
-    { topic: "irregularVerbs", question: `Escribe el pasado simple de ${verb}.`, answers: [past, ...past.split("/")], explanation: `${verb} → ${past}` },
-    { topic: "irregularVerbs", question: `Escribe el participio pasado de ${verb}.`, answers: [participle, ...participle.split("/")], explanation: `${verb} → ${participle}` },
-  ]),
-  ...WH_WORDS.map(([word, translation, usage]) => ({ topic: "whQuestions", question: `¿Qué expresión WH significa «${translation}»?`, answers: [word], hint: usage, explanation: `${word} = ${translation}` })),
-  ...[...GREETINGS, ...GOODBYES].map(([phrase, translation]) => ({ topic: "vocabulary", question: `Traduce al español: ${phrase}`, answers: [translation, ...translation.split(" / ")], explanation: `${phrase} = ${translation}` })),
-  ...DIRECTIONS.map(row => ({ topic: "directions", question: `Traduce al inglés: ${row.q}`, answers: [row.answer], explanation: `${row.answer} — ${row.q}` })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];

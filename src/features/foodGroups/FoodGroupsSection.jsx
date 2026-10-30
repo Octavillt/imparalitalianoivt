@@ -1,8 +1,17 @@
 import TopicHeading from "../../components/TopicHeading";
+import ExampleCard from "../../components/ExampleCard";
+import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS, CONVERSATION } from "./data";
+import {
+  CONVERSATION,
+  EXTRA_WORDS,
+  FOOD_ADJECTIVES,
+  FOOD_GROUPS,
+  RESTAURANT,
+  TASTES,
+} from "./data";
 
 const COLOR = "#22C55E";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
@@ -13,74 +22,92 @@ export default function FoodGroupsSection() {
   return (
     <div>
       <TopicHeading topicId="foodGroups" />
-      <p style={{ ...card, ...text }}>🍽️ <strong>Food groups</strong> significa «grupos de alimentos». Aprende los cinco grupos del pizarrón y usa el vocabulario para hablar de lo que comes, lo que te gusta y cómo sabe la comida.</p>
+      <p style={{ ...card, ...text }}>
+        🍽️ Estos grupos sirven para hablar de lo que comes, de cómo sabe y de lo que pides. Leslie cena en Roma con un mesero.
+      </p>
+      <Legend roles={["verb", "art", "adj", "neg", "essere", "subject", "prep", "articolata"]} />
 
-      <SectionTitle color={COLOR}>🛒 Los cinco grupos del pizarrón</SectionTitle>
-      <p style={text}>Esta es la clasificación de la actividad de clase. Los alimentos pueden aportar varios nutrientes y aparecer en otras categorías según el sistema: la mantequilla es de origen lácteo, pero aquí se agrupa con las grasas; las papas y el maíz también aportan carbohidratos, y los frijoles son legumbres que aportan proteína.</p>
+      <SectionTitle color={COLOR}>🛒 Los grupos</SectionTitle>
+      <p style={text}>Algunos alimentos podrían estar en más de un grupo; aquí cada uno aparece en uno solo.</p>
       {FOOD_GROUPS.map(group => (
         <RuleBox key={group.name} icon={group.icon} rule={`${group.name} — ${group.translation}`} color={COLOR}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "8px", margin: "12px 0" }}>
-            {group.foods.map(([en, es]) => (
-              <div key={en} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px" }}>
-                <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
+            {group.foods.map(([it, es]) => (
+              <div key={it} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px" }}>
+                <div lang="it" style={{ ...text, fontWeight: 700 }}>{it}</div>
                 <div style={translation}>🇲🇽 {es}</div>
               </div>
             ))}
           </div>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{group.example}</div>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{group.example}</div>
           <div style={translation}>🇲🇽 {group.meaning}</div>
         </RuleBox>
       ))}
-      <RelatedTopic levelId="basico1" topicId="fruits" label="Ampliar el vocabulario de frutas y verduras" />
+      <RelatedTopic levelId="basico1" topicId="fruits" />
 
-      <SectionTitle color={COLOR}>😋 Adjetivos para describir la comida</SectionTitle>
-      {FOOD_ADJECTIVES.map(([en, es, example, meaning]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div style={{ ...text, fontWeight: 700 }}><span lang="en">{en}</span> — {es}</div>
-          <div lang="en" style={text}>{example}</div>
+      <SectionTitle color={COLOR}>🥚 L'uovo, le uova</SectionTitle>
+      <RuleBox icon="🥚" rule="Un singular masculino con plural femenino en -a" color={COLOR}>
+        <p style={text}>
+          <span lang="it">L'uovo</span> es masculino. <span lang="it">Le uova</span> es femenino plural, como <span lang="it">le braccia</span>. El adjetivo lo sigue: <span lang="it">le uova fresche</span>. <span lang="it">Un frutto</span> es una pieza; <span lang="it">la frutta</span> es el grupo.
+        </p>
+        <RelatedTopic levelId="basico1" topicId="plural" />
+        <RelatedTopic levelId="basico4" topicId="bodyParts" />
+      </RuleBox>
+
+      <SectionTitle color={COLOR}>😋 Sabores y estados</SectionTitle>
+      {FOOD_ADJECTIVES.map(([it, es, example, meaning]) => (
+        <div key={it} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div style={{ ...text, fontWeight: 700 }}><span lang="it">{it}</span> — {es}</div>
+          <div lang="it" style={text}>{example}</div>
           <div style={translation}>🇲🇽 {meaning}</div>
         </div>
       ))}
-      <RuleBox icon="💬" rule="Describe sabores y expresa opiniones con amabilidad" color={COLOR}>
-        <p style={text}><strong>Disgusting</strong> expresa un rechazo fuerte. Para decir que algo no te gusta de forma más amable: <span lang="en">It's not my favorite</span> (No es mi favorito) o <span lang="en">I don't really like it</span> (No me gusta mucho).</p>
-        <p style={text}><strong>Sweet</strong> y <strong>spicy</strong> describen sabores, no grupos alimenticios. <strong>Healthy</strong> y <strong>unhealthy</strong> hablan de salud: la cantidad, la preparación y el conjunto de la alimentación importan. Que algo sea dulce no lo vuelve automáticamente poco saludable.</p>
-        <p style={text}>El adjetivo puede ir antes del sustantivo o después de to be: <span lang="en">sweet food → This food is sweet</span>. No cambia en plural: <span lang="en">sweet apples</span>, no «sweets apples». Usa <strong>spicy</strong> para picante; <strong>hot</strong> también puede significar caliente.</p>
-        <RelatedTopic levelId="basico2" topicId="adjectives" label="Repasar adjetivos y su posición" />
+      <RuleBox icon="🎨" rule="El adjetivo concuerda con la comida" color={COLOR}>
+        <p style={text}>
+          Si termina en <span lang="it">-o</span>, cambia: <span lang="it">il limone è aspro</span>, <span lang="it">una mela è aspra</span>, <span lang="it">l'acqua è fredda</span>, <span lang="it">la pizza è salata</span>. Si termina en <span lang="it">-e</span>, en singular no cambia: <span lang="it">dolce, piccante</span>. En plural: <span lang="it">dolci, piccanti</span>.
+        </p>
+        <p style={text}>
+          <span lang="it">Caldo</span> habla de temperatura: caliente. <span lang="it">Il prosciutto crudo</span> es jamón curado; en ese nombre, <span lang="it">crudo</span> no quiere decir que no se coma.
+        </p>
+        <RelatedTopic levelId="basico2" topicId="adjectives" />
       </RuleBox>
 
-      <SectionTitle color={COLOR}>🥪 Más palabras útiles</SectionTitle>
-      {EXTRA_WORDS.map(([en, es, example, meaning]) => (
-        <div key={en} style={card}>
-          <div style={{ ...text, fontWeight: 700 }}><span lang="en">{en}</span> — {es}</div>
-          <div lang="en" style={text}>{example}</div>
+      <SectionTitle color={COLOR}>🥪 Comidas del día y palabras que se confunden</SectionTitle>
+      {EXTRA_WORDS.map(([it, es, example, meaning]) => (
+        <div key={it} style={card}>
+          <div style={{ ...text, fontWeight: 700 }}><span lang="it">{it}</span> — {es}</div>
+          <div lang="it" style={text}>{example}</div>
           <div style={translation}>🇲🇽 {meaning}</div>
         </div>
       ))}
-      <p style={text}><strong>Snack</strong> es un sustantivo, no un sabor ni un grupo de alimentos: puede ser una fruta, yogur u otra comida pequeña entre comidas. <strong>Try</strong> es el verbo «probar»: <span lang="en">Try this food</span> (Prueba esta comida).</p>
+      <p style={text}>
+        <span lang="it">La salsa</span> significa salsa. <span lang="it">Il burro</span> es la mantequilla, <span lang="it">l'aceto</span> el vinagre y <span lang="it">l'olio</span> el aceite. <span lang="it">Il pesce</span> es el pescado y también el pez. <span lang="it">Il succo</span> es el jugo.
+      </p>
 
-      <SectionTitle color={COLOR}>🧺 Conecta con contables e incontables</SectionTitle>
-      <RuleBox icon="🔢" rule="Cuenta unidades o expresa una cantidad" color={COLOR}>
-        <ul style={{ ...text, paddingLeft: "20px" }}>
-          <li><strong>Contables:</strong> an apple → two apples; a banana → three bananas; a potato → four potatoes; an egg → two eggs; a bean → some beans.</li>
-          <li><strong>Incontables en su uso como alimentos o sustancias:</strong> milk, cheese, yogurt, ice cream, butter, chocolate, soda, oil, corn, bread, pasta, cereal y rice. Usa some o a little: <span lang="en">some pasta, a little oil</span>.</li>
-          <li><strong>Porciones:</strong> a slice of bread (una rebanada de pan), a bowl of cereal (un tazón de cereal), a piece of cheese (un trozo de queso), a scoop of ice cream (una bola de helado).</li>
-          <li><strong>Chicken y fish:</strong> <span lang="en">some chicken / some fish</span> para la carne; <span lang="en">a chicken / two chickens</span> para los animales. Para peces individuales: <span lang="en">one fish / two fish</span>.</li>
-          <li><strong>El contexto cambia el uso:</strong> <span lang="en">some chocolate</span> es una cantidad de chocolate; <span lang="en">two chocolates</span> son dos bombones. <span lang="en">Two sodas</span> puede significar dos porciones o envases de refresco al pedir.</li>
-        </ul>
-        <RelatedTopic levelId="basico4" topicId="countable" label="Repasar how many, how much y las unidades de medida" />
+      <SectionTitle color={COLOR}>🧺 Cantidades</SectionTitle>
+      <RuleBox icon="🔢" rule="El partitivo y la medida siguen en la lección anterior" color={COLOR}>
+        <p style={text}>
+          <span lang="it">Del pane</span> es un poco de pan. <span lang="it">Un chilo di pomodori</span> lleva <span lang="it">di</span> sin artículo. <span lang="it">Non ho pane</span> va sin partitivo.
+        </p>
+        <RelatedTopic levelId="basico4" topicId="partitivo" />
       </RuleBox>
 
-      <SectionTitle color={COLOR}>🗣️ Conversación: gustos y desayuno</SectionTitle>
-      {CONVERSATION.map(([en, es], index) => (
-        <div key={en} style={card}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{index % 2 === 0 ? "A" : "B"}: {en}</div>
+      <SectionTitle color={COLOR}>😋 Gustos</SectionTitle>
+      <p style={text}>
+        <span lang="it">Piace</span> va con un singular; <span lang="it">piacciono</span>, con un plural. El verbo concuerda con la comida, no con la persona.
+      </p>
+      {TASTES.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+      <RelatedTopic levelId="basico2" topicId="verbiInfinito" />
+
+      <SectionTitle color={COLOR}>🗣️ En el restaurante, en Roma</SectionTitle>
+      <p style={text}>Leslie habla con el mesero. Él le habla de usted. Si pidiera pizza, diría <span lang="it">Per me una pizza</span>.</p>
+      {RESTAURANT.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+      {CONVERSATION.map(([it, es], index) => (
+        <div key={it} style={card}>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{index % 2 === 0 ? "Mesero" : "Leslie"}: {it}</div>
           <div style={translation}>🇲🇽 {es}</div>
         </div>
       ))}
-      <p style={text}>Para responder a <span lang="en">Do you like…?</span> usa <span lang="en">Yes, I do / No, I don't</span>. Aquí <strong>have</strong> puede significar comer o tomar: <span lang="en">have breakfast</span> = desayunar. En <span lang="en">Can I have…?</span>, can se usa para hacer una petición.</p>
-
-      <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
-      <p style={text}>Elige un alimento de cada grupo, escribe su nombre en inglés y describe dos con un adjetivo. Luego crea un desayuno usando un alimento contable y uno incontable; pregunta a otra persona si le gusta. Usa la autoevaluación de abajo y el Quiz para practicar vocabulario y oraciones.</p>
     </div>
   );
 }

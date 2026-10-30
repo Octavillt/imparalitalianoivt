@@ -1,34 +1,51 @@
 import { useState } from "react";
 import TopicHeading from "../../components/TopicHeading";
+import ExampleCard from "../../components/ExampleCard";
+import FilterableList from "../../components/FilterableList";
+import Formula from "../../components/Formula";
+import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import Formula from "../../components/Formula";
-import Legend from "../../components/Legend";
-import ExampleCard from "../../components/ExampleCard";
-import FilterableList from "../../components/FilterableList";
-import { SHORT_EXAMPLES, LONG_EXAMPLES, SPELLING_RULES, IRREGULARS, LESS_EXAMPLES, EQUAL_EXAMPLES, QUESTIONS, INTENSIFIERS, PAST_EXAMPLES, ADJECTIVE_BANK, RULE_LABELS } from "./data";
+import {
+  ANIMALS,
+  SUPERIOR,
+  INFERIOR,
+  CONTRACTIONS,
+  CHE_EXAMPLES,
+  EQUAL_EXAMPLES,
+  IRREGULAR_COMPARATIVES,
+  ALSO_REGULAR,
+  FAMILY,
+  QUALITY,
+  QUESTIONS,
+  INTENSIFIERS,
+  PAST_FUTURE,
+  SUPERLATIVE,
+  ADJECTIVE_BANK,
+  RULE_LABELS,
+} from "./data";
 
 const COLOR = "#60A5FA";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
 
-// Sin acentos ni mayúsculas, para buscar «facil» y encontrar «fácil».
-const normalize = value => value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+function fold(value) {
+  return value.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
+}
 
 function BankTable({ rows }) {
   if (rows.length === 0) return <p style={{ ...text, padding: "12px 4px" }}>Sin resultados.</p>;
-  return rows.map(([word, comparative, esp, ruleKey], i) => (
-    <div key={word} style={{ ...card, borderLeft: `3px solid ${COLOR}`, background: i % 2 === 0 ? "var(--surface, #1e293b)" : "var(--surface-deep, #0f172a)" }}>
+  return rows.map(([word, comparative, esp, ruleKey]) => (
+    <div key={`${word}-${comparative}`} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
       <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "6px 10px" }}>
-        <div lang="en" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>
-          {word} → {comparative}
-        </div>
+        <div lang="it" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{word} → {comparative}</div>
         <span style={{
           color: COLOR, background: `${COLOR}22`, fontWeight: 700,
           padding: "2px 9px", borderRadius: "20px", fontSize: "11px", whiteSpace: "nowrap",
-        }}>
+        }}
+        >
           {RULE_LABELS[ruleKey]}
         </span>
       </div>
@@ -39,235 +56,237 @@ function BankTable({ rows }) {
 
 export default function ComparativesSection() {
   const [filter, setFilter] = useState("");
-  const q = normalize(filter.trim());
+  const q = fold(filter.trim());
   const filtered = ADJECTIVE_BANK.filter(([word, comparative, esp]) =>
-    normalize(word).includes(q) || normalize(comparative).includes(q) || normalize(esp).includes(q)
+    fold(word).includes(q) || fold(comparative).includes(q) || fold(esp).includes(q)
   );
 
   return (
     <div>
       <TopicHeading topicId="comparatives" />
       <div style={{ ...card, ...text }}>
-        💡 Los comparativos (<span lang="en">comparatives</span>) comparan <strong>dos</strong> personas, animales o
-        cosas. En español decimos «más … que»; en inglés la forma depende del largo del adjetivo: si es corto se
-        agrega <strong>-er</strong> + <span lang="en">than</span> (<span lang="en">bigger than</span>) y si es largo
-        se usa <strong>more</strong> + adjetivo + <span lang="en">than</span> (<span lang="en">more dangerous than</span>).
+        💡 Los comparativos comparan dos personas, animales o cosas.
+        <span lang="it"> Più</span> sube la cualidad y <span lang="it">meno</span> la baja.
+        El adjetivo concuerda con quien se describe.
       </div>
+      <Legend roles={["subject", "essere", "verb", "adj", "comp", "art", "articolata", "prep", "demo"]} />
 
-      <Legend roles={["subject", "verb_be", "adj", "comp"]} />
-
-      <RuleBox icon="🔑" rule="¿Corto o largo? Cuenta las sílabas" color={COLOR}>
+      <RuleBox icon="🔑" rule="Più o meno, y después di" color={COLOR}>
         <ul style={{ ...text, paddingLeft: "20px" }}>
-          <li>
-            <strong>Corto:</strong> una sílaba (<span lang="en">fast, big, cute</span>) o dos sílabas que terminan
-            en -y (<span lang="en">happy, sunny</span>) → adjetivo + <strong>-er</strong> + <span lang="en">than</span>.
-          </li>
-          <li>
-            <strong>Largo:</strong> dos o más sílabas que no terminan en -y (<span lang="en">famous, dangerous, expensive</span>) →{" "}
-            <strong>more</strong> + adjetivo + <span lang="en">than</span>.
-          </li>
+          <li><span lang="it">Più</span> + adjetivo + <span lang="it">di</span> es «más … que».</li>
+          <li><span lang="it">Meno</span> + adjetivo + <span lang="it">di</span> es «menos … que».</li>
+          <li><span lang="it">Di</span> se contrae con el artículo. Sin artículo, <span lang="it">di</span> se queda: <span lang="it">di Firenze</span>, <span lang="it">di me</span>, <span lang="it">di te</span>.</li>
         </ul>
         <RelatedTopic levelId="basico2" topicId="adjectives" label="Repasar adjetivos y opuestos" />
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📏 Adjetivos cortos: -er + than</SectionTitle>
+      <SectionTitle color={COLOR}>🐾 Animales para comparar</SectionTitle>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px" }}>
+        {ANIMALS.map(([it, es]) => (
+          <div key={it} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+            <div lang="it" style={{ ...text, fontWeight: 700 }}>{it}</div>
+            <div style={translation}>🇲🇽 {es}</div>
+          </div>
+        ))}
+      </div>
+
+      <SectionTitle color={COLOR}>📏 Superioridad: più + adjetivo + di</SectionTitle>
       <Formula
-        label="Adjetivo corto"
+        label="Más que"
+        color={COLOR}
         parts={[
           { t: "Sujeto", r: "subject" },
-          { t: "am / is / are", r: "verb_be" },
-          { t: "adjetivo corto", r: "adj" },
-          { t: "-er", r: "comp" },
-          { t: "than", r: "comp" },
-          { t: "persona, animal o cosa", r: "subject" },
+          { t: "essere", r: "essere" },
+          { t: "più", r: "comp" },
+          { t: "adjetivo", r: "adj" },
+          { t: "di", r: "prep" },
+          { t: "la otra parte", color: "#94a3b8" },
         ]}
         example={[
-          { t: "A rabbit", r: "subject" },
-          { t: "is", r: "verb_be" },
-          { t: "bigger", r: "adj" },
-          { t: "than", r: "comp" },
-          { t: "a hamster.", color: "#94a3b8" },
+          { t: "Leslie", r: "subject" },
+          { t: "è", r: "essere" },
+          { t: "più", r: "comp" },
+          { t: "alta", r: "adj" },
+          { t: "di", r: "prep" },
+          { t: "Octavio.", color: "#94a3b8" },
         ]}
       />
-      {SHORT_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
+      {SUPERIOR.map(item => <ExampleCard key={`sup-${item.esp}`} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>✍️ Cómo se escribe el comparativo corto</SectionTitle>
-      {SPELLING_RULES.map(rule => (
-        <div key={rule.title} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{rule.title}</div>
-          <div style={text}>{rule.rule}</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "8px" }}>
-            {rule.pairs.map(([base, comparative]) => (
-              <span key={base} lang="en" style={{
-                color: "#e2e8f0", background: "var(--surface-deep, #0f172a)",
-                border: `1px solid ${COLOR}55`, borderRadius: "20px",
-                padding: "3px 10px", fontSize: "13px", fontWeight: 700,
-              }}>
-                {base} → {comparative}
-              </span>
-            ))}
+      <SectionTitle color={COLOR}>✍️ Cómo se escribe di</SectionTitle>
+      <p style={text}>Con artículo, di se junta y la forma cambia. Estas son las siete contracciones.</p>
+      {CONTRACTIONS.map(([sum, form, example, esp]) => (
+        <div key={form} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>
+            <span lang="it">{sum}</span> → <span lang="it">{form}</span>
           </div>
-          {rule.note && <div style={translation}>💡 {rule.note}</div>}
-        </div>
-      ))}
-
-      <SectionTitle color={COLOR}>⭐ Comparativos irregulares</SectionTitle>
-      {IRREGULARS.map(([base, comparative, esp]) => (
-        <div key={base} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{base} → {comparative}</div>
+          <div lang="it" style={text}>{example}</div>
           <div style={translation}>🇲🇽 {esp}</div>
         </div>
       ))}
-      <RuleBox icon="📍" rule="Farther y further" color={COLOR}>
-        <p style={text}>
-          Los dos significan «más lejos»: <span lang="en">Mexico City is farther than Puebla.</span>{" "}
-          <span lang="en">Further</span> también se usa en sentido figurado:{" "}
-          <span lang="en">further information</span> = más información.
-        </p>
-      </RuleBox>
 
-      <SectionTitle color={COLOR}>📐 Adjetivos largos: more + adjetivo + than</SectionTitle>
-      <Formula
-        label="Adjetivo largo"
-        parts={[
-          { t: "Sujeto", r: "subject" },
-          { t: "am / is / are", r: "verb_be" },
-          { t: "more", r: "comp" },
-          { t: "adjetivo largo", r: "adj" },
-          { t: "than", r: "comp" },
-          { t: "persona, animal o cosa", r: "subject" },
-        ]}
-        example={[
-          { t: "Crocodiles", r: "subject" },
-          { t: "are", r: "verb_be" },
-          { t: "more", r: "comp" },
-          { t: "dangerous", r: "adj" },
-          { t: "than", r: "comp" },
-          { t: "panthers.", color: "#94a3b8" },
-        ]}
-      />
-      {LONG_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color={COLOR}>➕➖ More y less</SectionTitle>
-      <RuleBox icon="⚖️" rule="More = más (+), less = menos (−)" color={COLOR}>
-        <p style={text}>
-          <strong>More</strong> sube la cualidad y <strong>less</strong> la baja:{" "}
-          <strong>less</strong> + adjetivo + <span lang="en">than</span> = «menos … que».{" "}
-          <span lang="en">Less</span> se usa sobre todo con adjetivos largos; con los cortos suena más natural{" "}
-          <span lang="en">not as … as</span>: <span lang="en">A hamster isn't as big as a rabbit.</span>
-        </p>
-      </RuleBox>
+      <SectionTitle color={COLOR}>📉 Inferioridad: meno + adjetivo + di</SectionTitle>
       <Formula
         label="Menos que"
+        color={COLOR}
         parts={[
           { t: "Sujeto", r: "subject" },
-          { t: "am / is / are", r: "verb_be" },
-          { t: "less", r: "comp" },
+          { t: "essere", r: "essere" },
+          { t: "meno", r: "comp" },
           { t: "adjetivo", r: "adj" },
-          { t: "than", r: "comp" },
-          { t: "persona, animal o cosa", r: "subject" },
+          { t: "di", r: "prep" },
+          { t: "la otra parte", color: "#94a3b8" },
+        ]}
+        example={[
+          { t: "Il treno", r: "subject" },
+          { t: "è", r: "essere" },
+          { t: "meno", r: "comp" },
+          { t: "caro", r: "adj" },
+          { t: "dell'aereo.", r: "articolata" },
         ]}
       />
-      {LESS_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
+      {INFERIOR.map(item => <ExampleCard key={`inf-${item.esp}`} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>🟰 Tan … como: as … as</SectionTitle>
-      <Formula
-        label="Igualdad"
-        parts={[
-          { t: "Sujeto", r: "subject" },
-          { t: "am / is / are (not)", r: "verb_be" },
-          { t: "as", r: "comp" },
-          { t: "adjetivo", r: "adj" },
-          { t: "as", r: "comp" },
-          { t: "persona, animal o cosa", r: "subject" },
-        ]}
-      />
-      <p style={text}>
-        Con <span lang="en">as … as</span> el adjetivo no cambia (✗ <span lang="en">as taller as</span>).
-        En negativa significa «no tan … como».
-      </p>
-      {EQUAL_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color={COLOR}>❓ Preguntas con comparativos</SectionTitle>
-      <RuleBox icon="💬" rule="Pregunta con am/is/are, which o who" color={COLOR}>
+      <SectionTitle color={COLOR}>🔀 Che, en lugar de di</SectionTitle>
+      <RuleBox icon="⚖️" rule="Dos partes del mismo sujeto" color={COLOR}>
         <p style={text}>
-          Coloca <strong>am/is/are</strong> antes del sujeto:{" "}
-          <span lang="en">Is a rabbit bigger than a hamster?</span> Responde con to be:{" "}
-          <span lang="en">Yes, it is.</span> / <span lang="en">No, they aren't.</span> Para elegir entre dos usa{" "}
-          <strong>which</strong> con cosas y animales, y <strong>who</strong> con personas.
+          <span lang="it">Che</span> compara dos adjetivos, dos verbos o dos expresiones con preposición
+          sobre un mismo sujeto. Entre dos personas o dos cosas distintas sigue <span lang="it">di</span>.
         </p>
-        <RelatedTopic levelId="basico2" topicId="whQuestions" label="Repasar las preguntas con WH" />
       </RuleBox>
-      {QUESTIONS.map(([q, a, esp]) => (
-        <div key={q} style={card}>
-          <div lang="en" style={{ color: COLOR, fontSize: "14px", fontWeight: 700 }}>{q}</div>
-          <div lang="en" style={text}>→ {a}</div>
+      <Formula
+        label="Che"
+        color={COLOR}
+        parts={[
+          { t: "mismo sujeto", r: "subject" },
+          { t: "più", r: "comp" },
+          { t: "parte A", color: "#e2e8f0" },
+          { t: "che", r: "comp" },
+          { t: "parte B", color: "#e2e8f0" },
+        ]}
+        example={[
+          { t: "simpatica", r: "adj" },
+          { t: "che", r: "comp" },
+          { t: "bella", r: "adj" },
+        ]}
+      />
+      {CHE_EXAMPLES.map(item => <ExampleCard key={`che-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+
+      <SectionTitle color={COLOR}>🟰 Igualdad: come y quanto</SectionTitle>
+      <Formula
+        label="Como"
+        color={COLOR}
+        parts={[
+          { t: "Sujeto", r: "subject" },
+          { t: "essere", r: "essere" },
+          { t: "adjetivo", r: "adj" },
+          { t: "come", r: "comp" },
+          { t: "la otra parte", color: "#94a3b8" },
+        ]}
+        example={[
+          { t: "Leslie", r: "subject" },
+          { t: "è", r: "essere" },
+          { t: "alta", r: "adj" },
+          { t: "come", r: "comp" },
+          { t: "Octavio.", color: "#94a3b8" },
+        ]}
+      />
+      <Formula
+        label="Tan como"
+        color={COLOR}
+        parts={[
+          { t: "Sujeto", r: "subject" },
+          { t: "essere", r: "essere" },
+          { t: "tanto", r: "comp" },
+          { t: "adjetivo", r: "adj" },
+          { t: "quanto", r: "comp" },
+          { t: "la otra parte", color: "#94a3b8" },
+        ]}
+      />
+      <p style={text}>
+        El adjetivo concuerda con el sujeto. También se dice <span lang="it">così alta come</span>,
+        y <span lang="it">alto quanto</span> sin <span lang="it">tanto</span>.
+      </p>
+      {EQUAL_EXAMPLES.map(item => <ExampleCard key={`eq-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+
+      <SectionTitle color={COLOR}>⭐ Comparativos irregulares</SectionTitle>
+      {IRREGULAR_COMPARATIVES.map(([base, form, esp]) => (
+        <div key={base} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div lang="it" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{base} → {form}</div>
           <div style={translation}>🇲🇽 {esp}</div>
         </div>
       ))}
-
-      <SectionTitle color={COLOR}>⚠️ Errores comunes</SectionTitle>
-      <RuleBox icon="🚫" rule="Evita estos errores" color={COLOR}>
-        <ul style={{ ...text, paddingLeft: "20px" }}>
-          <li>
-            No mezcles <span lang="en">more</span> con -er: ✗ <span lang="en">more bigger</span> → ✓{" "}
-            <span lang="en">bigger</span>; ✗ <span lang="en">more better</span> → ✓ <span lang="en">better</span>.
-          </li>
-          <li>
-            <span lang="en">Than</span>, no <span lang="en">that</span> ni <span lang="en">then</span>: ✗{" "}
-            <span lang="en">bigger that</span> → ✓ <span lang="en">bigger than</span>.{" "}
-            <span lang="en">Then</span> significa «entonces».
-          </li>
-          <li>
-            El adjetivo no lleva -s en plural: ✗ <span lang="en">Rabbits are biggers</span> → ✓{" "}
-            <span lang="en">Rabbits are bigger than hamsters.</span>
-          </li>
-          <li>
-            Después de <span lang="en">than</span>, en el habla diaria se usa <span lang="en">me, him, her, us</span> o{" "}
-            <span lang="en">them</span>: <span lang="en">Leslie is taller than me.</span> También es correcto:{" "}
-            <span lang="en">Leslie is taller than I am.</span>
-          </li>
-        </ul>
+      <RuleBox icon="👨‍👩‍👧" rule="Più buono existe, y maggiore es de la familia" color={COLOR}>
+        <p style={text}>
+          <span lang="it">Più buono</span> y <span lang="it">più cattivo</span> también existen.
+          <span lang="it"> Maggiore</span> y <span lang="it">minore</span>, con un hermano o una hermana, hablan de la edad.
+          El tamaño va con <span lang="it">più grande</span> y <span lang="it">più piccolo</span>.
+          En singular, lo usual con la familia es sin artículo: <span lang="it">mio fratello</span>, <span lang="it">mia sorella</span>.
+        </p>
       </RuleBox>
+      {ALSO_REGULAR.map(item => <ExampleCard key={`also-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+      {FAMILY.map(item => <ExampleCard key={`fam-${item.esp}`} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>📊 ¿Cuánto más? much, a lot, a little</SectionTitle>
+      <SectionTitle color={COLOR}>🎵 Migliore es adjetivo; meglio, adverbio</SectionTitle>
       <p style={text}>
-        Antes del comparativo puedes decir cuánta diferencia hay: <span lang="en">much</span> /{" "}
-        <span lang="en">a lot</span> (mucho) y <span lang="en">a little</span> (un poco).
+        En español, «mejor» cubre los dos. Aquí <span lang="it">migliore</span> acompaña al sustantivo
+        y <span lang="it">meglio</span> acompaña al verbo. <span lang="it">Peggiore</span> y <span lang="it">peggio</span> se reparten igual.
       </p>
-      {INTENSIFIERS.map(([en, esp]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
+      {QUALITY.map(item => <ExampleCard key={`q-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+
+      <SectionTitle color={COLOR}>❓ Preguntas</SectionTitle>
+      <p style={text}>
+        La pregunta conserva el orden. <span lang="it">Chi</span> pregunta por personas.
+        <span lang="it"> Sì</span> lleva acento.
+      </p>
+      {QUESTIONS.map(([question, answer, esp]) => (
+        <div key={question} style={card}>
+          <div lang="it" style={{ color: COLOR, fontSize: "14px", fontWeight: 700 }}>{question}</div>
+          <div lang="it" style={text}>→ {answer}</div>
           <div style={translation}>🇲🇽 {esp}</div>
         </div>
       ))}
 
-      <SectionTitle color={COLOR}>⏪ Comparativos en pasado</SectionTitle>
+      <SectionTitle color={COLOR}>📊 ¿Cuánto más?</SectionTitle>
       <p style={text}>
-        Cambia <span lang="en">am/is/are</span> por <span lang="en">was/were</span>; el comparativo no cambia.
+        <span lang="it">Molto più</span> es mucho más. <span lang="it">Un po' più</span> es un poco más.
       </p>
-      {PAST_EXAMPLES.map(([en, esp]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ color: "#f8fafc", fontSize: "14px", fontWeight: 700 }}>{en}</div>
-          <div style={translation}>🇲🇽 {esp}</div>
-        </div>
-      ))}
-      <RelatedTopic levelId="basico5" topicId="simplePast" label="Repasar was y were en Pasado simple" />
+      {INTENSIFIERS.map(item => <ExampleCard key={`int-${item.esp}`} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>📋 Tabla de comparativos</SectionTitle>
+      <SectionTitle color={COLOR}>⏪⏩ Pasado y futuro</SectionTitle>
+      <p style={text}>
+        <span lang="it">Più</span> y <span lang="it">meno</span> no cambian. Cambia el verbo:
+        <span lang="it"> faceva</span> en ese pasado del clima, <span lang="it">farà</span> en futuro.
+      </p>
+      {PAST_FUTURE.map(item => <ExampleCard key={`time-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+      <RelatedTopic levelId="basico5" topicId="imperfetto" label="Repasar el imperfetto" />
+      <RelatedTopic levelId="basico5" topicId="futuro" label="Repasar el futuro semplice" />
+
+      <SectionTitle color={COLOR}>📋 Tabla de formas</SectionTitle>
       <FilterableList
-        placeholder="🔍 Busca: big, happy, feliz, more..."
+        label="Buscar comparativo"
+        placeholder="🔍 Busca: alto, migliore, mejor, più..."
         value={filter}
         onChange={setFilter}
       >
         <BankTable rows={filtered} />
       </FilterableList>
 
+      <details className="lesson-extension">
+        <summary>Ampliación: el más y -issimo</summary>
+        <p>
+          <span lang="it">Il più alto</span> es el más alto. El artículo concuerda:
+          <span lang="it"> il più alto</span>, <span lang="it">la più alta</span>, <span lang="it">i più alti</span>, <span lang="it">le più alte</span>.
+          <span lang="it"> Bellissimo</span> es muy bonito, y también concuerda:
+          <span lang="it"> bellissimo</span>, <span lang="it">bellissima</span>, <span lang="it">bellissimi</span>, <span lang="it">bellissime</span>.
+        </p>
+        {SUPERLATIVE.map(item => <ExampleCard key={`ext-${item.esp}`} pts={item.pts} esp={item.esp} />)}
+      </details>
+
       <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
       <p style={text}>
-        Compara a dos personas de tu familia, dos animales y dos cosas de tu casa: usa un adjetivo corto, uno largo
-        y un irregular. Después pregúntale a otra persona:{" "}
-        <span lang="en">Who is taller, you or your brother?</span> Usa el Quiz para repasar las reglas.
+        Compara a Leslie y a Octavio, al conejo y al hámster, y al tren y al avión.
+        Usa <span lang="it">più</span>, <span lang="it">meno</span> y una forma irregular. Usa el Quiz para practicar <span lang="it">di</span>, <span lang="it">che</span> y la concordancia.
       </p>
     </div>
   );

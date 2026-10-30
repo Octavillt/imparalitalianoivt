@@ -6,13 +6,17 @@ import { LEARNING_GUIDE } from "./constants/learningGuide";
 import { TOPIC_FORMULAS } from "./constants/topicFormulas";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
 
+// Pertenencia exacta de las lecciones ya migradas; crece con cada etapa.
 const membership = {
-  basico1: "verbs fruits plural numbers time dates countries family jobs tobe demonstratives prepositions progressive vocabulary",
-  basico2: "irregularVerbs adjectives whQuestions articles possessiveAdjectives possessiveNouns gerunds simplePresent",
-  basico3: "inOnAt simplePresentAdvanced directions",
-  basico4: "bodyParts can countable foodGroups exerciseWords adverbsManner",
-  basico5: "simplePast goingTo socialCollocations moneyCareer comparatives",
+  basico1: "numbers essereAvere countries family plural demonstratives fruits prepositions time dates verbs stareGerundio jobs vocabulary",
+  basico2: "articles adjectives possessiveAdjectives preposizioniArticolate whQuestions presenteIndicativo verbiInfinito irregularVerbs",
+  basico3: "routineRiflessivi preposizioniTempo directions",
+  basico4: "bodyParts potereSapere partitivo foodGroups exerciseWords adverbsManner",
+  basico5: "passatoProssimo imperfetto futuro socialCollocations moneyCareer comparatives",
 };
+const TOTAL_LESSONS = 37;
+const studyLevels = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
+const openLevels = studyLevels.filter(level => level.available);
 
 beforeEach(() => localStorage.clear());
 afterEach(() => vi.useRealTimers());
@@ -20,9 +24,9 @@ afterEach(() => vi.useRealTimers());
 describe("Recorrido de aprendizaje", () => {
   it("conserva todas las secciones en su módulo y enlaza bases anteriores", () => {
     const seen = new Set();
-    // Los niveles de referencia (Verbos) son consulta, no lecciones del recorrido.
-    for (const level of LEVELS.filter(level => level.id !== "quiz" && !level.reference)) {
-      expect(level.topics.map(t => t.id).sort()).toEqual(membership[level.id].split(" ").sort());
+    for (const level of studyLevels) {
+      expect(level.topics.map(t => t.id).sort()).toEqual(membership[level.id].split(" ").filter(Boolean).sort());
+      expect(level.purpose && level.description && level.bridge && level.outcome).toBeTruthy();
       for (const topic of level.topics) {
         expect(seen.has(topic.id)).toBe(false);
         const guide = LEARNING_GUIDE[topic.id];
@@ -33,18 +37,20 @@ describe("Recorrido de aprendizaje", () => {
         seen.add(topic.id);
       }
     }
-    expect(seen.size).toBe(36);
+    expect(seen.size).toBe(TOTAL_LESSONS);
   });
 
-  it.each(LEVELS.filter(level => level.id !== "quiz" && !level.reference))("abre cada sección y su autoevaluación en $label", level => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date("2026-08-01T12:00:00Z"));
+  it("solo abre módulos que ya tienen lecciones", () => {
+    for (const level of studyLevels) expect(level.available).toBe(level.topics.length > 0);
+  });
+
+  it.each(openLevels)("abre cada sección y su autoevaluación en $label", level => {
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: level.label, exact: true }));
     for (const topic of level.topics) {
       const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
       fireEvent.click(navigation.getByRole("button", { name: topic.label, exact: true }));
-      expect(screen.getByRole("heading", { level: 2, name: `${topic.label} — ${topic.english}` })).toBeInTheDocument();
+      expect(screen.getByRole("heading", { level: 2, name: `${topic.label} — ${topic.italiano}` })).toBeInTheDocument();
       expect(screen.getByRole("region", { name: "Comprueba lo aprendido" })).toHaveTextContent(LEARNING_GUIDE[topic.id].task);
       const formulas = within(screen.getByRole("region", { name: "Fórmulas y patrones del tema" }));
       for (const row of TOPIC_FORMULAS[topic.id].rows) {
@@ -55,34 +61,44 @@ describe("Recorrido de aprendizaje", () => {
     }
   }, 15000);
 
-  it("avanza dentro del módulo y cruza al siguiente desde el último tema", () => {
+  it("avanza dentro del módulo, cruza al siguiente y sin más módulos lleva al repaso", () => {
     render(<App />);
-    fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*Verbo to be/ }));
-    expect(screen.getByRole("heading", { level: 2, name: /Verbo to be/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*Essere y avere/ }));
+    expect(screen.getByRole("heading", { level: 2, name: /Essere y avere/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Tema anterior.*Números/ })).toBeInTheDocument();
     fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Conversación y vocabulario/ }));
     fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico II →" }));
     expect(screen.getByRole("heading", { level: 2, name: /Artículos/ })).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Básico I", exact: true }));
-    expect(screen.getByRole("heading", { level: 2, name: /Conversación y vocabulario/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Verbos irregulares/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico III →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Rutinas, reflexivos y frecuencia/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Pedir y dar indicaciones/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico IV →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Partes del cuerpo/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Adverbios de modo/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico V →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Passato prossimo/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Comparativos/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Repasar todos los módulos →" }));
+    expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
   });
 
   it("abre el Quiz con el tema actual y permite volver a su explicación", () => {
     render(<App />);
-    fireEvent.click(screen.getByRole("button", { name: "Básico IV", exact: true }));
     fireEvent.click(screen.getByRole("button", { name: "Practicar este tema en el Quiz" }));
-    expect(screen.getByLabelText("Módulo")).toHaveValue("basico4");
-    expect(screen.getByLabelText("Sección")).toHaveValue("bodyParts");
+    expect(screen.getByLabelText("Módulo")).toHaveValue("basico1");
+    expect(screen.getByLabelText("Sección")).toHaveValue("numbers");
     fireEvent.click(screen.getByRole("button", { name: /Empezar Quiz/ }));
-    fireEvent.change(screen.getByLabelText("Tu respuesta"), { target: { value: "repasar" } });
+    fireEvent.change(screen.getByLabelText("Tu respuesta"), { target: { value: "ripassare" } });
     fireEvent.click(screen.getByRole("button", { name: /Verificar respuesta/ }));
     fireEvent.click(screen.getByRole("button", { name: /Repasar la explicación/ }));
-    expect(screen.getByRole("heading", { level: 2, name: /Partes del cuerpo/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /Números y alfabeto/ })).toBeInTheDocument();
   });
 
   it("abre ampliaciones plegadas al buscar y omite la ruta duplicada", () => {
     vi.useFakeTimers();
-    render(<main><details className="module-guide"><summary>Ruta</summary>gone</details><details><summary>Ampliación</summary><p>gone</p></details></main>);
-    scrollToAndHighlight("gone", { delay: 0 });
+    render(<main><details className="module-guide"><summary>Ruta</summary>andato</details><details><summary>Ampliación</summary><p>andato</p></details></main>);
+    scrollToAndHighlight("andato", { delay: 0 });
     act(() => vi.advanceTimersByTime(1));
     const mark = document.querySelector("mark.search-highlight");
     expect(mark.closest("details")).toHaveAttribute("open");

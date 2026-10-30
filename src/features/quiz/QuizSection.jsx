@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from "react";
 import { useQuiz } from "./useQuiz";
 import { QUIZ_LEVELS, quizTopicsOf } from "./questions";
 
@@ -20,10 +21,34 @@ export default function QuizSection({ initialSelection }) {
   } = useQuiz({ levelId: initialLevel?.id ?? "all", topicId: initialTopic?.id ?? "mixed" });
   const questionLevel = question && QUIZ_LEVELS.find(level => quizTopicsOf(level).some(item => item.id === question.topic));
 
+  const inputRef = useRef(null);
+  // Posición del cursor tras insertar una letra con acento: el render manda la
+  // selección al final del campo, así que la restauramos apenas termina.
+  const caretRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (caretRef.current !== null && inputRef.current) {
+      inputRef.current.focus();
+      inputRef.current.setSelectionRange(caretRef.current, caretRef.current);
+      caretRef.current = null;
+    }
+  }, [answer]);
+
+  function insertAccent(ch) {
+    const input = inputRef.current;
+    if (!input) return;
+    const start = input.selectionStart ?? answer.length;
+    const end = input.selectionEnd ?? start;
+    caretRef.current = start + ch.length;
+    setAnswer(answer.slice(0, start) + ch + answer.slice(end));
+  }
+
+  const ACCENTS = ["à", "è", "é", "ì", "ò", "ù"];
+
   return (
     <div>
       <h2 style={{ color: "#fff", marginTop: 0 }}>🎯 Quiz</h2>
-      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a V y los verbos de Verbos a la mano. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
+      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
 
       {/* Puntuación */}
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -40,7 +65,7 @@ export default function QuizSection({ initialSelection }) {
 
       <label htmlFor="quiz-level" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Módulo</label>
       <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "var(--surface, #1e293b)", color: "#fff", fontSize: 16, marginBottom: 12 }}>
-        <option value="all">Todos los módulos (Básico I a V)</option>
+        <option value="all">Todos los módulos</option>
         {QUIZ_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
       </select>
       <label htmlFor="quiz-topic" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Sección</label>
@@ -91,6 +116,7 @@ export default function QuizSection({ initialSelection }) {
           {!feedback && (
             <>
               <input
+                ref={inputRef}
                 aria-label="Tu respuesta"
                 placeholder="Escribe tu respuesta aquí..."
                 value={answer}
@@ -99,6 +125,27 @@ export default function QuizSection({ initialSelection }) {
                 autoFocus
                 style={{ width: "100%", padding: "13px 16px", borderRadius: "10px", border: "2px solid #334155", background: "var(--surface-deep, #0f172a)", color: "#fff", fontSize: "16px", boxSizing: "border-box", marginBottom: "10px", outline: "none" }}
               />
+              {question.answerLang !== "es" && (
+                <div role="group" aria-label="Letras con acento" style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginBottom: "10px" }}>
+                  {ACCENTS.map(ch => (
+                    <button
+                      key={ch}
+                      type="button"
+                      aria-label={`Insertar ${ch}`}
+                      onMouseDown={e => e.preventDefault()}
+                      onClick={() => insertAccent(ch)}
+                      style={{
+                        minWidth: "44px", minHeight: "44px", padding: "0 12px",
+                        borderRadius: "10px", border: "1px solid #334155",
+                        background: "var(--surface-deep, #0f172a)", color: "#e2e8f0",
+                        fontSize: "17px", fontWeight: 700, cursor: "pointer",
+                      }}
+                    >
+                      {ch}
+                    </button>
+                  ))}
+                </div>
+              )}
               <button
                 onClick={submitAnswer}
                 disabled={!answer.trim()}
@@ -116,9 +163,16 @@ export default function QuizSection({ initialSelection }) {
                   {feedback.correct ? "✅ ¡Muy bien!" : "❌ ¡Casi!"}
                 </div>
                 {!feedback.correct && (
-                  <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "6px" }}>
-                    Respuesta correcta: <strong style={{ color: "#fbbf24" }}>{question.answers[0]}</strong>
-                  </div>
+                  <>
+                    {feedback.accentOnly && (
+                      <div style={{ color: "#fbbf24", fontSize: "13px", marginBottom: "6px" }}>
+                        Revisa el acento: en italiano puede cambiar la palabra (è = es, e = y).
+                      </div>
+                    )}
+                    <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "6px" }}>
+                      Respuesta correcta: <strong style={{ color: "#fbbf24" }}>{question.answers[0]}</strong>
+                    </div>
+                  </>
                 )}
                 <div style={{ color: "#e2e8f0", fontSize: "14px", lineHeight: 1.6 }}>
                   {feedback.explanation}

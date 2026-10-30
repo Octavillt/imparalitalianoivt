@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkAnswer, getByTopic, getRandom, questionKey } from "./questions";
+import { accentMismatch, checkAnswer, getByTopic, getRandom, questionKey } from "./questions";
 
 export function useQuiz(initialSelection) {
   const [levelId, updateLevel] = useState(initialSelection?.levelId ?? "all");
@@ -50,8 +50,9 @@ export function useQuiz(initialSelection) {
 
   function submitAnswer() {
     if (!answer.trim() || !question || feedback) return;
-    const correct = checkAnswer(answer, question.answers);
-    setFeedback({ correct, explanation: question.explanation });
+    const correct = checkAnswer(answer, question.answers, question.answerLang);
+    const accentOnly = !correct && accentMismatch(answer, question.answers, question.answerLang);
+    setFeedback({ correct, accentOnly, explanation: question.explanation });
     setScore(prev => ({ correct: prev.correct + (correct ? 1 : 0), total: prev.total + 1 }));
     if (correct) setMastered(prev => [...prev, questionKey(question)]);
   }

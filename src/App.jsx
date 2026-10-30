@@ -7,44 +7,45 @@ import { useTheme } from "./styles/useTheme";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
 import ThemePicker from "./components/ThemePicker";
 import GlobalSearch from "./components/GlobalSearch";
-import VerbsSection       from "./features/verbs/VerbsSection";
-import FruitsSection      from "./features/fruits/FruitsSection";
-import PluralSection      from "./features/plural/PluralSection";
 import NumbersSection     from "./features/numbers/NumbersSection";
-import TimeSection        from "./features/time/TimeSection";
-import DatesSection       from "./features/dates/DatesSection";
+import EssereAvereSection from "./features/essereAvere/EssereAvereSection";
 import CountriesSection   from "./features/countries/CountriesSection";
 import FamilySection      from "./features/family/FamilySection";
-import JobsSection        from "./features/jobs/JobsSection";
-import ToBeSection        from "./features/tobe/ToBeSection";
+import PluralSection      from "./features/plural/PluralSection";
 import DemosSection       from "./features/demonstratives/DemosSection";
-import PrepSection        from "./features/prepositions/PrepSection";
-import ProgressiveSection from "./features/progressive/ProgressiveSection";
-import QuizSection        from "./features/quiz/QuizSection";
-import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
-import AdjectivesSection     from "./features/adjectives/AdjectivesSection";
-import WhQuestionsSection    from "./features/whQuestions/WhQuestionsSection";
-import ArticlesSection       from "./features/articles/ArticlesSection";
+import FruitsSection      from "./features/fruits/FruitsSection";
+import PrepositionsSection from "./features/prepositions/PrepositionsSection";
+import TimeSection        from "./features/time/TimeSection";
+import DatesSection       from "./features/dates/DatesSection";
+import VerbsSection       from "./features/verbs/VerbsSection";
+import StareGerundioSection from "./features/stareGerundio/StareGerundioSection";
+import JobsSection        from "./features/jobs/JobsSection";
+import VocabularySection  from "./features/vocabulary/VocabularySection";
+import ArticlesSection    from "./features/articles/ArticlesSection";
+import AdjectivesSection  from "./features/adjectives/AdjectivesSection";
 import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
-import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNounsSection";
-import GerundsSection         from "./features/gerunds/GerundsSection";
-import SimplePresentSection   from "./features/simplePresent/SimplePresentSection";
-import VocabularySection      from "./features/vocabulary/VocabularySection";
-import InOnAtSection          from "./features/inOnAt/InOnAtSection";
-import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/SimplePresentAdvancedSection";
+import PreposizioniArticolateSection from "./features/preposizioniArticolate/PreposizioniArticolateSection";
+import WhQuestionsSection from "./features/whQuestions/WhQuestionsSection";
+import PresenteIndicativoSection from "./features/presenteIndicativo/PresenteIndicativoSection";
+import VerbiInfinitoSection from "./features/verbiInfinito/VerbiInfinitoSection";
+import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
+import RoutineRiflessiviSection from "./features/routineRiflessivi/RoutineRiflessiviSection";
+import PreposizioniTempoSection from "./features/preposizioniTempo/PreposizioniTempoSection";
 import DirectionsSection from "./features/directions/DirectionsSection";
 import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
-import CanSection from "./features/can/CanSection";
-import CountableSection from "./features/countable/CountableSection";
+import PotereSapereSection from "./features/potereSapere/PotereSapereSection";
+import PartitivoSection from "./features/partitivo/PartitivoSection";
 import FoodGroupsSection from "./features/foodGroups/FoodGroupsSection";
 import ExerciseWordsSection from "./features/exerciseWords/ExerciseWordsSection";
 import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection";
-import SimplePastSection from "./features/simplePast/SimplePastSection";
-import GoingToSection from "./features/goingTo/GoingToSection";
+import PassatoProssimoSection from "./features/passatoProssimo/PassatoProssimoSection";
+import ImperfettoSection from "./features/imperfetto/ImperfettoSection";
+import FuturoSection from "./features/futuro/FuturoSection";
 import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
 import MoneyCareerSection from "./features/moneyCareer/MoneyCareerSection";
 import ComparativesSection from "./features/comparatives/ComparativesSection";
-import VerbFinderSection from "./features/verbFinder/VerbFinderSection";
+import QuizSection        from "./features/quiz/QuizSection";
+import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToBottom        from "./components/BackToBottom";
@@ -53,44 +54,45 @@ import ModuleGuide from "./components/ModuleGuide";
 import LessonFooter from "./components/LessonFooter";
 
 const SECTIONS = {
+  numbers:        NumbersSection,
+  essereAvere:    EssereAvereSection,
+  countries:      CountriesSection,
+  family:         FamilySection,
+  plural:         PluralSection,
+  demonstratives: DemosSection,
+  fruits:         FruitsSection,
+  prepositions:   PrepositionsSection,
+  time:           TimeSection,
+  dates:          DatesSection,
   verbs:          VerbsSection,
-  irregularVerbs: IrregularVerbsSection,
-  adjectives:     AdjectivesSection,
-  whQuestions:    WhQuestionsSection,
-  articles:       ArticlesSection,
-  possessiveAdjectives: PossessiveAdjectivesSection,
-  possessiveNouns:      PossessiveNounsSection,
-  gerunds:        GerundsSection,
-  simplePresent:  SimplePresentSection,
+  stareGerundio:  StareGerundioSection,
+  jobs:           JobsSection,
   vocabulary:     VocabularySection,
-  inOnAt:         InOnAtSection,
-  simplePresentAdvanced: SimplePresentAdvancedSection,
+  articles:       ArticlesSection,
+  adjectives:     AdjectivesSection,
+  possessiveAdjectives: PossessiveAdjectivesSection,
+  preposizioniArticolate: PreposizioniArticolateSection,
+  whQuestions:    WhQuestionsSection,
+  presenteIndicativo: PresenteIndicativoSection,
+  verbiInfinito:  VerbiInfinitoSection,
+  irregularVerbs: IrregularVerbsSection,
+  routineRiflessivi: RoutineRiflessiviSection,
+  preposizioniTempo: PreposizioniTempoSection,
   directions: DirectionsSection,
   bodyParts: BodyPartsSection,
-  can: CanSection,
-  countable: CountableSection,
+  potereSapere: PotereSapereSection,
+  partitivo: PartitivoSection,
   foodGroups: FoodGroupsSection,
   exerciseWords: ExerciseWordsSection,
   adverbsManner: AdverbsMannerSection,
-  simplePast: SimplePastSection,
-  goingTo: GoingToSection,
+  passatoProssimo: PassatoProssimoSection,
+  imperfetto: ImperfettoSection,
+  futuro: FuturoSection,
   socialCollocations: SocialCollocationsSection,
   moneyCareer: MoneyCareerSection,
   comparatives: ComparativesSection,
-  verbFinder: VerbFinderSection,
-  fruits:         FruitsSection,
-  plural:         PluralSection,
-  numbers:        NumbersSection,
-  time:           TimeSection,
-  dates:          DatesSection,
-  countries:      CountriesSection,
-  family:         FamilySection,
-  jobs:           JobsSection,
-  tobe:           ToBeSection,
-  demonstratives: DemosSection,
-  prepositions:   PrepSection,
-  progressive:    ProgressiveSection,
   quiz:           QuizSection,
+  verbFinder:     VerbFinderSection,
 };
 
 function activeFor(level, map, now = Date.now()) {
@@ -164,7 +166,7 @@ export default function App() {
 
   // Fuente única para cambiar de tema: la usan tanto los botones de la barra
   // de navegación (mismo nivel) como los enlaces <RelatedTopic> que pueden
-  // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I)
+  // saltar a otro nivel (ej. La hora en Básico I → práctica en el Quiz)
   // y el buscador global, que además puede pedir resaltar un término.
   function goToTopic(targetLevelId, topicId, highlightTerm, practiceSelection = null) {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
@@ -315,7 +317,7 @@ export default function App() {
           <ThemePicker themeId={themeId} onSelect={selectTheme} />
         </div>
 
-        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800, color: "#fff" }}>🎓 English — {level.label}</h1>
+        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800, color: "#fff" }}>🎓 Italiano — {level.label}</h1>
         <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>{level.purpose ?? "Practica a tu ritmo y vuelve a la explicación cuando lo necesites"}</p>
 
         <div style={{ marginTop: "12px", display: "flex", justifyContent: "center", minWidth: 0, width: "100%" }}>

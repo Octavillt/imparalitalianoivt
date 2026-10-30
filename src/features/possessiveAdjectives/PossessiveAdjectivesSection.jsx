@@ -1,124 +1,138 @@
-import { Fragment } from "react";
 import TopicHeading from "../../components/TopicHeading";
-import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import {
-  PRONOUN_TO_POSSESSIVE, EXAMPLE_SENTENCES, POSSESSIVE_EXERCISE,
-  POSSESSIVE_PRONOUNS, PRONOUN_CONTRAST, ITS_VS_ITS,
+  POSSESSIVE_TABLE,
+  AGREEMENT_EXAMPLES,
+  EXAMPLE_SENTENCES,
+  ALONE_EXAMPLES,
 } from "./data";
 
-const COLOR = "#e879f9";
+const COLOR = "#E879F9";
 
 export default function PossessiveAdjectivesSection() {
   return (
     <div>
       <TopicHeading topicId="possessiveAdjectives" />
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Los <Token t="Possessive Adjectives" r="poss" /> se colocan <strong style={{ color: "#f8fafc" }}>antes de un sustantivo</strong> para mostrar de quién es algo: <Token t="my" r="poss" />, <Token t="your" r="poss" />, <Token t="his" r="poss" />, <Token t="her" r="poss" />, <Token t="its" r="poss" />, <Token t="our" r="poss" />, <Token t="their" r="poss" />.
+        💡 Los <strong style={{ color: "#f8fafc" }}>posesivos</strong> concuerdan con <strong style={{ color: "#f8fafc" }}>lo que se posee</strong>, no con quien posee. Con un objeto llevan{" "}
+        <strong style={{ color: "#f8fafc" }}>artículo</strong>, a diferencia del español:{" "}
+        <strong lang="it" style={{ color: "#f8fafc" }}>il mio libro</strong> es «mi libro» y{" "}
+        <strong lang="it" style={{ color: "#f8fafc" }}>la mia casa</strong> es «mi casa».
       </div>
-      <Legend roles={["poss", "subject"]} />
+      <Legend roles={["poss", "art", "masc", "fem"]} />
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "8px", marginBottom: "18px" }}>
-        {PRONOUN_TO_POSSESSIVE.map((r, i) => (
-          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px", textAlign: "center" }}>
-            <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "12px" }}>{r.subj}</div>
-            <div style={{ fontSize: "22px", fontWeight: 900, color: r.color, margin: "4px 0" }}>{r.form}</div>
-            <div style={{ color: "#94a3b8", fontSize: "11px" }}>{r.esp}</div>
-          </div>
-        ))}
+      <SectionTitle color={COLOR}>📋 La tabla completa</SectionTitle>
+      <ScrollHint />
+      <div style={{ overflowX: "auto", marginBottom: "16px" }}>
+        <div style={{ minWidth: "520px", display: "grid", gridTemplateColumns: "0.9fr repeat(4, 1fr)", gap: "6px" }}>
+          {["Persona", "Masculino singular", "Femenino singular", "Masculino plural", "Femenino plural"].map(h => (
+            <div key={h} style={{ background: "var(--surface-deep, #0f172a)", borderBottom: "2px solid #475569", color: "#94a3b8", fontWeight: 800, fontSize: "12px", padding: "8px 10px" }}>{h}</div>
+          ))}
+          {POSSESSIVE_TABLE.map((row, i) => (
+            <RowCells key={row.subj} row={row} zebra={i % 2 === 0} />
+          ))}
+        </div>
       </div>
 
-      <RuleBox icon="📐" rule="Fórmula — nunca cambia, sin importar el sustantivo" color={COLOR}>
+      <RuleBox icon="📐" rule="Con un objeto, lleva artículo" color={COLOR}>
         <Formula
-          parts={[{ t: "Possessive Adjective", r: "poss" }, { t: "Sustantivo", color: "#e2e8f0" }]}
-          example={[{ t: "her", r: "poss" }, { t: "books", color: "#94a3b8" }]}
+          parts={[{ t: "Artículo", r: "art" }, { t: "Posesivo", r: "poss" }, { t: "Sustantivo", color: "#e2e8f0" }]}
+          example={[{ t: "il", r: "art" }, { t: "mio", r: "poss" }, { t: "libro.", color: "#94a3b8" }]}
+          color={COLOR}
         />
         <div style={{ color: "#94a3b8", fontSize: "13px" }}>
-          💡 A diferencia de otros adjetivos en inglés, estos <strong style={{ color: "#f8fafc" }}>acompañan a un sustantivo, aunque haya un adjetivo entre ambos: my new book</strong> — nunca solos.
+          🇲🇽 Mi libro. Con un objeto no se dice «mio libro»: va <strong lang="it" style={{ color: "#f8fafc" }}>il mio libro</strong>. El familiar en singular es otro caso y va más abajo.
         </div>
-        <RelatedTopic levelId="basico2" topicId="articles" label="¿Qué es un sustantivo?" />
+      </RuleBox>
+
+      <RuleBox icon="🎯" rule="Concuerda con lo que se posee, no con quien posee" color={COLOR}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
+          {AGREEMENT_EXAMPLES.map((ex, i) => (
+            <div key={i} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px" }}>
+              <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.pts} /></div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>
+                = {ex.note} — 🇲🇽 {ex.esp}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginTop: "8px" }}>
+          <strong lang="it" style={{ color: "#f8fafc" }}>suo</strong> significa «de él», «de ella» y «de usted», igual que{" "}
+          <strong style={{ color: "#f8fafc" }}>su</strong> en español. El contexto aclara de quién se trata.
+        </p>
+      </RuleBox>
+
+      <RuleBox icon="🔑" rule="Loro no cambia" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong> no cambia de forma:{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>la loro casa</strong> (su casa, de ellos o de ellas),{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>i loro libri</strong> (sus libros). También con familiares lleva artículo:{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>la loro madre</strong>.
+        </p>
       </RuleBox>
 
       <SectionTitle color={COLOR}>📝 Ejemplos</SectionTitle>
       {EXAMPLE_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
-      <SectionTitle color={COLOR}>✅ Ejercicio resuelto</SectionTitle>
-      {POSSESSIVE_EXERCISE.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color={COLOR}>🪞 Possessive Pronouns — cuando el sustantivo ya no hace falta</SectionTitle>
-      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Un <Token t="Possessive Pronoun" r="poss" /> significa lo mismo que "possessive adjective + sustantivo", pero <strong style={{ color: "#f8fafc" }}>reemplaza al sustantivo por completo</strong> para no repetirlo. Por eso nunca va seguido de un sustantivo — puede ir al final (This is mine) o como sujeto (Mine is blue).
-      </div>
-
-      <div style={{ overflowX: "auto", marginBottom: "14px" }}>
-        <div style={{ minWidth: "480px", display: "grid", gridTemplateColumns: "0.8fr 1fr 1fr 1.3fr", gap: "6px" }}>
-          {["Pronombre", "Possessive Adjective", "Possessive Pronoun", "Español"].map(h => (
-            <div key={h} style={{ background: "var(--surface-deep, #0f172a)", borderBottom: "2px solid #475569", color: "#94a3b8", fontWeight: 800, fontSize: "12px", padding: "8px 10px" }}>{h}</div>
-          ))}
-          {POSSESSIVE_PRONOUNS.map((r, i) => (
-            <Fragment key={i}>
-              <div key={`s${i}`} style={{ padding: "8px 10px", background: i % 2 === 0 ? "#1e293b" : "#172033", color: "#e2e8f0", fontWeight: 700, fontSize: "13px" }}>{r.subj}</div>
-              <div key={`a${i}`} style={{ padding: "8px 10px", background: i % 2 === 0 ? "#1e293b" : "#172033", color: r.color, fontWeight: 700, fontSize: "13px" }}>{r.adj}</div>
-              <div key={`p${i}`} style={{ padding: "8px 10px", background: i % 2 === 0 ? "#1e293b" : "#172033", color: r.color, fontWeight: 900, fontSize: "13px" }}>{r.pron}</div>
-              <div key={`e${i}`} style={{ padding: "8px 10px", background: i % 2 === 0 ? "#1e293b" : "#172033", color: "#94a3b8", fontSize: "12px" }}>{r.esp}</div>
-            </Fragment>
-          ))}
-        </div>
-      </div>
-
-      <RuleBox icon="📐" rule="Fórmula — SIN sustantivo después" color={COLOR}>
-        <Formula
-          parts={[{ t: "Possessive Pronoun", r: "poss" }, { t: "(nada más)", color: "#94a3b8" }]}
-          example={[{ t: "This book is", color: "#94a3b8" }, { t: "mine", r: "poss" }, { t: ".", color: "#94a3b8" }]}
-        />
-        <div style={{ color: "#94a3b8", fontSize: "13px" }}>🇲🇽 Este libro es mío.</div>
+      <RuleBox icon="👪" rule="Regla ya vista — los familiares" color="#CA8A04">
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          Con un nombre de parentesco singular simple normalmente se omite el artículo: <span lang="it">mia madre, tuo fratello</span>. Con un adjetivo antepuesto o un diminutivo se usa: <span lang="it">la mia cara sorella, il mio fratellino</span>. En plural y con <span lang="it">loro</span> también se usa artículo.
+        </p>
+        <RelatedTopic levelId="basico1" topicId="family" />
       </RuleBox>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "14px" }}>
-        {PRONOUN_CONTRAST.map((ex, i) => (
-          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px" }}>
-            <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.before} /></div>
-            <div style={{ color: "#94a3b8", fontSize: "12px", margin: "2px 0" }}>↓</div>
-            <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.after} /></div>
-            <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>
-          </div>
-        ))}
-      </div>
-
-      <RuleBox icon="⚠️" rule={`Cuidado — "its" vs "it's" (el error más común)`} color="#f87171">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
-          {ITS_VS_ITS.map(({ form, why, examples }) => (
-            <div key={form} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "12px" }}>
-              <div style={{ color: form === "its" ? COLOR : "#f87171", fontWeight: 900, fontSize: "18px" }}>{form}</div>
-              <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{why}</div>
-              {examples.map((ex, i) => (
-                <div key={i} style={{ marginBottom: "6px" }}>
-                  <div style={{ color: "#e2e8f0", fontSize: "13px" }}><Sentence pts={ex.pts} /></div>
-                  <div style={{ color: "#94a3b8", fontSize: "11px" }}>🇲🇽 {ex.esp}</div>
-                </div>
-              ))}
+      <RuleBox icon="🪞" rule="La forma sola — sin sustantivo después" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
+          Si el sustantivo ya se dijo, hay dos posibilidades. Después de <strong lang="it" style={{ color: "#f8fafc" }}>essere</strong> el posesivo va solo:{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>Questo libro è mio.</strong> Si ocupa el lugar del sustantivo, conserva el artículo:{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>Il mio è qui.</strong>
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
+          {ALONE_EXAMPLES.map((ex, i) => (
+            <div key={i} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px" }}>
+              {"q" in ex ? (
+                <>
+                  <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.q} /></div>
+                  <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }} lang="it">→ {ex.a}</div>
+                </>
+              ) : (
+                <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.pts} /></div>
+              )}
+              <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>
             </div>
           ))}
         </div>
-        <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "6px" }}>
-          💡 Truco: si puedes reemplazarlo por "it is" o "it has", lleva apóstrofe (it's). Si no, no lo lleva (its).
-        </div>
-      </RuleBox>
-
-      <RuleBox icon="🔑" rule="Bonus — no confundir con Whose" color={COLOR}>
-        <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>
-          <Token t="Whose" r="wh" /> pregunta de quién es algo; puedes responder con un nombre y <Token t="'s" r="gen" /> (It is Argelia’s), un pronombre (It is mine) o un posesivo con sustantivo (It is my backpack).
-        </div>
-        <div style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "8px" }}>Whose is that backpack? → It's Israel's.</div>
-        <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 ¿De quién es esa mochila? → Es de Israel.</div>
-        <RelatedTopic levelId="basico2" topicId="possessiveNouns" />
+        <p style={{ color: "#94a3b8", fontSize: "12px", marginTop: "8px" }}>
+          💡 Tres piezas del mismo juego: <strong lang="it" style={{ color: "#e2e8f0" }}>Questo libro è mio.</strong> (después de essere),{" "}
+          <strong lang="it" style={{ color: "#e2e8f0" }}>Il mio è qui.</strong> (en lugar del sustantivo) y{" "}
+          <strong lang="it" style={{ color: "#e2e8f0" }}>Il mio libro è qui.</strong> (con el sustantivo).
+        </p>
       </RuleBox>
     </div>
+  );
+}
+
+// Una fila de la tabla: etiqueta de persona y sus cuatro formas coloreadas.
+function RowCells({ row, zebra }) {
+  const bg = zebra ? "#1e293b" : "#172033";
+  return (
+    <>
+      <div style={{ padding: "8px 10px", background: bg }}>
+        <div lang="it" style={{ color: row.color, fontWeight: 800, fontSize: "13px" }}>{row.subj}</div>
+        <div style={{ color: "#94a3b8", fontSize: "11px" }}>{row.esp}</div>
+      </div>
+      {row.forms.map(form => (
+        <div key={form} lang="it" style={{ padding: "8px 10px", background: bg, color: COLOR, fontWeight: 800, fontSize: "13px", display: "flex", alignItems: "center" }}>
+          {form}
+        </div>
+      ))}
+    </>
   );
 }

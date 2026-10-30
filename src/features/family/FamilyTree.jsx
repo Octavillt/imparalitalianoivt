@@ -1,12 +1,12 @@
 import { FAMILY_TREE } from "./data";
 
-const MemberCard = ({ es, en, color, big }) => (
+const MemberCard = ({ it, esp, color, big }) => (
   <div style={{
     background: "var(--surface-deep, #0f172a)", border: `1px solid ${color}55`, borderRadius: "10px",
-    padding: big ? "10px 14px" : "8px 12px", textAlign: "center", minWidth: big ? "110px" : "96px",
+    padding: big ? "10px 14px" : "8px 12px", textAlign: "center", minWidth: big ? "120px" : "104px",
   }}>
-    <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: big ? "14px" : "12px" }}>{es}</div>
-    <div style={{ color, fontWeight: 800, fontSize: big ? "13px" : "11px", marginTop: "2px" }}>{en}</div>
+    <div lang="it" style={{ color: "#e2e8f0", fontWeight: 700, fontSize: big ? "14px" : "12px" }}>{it}</div>
+    <div style={{ color, fontWeight: 800, fontSize: big ? "13px" : "11px", marginTop: "2px" }}>🇲🇽 {esp}</div>
   </div>
 );
 
@@ -20,9 +20,9 @@ export default function FamilyTree() {
   return (
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px 12px", marginBottom: "14px", overflowX: "auto" }}>
       <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, textAlign: "center", marginBottom: "14px" }}>
-        🌳 Árbol genealógico — de arriba (mayores) a abajo (menores)
+        🌳 L'albero genealogico — de arriba (mayores) a abajo (menores)
       </div>
-      <div style={{ minWidth: "640px" }}>
+      <div>
         {FAMILY_TREE.map((level, i) => (
           <div key={level.gen}>
             {i > 0 && <Connector />}
@@ -39,8 +39,8 @@ export default function FamilyTree() {
                 background: "#3d2000", borderRadius: "12px", padding: "12px 8px", border: "1px dashed #fbbf2455",
               } : {}),
             }}>
-              {level.members.map(([es, en]) => (
-                <MemberCard key={es} es={es} en={en} color={level.color} big={level.highlight} />
+              {level.members.map(([it, esp]) => (
+                <MemberCard key={it} it={it} esp={esp} color={level.color} big={level.highlight} />
               ))}
             </div>
           </div>

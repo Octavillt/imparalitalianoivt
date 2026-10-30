@@ -1,33 +1,42 @@
 import TopicHeading from "../../components/TopicHeading";
+import ExampleCard from "../../components/ExampleCard";
+import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import { MONEY_OPPOSITES, MONEY_EXTRA, MONEY_PREPOSITIONS, CAREER_PLANS, CAREER_EXTRA, FUTURE_EXAMPLES } from "./data";
+import Sentence from "../../components/Sentence";
+import {
+  MONEY_OPPOSITES,
+  MONEY_WORDS,
+  MONEY_PHRASES,
+  VERB_EXAMPLES,
+  CAREER,
+  CAREER_NOW,
+  FUTURE_PLANS,
+} from "./data";
 
 const COLOR = "#10B981";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
-
 const side = { flex: "1 1 120px", textAlign: "center", minWidth: 0 };
 
 function OppositePair({ pair }) {
-  const [a, b, example] = [pair.a, pair.b, pair.example];
   return (
     <div style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "6px 10px" }}>
         <div style={side}>
-          <div lang="en" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{a[0]}</div>
-          <div style={translation}>🇲🇽 {a[1]}</div>
+          <div lang="it" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{pair.a[0]}</div>
+          <div style={translation}>🇲🇽 {pair.a[1]}</div>
         </div>
         <div aria-hidden="true" style={{ color: COLOR, fontSize: "18px", fontWeight: 800 }}>↔</div>
         <div style={side}>
-          <div lang="en" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{b[0]}</div>
-          <div style={translation}>🇲🇽 {b[1]}</div>
+          <div lang="it" style={{ ...text, color: "#f8fafc", fontWeight: 700 }}>{pair.b[0]}</div>
+          <div style={translation}>🇲🇽 {pair.b[1]}</div>
         </div>
       </div>
-      <div lang="en" style={{ ...text, marginTop: "10px" }}>{example[0]}</div>
-      <div style={translation}>🇲🇽 {example[1]}</div>
+      <div lang="it" style={{ marginTop: "10px" }}><Sentence pts={pair.example.pts} /></div>
+      <div style={translation}>🇲🇽 {pair.example.esp}</div>
     </div>
   );
 }
@@ -37,92 +46,83 @@ export default function MoneyCareerSection() {
     <div>
       <TopicHeading topicId="moneyCareer" />
       <div style={{ ...card, ...text }}>
-        💡 Este vocabulario te sirve para hablar de dinero y de tus planes de trabajo. Aprende las palabras en pares
-        de opuestos y las colocaciones de carrera como una sola unidad; después úsalas con{" "}
-        <span lang="en">going to</span> para contar tus planes.
+        💡 Con este vocabulario hablas de precios, de pagos y de tu trabajo.
+        Los opuestos se aprenden en pareja. Los planes van en futuro semplice.
       </div>
+      <Legend roles={["subject", "verb", "essere", "adj", "art", "articolata", "aux", "participle", "neg", "wh"]} />
 
       <SectionTitle color={COLOR}>💵 El dinero en pares de opuestos</SectionTitle>
-      <p style={text}>Cada palabra tiene su opuesto: apréndelas juntas.</p>
+      <p style={text}>Cada palabra va con su pareja. El adjetivo concuerda con la persona o con la cosa.</p>
       {MONEY_OPPOSITES.map(pair => <OppositePair key={pair.a[0]} pair={pair} />)}
-      <RuleBox icon="🔁" rule="Tres de estos verbos son irregulares" color={COLOR}>
+      <RuleBox icon="🔁" rule="Ganar dinero no es ganar un premio" color={COLOR}>
         <p style={text}>
-          <span lang="en">buy → bought</span>, <span lang="en">sell → sold</span>, <span lang="en">spend → spent</span>.{" "}
-          <span lang="en">Save</span> es regular: <span lang="en">save → saved</span> (sonido /d/).
-          No confundas <span lang="en">bought</span> (de <span lang="en">buy</span>) con <span lang="en">brought</span> (de <span lang="en">bring</span>).
+          <span lang="it">Guadagnare</span> es ganar dinero. <span lang="it">Vincere</span> es ganar un premio o un partido.
+          En esta lección, <span lang="it">perdere</span> es la pareja de <span lang="it">guadagnare</span>.
+          <span lang="it"> Spendere</span> hace el participio <span lang="it">speso</span>. <span lang="it">Perdere</span> hace <span lang="it">perso</span>; <span lang="it">perduto</span> también existe.
         </p>
-        <RelatedTopic levelId="verbos" topicId="verbFinder" label="Consultar los verbos en Verbos a la mano" />
+        <RelatedTopic levelId="basico5" topicId="passatoProssimo" label="Repasar el participio" />
         <RelatedTopic levelId="basico2" topicId="adjectives" label="Repasar adjetivos y opuestos" />
       </RuleBox>
 
       <SectionTitle color={COLOR}>➕ Más palabras para hablar de dinero</SectionTitle>
-      {MONEY_EXTRA.map(([en, es]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
+      {MONEY_WORDS.map(([it, es]) => (
+        <div key={it} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{it}</div>
           <div style={translation}>🇲🇽 {es}</div>
         </div>
       ))}
-      <RuleBox icon="⚠️" rule="Las preposiciones cambian el sentido" color={COLOR}>
-        {MONEY_PREPOSITIONS.map(([en, es]) => (
-          <div key={en} style={{ marginBottom: "10px" }}>
-            <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
-            <div style={translation}>🇲🇽 {es}</div>
-          </div>
-        ))}
+      <RuleBox icon="💶" rule="Euro se queda igual, y la cuenta cambia de frase" color={COLOR}>
         <p style={text}>
-          Ojo con «ganar»: <span lang="en">earn money</span> es ganar dinero trabajando; <span lang="en">win</span> es
-          ganar un juego, un premio o la lotería (<span lang="en">win the lottery</span>).
+          En estas frases el plural sigue siendo <span lang="it">euro</span>: <span lang="it">un euro</span>, <span lang="it">venti euro</span>.
+          <span lang="it"> I soldi</span> es el plural de conversación. <span lang="it">Il denaro</span> suena más formal y va en singular.
+          <span lang="it"> Il conto</span>, en un restaurante, es la cuenta de la mesa. <span lang="it">Il conto in banca</span> es la cuenta del banco.
+          <span lang="it"> I risparmi</span>, en plural, son los ahorros.
         </p>
       </RuleBox>
+      {MONEY_PHRASES.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>💼 Planes de carrera: colocaciones</SectionTitle>
-      <p style={text}>Estas colocaciones describen cómo quieres trabajar en el futuro.</p>
-      {CAREER_PLANS.map(([emoji, en, es]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{emoji} {en}</div>
+      <SectionTitle color={COLOR}>🛒 <span lang="it">Pagare, costare, prestare, cambiare</span></SectionTitle>
+      <p style={text}>
+        <span lang="it">Prestare</span> es quien da el dinero. <span lang="it">Prendere in prestito</span> es quien lo pide.
+        <span lang="it"> Cambiare</span>, aquí, es cambiar euros. Más abajo, <span lang="it">cambiare lavoro</span> es cambiar de trabajo: no es la misma idea.
+      </p>
+      {VERB_EXAMPLES.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
+
+      <SectionTitle color={COLOR}>💼 Planes de carrera</SectionTitle>
+      <p style={text}>Estas piezas dicen cómo buscas trabajo y cómo quieres trabajar.</p>
+      {CAREER.map(([emoji, it, es]) => (
+        <div key={it} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
+          <div lang="it" style={{ ...text, fontWeight: 700 }}>{emoji} {it}</div>
           <div style={translation}>🇲🇽 {es}</div>
         </div>
       ))}
-      <SectionTitle color={COLOR}>➕ Más colocaciones de trabajo</SectionTitle>
-      {CAREER_EXTRA.map(([en, es]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
-          <div style={translation}>🇲🇽 {es}</div>
-        </div>
-      ))}
-      <RuleBox icon="⚠️" rule="Cuidado con las preposiciones" color={COLOR}>
+      <RuleBox icon="⚠️" rule="Desde casa, por su cuenta y el colega" color={COLOR}>
         <p style={text}>
-          <span lang="en">Outdoors</span> y <span lang="en">overseas</span> no llevan preposición:{" "}
-          <span lang="en">work outdoors</span>, <span lang="en">work overseas</span> (✗ <span lang="en">work in outdoors</span>, ✗{" "}
-          <span lang="en">work in overseas</span>). Desde casa es <span lang="en">from home</span> (✗{" "}
-          <span lang="en">work in home</span>). Para la empresa usa <span lang="en">for</span> (<span lang="en">work for a large company</span>){" "}
-          y para la profesión usa <span lang="en">as</span> (<span lang="en">work as a nurse</span>).
+          Trabajar desde casa se dice <span lang="it">lavorare da casa</span>. <span lang="it">Lavorare a casa</span> también se oye, con la idea de estar en casa.
+          <span lang="it"> Lavorare in proprio</span> es trabajar por su cuenta.
+          <span lang="it"> Il collega</span> y <span lang="it">la collega</span> comparten la palabra; cambia el artículo.
+          En plural: <span lang="it">i colleghi</span>, <span lang="it">le colleghe</span>.
+          <span lang="it"> Il capo</span> nombra al jefe o a la jefa.
         </p>
         <RelatedTopic levelId="basico1" topicId="jobs" label="Repasar oficios y profesiones" />
       </RuleBox>
+      {CAREER_NOW.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
 
-      <SectionTitle color={COLOR}>🗓️ Habla de tus planes con going to</SectionTitle>
-      <RuleBox icon="🔗" rule="Probably y want to" color={COLOR}>
+      <SectionTitle color={COLOR}>🗓️ Planes en futuro</SectionTitle>
+      <RuleBox icon="🔗" rule="Probabilmente y forse" color={COLOR}>
         <p style={text}>
-          Para un plan probable, <span lang="en">probably</span> va entre <span lang="en">am/is/are</span> y{" "}
-          <span lang="en">going to</span>: <span lang="en">I'm probably going to manage people.</span> En negativa va
-          antes de <span lang="en">isn't/aren't</span>: <span lang="en">She probably isn't going to work overseas.</span>{" "}
-          Para un deseo usa <span lang="en">want to</span> + verbo base: <span lang="en">I want to work for a large company.</span>
+          <span lang="it">Probabilmente</span> es probablemente. <span lang="it">Forse</span> es quizá.
+          En estas frases van antes del futuro. <span lang="it">Forse</span> es menos firme que <span lang="it">probabilmente</span>.
         </p>
-        <RelatedTopic levelId="basico5" topicId="goingTo" label="Repasar los planes con going to" />
+        <RelatedTopic levelId="basico5" topicId="futuro" label="Repasar el futuro semplice" />
+        <RelatedTopic levelId="basico5" topicId="socialCollocations" label="Repasar las colocaciones" />
       </RuleBox>
-      {FUTURE_EXAMPLES.map(([en, es]) => (
-        <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ color: "#f8fafc", fontSize: "14px", fontWeight: 700 }}>{en}</div>
-          <div style={translation}>🇲🇽 {es}</div>
-        </div>
-      ))}
+      {FUTURE_PLANS.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
 
       <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
       <p style={text}>
-        Escribe tres oraciones sobre tu futuro: un plan de carrera con <span lang="en">going to</span>, algo para lo que
-        vas a ahorrar y algo en lo que no quieres gastar. Después pregúntale a otra persona:{" "}
-        <span lang="en">What are you going to do in your future career?</span> Usa el Quiz para repasar el vocabulario.
+        Escribe un precio en euros, cómo pagas y un plan de trabajo con <span lang="it">probabilmente</span> o con <span lang="it">forse</span>.
+        Usa el Quiz para repasar opuestos, euro y el futuro.
       </p>
     </div>
   );
