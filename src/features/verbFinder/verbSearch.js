@@ -1,6 +1,13 @@
 // Lógica de búsqueda del módulo «Verbos a la mano»: funciones puras, sin
 // React, para poder consultarlas también desde el buscador global.
 
+import { EXERCISE_WORDS } from "../exerciseWords/data";
+import { IRREGULAR_VERBS } from "../irregularVerbs/data";
+import { ESSERE_VERBS, IRREGULAR_PARTICIPLES } from "../passatoProssimo/data";
+import { CONJUGATION_MODELS, ISC_MODELS } from "../presenteIndicativo/data";
+import { ROUTINE_VERBS } from "../routineRiflessivi/data";
+import { VERB_PATTERNS } from "../verbiInfinito/data";
+import { VERBS } from "../verbs/data";
 import { VERB_BANK } from "./data";
 
 export function normalize(str) {
@@ -95,14 +102,25 @@ export function searchVerbs(query, { limit } = {}) {
     if (match) matches.push({ verb, ...match });
   }
   matches.sort((a, b) => a.rank - b.rank || a.verb.infinito.localeCompare(b.verb.infinito));
-  const results = matches.map(({ verb, matchedForm, matchedField }) => ({ verb, matchedForm, matchedField }));
+  // Si la consulta es una forma entera (andare, vado, andato), no arrastres
+  // infinitivos que solo la contienen, como mandare o domandare.
+  const exact = matches.filter(item => item.rank === 0);
+  const chosen = exact.length > 0 ? exact : matches;
+  const results = chosen.map(({ verb, matchedForm, matchedField }) => ({ verb, matchedForm, matchedField }));
   return limit ? results.slice(0, limit) : results;
 }
 
-// —— Lecciones donde aparece cada verbo ————————————————————————————————
-// Todavía no hay lecciones de verbos (las traen las siguientes etapas);
-// lessonsFor sigue funcionando y devuelve [] mientras tanto.
-const LESSON_SOURCES = [];
+// Lecciones donde aparece cada verbo. Los infinitivos salen de los datos
+// de la lección, no de una lista escrita a mano.
+const LESSON_SOURCES = [
+  { levelId: "basico1", topicId: "verbs", infinitos: new Set(VERBS.map(([infinito]) => infinito)) },
+  { levelId: "basico2", topicId: "presenteIndicativo", infinitos: new Set([...CONJUGATION_MODELS, ...ISC_MODELS].map(item => item.verb)) },
+  { levelId: "basico2", topicId: "irregularVerbs", infinitos: new Set(IRREGULAR_VERBS.map(item => item.inf)) },
+  { levelId: "basico2", topicId: "verbiInfinito", infinitos: new Set(VERB_PATTERNS.map(item => item.verb)) },
+  { levelId: "basico3", topicId: "routineRiflessivi", infinitos: new Set(ROUTINE_VERBS.map(([infinito]) => infinito)) },
+  { levelId: "basico4", topicId: "exerciseWords", infinitos: new Set(EXERCISE_WORDS.map(item => item.it)) },
+  { levelId: "basico5", topicId: "passatoProssimo", infinitos: new Set([...IRREGULAR_PARTICIPLES, ...ESSERE_VERBS].map(([infinito]) => infinito)) },
+];
 
 export function lessonsFor(verb) {
   const infinito = typeof verb === "string" ? verb : verb.infinito;

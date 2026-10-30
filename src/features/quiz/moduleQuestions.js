@@ -65,6 +65,7 @@ export function missingToken(topic, rows) {
 function verbBankQuestions(v) {
   const { infinito, presente, participio, ausiliare, es, note } = v;
   const meanings = es.split(/,\s*(?![^()]*\))/).map(part => part.trim()).filter(Boolean);
+  const plainMeanings = meanings.map(part => part.replace(/\s*\([^)]*\)/g, "").trim()).filter(Boolean);
   const auxiliaries = ausiliare.split(" / ").map(part => part.trim());
   const noted = text => (note ? `${text} ${note}` : text);
   return [
@@ -96,7 +97,7 @@ function verbBankQuestions(v) {
       topic: "verbMeaning",
       verb: infinito,
       question: `¿Qué significa ${infinito}?`,
-      answers: [...new Set([es, ...meanings])],
+      answers: [...new Set([es, ...meanings, ...plainMeanings])],
       answerLang: "es",
       ...(meanings.length > 1 ? { hint: "Basta con escribir uno de sus significados." } : {}),
       explanation: noted(`${infinito} = ${es}.`),

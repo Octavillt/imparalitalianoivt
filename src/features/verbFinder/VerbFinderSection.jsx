@@ -2,11 +2,12 @@ import { memo, useEffect, useMemo, useState } from "react";
 import FilterableList from "../../components/FilterableList";
 import PronunciationGroups from "../../components/PronunciationGroups";
 import Legend from "../../components/Legend";
+import RelatedTopic from "../../components/RelatedTopic";
 import Token from "../../components/Token";
 import { TOPIC_BY_ID } from "../../constants/topics";
 import { C } from "../../styles/colors";
 import { AUX_RULES, CONJUGATION_GROUPS, VERB_BANK } from "./data";
-import { GROUPS, searchVerbs, verbGroup } from "./verbSearch";
+import { GROUPS, lessonsFor, searchVerbs, verbGroup } from "./verbSearch";
 import "./verbFinder.css";
 
 const FAVORITES_KEY = "imparalitalianoivt.favoriteVerbs";
@@ -116,6 +117,7 @@ function VerbCard({
   const partHidden = hide === "participle" && !revealed.has(`${verb.infinito}:participle`);
   const auxHidden = (hide === "aux" || hide === "participle") && !revealed.has(`${verb.infinito}:aux`);
   const esHidden = hide === "es" && !revealed.has(`${verb.infinito}:es`);
+  const lessons = open ? lessonsFor(verb) : [];
 
   return (
     <article className="vf-card" data-open={open ? "true" : "false"} aria-label={verb.infinito}>
@@ -217,6 +219,16 @@ function VerbCard({
             Auxiliar en el passato prossimo: <span className="vf-it" lang="it">{verb.ausiliare}</span>
           </p>
           {verb.note && <p><strong>Nota:</strong> {verb.note}</p>}
+        </div>
+      )}
+      {open && lessons.length > 0 && (
+        <div>
+          <p>Aparece en:</p>
+          <div className="vf-lessons">
+            {lessons.map(lesson => (
+              <RelatedTopic key={`${lesson.levelId}-${lesson.topicId}`} levelId={lesson.levelId} topicId={lesson.topicId} />
+            ))}
+          </div>
         </div>
       )}
     </article>
@@ -477,6 +489,7 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
             {AUX_RULES.map(rule => (
               <p key={rule}>{rule}</p>
             ))}
+            <RelatedTopic levelId="basico5" topicId="passatoProssimo" />
           </details>
         </div>
       </FilterableList>
