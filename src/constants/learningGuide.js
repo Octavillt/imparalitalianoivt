@@ -85,4 +85,52 @@ export const LEARNING_GUIDE = {
     task: "Saluda a Leslie, pregúntale cómo se llama, de dónde es y a qué se dedica; despídete hasta mañana.",
     answer: "Ciao! Come ti chiami? Di dove sei? Che lavoro fai? A domani! Con amigos usas tu; con desconocidos, Lei.",
   },
+  articles: {
+    goal: "Elegir el artículo según el género, el número y la letra inicial, y reconocer cuándo no se escribe.",
+    recall: ["plural", "time", "jobs"],
+    task: "Di «el libro», «el estudiante», «la amiga», «un amigo», «una amiga» y que Leslie está aquí.",
+    answer: "Il libro. Lo studente. L'amica. Un amico. Un'amica. Leslie è qui. Un amico va sin apóstrofo; un'amica lo lleva.",
+  },
+  adjectives: {
+    goal: "Concordar el adjetivo en género y número, colocarlo y reconocer los contrarios frecuentes.",
+    recall: ["articles", "demonstratives"],
+    task: "Di «un carro rojo», «Octavio y Leslie están cansados» y «los helados están buenos».",
+    answer: "Una macchina rossa. Octavio e Leslie sono stanchi. I gelati sono buoni. En un grupo mixto se usa el masculino plural.",
+  },
+  possessiveAdjectives: {
+    goal: "Expresar de quién es algo con el posesivo, concordando con lo que se posee.",
+    recall: ["family", "articles"],
+    task: "Di «mi libro», «la casa de Octavio», «el libro de Leslie» y «mi madre».",
+    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; un familiar en singular va sin artículo.",
+  },
+  preposizioniArticolate: {
+    goal: "Decir de quién es algo con di y unir a, da, di, in y su con el artículo.",
+    recall: ["articles", "possessiveAdjectives", "prepositions", "countries"],
+    task: "Di «el libro de Leslie», «voy al bar» y «vengo de México».",
+    answer: "Il libro di Leslie. Vado al bar. Vengo dal Messico. Leslie no lleva artículo; al = a + il y dal = da + il.",
+  },
+  whQuestions: {
+    goal: "Preguntar con chi, che cosa, dove, quando, come, perché, quanto y quale, y contestar con una frase breve.",
+    recall: ["vocabulary", "time", "countries", "preposizioniArticolate"],
+    task: "Pregunta dónde está Leslie, de dónde es Octavio y por qué estás aquí. Responde que estudias italiano.",
+    answer: "Dov'è Leslie? Di dov'è Octavio? Perché sei qui? — Perché studio italiano. Dove se junta con è: dov'è. Qual è va sin apóstrofo.",
+  },
+  presenteIndicativo: {
+    goal: "Conjugar el presente de -are, -ere e -ire, negar con non y preguntar sin cambiar el orden.",
+    recall: ["whQuestions", "verbs", "stareGerundio"],
+    task: "Di que Leslie trabaja en Roma, que no trabajas los sábados y pregunta si trabajas en Roma.",
+    answer: "Leslie lavora a Roma. Non lavoro il sabato. Lavori a Roma? Non va antes del verbo y la pregunta no cambia el orden.",
+  },
+  verbiInfinito: {
+    goal: "Encadenar un verbo y un infinitivo, con a, con di o sin preposición, y decir qué te gusta.",
+    recall: ["presenteIndicativo", "verbs"],
+    task: "Di que te gusta leer, que quieres comer y que intentas estudiar cada día.",
+    answer: "Mi piace leggere. Voglio mangiare. Cerco di studiare ogni giorno. Volere va sin preposición; cercare di significa intentar.",
+  },
+  irregularVerbs: {
+    goal: "Reconocer el presente irregular y el participio passato de los verbos frecuentes.",
+    recall: ["presenteIndicativo", "verbiInfinito", "essereAvere"],
+    task: "Escribe la forma de io de andare y de dare, y el participio de fare.",
+    answer: "Vado. Dà. Fatto. Dà lleva acento para distinguirse de la preposición da.",
+  },
 };

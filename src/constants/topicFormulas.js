@@ -133,4 +133,83 @@ export const TOPIC_FORMULAS = {
       row("Despedirse", "Arrivederci! / A domani!", "A domani!", "¡Hasta mañana!"),
     ],
   },
+  articles: {
+    note: "El plural «unos» (dei, degli, delle) se ve en Básico IV.",
+    rows: [
+      row("Determinativo", "Artículo + sustantivo", "Il caffè è buono.", "El café está bueno."),
+      row("s + consonante, z, gn, ps, y", "lo / uno + sustantivo", "Lo studente è di Milano.", "El estudiante es de Milán."),
+      row("Ante vocal", "l' + sustantivo; un + masculino; un' + femenino", "Un amico e un'amica.", "Un amigo y una amiga."),
+      row("Sin artículo", "Ø + nombre, ciudad o profesión con essere", "Roma è bella.", "Roma es bonita."),
+    ],
+  },
+  adjectives: {
+    note: "Bello, ante sustantivo, cambia como el artículo. Buono, en singular, cambia como un.",
+    rows: [
+      row("Después del sustantivo", "Artículo + sustantivo + adjetivo", "Una macchina rossa.", "Un carro rojo."),
+      row("Antes del sustantivo", "Artículo + adjetivo frecuente + sustantivo", "Un nuovo libro.", "Un libro nuevo."),
+      row("Después de essere", "Sujeto + essere + adjetivo", "I gelati sono buoni.", "Los helados están buenos."),
+      row("Grupo mixto", "Persona + e + persona + sono + plural masculino", "Octavio e Leslie sono stanchi.", "Octavio y Leslie están cansados."),
+      row("Contrarios", "Adjetivo / su contrario", "Caldo o freddo.", "Caliente o frío."),
+    ],
+  },
+  possessiveAdjectives: {
+    note: "Con un familiar en singular no va artículo (mia madre), salvo loro. En plural sí: le mie sorelle.",
+    rows: [
+      row("Con objeto", "Artículo + posesivo + sustantivo", "Il mio libro è qui.", "Mi libro está aquí."),
+      row("Según lo poseído", "Artículo de la cosa + posesivo", "La sua casa è grande.", "Su casa es grande."),
+      row("Loro", "Artículo + loro + sustantivo", "I loro libri sono nuovi.", "Sus libros son nuevos."),
+      row("Después de essere", "Sustantivo + essere + posesivo", "Questo libro è mio.", "Este libro es mío."),
+      row("Familiar en singular", "Posesivo + familiar", "Mia madre è di Roma.", "Mi madre es de Roma."),
+    ],
+  },
+  preposizioniArticolate: {
+    note: "Con, per, tra y fra no se unen al artículo. Un nombre de persona va sin él.",
+    rows: [
+      row("Pertenencia", "Sustantivo + di + nombre", "Il libro di Leslie.", "El libro de Leslie."),
+      row("Di + artículo", "di + il = del", "La macchina del professore.", "El carro del profesor."),
+      row("A + artículo", "a + il = al", "Vado al bar.", "Voy al bar."),
+      row("Da + artículo", "da + il = dal", "Vengo dal Messico.", "Vengo de México."),
+      row("In + artículo", "in + la = nella", "Le chiavi sono nella borsa.", "Las llaves están en la bolsa."),
+    ],
+  },
+  whQuestions: {
+    note: "Perché lleva acento agudo y sirve para preguntar y para responder. Qual è va sin apóstrofo.",
+    rows: [
+      row("Orden", "Palabra interrogativa + verbo + sujeto", "Dov'è Leslie?", "¿Dónde está Leslie?"),
+      row("Causa", "Perché + pregunta — Perché + respuesta", "Perché studio italiano.", "Porque estudio italiano."),
+      row("Cantidad", "Quanto, quanta, quanti o quante + sustantivo", "Quante sorelle hai?", "¿Cuántas hermanas tienes?"),
+      row("Número", "Quale + singular; quali + plural", "Quali pizze prendi?", "¿Cuáles pizzas pides?"),
+      row("Origen", "Di dove + è", "Di dov'è Octavio?", "¿De dónde es Octavio?"),
+    ],
+  },
+  presenteIndicativo: {
+    note: "Voi equivale a ustedes. En loro, parlano, credono y dormono llevan el golpe al inicio: PAR-la-no. Ese acento no se escribe.",
+    rows: [
+      row("Modelo -are", "raíz + o, i, a, iamo, ate, ano", "Io parlo italiano.", "Yo hablo italiano."),
+      row("Negación", "Non + verbo en presente", "Non lavoro il sabato.", "No trabajo los sábados."),
+      row("Pregunta", "Verbo en presente + ?", "Lavori a Roma?", "¿Trabajas en Roma?"),
+      row("Hábito", "Presente + complemento de rutina", "Studio italiano ogni giorno.", "Estudio italiano todos los días."),
+      row("Ahora", "Che cosa fai? — respuesta en presente", "Mangio una pizza.", "Como una pizza."),
+    ],
+  },
+  verbiInfinito: {
+    note: "Sapere más infinitivo es saber hacer algo. La diferencia con potere se ve en Básico IV.",
+    rows: [
+      row("Gustar", "Mi piace + infinitivo", "Mi piace leggere.", "Me gusta leer."),
+      row("Plural", "Mi piacciono + sustantivo plural", "Mi piacciono le fragole.", "Me gustan las fresas."),
+      row("Sin preposición", "Volere, potere, dovere, sapere o preferire + infinitivo", "Devo studiare.", "Debo estudiar."),
+      row("Con a", "Verbo + a + infinitivo", "Vado a mangiare.", "Voy a comer."),
+      row("Con di", "Verbo + di + infinitivo", "Cerco di studiare.", "Intento estudiar."),
+    ],
+  },
+  irregularVerbs: {
+    note: "El participio entra en el passato prossimo, en Básico V. La muestra de esta lección es Ho mangiato, Ho fatto y Sono andato.",
+    rows: [
+      row("Presente", "Infinitivo irregular → forma de io", "Andare → vado.", "Ir → voy."),
+      row("Acento", "Dà, con acento grave", "Leslie dà un gelato.", "Leslie da un helado."),
+      row("Participio", "Infinitivo → participio passato", "Scrivere → scritto.", "Escribir → escrito."),
+      row("Con avere", "Ho + participio", "Ho fatto.", "He hecho."),
+      row("Con essere", "Sono + participio", "Sono andato.", "He ido."),
+    ],
+  },
 };

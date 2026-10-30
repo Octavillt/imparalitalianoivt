@@ -21,6 +21,14 @@ import VerbsSection       from "./features/verbs/VerbsSection";
 import StareGerundioSection from "./features/stareGerundio/StareGerundioSection";
 import JobsSection        from "./features/jobs/JobsSection";
 import VocabularySection  from "./features/vocabulary/VocabularySection";
+import ArticlesSection    from "./features/articles/ArticlesSection";
+import AdjectivesSection  from "./features/adjectives/AdjectivesSection";
+import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
+import PreposizioniArticolateSection from "./features/preposizioniArticolate/PreposizioniArticolateSection";
+import WhQuestionsSection from "./features/whQuestions/WhQuestionsSection";
+import PresenteIndicativoSection from "./features/presenteIndicativo/PresenteIndicativoSection";
+import VerbiInfinitoSection from "./features/verbiInfinito/VerbiInfinitoSection";
+import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -45,6 +53,14 @@ const SECTIONS = {
   stareGerundio:  StareGerundioSection,
   jobs:           JobsSection,
   vocabulary:     VocabularySection,
+  articles:       ArticlesSection,
+  adjectives:     AdjectivesSection,
+  possessiveAdjectives: PossessiveAdjectivesSection,
+  preposizioniArticolate: PreposizioniArticolateSection,
+  whQuestions:    WhQuestionsSection,
+  presenteIndicativo: PresenteIndicativoSection,
+  verbiInfinito:  VerbiInfinitoSection,
+  irregularVerbs: IrregularVerbsSection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
 };

@@ -11,6 +11,14 @@ import { PRACTICE as VERBS } from "../verbs/data";
 import { PRACTICE as STARE_GERUNDIO } from "../stareGerundio/data";
 import { PRACTICE as JOBS } from "../jobs/data";
 import { PRACTICE as VOCABULARY } from "../vocabulary/data";
+import { PRACTICE as ARTICLES } from "../articles/data";
+import { PRACTICE as ADJECTIVES } from "../adjectives/data";
+import { PRACTICE as POSSESSIVE_ADJECTIVES } from "../possessiveAdjectives/data";
+import { PRACTICE as PREPOSIZIONI_ARTICOLATE } from "../preposizioniArticolate/data";
+import { PRACTICE as WH_QUESTIONS } from "../whQuestions/data";
+import { PRACTICE as PRESENTE_INDICATIVO } from "../presenteIndicativo/data";
+import { PRACTICE as VERBI_INFINITO } from "../verbiInfinito/data";
+import { PRACTICE as IRREGULAR_VERBS } from "../irregularVerbs/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -94,5 +102,13 @@ export const MODULE_QUESTIONS = [
   ...STARE_GERUNDIO.map(row => ({ ...row, topic: "stareGerundio" })),
   ...JOBS.map(row => ({ ...row, topic: "jobs" })),
   ...VOCABULARY.map(row => ({ ...row, topic: "vocabulary" })),
+  ...ARTICLES.map(row => ({ ...row, topic: "articles" })),
+  ...ADJECTIVES.map(row => ({ ...row, topic: "adjectives" })),
+  ...POSSESSIVE_ADJECTIVES.map(row => ({ ...row, topic: "possessiveAdjectives" })),
+  ...PREPOSIZIONI_ARTICOLATE.map(row => ({ ...row, topic: "preposizioniArticolate" })),
+  ...WH_QUESTIONS.map(row => ({ ...row, topic: "whQuestions" })),
+  ...PRESENTE_INDICATIVO.map(row => ({ ...row, topic: "presenteIndicativo" })),
+  ...VERBI_INFINITO.map(row => ({ ...row, topic: "verbiInfinito" })),
+  ...IRREGULAR_VERBS.map(row => ({ ...row, topic: "irregularVerbs" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];

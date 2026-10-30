@@ -50,11 +50,12 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("menuitemradio", { name: /Berenjena/ })).toHaveAttribute("aria-checked", "true");
   });
 
-  it("habilita Básico I y Quiz, y bloquea los módulos sin migrar", () => {
+  it("habilita los módulos migrados y Quiz, y bloquea los demás", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeEnabled();
-    for (const label of [/^Básico II/, /^Básico III/, /^Básico IV/, /^Básico V/, /Verbos/]) {
+    for (const label of [/^Básico III/, /^Básico IV/, /^Básico V/, /Verbos/]) {
       const locked = screen.getAllByRole("button", { name: label }).find(button => button.textContent.includes("🔒"));
       expect(locked).toBeDisabled();
     }
