@@ -1,100 +1,118 @@
 export const NUMBERS_0_20 = [
-  [0, "zero"], [1, "one"], [2, "two"], [3, "three"], [4, "four"],
-  [5, "five"], [6, "six"], [7, "seven"], [8, "eight"], [9, "nine"],
-  [10, "ten"], [11, "eleven"], [12, "twelve"], [13, "thirteen"],
-  [14, "fourteen"], [15, "fifteen"], [16, "sixteen"], [17, "seventeen"],
-  [18, "eighteen"], [19, "nineteen"], [20, "twenty"],
+  [0, "zero"], [1, "uno"], [2, "due"], [3, "tre"], [4, "quattro"],
+  [5, "cinque"], [6, "sei"], [7, "sette"], [8, "otto"], [9, "nove"],
+  [10, "dieci"], [11, "undici"], [12, "dodici"], [13, "tredici"],
+  [14, "quattordici"], [15, "quindici"], [16, "sedici"], [17, "diciassette"],
+  [18, "diciotto"], [19, "diciannove"], [20, "venti"],
 ];
 
-export const TEENS = ["thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
-
 export const NUMBERS_21_29 = [
-  [21, "twenty-one"], [22, "twenty-two"], [23, "twenty-three"], [24, "twenty-four"],
-  [25, "twenty-five"], [26, "twenty-six"], [27, "twenty-seven"], [28, "twenty-eight"],
-  [29, "twenty-nine"],
+  [21, "ventuno"], [22, "ventidue"], [23, "ventitré"], [24, "ventiquattro"],
+  [25, "venticinque"], [26, "ventisei"], [27, "ventisette"], [28, "ventotto"],
+  [29, "ventinove"],
 ];
 
 export const TENS = [
-  [30, "thirty"], [40, "forty"], [50, "fifty"], [60, "sixty"],
-  [70, "seventy"], [80, "eighty"], [90, "ninety"],
+  [30, "trenta"], [40, "quaranta"], [50, "cinquanta"], [60, "sessanta"],
+  [70, "settanta"], [80, "ottanta"], [90, "novanta"],
 ];
 
 export const BIG_NUMBERS = [
-  ["100", "one hundred"],
-  ["1,000", "one thousand"],
-  ["10,000", "ten thousand"],
-  ["100,000", "one hundred thousand"],
-  ["1,000,000", "one million"],
-  ["1,000,000,000", "one billion"],
+  ["100", "cento"],
+  ["1.000", "mille"],
+  ["10.000", "diecimila"],
+  ["100.000", "centomila"],
+  ["1.000.000", "un milione"],
+  ["1.000.000.000", "un miliardo"],
 ];
 
 export const COMPOUND_EXAMPLES = [
-  ["200", "two hundred"],
-  ["252", "two hundred fifty-two"],
-  ["999", "nine hundred ninety-nine"],
-];
-
-export const BEFORE_AFTER = [
-  { n: 79, hint: "→ it's eighty", label: "after" },
+  ["200", "duecento"],
+  ["252", "duecentocinquantadue"],
+  ["999", "novecentonovantanove"],
 ];
 
 export const ROOM_NUMBERS = [
-  { label: "Cell", value: "55" },
-  { label: "Room", value: "013" },
-  { label: "Room", value: "103" },
+  { label: "Cellulare", value: "333" },
+  { label: "Camera", value: "013" },
+  { label: "Camera", value: "103" },
 ];
 
 // ── Letters ──────────────────────────────────────────────────────────
-// El abecedario inglés tiene las mismas 26 letras del español menos la Ñ.
-// De cada letra guardamos su NOMBRE (cómo se dice al deletrear, que es
-// distinto del sonido que hace dentro de una palabra), en IPA y en una
-// aproximación escrita como la leería un hispanohablante, más una palabra
-// de ejemplo.
+// El alfabeto italiano tradicional tiene 21 letras; se suman 5 letras
+// «extranjeras» que solo aparecen en palabras tomadas de otros idiomas. De
+// cada letra guardamos su NOMBRE (cómo se dice al deletrear, que es distinto
+// del sonido que hace dentro de una palabra), en IPA, una lectura aproximada
+// para hispanohablantes y la ciudad con la que se deletrea («A come Ancona»).
 export const ALPHABET = [
-  { letter: "A", ipa: "/eɪ/",         say: "ei",      word: "Apple",    vowel: true },
-  { letter: "B", ipa: "/biː/",        say: "bi",      word: "Book" },
-  { letter: "C", ipa: "/siː/",        say: "si",      word: "Cat" },
-  { letter: "D", ipa: "/diː/",        say: "di",      word: "Dog" },
-  { letter: "E", ipa: "/iː/",         say: "i",       word: "Elephant", vowel: true },
-  { letter: "F", ipa: "/ef/",         say: "ef",      word: "Fish" },
-  { letter: "G", ipa: "/dʒiː/",       say: "yi",      word: "Girl" },
-  { letter: "H", ipa: "/eɪtʃ/",       say: "eich",    word: "House" },
-  { letter: "I", ipa: "/aɪ/",         say: "ai",      word: "Ice",      vowel: true },
-  { letter: "J", ipa: "/dʒeɪ/",       say: "yei",     word: "Juice" },
-  { letter: "K", ipa: "/keɪ/",        say: "kei",     word: "Key" },
-  { letter: "L", ipa: "/el/",         say: "el",      word: "Lion" },
-  { letter: "M", ipa: "/em/",         say: "em",      word: "Milk" },
-  { letter: "N", ipa: "/en/",         say: "en",      word: "Night" },
-  { letter: "O", ipa: "/oʊ/",         say: "ou",      word: "Orange",   vowel: true },
-  { letter: "P", ipa: "/piː/",        say: "pi",      word: "Pen" },
-  { letter: "Q", ipa: "/kjuː/",       say: "kiu",     word: "Queen" },
-  { letter: "R", ipa: "/ɑːr/",        say: "ar",      word: "Red" },
-  { letter: "S", ipa: "/es/",         say: "es",      word: "Sun" },
-  { letter: "T", ipa: "/tiː/",        say: "ti",      word: "Table" },
-  { letter: "U", ipa: "/juː/",        say: "iu",      word: "Umbrella", vowel: true },
-  { letter: "V", ipa: "/viː/",        say: "vi",      word: "Van" },
-  { letter: "W", ipa: "/ˈdʌbəljuː/",  say: "dábliu",  word: "Water" },
-  { letter: "X", ipa: "/eks/",        say: "eks",     word: "Box" },
-  { letter: "Y", ipa: "/waɪ/",        say: "uai",     word: "Yellow" },
-  { letter: "Z", ipa: "/ziː/",        say: "zi",      word: "Zebra" },
+  { letter: "A", name: "a",        ipa: "/a/",          say: "a",       word: "acqua",   city: "Ancona",      vowel: true },
+  { letter: "B", name: "bi",       ipa: "/bi/",         say: "bi",      word: "bene",    city: "Bologna" },
+  { letter: "C", name: "ci",       ipa: "/tʃi/",        say: "chi",     word: "casa",    city: "Como" },
+  { letter: "D", name: "di",       ipa: "/di/",         say: "di",      word: "donna",   city: "Domodossola" },
+  { letter: "E", name: "e",        ipa: "/e/",          say: "e",       word: "erba",    city: "Empoli",      vowel: true },
+  { letter: "F", name: "effe",     ipa: "/ˈɛffe/",      say: "éffe",    word: "fiore",   city: "Firenze" },
+  { letter: "G", name: "gi",       ipa: "/dʒi/",        say: "yi",      word: "gatto",   city: "Genova" },
+  { letter: "H", name: "acca",     ipa: "/ˈakka/",      say: "acca",    word: "hotel",   city: "Hotel" },
+  { letter: "I", name: "i",        ipa: "/i/",          say: "i",       word: "isola",   city: "Imola",       vowel: true },
+  { letter: "L", name: "elle",     ipa: "/ˈɛlle/",      say: "élle",    word: "luna",    city: "Livorno" },
+  { letter: "M", name: "emme",     ipa: "/ˈɛmme/",      say: "émme",    word: "mare",    city: "Milano" },
+  { letter: "N", name: "enne",     ipa: "/ˈɛnne/",      say: "énne",    word: "notte",   city: "Napoli" },
+  { letter: "O", name: "o",        ipa: "/ɔ/",          say: "o",       word: "ora",     city: "Otranto",     vowel: true },
+  { letter: "P", name: "pi",       ipa: "/pi/",         say: "pi",      word: "pane",    city: "Palermo" },
+  { letter: "Q", name: "cu",       ipa: "/ku/",         say: "cu",      word: "quadro",  city: "Quarto" },
+  { letter: "R", name: "erre",     ipa: "/ˈɛrre/",      say: "érre",    word: "rosa",    city: "Roma" },
+  { letter: "S", name: "esse",     ipa: "/ˈɛsse/",      say: "ésse",    word: "sole",    city: "Savona" },
+  { letter: "T", name: "ti",       ipa: "/ti/",         say: "ti",      word: "tavolo",  city: "Torino" },
+  { letter: "U", name: "u",        ipa: "/u/",          say: "u",       word: "uva",     city: "Udine",       vowel: true },
+  { letter: "V", name: "vu",       ipa: "/vu/",         say: "vu",      word: "vino",    city: "Venezia" },
+  { letter: "Z", name: "zeta",     ipa: "/ˈdzɛta/",     say: "dzéta",   word: "zucchero", city: "Zara" },
+  // Letras extranjeras: solo aparecen en palabras de otros idiomas.
+  { letter: "J", name: "i lunga",    ipa: "/i ˈlunɡa/",   say: "i lunga",    word: "jeans",    city: "Jolly",      foreign: true },
+  { letter: "K", name: "cappa",      ipa: "/ˈkappa/",     say: "cappa",      word: "kiwi",     city: "Kursaal",    foreign: true },
+  { letter: "W", name: "doppia vu",  ipa: "/ˈdoppja vu/", say: "doppia vu",  word: "web",      city: "Washington", foreign: true },
+  { letter: "X", name: "ics",        ipa: "/iks/",        say: "ics",        word: "xilofono", city: "Xeres",      foreign: true },
+  { letter: "Y", name: "ipsilon",    ipa: "/ˈipsilon/",   say: "ípsilon",    word: "yogurt",   city: "York",       foreign: true },
 ];
 
 export const VOWELS = ALPHABET.filter(l => l.vowel);
-export const CONSONANTS = ALPHABET.filter(l => !l.vowel);
+export const CONSONANTS = ALPHABET.filter(l => !l.vowel && !l.foreign);
+export const FOREIGN_LETTERS = ALPHABET.filter(l => l.foreign);
 
-// El nombre de la letra no siempre coincide con el sonido que hace dentro de
-// la palabra: cada vocal tiene un sonido largo (suena como su nombre) y uno
-// corto, y de ahí salen la mayoría de los errores de pronunciación.
-export const VOWEL_SOUNDS = [
-  { letter: "A", long: { ipa: "/eɪ/", word: "cake",  esp: "pastel" },  short: { ipa: "/æ/",  word: "cat",  esp: "gato" } },
-  { letter: "E", long: { ipa: "/iː/", word: "he",    esp: "él" },      short: { ipa: "/e/",  word: "bed",  esp: "cama" } },
-  { letter: "I", long: { ipa: "/aɪ/", word: "bike",  esp: "bici" },    short: { ipa: "/ɪ/",  word: "sit",  esp: "sentarse" } },
-  { letter: "O", long: { ipa: "/oʊ/", word: "home",  esp: "casa" },    short: { ipa: "/ɒ/",  word: "hot",  esp: "caliente" } },
-  { letter: "U", long: { ipa: "/juː/", word: "use",  esp: "usar" },    short: { ipa: "/ʌ/",  word: "cup",  esp: "taza" } },
+// Sonidos frecuentes: el italiano escribe como suena, pero estas combinaciones
+// se leen distinto de lo que sugiere el español.
+export const PRONUNCIATION_GROUPS = [
+  { icon: "🍦", title: "C y G suaves", color: "#f472b6", rows: [
+    ["ce, ci → /tʃ/", "cena, cinema"],
+    ["ge, gi → /dʒ/", "gelato, giorno"],
+  ] },
+  { icon: "🪨", title: "C y G fuertes", color: "#34d399", rows: [
+    ["ca, co, cu, che, chi → /k/", "casa, chiave"],
+    ["ga, go, gu, ghe, ghi → /ɡ/", "gatto, spaghetti"],
+  ] },
+  { icon: "🏫", title: "SC", color: "#38bdf8", rows: [
+    ["sce, sci → /ʃ/", "pesce, sci"],
+    ["sca, sco, scu, sche, schi → /sk/", "scuola, schiena"],
+  ] },
+  { icon: "🍝", title: "GN y GLI", color: "#c084fc", rows: [
+    ["gn → /ɲ/", "gnocchi, bagno"],
+    ["gli → /ʎ/", "famiglia, figlio"],
+  ] },
+  { icon: "🍕", title: "S y Z", color: "#fbbf24", rows: [
+    ["s → /s/ o /z/", "sole, rosa"],
+    ["z → /ts/ o /dz/", "pizza, zero"],
+  ] },
+  { icon: "🤫", title: "H muda", color: "#fb923c", rows: [
+    ["h no suena", "ho, hanno, chi"],
+  ] },
+  { icon: "👯", title: "Consonantes dobles", color: "#60a5fa", rows: [
+    ["nono ≠ nonno", "nueve ≠ abuelo"],
+    ["sete ≠ sette", "sed ≠ siete"],
+    ["pala ≠ palla", "pala ≠ pelota"],
+  ] },
 ];
 
 export const SPELLING_EXAMPLES = [
-  { q: "How do you spell your name?", a: "M-A-R-I-A", esp: "¿Cómo se escribe tu nombre?" },
-  { q: "Can you spell that, please?", a: "Sure: S-M-I-T-H", esp: "¿Puedes deletrearlo, por favor?" },
-  { q: "How do you spell 'hello'?", a: "H-E-double L-O", esp: "Las letras repetidas se dicen con «double»" },
+  { q: "Come si scrive il tuo nome?", a: "O-C-T-A-V-I-O", esp: "¿Cómo se escribe tu nombre?" },
+  { q: "Puoi ripetere, per favore?", a: "Certo: L-E-S-L-I-E", esp: "¿Puedes repetirlo, por favor?" },
+  { q: "Come si scrive «mamma»?", a: "M-A-doppia emme-A", esp: "Las letras repetidas se dicen con «doppia»" },
 ];

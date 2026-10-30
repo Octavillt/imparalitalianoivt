@@ -1,15 +1,21 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { describe, it, expect, beforeEach } from "vitest";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
+const NUMBERS_HEADING = "🔢 Números y alfabeto — Numeri e alfabeto";
+const TIME_HEADING = "🕐 La hora — Che ora è?";
+
+function topics() {
+  return within(screen.getByRole("navigation", { name: "Temas del módulo" }));
+}
+
 describe("App — selector de color y niveles", () => {
   beforeEach(() => localStorage.clear());
-  afterEach(() => vi.useRealTimers());
 
   it("arranca en Básico I con el tema por defecto (Pizarra)", () => {
     render(<App />);
-    expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🎓 Italiano — Básico I" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
   });
 
@@ -31,131 +37,73 @@ describe("App — selector de color y niveles", () => {
     await user.click(screen.getByRole("button", { name: /color/i }));
     await user.click(screen.getByRole("menuitemradio", { name: /Vino tinto/ }));
 
-    expect(localStorage.getItem("learningles.theme")).toBe("vino");
-    // El contenedor raíz usa el fondo teñido del tema, no solo el header
+    expect(localStorage.getItem("imparalitalianoivt.theme")).toBe("vino");
     expect(container.firstChild).toHaveStyle({ background: "#1f040d" });
   });
 
   it("recuerda el color guardado al volver a montar la app", async () => {
-    localStorage.setItem("learningles.theme", "berenjena");
+    localStorage.setItem("imparalitalianoivt.theme", "berenjena");
     render(<App />);
 
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /color/i }));
-    const berenjena = screen.getByRole("menuitemradio", { name: /Berenjena/ });
-    expect(berenjena).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByRole("menuitemradio", { name: /Berenjena/ })).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra los cinco niveles en romano habilitados", () => {
+  it("habilita Básico I y Quiz, y bloquea los módulos sin migrar", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Básico III" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Básico IV" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Básico V" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeEnabled();
+    for (const label of [/^Básico II/, /^Básico III/, /^Básico IV/, /^Básico V/, /Verbos/]) {
+      const locked = screen.getAllByRole("button", { name: label }).find(button => button.textContent.includes("🔒"));
+      expect(locked).toBeDisabled();
+    }
   });
 
-  it("abre Partes del cuerpo al entrar a Básico IV", () => {
+  it("la barra de temas muestra solo los temas disponibles de Básico I", () => {
     render(<App />);
-    fireEvent.click(screen.getByRole("button", { name: "Básico IV" }));
-    expect(screen.getByRole("heading", { name: "🧍 Partes del cuerpo — Body Parts" })).toBeInTheDocument();
-    expect(screen.getByText("eyelashes")).toBeInTheDocument();
-    expect(screen.getByText("dedo del pie")).toBeInTheDocument();
+    expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual(["🔢 Números y alfabeto", "🕐 La hora"]);
   });
 
-  it("entrar a Básico II muestra la sección de Artículos", async () => {
+  it("Números incluye cifras, alfabeto, vocales y pronunciación", async () => {
+    render(<App />);
+    expect(screen.getByRole("heading", { name: NUMBERS_HEADING })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /I numeri cardinali/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /L'alfabeto italiano/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Le vocali/ })).toBeInTheDocument();
+    expect(screen.getByText("GN y GLI", { exact: false })).toBeInTheDocument();
+  });
+
+  it("recuerda el último tema visitado al volver a montar la app", async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(<App />);
+    await user.click(topics().getByRole("button", { name: "🕐 La hora" }));
+    unmount();
+    render(<App />);
+    expect(screen.getByRole("heading", { name: TIME_HEADING })).toBeInTheDocument();
+    expect(JSON.parse(localStorage.getItem("imparalitalianoivt.activeTopics")).basico1).toBe("time");
+  });
+});
+
+describe("App — lecciones interactivas", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("convierte el número que se escribe en palabras italianas", async () => {
     const user = userEvent.setup();
     render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico II" }));
-
-    expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "📖 Artículos — A / An / The / Ø" })).toBeInTheDocument();
-    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
+    const input = screen.getByDisplayValue(/^\d[\d.]*$/);
+    await user.clear(input);
+    await user.type(input, "23");
+    expect(screen.getAllByText("ventitré").length).toBeGreaterThan(0);
   });
 
-  it("abre el tema de Simple Present desde la barra de Básico II", async () => {
+  it("muestra los relojes con la hora en italiano", async () => {
     const user = userEvent.setup();
     render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico II" }));
-    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /⏰ Presente simple/ }));
-
-    expect(screen.getByRole("heading", { name: /Presente simple — Simple Present/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Interrogativo/ })).toBeInTheDocument();
-    // El contenido avanzado ya no vive en Básico II
-    expect(screen.queryByRole("heading", { name: /WH Questions con do \/ does/ })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /Adverbios de frecuencia/ })).not.toBeInTheDocument();
-  });
-
-  it("entrar a Básico III muestra rutinas, preguntas y frecuencia", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico III" }));
-
-    expect(screen.getByRole("heading", { name: "🎓 English — Básico III" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Rutinas, preguntas y frecuencia — Simple Present in context/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
-    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
-  });
-
-  it("abre el tema de Simple Present Avanzado desde la barra de Básico III", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico III" }));
-    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /🔁 Rutinas, preguntas y frecuencia/ }));
-
-    expect(screen.getByRole("heading", { name: /Rutinas, preguntas y frecuencia/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /WH Questions con do \/ does/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Simple Present vs\. Present Progressive/ })).toBeInTheDocument();
-  });
-
-  it("abre Giving Directions desde la barra de Básico III", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico III" }));
-    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Pedir y dar indicaciones/ }));
-
-    expect(screen.getByRole("heading", { name: /Pedir y dar indicaciones — Asking for & Giving Directions/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Movimientos esenciales/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Practica con el mapa/ })).toBeInTheDocument();
-    expect(screen.getByText("Go straight ahead", { selector: "div" })).toBeInTheDocument();
-  });
-
-  it("volver de Básico II a Básico I restaura los temas", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico II" }));
-    await user.click(screen.getByRole("button", { name: "Básico I" }));
-
-    // Nombre exacto: la flecha de regreso también menciona el tema anterior
-    expect(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "🏃 Verbos de uso diario" })).toBeInTheDocument();
-    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
-  });
-
-  it("la barra de temas muestra los temas del nivel activo", () => {
-    render(<App />);
-    const topics = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
-    expect(topics.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
-    expect(topics.queryByRole("button", { name: /Quiz/ })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeInTheDocument();
-  });
-
-  it("Numbers & Letters incluye números, abecedario y vocales", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /🔢 Números y abecedario/ }));
-
-    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Cardinal Numbers/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Vowels/ })).toBeInTheDocument();
+    await user.click(topics().getByRole("button", { name: "🕐 La hora" }));
+    expect(screen.getByRole("heading", { name: TIME_HEADING })).toBeInTheDocument();
+    expect(document.querySelector("main").textContent).toMatch(/sono le (dieci|nove|quattro|tre)/);
+    expect(document.querySelector("main").textContent).not.toMatch(/o'clock|hour hand/);
   });
 });
 
@@ -173,39 +121,24 @@ describe("App — flecha para volver a la sección anterior", () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole("button", { name: /🎯 Quiz/ }));
+    await user.click(screen.getByRole("button", { name: "🎯 Quiz" }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "Volver a 🔢 Números y abecedario · Básico I" }));
+    await user.click(screen.getByRole("button", { name: "Volver a 🔢 Números y alfabeto · Básico I" }));
 
-    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
-    // Consumida la pila, la flecha deja de ofrecerse
+    expect(screen.getByRole("heading", { name: NUMBERS_HEADING })).toBeInTheDocument();
     expect(flecha()).not.toBeInTheDocument();
-  });
-
-  it("regresa también al nivel anterior", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByRole("button", { name: "Básico II" }));
-    expect(screen.getByRole("heading", { name: "📖 Artículos — A / An / The / Ø" })).toBeInTheDocument();
-
-    await user.click(screen.getByRole("button", { name: "Volver a 🔢 Números y abecedario · Básico I" }));
-
-    expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
   });
 });
 
 describe("App — buscador global y resaltado", () => {
   beforeEach(() => localStorage.clear());
 
-  async function buscarYElegir(user, termino) {
-    await user.clear(screen.getByPlaceholderText("Buscar tema o palabra..."));
-    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), termino);
-    // «dance» también abre una ficha en Verbos a la mano; esta prueba sigue
-    // eligiendo la lección, cuyo nombre ya no es el único que contiene «Verbos».
-    await user.click(await screen.findByRole("option", { name: /Verbos de uso diario/ }));
+  async function buscarYElegir(user, termino, opcion) {
+    const input = screen.getByPlaceholderText("Buscar tema o palabra...");
+    await user.clear(input);
+    await user.type(input, termino);
+    await user.click(await screen.findByRole("option", { name: opcion }));
   }
 
   function resaltado() {
@@ -216,34 +149,29 @@ describe("App — buscador global y resaltado", () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await buscarYElegir(user, "dance");
+    await buscarYElegir(user, "mezzogiorno", /La hora/);
 
-    await waitFor(() => expect(resaltado()).toHaveTextContent("Dance"));
+    expect(screen.getByRole("heading", { name: TIME_HEADING })).toBeInTheDocument();
+    await waitFor(() => expect(resaltado()).toHaveTextContent(/mezzogiorno/i));
   });
 
   it("vuelve a resaltar cuando la segunda búsqueda cae en la sección ya abierta", async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await buscarYElegir(user, "dance");
-    await waitFor(() => expect(resaltado()).toHaveTextContent("Dance"));
+    await buscarYElegir(user, "mezzogiorno", /La hora/);
+    await waitFor(() => expect(resaltado()).toHaveTextContent(/mezzogiorno/i));
 
-    await buscarYElegir(user, "erase");
+    await buscarYElegir(user, "mezzanotte", /La hora/);
 
-    await waitFor(() => expect(resaltado()).toHaveTextContent("Erase"));
-    // El resaltado anterior se deshace: sin esto los <mark> se acumularían
-    // porque la sección no se remonta al no cambiar de tema.
+    await waitFor(() => expect(resaltado()).toHaveTextContent(/mezzanotte/i));
     expect(document.querySelectorAll("main mark.search-highlight")).toHaveLength(1);
   });
 
-  it("salta a Numbers & Letters al buscar 'abecedario'", async () => {
+  it("no ofrece verbos en el buscador mientras su módulo siga bloqueado", async () => {
     const user = userEvent.setup();
     render(<App />);
-
-    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "abecedario");
-    await user.click(await screen.findByRole("option", { name: /Números y abecedario/ }));
-
-    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
+    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "andare");
+    expect(screen.queryByRole("option", { name: /andare/ })).not.toBeInTheDocument();
   });
 });

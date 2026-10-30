@@ -8,6 +8,10 @@ import { C } from "../styles/colors";
 // resultados (Básico III se mostraba vacío con el mapa escrito a mano).
 const LEVEL_LABELS = Object.fromEntries(LEVELS.map(l => [l.id, l.label]));
 
+// Un tema de un nivel bloqueado no se puede abrir: mientras «Verbos» no esté
+// disponible, el buscador no ofrece ni sus temas ni sus fichas de verbo.
+const isLevelOpen = levelId => LEVELS.find(l => l.id === levelId)?.available !== false;
+
 export default function GlobalSearch({ onSelect, now }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -16,12 +20,17 @@ export default function GlobalSearch({ onSelect, now }) {
   const inputRef = useRef(null);
   const listboxId = useId();
 
-  const results = useMemo(() => searchTopics(query, now), [query, now]);
+  const results = useMemo(
+    () => searchTopics(query, now).filter(result => isLevelOpen(result.levelId)),
+    [query, now],
+  );
   // Con 2+ caracteres, las fichas de verbo van arriba de los temas y comparten
-  // el mismo índice de teclado (flechas y Enter).
+  // el mismo índice de teclado (flechas y Enter). Solo si el módulo de
+  // consulta está desbloqueado.
+  const verbosAvailable = isLevelOpen("verbos");
   const verbHits = useMemo(
-    () => (query.trim().length >= 2 ? searchVerbs(query, { limit: 4 }) : []),
-    [query],
+    () => (verbosAvailable && query.trim().length >= 2 ? searchVerbs(query, { limit: 4 }) : []),
+    [query, verbosAvailable],
   );
   const items = useMemo(() => [
     ...verbHits.map(hit => ({ type: "verb", hit })),
@@ -43,7 +52,7 @@ export default function GlobalSearch({ onSelect, now }) {
   function pick(item) {
     if (!item) return;
     if (item.type === "verb") {
-      onSelect("verbos", "verbFinder", item.hit.verb.base);
+      onSelect("verbos", "verbFinder", item.hit.verb.infinito);
     } else {
       // El término a resaltar en la sección: la keyword de contenido que hizo
       // match, o si el match fue por título, lo que el usuario escribió.
@@ -126,7 +135,7 @@ export default function GlobalSearch({ onSelect, now }) {
           ) : (
             items.map((item, i) => item.type === "verb" ? (
               <button
-                key={`verb-${item.hit.verb.base}`}
+                key={`verb-${item.hit.verb.infinito}`}
                 type="button"
                 role="option"
                 aria-selected={i === activeIndex}
@@ -141,15 +150,15 @@ export default function GlobalSearch({ onSelect, now }) {
               >
                 <span aria-hidden="true" style={{ flex: "0 0 auto" }}>📒</span>
                 <span style={{ flex: 1, minWidth: 0 }}>
-                  <span lang="en" style={{ display: "block", overflowWrap: "anywhere" }}>
-                    <span style={{ color: C.verb.fg }}>{item.hit.verb.base}</span>
+                  <span lang="it" style={{ display: "block", overflowWrap: "anywhere" }}>
+                    <span style={{ color: C.verb.fg }}>{item.hit.verb.infinito}</span>
                     {" · "}
-                    <span style={{ color: C.past.fg }}>{item.hit.verb.past.join(" / ")}</span>
+                    <span style={{ color: C.presente.fg }}>{item.hit.verb.presente.join(" / ")}</span>
                     {" · "}
-                    <span style={{ color: C.participle.fg }}>{item.hit.verb.participle.join(" / ")}</span>
+                    <span style={{ color: C.participle.fg }}>{item.hit.verb.participio.join(" / ")}</span>
                   </span>
                   <span lang="es" style={{ display: "block", fontWeight: 400, color: "var(--text-muted, #94a3b8)", fontSize: "11px", overflowWrap: "anywhere" }}>
-                    {item.hit.verb.es} → {item.hit.verb.esPast}
+                    {item.hit.verb.es}
                   </span>
                 </span>
                 <span style={{ fontSize: "11px", fontWeight: 500, color: "#94a3b8", flex: "0 0 auto" }}>

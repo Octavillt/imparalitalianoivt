@@ -13,7 +13,7 @@ export default function TopicFormulas({ topicId }) {
           <div className="topic-formula" key={label}>
             <h4>{label}</h4>
             <p className="formula-pattern">{pattern}</p>
-            <p className="formula-example"><strong>Ejemplo:</strong> <span lang="en">{example}</span></p>
+            <p className="formula-example"><strong>Ejemplo:</strong> <span lang="it">{example}</span></p>
             <p className="formula-translation">{translation}</p>
           </div>
         ))}

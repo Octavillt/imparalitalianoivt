@@ -1,7 +1,7 @@
-import { IPA_GROUPS } from "../features/irregularVerbs/data";
+import { PRONUNCIATION_GROUPS } from "../features/numbers/data";
 
-// Un grupo fonético del IPA: símbolo + palabra de ejemplo.
-function IpaGroup({ icon, title, color, rows }) {
+// Un grupo de pronunciación del italiano: grafías + ejemplos.
+function PronunciationGroup({ icon, title, color, rows }) {
   return (
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${color}` }}>
       <div style={{ color, fontWeight: 800, fontSize: "13px", marginBottom: "10px" }}>
@@ -16,7 +16,7 @@ function IpaGroup({ icon, title, color, rows }) {
             }}>
               {symbol}
             </span>
-            <span style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</span>
+            <span lang="it" style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</span>
           </div>
         ))}
       </div>
@@ -24,13 +24,13 @@ function IpaGroup({ icon, title, color, rows }) {
   );
 }
 
-// Cuadrícula completa de símbolos de pronunciación, compartida por la lección
-// de verbos irregulares y el módulo de consulta de verbos.
-export default function IpaGroups() {
+// Cuadrícula completa de sonidos frecuentes del italiano, compartida por la
+// lección del alfabeto y el módulo de consulta de verbos.
+export default function PronunciationGroups() {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "10px" }}>
-      {IPA_GROUPS.map(g => (
-        <IpaGroup key={g.title} icon={g.icon} title={g.title} color={g.color} rows={g.rows} />
+      {PRONUNCIATION_GROUPS.map(g => (
+        <PronunciationGroup key={g.title} icon={g.icon} title={g.title} color={g.color} rows={g.rows} />
       ))}
     </div>
   );

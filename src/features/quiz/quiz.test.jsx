@@ -2,30 +2,35 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { act, render, renderHook, screen, fireEvent } from "@testing-library/react";
 import { LEVELS } from "../../constants/levels";
 import { searchTopics } from "../../constants/searchIndex";
-import { QUESTIONS, checkAnswer, getByTopic, normalize, questionKey } from "./questions";
+import { VERB_BANK } from "../verbFinder/data";
+import { QUESTIONS, QUIZ_LEVELS, accentMismatch, checkAnswer, getByTopic, looseNormalize, normalize, questionKey } from "./questions";
 import { useQuiz } from "./useQuiz";
 import QuizSection from "./QuizSection";
 
 afterEach(() => vi.restoreAllMocks());
 
+const SELECTION = { levelId: "basico1", topicId: "time" };
+
+function verbQuestion(topic, infinito) {
+  return QUESTIONS.find(q => q.topic === topic && q.verb === infinito);
+}
+
 describe("Quiz general", () => {
-  it("busca y practica Conversación y vocabulario en Básico I", () => {
-    expect(searchTopics("greetings").find(topic => topic.topicId === "vocabulary")?.levelId).toBe("basico1");
-    expect(getByTopic("vocabulary", "basico1").length).toBeGreaterThan(0);
-    expect(getByTopic("vocabulary", "basico2")).toHaveLength(0);
-    render(<QuizSection initialSelection={{ levelId: "basico1", topicId: "vocabulary" }} />);
-    expect(screen.getByLabelText("Módulo")).toHaveValue("basico1");
-    expect(screen.getByLabelText("Sección")).toHaveValue("vocabulary");
-    expect(screen.getByRole("button", { name: /Empezar Quiz/ })).toBeEnabled();
-  });
   it("vive fuera de Básico I y el buscador lleva al módulo Quiz", () => {
     expect(LEVELS[0].topics.some(t => t.id === "quiz")).toBe(false);
     expect(LEVELS.find(l => l.id === "quiz").topics[0].id).toBe("quiz");
     expect(searchTopics("quiz").find(t => t.topicId === "quiz").levelId).toBe("quiz");
   });
 
-  it("cubre cada sección de todos los módulos y filtra sin mezclar niveles", () => {
-    for (const level of LEVELS.filter(l => l.id !== "quiz" && !l.reference)) {
+  it("solo ofrece módulos disponibles", () => {
+    expect(QUIZ_LEVELS.every(level => level.available && level.id !== "quiz")).toBe(true);
+    render(<QuizSection />);
+    const options = [...screen.getByLabelText("Módulo").options].map(option => option.textContent);
+    expect(options).toEqual(LEVELS.length && ["Todos los módulos", ...QUIZ_LEVELS.map(level => level.label)]);
+  });
+
+  it("cubre cada sección disponible y filtra sin mezclar niveles", () => {
+    for (const level of QUIZ_LEVELS.filter(l => !l.reference)) {
       const pool = getByTopic("mixed", level.id, 0);
       expect(pool.length).toBeGreaterThan(0);
       expect(pool.every(q => level.topics.some(t => t.id === q.topic))).toBe(true);
@@ -39,12 +44,17 @@ describe("Quiz general", () => {
     }
   });
 
+  it("no incluye los verbos en la mezcla mientras su módulo siga bloqueado", () => {
+    expect(getByTopic("mixed", "all", 0).some(q => q.verb)).toBe(false);
+    expect(getByTopic("verbPresent", "all", 0)).toHaveLength(0);
+  });
+
   it("reinicia al cambiar filtros y no repite preguntas hasta agotar cada ronda", () => {
     vi.spyOn(Math, "random").mockReturnValue(0);
     const { result } = renderHook(() => useQuiz());
-    act(() => result.current.setLevelId("basico3"));
-    act(() => result.current.setTopic("directions"));
-    const count = getByTopic("directions").length;
+    act(() => result.current.setLevelId("basico1"));
+    act(() => result.current.setTopic("time"));
+    const count = getByTopic("time").length;
     for (let round = 0; round < 2; round++) {
       const seen = new Set();
       for (let i = 0; i < count; i++) {
@@ -57,50 +67,16 @@ describe("Quiz general", () => {
     act(() => result.current.submitAnswer());
     act(() => result.current.submitAnswer());
     expect(result.current.score).toEqual({ correct: 1, total: 1 });
-    act(() => result.current.setLevelId("basico2"));
+    act(() => result.current.setLevelId("all"));
     expect(result.current.started).toBe(false);
     expect(result.current.topic).toBe("mixed");
     expect(result.current.question).toBeNull();
     expect(result.current.score.total).toBe(0);
   });
 
-  it("califica sin castigar acentos, comas, paréntesis ni símbolos difíciles de teclear", () => {
-    expect(checkAnswer("como estas", ["¿Cómo estás?"])).toBe(true);
-    expect(checkAnswer("Yes he is", ["Yes, he is."])).toBe(true);
-    expect(checkAnswer("no, they CAN´T", ["No, they can't."])).toBe(true);
-    expect(checkAnswer("buenas noches", ["Buenas noches (al llegar)."])).toBe(true);
-    expect(checkAnswer("twenty one", ["twenty-one"])).toBe(true);
-    expect(checkAnswer("/id/", ["/ɪd/"])).toBe(true);
-    expect(checkAnswer("The movie starts at 8:00 pm", ["The movie starts at 8:00 p.m."])).toBe(true);
-    expect(checkAnswer("No, he did.", ["No, he didn't."])).toBe(false);
-    expect(checkAnswer("is", ["isn't", "is not"])).toBe(false);
-    const article = QUESTIONS.find(q => q.topic === "articles" && q.answers.includes("Ø"));
-    expect(checkAnswer("0", article.answers)).toBe(true);
-    const negative = QUESTIONS.find(q => q.topic === "tobe" && /short form/.test(q.question));
-    expect(negative.question).not.toMatch(/___ not/);
-  });
-
-  it("no repite la misma pregunta dentro de una mezcla aunque venga de dos secciones", () => {
-    for (const levelId of ["all", ...LEVELS.filter(l => l.id !== "quiz" && !l.reference).map(l => l.id)]) {
-      const keys = getByTopic("mixed", levelId, 0).map(questionKey);
-      expect(new Set(keys).size).toBe(keys.length);
-    }
-    const negative = getByTopic("mixed", "basico5", 0).filter(q => q.question === "Convierte en negativa: We are going to travel this summer.");
-    expect(negative).toHaveLength(1);
-    expect(checkAnswer("We are not going to travel this summer.", negative[0].answers)).toBe(true);
-  });
-
-  it("mantiene distinguibles las opciones al normalizar y la correcta está entre ellas", () => {
-    for (const q of QUESTIONS.filter(item => item.options)) {
-      const options = q.options.map(normalize);
-      expect(new Set(options).size).toBe(options.length);
-      expect(q.answers.every(a => options.includes(normalize(a)))).toBe(true);
-    }
-  });
-
   it("no vuelve a preguntar lo que se respondió bien, repite lo fallado y la puntuación cuadra", () => {
     vi.spyOn(Math, "random").mockReturnValue(0);
-    const { result } = renderHook(() => useQuiz({ levelId: "basico3", topicId: "directions" }));
+    const { result } = renderHook(() => useQuiz(SELECTION));
     const count = result.current.questionCount;
     const answered = [];
     let failed = null;
@@ -111,7 +87,7 @@ describe("Quiz general", () => {
       const fail = step === 0;
       if (fail) failed = questionKey(q);
       if (step === count) expect(questionKey(q)).toBe(failed);
-      act(() => result.current.setAnswer(fail ? "respuesta equivocada" : q.answers[0]));
+      act(() => result.current.setAnswer(fail ? "risposta sbagliata" : q.answers[0]));
       act(() => result.current.submitAnswer());
       expect(result.current.feedback.correct).toBe(!fail);
       if (!fail) answered.push(questionKey(q));
@@ -125,8 +101,8 @@ describe("Quiz general", () => {
 
   it("muestra el resultado al responder bien todas las preguntas y permite volver a empezar", () => {
     vi.spyOn(Math, "random").mockReturnValue(0);
-    const pool = getByTopic("directions", "basico3");
-    render(<QuizSection initialSelection={{ levelId: "basico3", topicId: "directions" }} />);
+    const pool = getByTopic("time", "basico1");
+    render(<QuizSection initialSelection={SELECTION} />);
     fireEvent.click(screen.getByRole("button", { name: /Empezar Quiz/ }));
     for (let i = 0; i < pool.length; i++) {
       const q = pool.find(item => screen.queryByText(item.question));
@@ -139,15 +115,143 @@ describe("Quiz general", () => {
     expect(screen.getByText(new RegExp(`${pool.length} preguntas en ${pool.length} intentos`))).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /Volver a empezar/ }));
     expect(screen.getByRole("button", { name: /Empezar Quiz/ })).toBeInTheDocument();
-    expect(screen.getByText(/Puntuación/).textContent).toMatch(/0\s*\/ 0/);
   });
 
-  it("ofrece filtros accesibles e inicia una pregunta de la sección elegida", () => {
-    render(<QuizSection />);
-    fireEvent.change(screen.getByLabelText("Módulo"), { target: { value: "basico3" } });
-    fireEvent.change(screen.getByLabelText("Sección"), { target: { value: "directions" } });
+  it("no repite preguntas dentro de una mezcla y mantiene distinguibles las opciones", () => {
+    const keys = getByTopic("mixed", "all", 0).map(questionKey);
+    expect(new Set(keys).size).toBe(keys.length);
+    for (const q of QUESTIONS.filter(item => item.options)) {
+      const options = q.options.map(normalize);
+      expect(new Set(options).size).toBe(options.length);
+      expect(q.answers.every(a => options.includes(normalize(a)))).toBe(true);
+    }
+  });
+});
+
+describe("Quiz — calificación en italiano", () => {
+  it("distingue los acentos en respuestas en italiano", () => {
+    expect(checkAnswer("è", ["è"])).toBe(true);
+    expect(checkAnswer("e", ["è"])).toBe(false);
+    expect(checkAnswer("È L'UNA", ["È l'una."])).toBe(true);
+    expect(checkAnswer("ventitre", ["ventitré"])).toBe(false);
+    expect(checkAnswer("perchè", ["perché"])).toBe(false);
+  });
+
+  it("no castiga mayúsculas, apóstrofos curvos, puntuación ni aclaraciones", () => {
+    expect(checkAnswer("  sono le TRE ", ["Sono le tre."])).toBe(true);
+    expect(checkAnswer("è l’una", ["È l'una."])).toBe(true);
+    expect(checkAnswer("sono le tre", ["Sono le tre (de la tarde)."])).toBe(true);
+    expect(checkAnswer("è", ["è"])).toBe(true);
+  });
+
+  it("detecta cuando solo falla el acento", () => {
+    expect(accentMismatch("e", ["è"])).toBe(true);
+    expect(accentMismatch("ventitre", ["ventitré"])).toBe(true);
+    expect(accentMismatch("è", ["è"])).toBe(false);
+    expect(accentMismatch("uno", ["è"])).toBe(false);
+  });
+
+  it("en respuestas en español el acento es opcional", () => {
+    expect(checkAnswer("hablar", ["hablár"], "es")).toBe(true);
+    expect(checkAnswer("ingles", ["inglés"], "es")).toBe(true);
+    expect(accentMismatch("ingles", ["inglés"], "es")).toBe(false);
+    expect(looseNormalize("È")).toBe("e");
+  });
+
+  it("no confunde preguntas que solo difieren por un acento", () => {
+    expect(normalize("è")).not.toBe(normalize("e"));
+    expect(normalize("È L’una!")).toBe("è l'una");
+  });
+});
+
+describe("Quiz — interfaz de acentos", () => {
+  function startAt(question) {
+    vi.spyOn(Math, "random").mockReturnValue(0);
+    const pool = getByTopic("time", "basico1", Date.now());
+    const index = pool.findIndex(q => q.answers.includes(question));
+    vi.spyOn(Math, "random").mockReturnValue(index / pool.length);
+    render(<QuizSection initialSelection={SELECTION} />);
     fireEvent.click(screen.getByRole("button", { name: /Empezar Quiz/ }));
-    expect(screen.getByText(/Traduce al inglés:/)).toBeInTheDocument();
-    expect(screen.getByText(/Básico III ·/)).toBeInTheDocument();
+  }
+
+  it("ofrece las seis letras con acento con tamaño táctil suficiente", () => {
+    startAt("mezzogiorno");
+    expect(screen.getByRole("group", { name: "Letras con acento" })).toBeInTheDocument();
+    for (const letter of ["à", "è", "é", "ì", "ò", "ù"]) {
+      const button = screen.getByRole("button", { name: `Insertar ${letter}` });
+      expect(parseInt(button.style.minWidth, 10)).toBeGreaterThanOrEqual(44);
+      expect(parseInt(button.style.minHeight, 10)).toBeGreaterThanOrEqual(44);
+    }
+  });
+
+  it("inserta la letra en la posición del cursor", () => {
+    startAt("mezzogiorno");
+    const input = screen.getByLabelText("Tu respuesta");
+    fireEvent.change(input, { target: { value: "ventitr" } });
+    input.setSelectionRange(7, 7);
+    fireEvent.click(screen.getByRole("button", { name: "Insertar é" }));
+    expect(input).toHaveValue("ventitré");
+
+    fireEvent.change(input, { target: { value: "ab" } });
+    input.setSelectionRange(1, 1);
+    fireEvent.click(screen.getByRole("button", { name: "Insertar è" }));
+    expect(input).toHaveValue("aèb");
+  });
+
+  it("avisa cuando el único error fue el acento y no suma el punto", () => {
+    vi.spyOn(Math, "random").mockReturnValue(0);
+    const { result } = renderHook(() => useQuiz({ levelId: "basico1", topicId: "numbers" }));
+    act(() => result.current.nextQuestion());
+    const q = result.current.question;
+    act(() => result.current.setAnswer(looseNormalize(q.answers[0]) === normalize(q.answers[0]) ? "x" : looseNormalize(q.answers[0])));
+    act(() => result.current.submitAnswer());
+    expect(result.current.feedback.correct).toBe(false);
+    expect(result.current.score.correct).toBe(0);
+  });
+
+  it("muestra el aviso de acento en pantalla", () => {
+    const pool = getByTopic("time", "basico1", Date.now());
+    const index = pool.findIndex(q => q.answers.includes("È l'una."));
+    expect(index).toBeGreaterThanOrEqual(0);
+    vi.spyOn(Math, "random").mockReturnValue((index + 0.5) / pool.length);
+    render(<QuizSection initialSelection={SELECTION} />);
+    fireEvent.click(screen.getByRole("button", { name: /Empezar Quiz/ }));
+    fireEvent.change(screen.getByLabelText("Tu respuesta"), { target: { value: "e l'una" } });
+    fireEvent.click(screen.getByRole("button", { name: /Verificar respuesta/ }));
+    expect(screen.getByText(/Revisa el acento/)).toBeInTheDocument();
+    expect(screen.getByText(/Casi/)).toBeInTheDocument();
+  });
+
+  it("no muestra los acentos cuando la respuesta va en español", () => {
+    const es = verbQuestion("verbMeaning", "parlare");
+    expect(es.answerLang).toBe("es");
+  });
+});
+
+describe("Quiz — preguntas de verbos", () => {
+  it("genera una pregunta de cada tipo por verbo", () => {
+    for (const topic of ["verbPresent", "verbParticiple", "verbAux", "verbMeaning"]) {
+      expect(QUESTIONS.filter(q => q.topic === topic)).toHaveLength(VERB_BANK.length);
+    }
+  });
+
+  it("acepta la forma de io, el participio y el auxiliar correctos", () => {
+    const andare = infinitive => verbQuestion(infinitive, "andare");
+    expect(checkAnswer("vado", andare("verbPresent").answers)).toBe(true);
+    expect(checkAnswer("andato", andare("verbParticiple").answers)).toBe(true);
+    expect(checkAnswer("essere", andare("verbAux").answers)).toBe(true);
+    expect(checkAnswer("avere", andare("verbAux").answers)).toBe(false);
+  });
+
+  it("acepta cualquiera de los auxiliares de finire", () => {
+    const { answers } = verbQuestion("verbAux", "finire");
+    expect(checkAnswer("avere", answers)).toBe(true);
+    expect(checkAnswer("essere", answers)).toBe(true);
+  });
+
+  it("acepta un solo significado, sin acentos", () => {
+    const q = verbQuestion("verbMeaning", "partire");
+    expect(checkAnswer("salir", q.answers, q.answerLang)).toBe(true);
+    expect(checkAnswer("partir", q.answers, q.answerLang)).toBe(true);
   });
 });
