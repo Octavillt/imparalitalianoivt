@@ -4,6 +4,7 @@ import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import {
@@ -28,6 +29,7 @@ export default function PossessiveAdjectivesSection() {
       <Legend roles={["poss", "art", "masc", "fem"]} />
 
       <SectionTitle color={COLOR}>📋 La tabla completa</SectionTitle>
+      <ScrollHint />
       <div style={{ overflowX: "auto", marginBottom: "16px" }}>
         <div style={{ minWidth: "520px", display: "grid", gridTemplateColumns: "0.9fr repeat(4, 1fr)", gap: "6px" }}>
           {["Persona", "Masculino singular", "Femenino singular", "Masculino plural", "Femenino plural"].map(h => (

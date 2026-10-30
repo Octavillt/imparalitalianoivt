@@ -4,6 +4,7 @@ import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import { C } from "../../styles/colors";
@@ -50,6 +51,8 @@ function ModelGrid({ model }) {
 function IscTable() {
   const persons = ISC_MODELS[0].forms.map(form => form.subj);
   return (
+    <>
+    <ScrollHint />
     <div style={{ overflowX: "auto", marginTop: "8px" }}>
       <div style={{ minWidth: "720px", display: "grid", gridTemplateColumns: "1.15fr repeat(6, 1fr)", gap: "4px" }}>
         <div />
@@ -66,6 +69,7 @@ function IscTable() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

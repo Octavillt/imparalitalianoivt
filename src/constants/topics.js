@@ -30,8 +30,14 @@ export const TOPICS_BASICO2 = [
   { id: "verbiInfinito", label: "🔄 Verbos + infinitivo", italiano: "Verbi + infinito", color: "#F472B6", stage: "Ampliar tus recursos" },
   { id: "irregularVerbs", label: "🏃 Verbos irregulares", italiano: "Verbi irregolari", color: "#7C3AED", stage: "Ampliar tus recursos" },
 ];
-export const TOPICS_BASICO3 = [];
-export const TOPICS_BASICO4 = [];
+export const TOPICS_BASICO3 = [
+  { id: "routineRiflessivi", label: "🔁 Rutinas, reflexivos y frecuencia", italiano: "Routine, riflessivi e frequenza", color: "#0EA5E9", stage: "Conectar lo aprendido" },
+  { id: "preposizioniTempo", label: "📍 Preposiciones de tiempo y lugar", italiano: "Preposizioni di tempo e luogo", color: "#FB923C", stage: "Conectar lo aprendido" },
+  { id: "directions", label: "🗺️ Pedir y dar indicaciones", italiano: "Chiedere e dare indicazioni", color: "#14B8A6", stage: "Usar el italiano en la ciudad" },
+];
+export const TOPICS_BASICO4 = [
+  { id: "bodyParts", label: "🧍 Partes del cuerpo", italiano: "Il corpo umano", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
+];
 export const TOPICS_BASICO5 = [];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.

@@ -19,14 +19,14 @@ export const LEVELS = [
     outcome: "Puedes describir personas, expresar pertenencia y afirmar, negar y preguntar sobre hábitos.",
   },
   {
-    id: "basico3", label: "Básico III", available: false, topics: TOPICS_BASICO3,
+    id: "basico3", label: "Básico III", available: true, topics: TOPICS_BASICO3,
     purpose: "Conectar rutinas, tiempo y lugares",
     description: "Amplía el presente de Básico II con verbos reflexivos y frecuencia. Conecta horas, fechas y preposiciones para orientarte en la ciudad.",
     bridge: "En Básico IV aplicarás las descripciones, los posesivos y el imperativo al vocabulario del cuerpo.",
     outcome: "Puedes contar tu rutina, explicar cuándo y con qué frecuencia haces algo, y pedir o dar indicaciones.",
   },
   {
-    id: "basico4", label: "Básico IV", available: false, topics: TOPICS_BASICO4,
+    id: "basico4", label: "Básico IV", available: true, topics: TOPICS_BASICO4,
     purpose: "Describir el cuerpo, expresar habilidades y hablar de cantidades",
     description: "Aplica plurales, adjetivos, posesivos e imperativo a las partes del cuerpo. Después distingue potere, sapere y riuscire, usa el partitivo y aprende los grupos de alimentos. Combina el ejercicio físico con adverbios de modo para dar instrucciones.",
     bridge: "En Básico V usarás el passato prossimo y el imperfetto para contar lo que pasó, y el futuro para hablar de tus planes.",

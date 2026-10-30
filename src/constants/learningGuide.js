@@ -133,4 +133,28 @@ export const LEARNING_GUIDE = {
     task: "Escribe la forma de io de andare y de dare, y el participio de fare.",
     answer: "Vado. Dà. Fatto. Dà lleva acento para distinguirse de la preposición da.",
   },
+  routineRiflessivi: {
+    goal: "Contar tu rutina con verbos reflexivos, negar y decir cada cuánto haces algo.",
+    recall: ["presenteIndicativo", "stareGerundio", "time"],
+    task: "Di que te levantas siempre a las siete, que no te levantas temprano y que normalmente trabajas en Roma, pero ahora estás trabajando en Milán.",
+    answer: "Mi alzo sempre alle sette. Non mi alzo presto. Di solito lavoro a Roma, ma adesso sto lavorando a Milano. Non va antes del pronombre y sempre suele ir después del verbo.",
+  },
+  preposizioniTempo: {
+    goal: "Elegir la preposición de tiempo y de lugar, contraerla con el artículo y decir desde cuándo, cuánto y cada cuánto.",
+    recall: ["preposizioniArticolate", "prepositions", "dates", "routineRiflessivi"],
+    task: "Di que llegas a Roma a las ocho, que estudias italiano desde hace dos años y que sales para Florencia dentro de una hora.",
+    answer: "Arrivo a Roma alle otto. Studio italiano da due anni. Parto per Firenze tra un'ora. Alle une a con le; da, con el presente, equivale a «desde hace».",
+  },
+  directions: {
+    goal: "Pedir y dar indicaciones en la ciudad, con tú y con usted, y ubicar un lugar.",
+    recall: ["preposizioniTempo", "prepositions", "vocabulary"],
+    task: "Con usted, pregunta dónde está la estación, indica girar a la derecha y responde que la farmacia está junto al museo.",
+    answer: "Scusi, dov'è la stazione? Giri a destra. La farmacia è accanto al museo. Scusi va con usted; accanto a, con il, se escribe accanto al.",
+  },
+  bodyParts: {
+    goal: "Nombrar las partes del cuerpo, describirlas, decir qué te duele y dar una instrucción de movimiento.",
+    recall: ["plural", "adjectives", "routineRiflessivi", "directions"],
+    task: "Di que tiene los ojos verdes, que te duele la cabeza y da la instrucción de levantar los brazos.",
+    answer: "Ha gli occhi verdi. Mi fa male la testa. Alza le braccia. Le braccia es el plural de il braccio; cuando duele una sola parte, se usa mi fa male.",
+  },
 };
