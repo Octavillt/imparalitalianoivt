@@ -8,8 +8,8 @@ import { C } from "../styles/colors";
 // resultados (Básico III se mostraba vacío con el mapa escrito a mano).
 const LEVEL_LABELS = Object.fromEntries(LEVELS.map(l => [l.id, l.label]));
 
-// Un tema de un nivel bloqueado no se puede abrir: mientras «Verbos» no esté
-// disponible, el buscador no ofrece ni sus temas ni sus fichas de verbo.
+// Un tema de un nivel bloqueado no se puede abrir: el buscador no ofrece
+// ni sus temas ni sus fichas de verbo.
 const isLevelOpen = levelId => LEVELS.find(l => l.id === levelId)?.available !== false;
 
 export default function GlobalSearch({ onSelect, now }) {

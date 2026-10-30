@@ -42,7 +42,7 @@ export const LEVELS = [
   // Nivel de referencia: herramienta de consulta, no una lección que se cursa.
   // quizTopics: secciones con que el Quiz practica este módulo de consulta.
   {
-    id: "verbos", label: "📒 Verbos", available: false, topics: TOPICS_VERBOS, quizTopics: QUIZ_TOPICS_VERBOS, reference: true,
+    id: "verbos", label: "📒 Verbos", available: true, topics: TOPICS_VERBOS, quizTopics: QUIZ_TOPICS_VERBOS, reference: true,
     purpose: "Consulta rápida de verbos: formas, significado y auxiliar",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },

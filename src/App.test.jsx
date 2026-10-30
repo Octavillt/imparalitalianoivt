@@ -50,17 +50,15 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("menuitemradio", { name: /Berenjena/ })).toHaveAttribute("aria-checked", "true");
   });
 
-  it("habilita los módulos migrados y Quiz, y bloquea los demás", () => {
+  it("habilita todos los módulos, sin candados", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
     for (const label of ["Básico II", "Básico III", "Básico IV", "Básico V"]) {
       expect(screen.getByRole("button", { name: label })).toBeEnabled();
     }
     expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeEnabled();
-    for (const label of [/Verbos/]) {
-      const locked = screen.getAllByRole("button", { name: label }).find(button => button.textContent.includes("🔒"));
-      expect(locked).toBeDisabled();
-    }
+    expect(screen.getByRole("button", { name: "📒 Verbos" })).toBeEnabled();
+    expect(screen.queryByText(/🔒/)).not.toBeInTheDocument();
   });
 
   it("la barra de temas muestra solo los temas disponibles de Básico I", () => {
@@ -118,11 +116,12 @@ describe("App — lecciones interactivas", () => {
 describe("App — enlaces entre temas", () => {
   beforeEach(() => localStorage.clear());
 
-  it("no muestra enlaces a módulos bloqueados", async () => {
+  it("enlaza Verbos de uso diario con el banco de verbos", async () => {
     const user = userEvent.setup();
     render(<App />);
     await user.click(topics().getByRole("button", { name: "🏃 Verbos de uso diario" }));
-    expect(screen.queryByRole("button", { name: /Consulta los/ })).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Consulta los/ }));
+    expect(screen.getByRole("heading", { level: 2, name: /Verbos a la mano/ })).toBeInTheDocument();
   });
 });
 
@@ -187,10 +186,11 @@ describe("App — buscador global y resaltado", () => {
     expect(document.querySelectorAll("main mark.search-highlight")).toHaveLength(1);
   });
 
-  it("no ofrece verbos en el buscador mientras su módulo siga bloqueado", async () => {
+  it("ofrece verbos en el buscador y abre su tarjeta", async () => {
     const user = userEvent.setup();
     render(<App />);
-    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "andare");
-    expect(screen.queryByRole("option", { name: /andare/ })).not.toBeInTheDocument();
+    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "vado");
+    await user.click(await screen.findByRole("option", { name: /andare/ }));
+    expect(await screen.findByRole("article", { name: "andare" })).toBeInTheDocument();
   });
 });
