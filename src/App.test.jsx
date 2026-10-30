@@ -64,7 +64,9 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
     expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual([
       "🔢 Números y alfabeto", "✅ Essere y avere", "🌎 Países y nacionalidades", "👪 La familia",
-      "➕ Género y plural", "👉 Demostrativos", "🍎 Frutas y verduras", "🕐 La hora",
+      "➕ Género y plural", "👉 Demostrativos", "🍎 Frutas y verduras", "📍 Preposiciones de lugar",
+      "🕐 La hora", "📅 Días, meses y fechas", "🏃 Verbos de uso diario", "🌀 Stare + gerundio",
+      "👷 Oficios y profesiones", "🗣️ Conversación y vocabulario",
     ]);
   });
 
