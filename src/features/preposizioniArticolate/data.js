@@ -40,9 +40,9 @@ export const PREP_ROWS = [
 // La l se duplica solo cuando el artículo empieza con l.
 export const BUILD_STEPS = [
   { sum: "a + la", result: "alla", why: "la empieza con l, así que esa l se escribe dos veces." },
-  { sum: "di + lo", result: "dello", why: "lo empieza con l: di + lo queda dello." },
+  { sum: "di + lo", result: "dello", why: "di cambia a de- y la l se duplica: dello." },
   { sum: "a + il", result: "al", why: "il no empieza con l: a + il queda al." },
-  { sum: "in + gli", result: "negli", why: "gli empieza con g: in + gli queda negli." },
+  { sum: "in + gli", result: "negli", why: "in cambia a ne- y gli no duplica nada: negli." },
 ];
 
 // con, per, tra y fra se quedan separadas aunque haya artículo.
@@ -106,7 +106,7 @@ export const PRACTICE = [
   { question: "Completa: Le chiavi sono ___ borsa.", answers: ["nella"], hint: "In + la", explanation: "Le chiavi sono nella borsa = Las llaves están en la bolsa. in + la = nella." },
   { question: "Completa: Vado ___ dottore.", answers: ["dal"], hint: "Con el doctor se usa da, no a", explanation: "Vado dal dottore = Voy al doctor. da + il = dal: indica el lugar de esa persona." },
   { question: "Elige la forma correcta: Scrivo (a / al) Octavio.", answers: ["a"], hint: "El nombre no lleva artículo", explanation: "Scrivo a Octavio: los nombres de persona van sin artículo, así que a no se contrae." },
-  { question: "Elige la forma correcta: Leslie parla (con il / col) professore.", answers: ["con il"], hint: "Con se escribe separado del artículo", explanation: "Leslie parla con il professore. Con, per, tra y fra no se contraen con el artículo." },
+  { question: "Elige la forma correcta: Leslie parla (con il / con lo) professore.", answers: ["con il"], hint: "Professore lleva il", explanation: "Leslie parla con il professore: professore lleva il, y con se queda separado." },
   { question: "Elige la forma correcta: il gelato è (per la / per il) mamma.", answers: ["per la"], hint: "Per no se contrae; mamma es femenino", explanation: "Il gelato è per la mamma: per se queda separado y la concuerda con mamma." },
   { question: "Completa: a + la = ___.", answers: ["alla"], hint: "La l se escribe dos veces", explanation: "a + la = alla, porque la empieza con l." },
   { question: "Traduce al italiano: Las llaves están en la bolsa.", answers: ["Le chiavi sono nella borsa"], hint: "In + la = nella", explanation: "Las llaves están en la bolsa = Le chiavi sono nella borsa." },

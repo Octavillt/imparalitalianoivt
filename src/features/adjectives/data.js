@@ -31,7 +31,7 @@ export const AGREEMENT = [
   },
 ];
 
-// Los adjetivos en -co conservan la c en el masculino plural.
+// En -co, el masculino plural puede ser -ci o -chi.
 export const CO_RULES = [
   { pair: "simpatico / simpatica", forms: "simpatico · simpatici · simpatica · simpatiche", esp: "simpático / simpática" },
   { pair: "stanco / stanca", forms: "stanco · stanchi · stanca · stanche", esp: "cansado / cansada" },
@@ -54,7 +54,7 @@ export const BEFORE_NOUN = [
   { adj: "grande", esp: "grande", example: "una grande città", espEx: "una gran ciudad" },
   { adj: "piccolo", esp: "pequeño", example: "un piccolo problema", espEx: "un problema pequeño" },
   { adj: "nuovo", esp: "nuevo", example: "un nuovo libro", espEx: "un libro nuevo" },
-  { adj: "vecchio", esp: "viejo", example: "un vecchio amico", espEx: "un amigo viejo" },
+  { adj: "vecchio", esp: "viejo", example: "un vecchio amico", espEx: "un viejo amigo" },
   { adj: "giovane", esp: "joven", example: "una giovane donna", espEx: "una mujer joven" },
 ];
 
@@ -155,7 +155,7 @@ export const PRACTICE = [
   { question: "Traduce al italiano: Octavio y Leslie están cansados.", answers: ["Octavio e Leslie sono stanchi", "Octavio e Leslie sono stanchi."], hint: "Grupo mixto: plural masculino", explanation: "Octavio e Leslie sono stanchi: en un grupo mixto se usa el masculino plural." },
   { question: "Elige la forma correcta: una casa (bella / belle).", answers: ["bella"], hint: "Femenino singular", explanation: "Una casa bella: casa es femenino singular, así que bella. Belle es el plural." },
   { question: "Completa: Questo è un ___ caffè. (buono)", answers: ["buon"], hint: "Pierde la -o ante consonante", explanation: "Un buon caffè: buono pierde la -o ante consonante (salvo ante s + consonante, z, gn, ps, y)." },
-  { question: "Elige la forma correcta: (bei / begli) amici.", answers: ["begli"], hint: "Amici lleva gli, no i", explanation: "Begli amici: ante gli, bello pasa a begli. Esa forma ya incluye el artículo." },
+  { question: "Elige la forma correcta: (bei / begli) amici.", answers: ["begli"], hint: "Amici lleva gli, no i", explanation: "Begli amici: como gli amici, bello pasa a begli." },
   { question: "Escribe el contrario de «pieno».", answers: ["vuoto"], hint: "Significa «vacío»", explanation: "El contrario de pieno es vuoto: lleno / vacío." },
   { question: "Escribe el contrario de «caldo».", answers: ["freddo"], hint: "El contrario de caliente", explanation: "El contrario de caldo es freddo: caliente / frío." },
   { question: "¿Qué significa «largo» en italiano? Escribe la traducción.", answers: ["ancho"], answerLang: "es", hint: "Se parece a «largo», pero mide de lado a lado", explanation: "Largo se parece a «largo», pero significa ancho. Lo largo se dice lungo." },

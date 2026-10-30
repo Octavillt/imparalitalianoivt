@@ -159,7 +159,7 @@ export const TOPIC_FORMULAS = {
       row("Según lo poseído", "Artículo de la cosa + posesivo", "La sua casa è grande.", "Su casa es grande."),
       row("Loro", "Artículo + loro + sustantivo", "I loro libri sono nuovi.", "Sus libros son nuevos."),
       row("Después de essere", "Sustantivo + essere + posesivo", "Questo libro è mio.", "Este libro es mío."),
-      row("Familiar en singular", "Posesivo + familiar", "Mia madre è di Roma.", "Mi mamá es de Roma."),
+      row("Familiar en singular", "Posesivo + familiar", "Mia madre è di Roma.", "Mi madre es de Roma."),
     ],
   },
   preposizioniArticolate: {

@@ -100,8 +100,8 @@ export const LEARNING_GUIDE = {
   possessiveAdjectives: {
     goal: "Expresar de quién es algo con el posesivo, concordando con lo que se posee.",
     recall: ["family", "articles"],
-    task: "Di «mi libro», «la casa de Octavio», «el libro de Leslie» y «mi mamá».",
-    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; mamá en singular va sin artículo.",
+    task: "Di «mi libro», «la casa de Octavio», «el libro de Leslie» y «mi madre».",
+    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; un familiar en singular va sin artículo.",
   },
   preposizioniArticolate: {
     goal: "Decir de quién es algo con di y unir a, da, di, in y su con el artículo.",

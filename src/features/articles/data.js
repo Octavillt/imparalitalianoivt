@@ -91,6 +91,6 @@ export const PRACTICE = [
   { question: "Traduce al italiano: Roma es bonita.", answers: ["Roma è bella", "Roma è bella."], hint: "Las ciudades van sin artículo", explanation: "Roma è bella: las ciudades no llevan artículo." },
   { question: "Escribe Ø o 0 si no lleva artículo: ___ Leslie è qui.", answers: ["Ø", "0"], hint: "Nombre de persona", explanation: "Leslie è qui: los nombres de persona van sin artículo (Ø)." },
   { question: "Escribe Ø o 0 si no lleva artículo: Sono ___ insegnante.", answers: ["Ø", "0"], hint: "La profesión con essere", explanation: "Sono insegnante: con essere la profesión va sin artículo (Ø)." },
-  { question: "Completa (la hora): Sono le ___.", answers: ["tre"], hint: "El número tres", explanation: "Sono le tre: a partir de las dos, la hora usa sono le y el número. La una es è l'una." },
+  { question: "Completa (3:00): Sono le ___.", answers: ["tre"], hint: "El número tres", explanation: "Sono le tre: a partir de las dos, la hora usa sono le y el número. La una es è l'una." },
   { question: "Traduce al italiano: El café está bueno.", answers: ["Il caffè è buono", "Il caffè è buono."], hint: "Como en español, lleva artículo", explanation: "El café está bueno = Il caffè è buono." },
 ];

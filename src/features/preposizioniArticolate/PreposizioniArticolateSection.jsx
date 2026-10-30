@@ -87,7 +87,7 @@ export default function PreposizioniArticolateSection() {
 
       <RuleBox icon="🧩" rule="Cómo se forma: la preposición se une al artículo" color={COLOR}>
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          Si el artículo empieza con <strong style={{ color: "#f8fafc" }}>l</strong>, esa l se escribe dos veces. Si no, solo se pegan.
+          <span lang="it">Di</span> cambia a <span lang="it">de-</span> e <span lang="it">in</span> cambia a <span lang="it">ne-</span>: <span lang="it">del</span>, <span lang="it">nel</span>. Si el artículo empieza con <strong style={{ color: "#f8fafc" }}>l</strong>, esa l se escribe dos veces; si no, solo se pegan.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "8px", marginTop: "8px" }}>
           {BUILD_STEPS.map(step => (
@@ -103,7 +103,7 @@ export default function PreposizioniArticolateSection() {
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
           Estas cuatro se quedan separadas del artículo: <strong lang="it" style={{ color: "#f8fafc" }}>con il professore</strong>,{" "}
           <strong lang="it" style={{ color: "#f8fafc" }}>per la mamma</strong>. <strong lang="it" style={{ color: "#f8fafc" }}>fra</strong> funciona igual que{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>tra</strong>.
+          <strong lang="it" style={{ color: "#f8fafc" }}>tra</strong>. En italiano hablado aún se oye <strong lang="it" style={{ color: "#f8fafc" }}>col</strong> (<span lang="it">con + il</span>), pero <strong lang="it" style={{ color: "#f8fafc" }}>con il</strong> siempre es correcto.
         </p>
         {NO_CONTRACT.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
       </RuleBox>

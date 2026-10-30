@@ -56,7 +56,7 @@ export default function ArticlesSection() {
           {DEFINITE_PLURAL.map(row => <ArticleFormRow {...row} key={row.form} />)}
         </div>
         <p style={{ color: "#94a3b8", fontSize: "12px", marginTop: "10px" }}>
-          🧠 Truco: los plurales suenan parecido al español — i libri (los libros), le case (las casas); gli es el único «nuevo».
+          🧠 Truco: el plural sale del singular: il → i, la → le; lo y l' masculino → gli.
         </p>
       </RuleBox>
 
