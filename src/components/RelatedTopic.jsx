@@ -9,7 +9,7 @@ export default function RelatedTopic({ levelId, topicId, label, highlightTerm })
   const level = LEVELS.find(l => l.id === levelId);
   const topic = level?.topics.find(t => t.id === topicId);
 
-  if (!level || !topic) return null; // el tema fue renombrado/removido — no truena, solo no se muestra
+  if (!level || !topic || !level.available) return null; // el tema fue renombrado/removido o su módulo sigue bloqueado — no truena, solo no se muestra
 
   return (
     <button

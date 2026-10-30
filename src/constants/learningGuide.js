@@ -50,7 +50,7 @@ export const LEARNING_GUIDE = {
     answer: "Quelle sono arance. Ho due banane. Vorrei un chilo di pomodori. La frutta y la verdura son singulares colectivos.",
   },
   prepositions: {
-    goal: "Ubicar personas y objetos con le preposizioni di luogo y decir qué hay con c'è y ci sono.",
+    goal: "Ubicar personas y objetos con las preposiciones de lugar y decir qué hay con c'è y ci sono.",
     recall: ["essereAvere", "fruits"],
     task: "Di que el libro está debajo de la mesa, que hay una silla en la cocina y pregunta si hay un banco cerca.",
     answer: "Il libro è sotto il tavolo. C'è una sedia in cucina. C'è una banca qui vicino? Usa c'è con singular y ci sono con plural.",

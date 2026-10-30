@@ -34,8 +34,8 @@ export const PREP_EX = [
   { pts: [su("Il libro"), " ", es("è"), " ", pr("sotto"), " il tavolo."], esp: "El libro está debajo de la mesa." },
   { pts: [su("La borsa"), " ", es("è"), " ", pr("dietro"), " la porta."], esp: "La bolsa está detrás de la puerta." },
   { pts: [su("Leslie"), " ", es("è"), " ", pr("tra"), " Octavio e Argelia."], esp: "Leslie está entre Octavio y Argelia." },
-  { pts: [su("Octavio"), " ", es("è"), " ", pr("davanti a"), " la finestra."], esp: "Octavio está delante de la ventana." },
-  { pts: [su("Argelia"), " ", es("è"), " ", pr("vicino a"), " il divano."], esp: "Argelia está cerca del sofá." },
+  { pts: [su("Octavio"), " ", es("è"), " ", pr("davanti alla"), " finestra."], esp: "Octavio está delante de la ventana." },
+  { pts: [su("Argelia"), " ", es("è"), " ", pr("vicino al"), " divano."], esp: "Argelia está cerca del sofá." },
   { pts: [su("Le chiavi"), " ", es("sono"), " ", pr("sopra"), " il letto."], esp: "Las llaves están encima de la cama." },
 ];
 
@@ -43,7 +43,7 @@ export const PREP_EX = [
 export const PREP_CONTRACTIONS = [
   { parts: ["su", " + ", "il", " = ", "sul"], ex: "Il libro è sul tavolo.", esp: "El libro está sobre la mesa." },
   { parts: ["su", " + ", "la", " = ", "sulla"], ex: "La penna è sulla sedia.", esp: "La pluma está sobre la silla." },
-  { parts: ["in", " + ", "il", " = ", "nel"], ex: "Lo zaino è nel divano.", esp: "La mochila está en el sofá." },
+  { parts: ["in", " + ", "il", " = ", "nel"], ex: "Il libro è nel cassetto.", esp: "El libro está en el cajón." },
   { parts: ["in", " + ", "la", " = ", "nella"], ex: "Le chiavi sono nella borsa.", esp: "Las llaves están en la bolsa." },
   { parts: ["a", " + ", "il", " = ", "al"], ex: "La sedia è accanto al letto.", esp: "La silla está al lado de la cama." },
   { parts: ["a", " + ", "la", " = ", "alla"], ex: "Argelia è alla porta.", esp: "Argelia está en la puerta." },
@@ -79,13 +79,13 @@ export const PRACTICE = [
   { question: "Completa: Leslie è ___ Octavio e Argelia. (entre)", answers: ["tra", "fra"], hint: "Hay dos formas equivalentes", explanation: "Leslie è tra Octavio e Argelia = Leslie está entre Octavio y Argelia." },
   { question: "Completa: su + il = ___", answers: ["sul"], hint: "Su + il se pegan", explanation: "su + il = sul. Il libro è sul tavolo = El libro está sobre la mesa." },
   { question: "Completa: in + la = ___", answers: ["nella"], hint: "In + la se pegan", explanation: "in + la = nella. Le chiavi sono nella borsa = Las llaves están en la bolsa." },
-  { question: "Completa: a + il = ___", answers: ["al"], hint: "La a pierde su vocal", explanation: "a + il = al. La sedia è accanto al letto = La silla está al lado de la cama." },
-  { question: "Traduce al italiano: Hay una silla en la cocina.", answers: ["C'è una sedia in cucina", "C'e una sedia in cucina", "C'è una sedia in cucina."], hint: "Hay (sing.) = c'è", explanation: "Hay una silla en la cocina = C'è una sedia in cucina. C'è es singular." },
+  { question: "Completa: a + il = ___", answers: ["al"], hint: "Se unen en una sola palabra", explanation: "a + il = al. La sedia è accanto al letto = La silla está al lado de la cama." },
+  { question: "Traduce al italiano: Hay una silla en la cocina.", answers: ["C'è una sedia in cucina", "C'è una sedia in cucina."], hint: "Hay (sing.) = c'è", explanation: "Hay una silla en la cocina = C'è una sedia in cucina. C'è es singular." },
   { question: "Traduce al italiano: Hay dos libros sobre la mesa.", answers: ["Ci sono due libri sul tavolo", "Ci sono due libri sul tavolo."], hint: "Hay (pl.) = ci sono", explanation: "Hay dos libros sobre la mesa = Ci sono due libri sul tavolo. Ci sono es plural." },
-  { question: "Traduce al italiano: No hay café.", answers: ["Non c'è il caffè", "Non c'è caffè", "Non c'e il caffè"], hint: "Non + c'è", explanation: "No hay café = Non c'è il caffè. La negación va antes de c'è." },
+  { question: "Traduce al italiano: No hay café.", answers: ["Non c'è il caffè", "Non c'è caffè"], hint: "Non + c'è", explanation: "No hay café = Non c'è il caffè. La negación va antes de c'è." },
   { question: "Elige la forma correcta: (C'è / Ci sono) due penne sul tavolo.", answers: ["Ci sono"], hint: "Due penne es plural", explanation: "Ci sono due penne sul tavolo: con plural se usa ci sono." },
   { question: "Elige la forma correcta: (Dov'è / C'è) la banca?", answers: ["Dov'è"], hint: "Dov'è busca algo conocido; C'è pregunta si existe", explanation: "Dov'è la banca? busca un banco conocido; C'è una banca? pregunta si existe alguno." },
-  { question: "Traduce al italiano: ¿Dónde están las llaves?", answers: ["Dove sono le chiavi?", "Dove sono le chiavi"], hint: "Son → sono; lleva ¿? solo al final en italiano", explanation: "¿Dónde están las llaves? = Dove sono le chiavi?" },
+  { question: "Traduce al italiano: ¿Dónde están las llaves?", answers: ["Dove sono le chiavi?", "Dove sono le chiavi"], hint: "Sono sirve también para «están»", explanation: "¿Dónde están las llaves? = Dove sono le chiavi?" },
   { question: "Completa: La sedia è accanto ___ letto.", answers: ["al"], hint: "Accanto a + il", explanation: "La sedia è accanto al letto: a + il = al." },
   { question: "Traduce al italiano: Octavio está cerca del sofá.", answers: ["Octavio è vicino al divano", "Octavio è vicino al divano."], hint: "Vicino a + il", explanation: "Octavio está cerca del sofá = Octavio è vicino al divano." },
 ];

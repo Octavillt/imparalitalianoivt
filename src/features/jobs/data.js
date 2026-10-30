@@ -118,7 +118,7 @@ export const JOB_ACTIONS = [
 export const JOB_DIALOG = [
   { q: "Che lavoro fai?", qEsp: "¿A qué te dedicas? (tú)", a: "Sono insegnante.", aEsp: "Soy maestro." },
   { q: "Dove lavori?", qEsp: "¿Dónde trabajas?", a: "Lavoro in una scuola.", aEsp: "Trabajo en una escuela." },
-  { q: "Che lavoro fa Argelia?", qEsp: "¿A qué se dedica Argelia? (usted / ella)", a: "È infermiera.", aEsp: "Es enfermera." },
+  { q: "Che lavoro fa Argelia?", qEsp: "¿A qué se dedica Argelia?", a: "È infermiera.", aEsp: "Es enfermera." },
 ];
 
 export const PRACTICE = [
@@ -131,9 +131,9 @@ export const PRACTICE = [
   { question: "Elige la forma correcta: il dottore → la (dottora / dottoressa).", answers: ["dottoressa"], hint: "Es un especial", explanation: "il dottore → la dottoressa: forma especial que se memoriza." },
   { question: "Traduce al italiano: ¿A qué te dedicas?", answers: ["Che lavoro fai?", "Che lavoro fai"], hint: "Lavoro = trabajo", explanation: "¿A qué te dedicas? = Che lavoro fai?" },
   { question: "Traduce al italiano: ¿Dónde trabajas?", answers: ["Dove lavori?", "Dove lavori"], hint: "Lavorare → lavori", explanation: "¿Dónde trabajas? = Dove lavori?" },
-  { question: "Completa: Lavoro in ___ ospedale. (en el hospital)", answers: ["un"], hint: "Artículo indefinido masculino", explanation: "Lavoro in un ospedale = Trabajo en un hospital." },
+  { question: "Completa: Lavoro in ___ ospedale. (en un hospital)", answers: ["un"], hint: "Artículo indefinido masculino", explanation: "Lavoro in un ospedale = Trabajo en un hospital." },
   { question: "Completa: Argelia è cameriera. ___ servendo il caffè. (stare)", answers: ["Sta"], hint: "Forma de lei", explanation: "Argelia è cameriera. Sta servendo il caffè. = Argelia es mesera. Está sirviendo el café." },
   { question: "Elige la forma correcta: lo studente → la (studentessa / studenta).", answers: ["studentessa"], hint: "Es un especial", explanation: "lo studente → la studentessa: forma especial que se memoriza." },
-  { question: "Traduce al español: Che lavoro fa?", answers: ["¿A qué se dedica?", "¿A qué te dedicas?", "¿A qué se dedica? (usted)"], answerLang: "es", hint: "Fa es tercera persona", explanation: "Che lavoro fa? = ¿A qué se dedica? (usted o él/ella)." },
+  { question: "Traduce al español: Che lavoro fa?", answers: ["¿A qué se dedica?", "¿A qué se dedica? (usted)"], answerLang: "es", hint: "Fa es tercera persona", explanation: "Che lavoro fa? = ¿A qué se dedica? (usted o él/ella)." },
   { question: "Completa: Il / la ___ vende farmaci. (farmacéutico)", answers: ["farmacista"], hint: "Termina en -ista", explanation: "il / la farmacista: los -ista tienen una sola forma para ambos géneros." },
 ];

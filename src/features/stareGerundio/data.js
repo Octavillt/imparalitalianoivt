@@ -20,7 +20,7 @@ export const STARE_CONJ = [
 export const GERUND_RULES = [
   { rule: "-are → -ando", color: "#4ade80", desc: "Los verbos en -are forman el gerundio en -ando.", words: [["parl", "ando", "parlare"], ["mangi", "ando", "mangiare"], ["studi", "ando", "studiare"], ["cammin", "ando", "camminare"]] },
   { rule: "-ere → -endo", color: "#fbbf24", desc: "Los verbos en -ere forman el gerundio en -endo.", words: [["legg", "endo", "leggere"], ["scriv", "endo", "scrivere"], ["cred", "endo", "credere"], ["vend", "endo", "vendere"]] },
-  { rule: "-ire → -endo", color: "#60a5fa", desc: "Los verbos en -ire también forman el gerundio en -endo: no existe -iendo.", words: [["dorm", "endo", "dormire"], ["part", "endo", "partire"], ["fin", "endo", "finire"], ["ap", "endo", "aprire"]] },
+  { rule: "-ire → -endo", color: "#60a5fa", desc: "Los verbos en -ire también forman el gerundio en -endo: no existe -iendo.", words: [["dorm", "endo", "dormire"], ["part", "endo", "partire"], ["fin", "endo", "finire"], ["apr", "endo", "aprire"]] },
   { rule: "Irregulares", color: "#f472b6", desc: "Tres verbos frecuentes tienen gerundio irregular; conviene memorizarlos.", words: [["fac", "endo", "fare"], ["bev", "endo", "bere"], ["dic", "endo", "dire"]] },
 ];
 

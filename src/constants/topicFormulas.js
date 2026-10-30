@@ -77,7 +77,7 @@ export const TOPIC_FORMULAS = {
     ],
   },
   prepositions: {
-    note: "Le preposizioni di luogo ubican con essere; c'è y ci sono equivalen a «hay». Las formas contraídas se aprenden como fórmulas fijas.",
+    note: "Las preposiciones de lugar ubican con essere; c'è y ci sono equivalen a «hay». Las formas contraídas se aprenden como fórmulas fijas.",
     rows: [
       row("Preguntar dónde", "Dov'è / Dove sono + sustantivo + ?", "Dov'è il libro?", "¿Dónde está el libro?"),
       row("Ubicar", "Sujeto + essere + preposición + lugar", "Il libro è sotto il tavolo.", "El libro está debajo de la mesa."),
@@ -101,7 +101,7 @@ export const TOPIC_FORMULAS = {
     rows: [
       row("Oración básica", "Sujeto + verbo + complemento", "Leslie studia italiano.", "Leslie estudia italiano."),
       row("Forma de io", "Io + verbo en -o", "Io cucino la pasta.", "(Yo) cocino la pasta."),
-      row("Forma de lei", "Lei / nombre + verbo en -a", "Argelia legge un libro.", "Argelia lee un libro."),
+      row("Forma de lui/lei", "Lui / lei + verbo en -a o -e", "Argelia legge un libro.", "Argelia lee un libro."),
       row("Falso amigo", "guardare = mirar", "Octavio guarda la televisione.", "Octavio mira la televisión."),
     ],
   },

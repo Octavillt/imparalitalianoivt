@@ -27,7 +27,7 @@ export const C = {
 
 export const LABELS = {
   subject: "Sujeto",
-  essere: "Essere / Avere",
+  essere: "Essere / Avere / Stare",
   verb: "Verbo",
   gerundio: "Gerundio (-ando / -endo)",
   inf: "Infinitivo",
