@@ -41,6 +41,9 @@ import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection"
 import PassatoProssimoSection from "./features/passatoProssimo/PassatoProssimoSection";
 import ImperfettoSection from "./features/imperfetto/ImperfettoSection";
 import FuturoSection from "./features/futuro/FuturoSection";
+import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
+import MoneyCareerSection from "./features/moneyCareer/MoneyCareerSection";
+import ComparativesSection from "./features/comparatives/ComparativesSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -85,6 +88,9 @@ const SECTIONS = {
   passatoProssimo: PassatoProssimoSection,
   imperfetto: ImperfettoSection,
   futuro: FuturoSection,
+  socialCollocations: SocialCollocationsSection,
+  moneyCareer: MoneyCareerSection,
+  comparatives: ComparativesSection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
 };

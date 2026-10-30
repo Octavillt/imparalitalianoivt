@@ -83,7 +83,7 @@ export const EXTRA = [
   { pts: [su("Octavio"), " ", vb("parlava"), " italiano e ", su("Leslie"), " ", vb("leggeva"), "."], esp: "Octavio hablaba italiano y Leslie leía." },
 ];
 
-export const BOOK_STORY = {
+export const GUIDED_STORY = {
   prompt: "Completa. Leslie habla de su infancia. En la última frase habla Octavio: él estudiaba y Leslie llegó.",
   lines: [
     ["Da bambina ___ (abitare) a Napoli.", "Da bambina abitavo a Napoli."],
@@ -94,7 +94,7 @@ export const BOOK_STORY = {
   ],
 };
 
-export const BOOK_NEGATIVES = {
+export const GUIDED_NEGATIVES = {
   prompt: "Pasa el hábito a negativo. Non va antes del verbo.",
   rows: [
     ["Abitavo a Napoli.", "Non abitavo a Napoli."],
@@ -103,7 +103,7 @@ export const BOOK_NEGATIVES = {
   ],
 };
 
-export const BOOK_CONVERSATION = {
+export const GUIDED_CONVERSATION = {
   prompt: "Completa. Octavio habla de cuando era niño; Leslie, de ayer.",
   blanks: [
     "Argelia: Da bambino dove ___ (abitare)?",

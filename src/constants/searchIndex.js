@@ -384,7 +384,28 @@ const SEARCH_KEYWORDS = {
     "pagherò", "comincerò", "sarò", "avrò", "andrò", "farò", "darò", "starò",
     "verrò", "vedrò", "potrò", "vorrò", "dovrò", "saprò", "berrò", "pioverà",
     "domani", "dopodomani", "stasera", "settimana prossima", "anno prossimo",
-    "tra due giorni", "domani vado", "iré", "lloverá", "plan", "predicción",
+    "tra due giorni",     "domani vado", "iré", "lloverá", "plan", "predicción",
+  ],
+  socialCollocations: [
+    "colocación", "collocazione", "fare una festa", "fare colazione", "fare la spesa",
+    "fare una foto", "fare tardi", "fare due chiacchiere", "prendere un caffè",
+    "prendere una decisione", "dare una mano", "dare un esame", "avere voglia",
+    "avere fretta", "uscire", "divertirsi", "perdersi", "mangiare fuori",
+    "desayunar", "súper", "fiesta", "aventón", "ganas",
+  ],
+  moneyCareer: [
+    "soldi", "denaro", "euro", "contanti", "bancomat", "stipendio", "sconto",
+    "affitto", "bollette", "risparmio", "comprare", "vendere", "spendere",
+    "risparmiare", "guadagnare", "caro", "economico", "saldo", "gratis",
+    "colloquio", "curriculum", "promozione", "contratto", "collega",
+    "attività", "pensione", "laurearsi", "probabilmente", "forse",
+    "dinero", "sueldo", "oferta", "entrevista", "jubilarse", "quizá",
+  ],
+  comparatives: [
+    "comparativo", "più", "meno", "migliore", "peggiore", "maggiore", "minore",
+    "meglio", "peggio", "come", "quanto", "coniglio", "criceto", "coccodrillo",
+    "pantera", "bellissimo", "più alto", "la più alta", "hermano mayor",
+    "hermana menor", "más alto", "menos caro", "hámster",
   ],
 };
 

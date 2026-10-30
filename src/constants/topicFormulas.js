@@ -332,4 +332,34 @@ export const TOPIC_FORMULAS = {
       row("Negación", "non + futuro", "Non andrò a Roma.", "No iré a Roma."),
     ],
   },
+  socialCollocations: {
+    note: "La colocación se aprende entera. El verbo sí se conjuga.",
+    rows: [
+      row("Con fare", "fare + la combinación fija", "Ieri ho fatto una festa.", "Ayer hice una fiesta."),
+      row("Con prendere", "prendere + la combinación fija", "Prendo un caffè a Roma.", "Tomo un café en Roma."),
+      row("Con dare", "dare + la combinación fija", "Darò una mano a Leslie.", "Le echaré una mano a Leslie."),
+      row("Con avere", "avere + la combinación fija", "Ho voglia di un gelato.", "Tengo ganas de un helado."),
+      row("En futuro", "futuro del verbo de la colocación", "Sabato usciremo con gli amici.", "El sábado saldremos con los amigos."),
+    ],
+  },
+  moneyCareer: {
+    note: "En estas frases, euro se escribe igual en plural. Probabilmente es probablemente; forse es quizá.",
+    rows: [
+      row("Precio", "Quanto costa? + número + euro", "Costa venti euro.", "Cuesta veinte euros."),
+      row("Pago", "Pago in contanti o con la carta", "Pago in contanti.", "Pago en efectivo."),
+      row("Ahorro", "Risparmio per + meta", "Risparmio per una macchina nuova.", "Ahorro para un carro nuevo."),
+      row("Plan", "futuro + plan de trabajo", "Leslie aprirà un'attività.", "Leslie abrirá un negocio."),
+      row("Probabilidad", "Probabilmente o forse + futuro", "Forse cambierò lavoro.", "Quizá cambie de trabajo."),
+    ],
+  },
+  comparatives: {
+    note: "Di se contrae con el artículo. Che compara dos partes del mismo sujeto.",
+    rows: [
+      row("Superioridad", "più + adjetivo + di", "Leslie è più alta di Octavio.", "Leslie es más alta que Octavio."),
+      row("Inferioridad", "meno + adjetivo + di", "Il treno è meno caro dell'aereo.", "El tren es menos caro que el avión."),
+      row("Dos cualidades", "più + adjetivo + che + adjetivo", "Leslie è più simpatica che bella.", "Leslie es más simpática que bonita."),
+      row("Con come", "adjetivo + come", "Leslie è alta come Octavio.", "Leslie es tan alta como Octavio."),
+      row("Con quanto", "tanto + adjetivo + quanto", "Octavio è tanto alto quanto Leslie.", "Octavio es tan alto como Leslie."),
+    ],
+  },
 };

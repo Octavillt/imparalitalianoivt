@@ -21,7 +21,7 @@ import {
   ASK_SAMPLES,
   MARKERS,
   PLANS,
-  BOOK_DIALOGS,
+  GUIDED_DIALOGS,
 } from "./data";
 
 const COLOR = "#34D399";
@@ -184,8 +184,8 @@ export default function FuturoSection() {
       ))}
 
       <SectionTitle color={COLOR}>📘 Práctica guiada</SectionTitle>
-      <div style={{ ...card, ...text }}>📝 {BOOK_DIALOGS.prompt}</div>
-      {BOOK_DIALOGS.items.map(dialog => (
+      <div style={{ ...card, ...text }}>📝 {GUIDED_DIALOGS.prompt}</div>
+      {GUIDED_DIALOGS.items.map(dialog => (
         <div key={dialog.blanks[0]} style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
           <div lang="it" style={text}>
             {dialog.blanks.map(line => <div key={line}>{line}</div>)}

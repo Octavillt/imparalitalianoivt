@@ -121,7 +121,7 @@ export const STORY = [
   { pts: [ng("Non"), " ", ax("sono"), " ", pp("andata"), " a Venezia."], esp: "No fui a Venecia." },
 ];
 
-export const BOOK_STORY = {
+export const GUIDED_STORY = {
   prompt: "Completa el relato de Leslie. El verbo va en passato prossimo y ella habla en primera persona.",
   lines: [
     ["La settimana scorsa ___ (andare) a Roma.", "La settimana scorsa sono andata a Roma."],
@@ -133,7 +133,7 @@ export const BOOK_STORY = {
   ],
 };
 
-export const BOOK_NEGATIVES = {
+export const GUIDED_NEGATIVES = {
   prompt: "Pasa cada frase a negativo. El auxiliar y la concordancia se quedan.",
   rows: [
     ["Ho mangiato una pizza.", "Non ho mangiato una pizza."],
@@ -142,7 +142,7 @@ export const BOOK_NEGATIVES = {
   ],
 };
 
-export const BOOK_CONVERSATION = {
+export const GUIDED_CONVERSATION = {
   prompt: "Completa la conversación. Leslie responde en femenino.",
   blanks: [
     "Octavio: Che cosa ___ (fare) ieri?",

@@ -31,6 +31,9 @@ import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
 import { PRACTICE as PASSATO_PROSSIMO } from "../passatoProssimo/data";
 import { PRACTICE as IMPERFETTO } from "../imperfetto/data";
 import { PRACTICE as FUTURO } from "../futuro/data";
+import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
+import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
+import { PRACTICE as COMPARATIVES } from "../comparatives/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -134,5 +137,8 @@ export const MODULE_QUESTIONS = [
   ...PASSATO_PROSSIMO.map(row => ({ ...row, topic: "passatoProssimo" })),
   ...IMPERFETTO.map(row => ({ ...row, topic: "imperfetto" })),
   ...FUTURO.map(row => ({ ...row, topic: "futuro" })),
+  ...SOCIAL_COLLOCATIONS.map(row => ({ ...row, topic: "socialCollocations" })),
+  ...MONEY_CAREER.map(row => ({ ...row, topic: "moneyCareer" })),
+  ...COMPARATIVES.map(row => ({ ...row, topic: "comparatives" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];
