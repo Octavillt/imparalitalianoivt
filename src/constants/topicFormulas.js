@@ -20,4 +20,60 @@ export const TOPIC_FORMULAS = {
       row("Minutos antes", "Sono le + hora siguiente + meno + minutos", "Sono le quattro meno dieci.", "Son diez para las cuatro."),
     ],
   },
+  essereAvere: {
+    note: "El sujeto se omite cuando el verbo ya lo indica. Non va siempre antes del verbo; la pregunta no cambia el orden.",
+    rows: [
+      row("Afirmación", "(Sujeto) + essere + complemento", "Sono a casa.", "(Yo) estoy en casa."),
+      row("Negación", "(Sujeto) + non + verbo + complemento", "Non ho fame.", "No tengo hambre."),
+      row("Pregunta", "Verbo + sujeto + complemento + ?", "Sei italiana?", "¿Eres italiana?"),
+      row("Edad", "Ho + número + anni", "Ho trent'anni.", "Tengo treinta años."),
+      row("Usted", "Lei + è + complemento", "Lei è di Roma?", "¿Es usted de Roma?"),
+    ],
+  },
+  countries: {
+    note: "Las ciudades llevan a; los países, in. Para el origen con país usa Vengo da + artículo (dal = da + il).",
+    rows: [
+      row("Origen (ciudad)", "Sono di + ciudad", "Sono di Puebla.", "Soy de Puebla."),
+      row("Origen (país)", "Vengo da + artículo + país", "Vengo dal Messico.", "Vengo de México."),
+      row("Nacionalidad", "Sono + nacionalidad", "Sono messicano.", "Soy mexicano."),
+      row("Residencia (ciudad)", "Abito a + ciudad", "Abito a Roma.", "Vivo en Roma."),
+      row("Residencia (país)", "Abito in + país", "Abito in Italia.", "Vivo en Italia."),
+    ],
+  },
+  family: {
+    note: "Con familiar en singular el posesivo va sin artículo (mia madre); en plural, con artículo (i miei genitori).",
+    rows: [
+      row("Presentar (sing.)", "Questa/Questo è + posesivo + familiar", "Questa è mia sorella.", "Esta es mi hermana."),
+      row("Presentar (pl.)", "Questi sono + artículo + posesivo + familiares", "Questi sono i miei genitori.", "Estos son mis padres."),
+      row("Preguntar por la familia", "Hai + familiares en plural + ?", "Hai fratelli?", "¿Tienes hermanos?"),
+    ],
+  },
+  plural: {
+    note: "El plural depende de la terminación y del género que marca el artículo. Hay irregulares que conviene memorizar.",
+    rows: [
+      row("Masculino en -o", "il + sustantivo → i + sustantivo en -i", "il libro → i libri", "el libro → los libros"),
+      row("Femenino en -a", "la + sustantivo → le + sustantivo en -e", "la casa → le case", "la casa → las casas"),
+      row("-ca / -ga", "-ca / -ga → -che / -ghe", "l'amica → le amiche", "la amiga → las amigas"),
+      row("Acento final", "Sustantivo con acento final → igual en plural", "la città → le città", "la ciudad → las ciudades"),
+    ],
+  },
+  demonstratives: {
+    note: "Questo señala cerca; quello, lejos (ese y aquel). Ante sustantivo, quello cambia como el artículo.",
+    rows: [
+      row("Cerca (sing.)", "Questo/Questa + è + sustantivo", "Questo è un libro.", "Éste es un libro."),
+      row("Cerca (pl.)", "Questi/Queste + sono + sustantivo", "Questi sono i miei amici.", "Éstos son mis amigos."),
+      row("Lejos sin sustantivo", "Quello/Quella/Quelli/Quelle + verbo", "Quello è mio.", "Ése es mío."),
+      row("Preguntar qué", "Che cos'è + demostrativo + ?", "Che cos'è questo?", "¿Qué es esto?"),
+      row("Ubicar", "Sujeto + è + qui / lì", "Il caffè è qui.", "El café está aquí."),
+    ],
+  },
+  fruits: {
+    note: "La frutta y la verdura son singulares colectivos. Los plurales siguen las reglas de género y plural.",
+    rows: [
+      row("Identificar", "Questo/Questa è + un/una + fruta", "Questa è una mela.", "Ésta es una manzana."),
+      row("Señalar (pl.)", "Quelli/Quelle sono + fruta en plural", "Quelle sono arance.", "Ésas son naranjas."),
+      row("Cantidad", "Ho + número + fruta en plural", "Ho due banane.", "Tengo dos plátanos."),
+      row("Pedir con cortesía", "Vorrei + cantidad + di + plural", "Vorrei un chilo di pomodori.", "Quiero un kilo de jitomates."),
+    ],
+  },
 };

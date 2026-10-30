@@ -8,6 +8,12 @@ import { scrollToAndHighlight } from "./constants/highlightMatch";
 import ThemePicker from "./components/ThemePicker";
 import GlobalSearch from "./components/GlobalSearch";
 import NumbersSection     from "./features/numbers/NumbersSection";
+import EssereAvereSection from "./features/essereAvere/EssereAvereSection";
+import CountriesSection   from "./features/countries/CountriesSection";
+import FamilySection      from "./features/family/FamilySection";
+import PluralSection      from "./features/plural/PluralSection";
+import DemosSection       from "./features/demonstratives/DemosSection";
+import FruitsSection      from "./features/fruits/FruitsSection";
 import TimeSection        from "./features/time/TimeSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
@@ -20,6 +26,12 @@ import LessonFooter from "./components/LessonFooter";
 
 const SECTIONS = {
   numbers:        NumbersSection,
+  essereAvere:    EssereAvereSection,
+  countries:      CountriesSection,
+  family:         FamilySection,
+  plural:         PluralSection,
+  demonstratives: DemosSection,
+  fruits:         FruitsSection,
   time:           TimeSection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
