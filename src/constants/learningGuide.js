@@ -23,18 +23,18 @@ export const LEARNING_GUIDE = {
     goal: "Decir tu origen, tu nacionalidad y tu ciudad de residencia.",
     recall: ["essereAvere"],
     task: "Di que vienes de México, que eres mexicano y que vives en Roma.",
-    answer: "Vengo dal Messico. Sono messicano. Abito a Roma. Las ciudades llevan a, los países in, y dal = da + il.",
+    answer: "Vengo dal Messico. Sono messicano. Abito a Roma. Como pauta general: a con ciudades e in con países; hay excepciones como a Cuba y negli Stati Uniti. Dal = da + il.",
   },
   family: {
     goal: "Nombrar a tus familiares, presentarlos y preguntar por la familia de otras personas.",
     recall: ["essereAvere"],
     task: "Presenta a tu padre y a tus padres, y pregunta si alguien tiene hermanos.",
-    answer: "Questo è mio padre. Questi sono i miei genitori. Hai fratelli? En singular va sin artículo (mio padre); en plural, con artículo (i miei genitori).",
+    answer: "Questo è mio padre. Questi sono i miei genitori. Hai fratelli? Con parentesco singular normalmente no hay artículo; en plural y con loro sí.",
   },
   plural: {
     goal: "Formar el plural según la terminación y reconocer las excepciones de género.",
     recall: [],
-    task: "Escribe los plurales de libro, casa, amiga y uomo.",
+    task: "Escribe los plurales con artículo de libro, casa, amica y uomo.",
     answer: "i libri, le case, le amiche, gli uomini. Las reglas: -o→-i, -a→-e, -ca→-che; l'uomo es irregular.",
   },
   demonstratives: {
@@ -101,7 +101,7 @@ export const LEARNING_GUIDE = {
     goal: "Expresar de quién es algo con el posesivo, concordando con lo que se posee.",
     recall: ["family", "articles"],
     task: "Di «mi libro», «la casa de Octavio», «el libro de Leslie» y «mi madre».",
-    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; un familiar en singular va sin artículo.",
+    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; con parentesco singular normalmente se omite el artículo, salvo con loro.",
   },
   preposizioniArticolate: {
     goal: "Decir de quién es algo con di y unir a, da, di, in y su con el artículo.",
@@ -131,7 +131,7 @@ export const LEARNING_GUIDE = {
     goal: "Reconocer el presente irregular y el participio passato de los verbos frecuentes.",
     recall: ["presenteIndicativo", "verbiInfinito", "essereAvere"],
     task: "Escribe la forma de io de andare y de dare, y el participio de fare.",
-    answer: "Vado. Dà. Fatto. Dà lleva acento para distinguirse de la preposición da.",
+    answer: "Vado. Do. Fatto. Io de dare es do, sin acento; dà, con acento, es la forma de lui/lei y se distingue de la preposición da.",
   },
   routineRiflessivi: {
     goal: "Contar tu rutina con verbos reflexivos, negar y decir cada cuánto haces algo.",

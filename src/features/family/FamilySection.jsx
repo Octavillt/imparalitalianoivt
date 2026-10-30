@@ -36,9 +36,7 @@ export default function FamilySection() {
 
       <RuleBox icon="💍" rule="El posesivo con familiares — la regla de oro" color="#e879f9">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          Con un familiar <strong style={{ color: "#f8fafc" }}>en singular</strong>, el posesivo va <strong style={{ color: "#e879f9" }}>sin artículo</strong>:{" "}
-          <strong lang="it" style={{ color: "#e879f9" }}>mia madre</strong>, no «la mia madre». En <strong style={{ color: "#f8fafc" }}>plural</strong> vuelve el artículo:{" "}
-          <strong lang="it" style={{ color: "#e879f9" }}>i miei genitori</strong>. (Los posesivos completos llegan en Básico II: aquí usa estas formas fijas.)
+          Con un nombre de parentesco singular simple normalmente se omite el artículo: <strong lang="it" style={{ color: "#e879f9" }}>mia madre</strong>. Con un adjetivo antepuesto o un diminutivo se usa: <span lang="it">la mia cara sorella, il mio fratellino</span>; con <span lang="it">loro</span> también: <span lang="it">la loro madre</span>.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
           {POSS_RULES.map(p => (

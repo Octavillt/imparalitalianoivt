@@ -21,6 +21,11 @@ describe("alfabeto italiano", () => {
 });
 
 describe("spellWord", () => {
+  it("conserva la ñ de los nombres mexicanos", () => {
+    expect(spellWord("Peña").map(item => item.say)).toEqual(["pi", "e", "enne con la tilde", "a"]);
+    expect(spellWord("Muñoz").at(2)).toMatchObject({ letter: "Ñ", say: "enne con la tilde" });
+  });
+
   it("da el nombre italiano y la ciudad de cada letra", () => {
     expect(spellWord("ciao").slice(0, 2)).toEqual([
       { letter: "C", say: "ci", city: "Como" },
@@ -35,16 +40,18 @@ describe("spellWord", () => {
 
   it("cuenta las letras acentuadas como su letra base", () => {
     expect(spellWord("perché").map(item => item.letter).join("")).toBe("PERCHE");
-    expect(spellWord("città").at(-1)).toMatchObject({ letter: "A", say: "a" });
+    expect(spellWord("città").at(-1)).toMatchObject({ letter: "A", say: "a con l'accento grave" });
+    expect(spellWord("perché").at(-1)).toMatchObject({ letter: "E", say: "e con l'accento acuto" });
+    expect(spellWord("caffè").map(item => item.say)).toEqual(["ci", "a", "doppia effe", "e con l'accento grave"]);
   });
 
   it("deletrea también las letras extranjeras", () => {
     expect(spellWord("jazz").map(item => item.say)).toEqual(["i lunga", "a", "doppia zeta"]);
   });
 
-  it("ignora espacios, números, signos y la Ñ", () => {
+  it("ignora espacios, números y signos", () => {
     expect(spellWord("¡ana!").map(item => item.letter)).toEqual(["A", "N", "A"]);
-    expect(spellWord("ñ 123")).toEqual([]);
+    expect(spellWord("1 2 3")).toEqual([]);
   });
 });
 

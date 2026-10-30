@@ -31,7 +31,7 @@ export const TOPIC_FORMULAS = {
     ],
   },
   countries: {
-    note: "Las ciudades llevan a; los países, in. Para el origen con país usa Vengo da + artículo (dal = da + il).",
+    note: "Como pauta general, a con ciudades e in con países; hay excepciones: a Cuba, negli Stati Uniti. Para la procedencia se usa da y el artículo cuando el topónimo lo lleva: vengo dal Messico, vengo da Cuba.",
     rows: [
       row("Origen (ciudad)", "Sono di + ciudad", "Sono di Puebla.", "Soy de Puebla."),
       row("Origen (país)", "Vengo da + artículo + país", "Vengo dal Messico.", "Vengo de México."),
@@ -41,7 +41,7 @@ export const TOPIC_FORMULAS = {
     ],
   },
   family: {
-    note: "Con familiar en singular el posesivo va sin artículo (mia madre); en plural, con artículo (i miei genitori).",
+    note: "Con parentesco singular normalmente se omite el artículo: mia madre. En plural y con loro se usa: i miei genitori, la loro madre.",
     rows: [
       row("Presentar (sing.)", "Questa/Questo è + posesivo + familiar", "Questa è mia sorella.", "Esta es mi hermana."),
       row("Presentar (pl.)", "Questi sono + artículo + posesivo + familiares", "Questi sono i miei genitori.", "Estos son mis padres."),
@@ -153,7 +153,7 @@ export const TOPIC_FORMULAS = {
     ],
   },
   possessiveAdjectives: {
-    note: "Con un familiar en singular no va artículo (mia madre), salvo loro. En plural sí: le mie sorelle.",
+    note: "Con parentesco singular normalmente se omite el artículo, salvo con loro. En plural se usa: le mie sorelle.",
     rows: [
       row("Con objeto", "Artículo + posesivo + sustantivo", "Il mio libro è qui.", "Mi libro está aquí."),
       row("Según lo poseído", "Artículo de la cosa + posesivo", "La sua casa è grande.", "Su casa es grande."),
@@ -163,7 +163,7 @@ export const TOPIC_FORMULAS = {
     ],
   },
   preposizioniArticolate: {
-    note: "Con, per, tra y fra no se unen al artículo. Un nombre de persona va sin él.",
+    note: "Per, tra y fra se mantienen separados del artículo. Con admite con il / col y con i / coi; las formas separadas siempre son correctas. Los nombres propios de persona de estos ejemplos no llevan artículo.",
     rows: [
       row("Pertenencia", "Sustantivo + di + nombre", "Il libro di Leslie.", "El libro de Leslie."),
       row("Di + artículo", "di + il = del", "La macchina del professore.", "El carro del profesor."),
@@ -297,7 +297,7 @@ export const TOPIC_FORMULAS = {
     rows: [
       row("Desde -o", "femenino + mente", "Parla lentamente.", "Habla despacio."),
       row("Desde -e", "adjetivo + mente", "Parla velocemente.", "Habla rápido."),
-      row("Desde -le o -re", "pierde la e + mente", "Parla facilmente.", "Habla con facilidad."),
+      row("Desde -le o -re precedidos de vocal", "pierde la e + mente", "Parla facilmente.", "Habla con facilidad."),
       row("Bien y mal", "bene o male", "Leslie canta bene.", "Leslie canta bien."),
       row("Con essere", "essere + adjetivo", "Octavio è lento.", "Octavio es lento."),
     ],

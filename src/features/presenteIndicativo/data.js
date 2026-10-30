@@ -57,7 +57,7 @@ export const SPELLING_GROUPS = [
     ],
   },
   {
-    title: "-iare: tampoco se duplica la i",
+    title: "-iare con i átona: una sola i en studi y cambi",
     text: "En studiare la i no se escribe dos veces: studi, studiamo. Lo mismo pasa en verbos como cambiare: cambi, cambiamo.",
     models: [
       model("studiare", "-iare", ["io", "i", "ia", "iamo", "iate", "iano"], yo("yo estudio", "tú estudias", "él / ella estudia", "nosotros estudiamos", "ustedes estudian", "ellos / ellas estudian"), "stud"),

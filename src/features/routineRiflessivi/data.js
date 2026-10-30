@@ -66,8 +66,8 @@ export const BODY_WASH = [
 export const DAY_PARTS = [
   ["la mattina", "la mañana"],
   ["il pomeriggio", "la tarde"],
-  ["la sera", "la noche, desde que anochece"],
-  ["la notte", "la noche, ya muy tarde"],
+  ["la sera", "el final de la tarde y el comienzo de la noche"],
+  ["la notte", "la noche, el periodo nocturno"],
 ];
 
 export const FREQUENCY = [
@@ -185,11 +185,11 @@ export const PRACTICE = [
   { question: "Escribe el presente de io de divertirsi, con el pronombre.", answers: ["mi diverto"], hint: "La forma de io es diverto.", explanation: "Divertirsi, en io, es mi diverto." },
   { question: "Elige cómo se dice «me ducho»: (mi faccio la doccia / mi facio la doccia).", answers: ["mi faccio la doccia"], hint: "Se usa el presente de fare: faccio.", explanation: "Ducharse, en io, es mi faccio la doccia." },
   { question: "Escribe el presente de io de vestirsi, con el pronombre.", answers: ["mi vesto"], hint: "Vestirsi no lleva -isc-.", explanation: "Vestirsi, en io, es mi vesto." },
-  { question: "Escribe en italiano: No me levanto temprano.", answers: ["Non mi alzo presto"], hint: "Non va antes del pronombre.", explanation: "No me levanto temprano = Non mi alzo presto." },
-  { question: "Escribe en italiano: Me levanto siempre a las siete.", answers: ["Mi alzo sempre alle sette"], hint: "Sempre suele ir después del verbo. A + le = alle.", explanation: "Me levanto siempre a las siete = Mi alzo sempre alle sette." },
-  { question: "Escribe en italiano: No tomo nunca café.", answers: ["Non bevo mai il caffè", "Non bevo mai caffè"], hint: "Mai, con un verbo, pide non.", explanation: "No tomo nunca café = Non bevo mai il caffè. Sin artículo, Non bevo mai caffè también es correcto." },
+  { question: "Escribe en italiano: No me levanto temprano.", answers: ["Non mi alzo presto", "Io non mi alzo presto"], hint: "Non va antes del pronombre.", explanation: "No me levanto temprano = Non mi alzo presto." },
+  { question: "Escribe en italiano: Me levanto siempre a las siete.", answers: ["Mi alzo sempre alle sette", "Io mi alzo sempre alle sette"], hint: "Sempre suele ir después del verbo. A + le = alle.", explanation: "Me levanto siempre a las siete = Mi alzo sempre alle sette." },
+  { question: "Escribe en italiano: No tomo nunca café.", answers: ["Non bevo mai il caffè", "Non bevo mai caffè", "Io non bevo mai il caffè", "Io non bevo mai caffè"], hint: "Mai, con un verbo, pide non.", explanation: "No tomo nunca café = Non bevo mai il caffè. Sin artículo, Non bevo mai caffè también es correcto." },
   { question: "Escribe en italiano: ¿A qué hora te levantas?", answers: ["A che ora ti alzi?"], hint: "La palabra interrogativa va primero y el pronombre, antes del verbo.", explanation: "¿A qué hora te levantas? = A che ora ti alzi?" },
-  { question: "Escribe en italiano: Me lavo las manos.", answers: ["Mi lavo le mani"], hint: "Con el cuerpo va el artículo, sin posesivo.", explanation: "Me lavo las manos = Mi lavo le mani." },
-  { question: "Escribe en italiano: Me llamo Leslie.", answers: ["Mi chiamo Leslie"], hint: "Chiamarsi, en io, es mi chiamo.", explanation: "Me llamo Leslie = Mi chiamo Leslie." },
-  { question: "Escribe en italiano: Normalmente trabajo en Roma, pero ahora estoy trabajando en Milán.", answers: ["Di solito lavoro a Roma, ma adesso sto lavorando a Milano"], hint: "La rutina va en presente. Lo de ahora, con sto y el gerundio.", explanation: "Di solito lavoro a Roma, ma adesso sto lavorando a Milano. La ciudad lleva a: a Roma, a Milano." },
+  { question: "Escribe en italiano: Me lavo las manos.", answers: ["Mi lavo le mani", "Io mi lavo le mani"], hint: "Con el cuerpo va el artículo, sin posesivo.", explanation: "Me lavo las manos = Mi lavo le mani." },
+  { question: "Escribe en italiano: Me llamo Leslie.", answers: ["Mi chiamo Leslie", "Io mi chiamo Leslie"], hint: "Chiamarsi, en io, es mi chiamo.", explanation: "Me llamo Leslie = Mi chiamo Leslie." },
+  { question: "Escribe en italiano: Normalmente trabajo en Roma, pero ahora estoy trabajando en Milán.", answers: ["Di solito lavoro a Roma, ma adesso sto lavorando a Milano", "Di solito lavoro a Roma, ma ora sto lavorando a Milano", "Normalmente lavoro a Roma, ma adesso sto lavorando a Milano", "Normalmente lavoro a Roma, ma ora sto lavorando a Milano"], hint: "La rutina va en presente. Lo de ahora, con sto y el gerundio.", explanation: "Di solito lavoro a Roma, ma adesso sto lavorando a Milano. La ciudad lleva a: a Roma, a Milano." },
 ];

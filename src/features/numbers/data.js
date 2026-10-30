@@ -40,7 +40,7 @@ export const ROOM_NUMBERS = [
 
 // ── Letters ──────────────────────────────────────────────────────────
 // El alfabeto italiano tradicional tiene 21 letras; se suman 5 letras
-// «extranjeras» que solo aparecen en palabras tomadas de otros idiomas. De
+// «extranjeras» que aparecen principalmente en préstamos y nombres propios. De
 // cada letra guardamos su NOMBRE (cómo se dice al deletrear, que es distinto
 // del sonido que hace dentro de una palabra), en IPA, una lectura aproximada
 // para hispanohablantes y la ciudad con la que se deletrea («A come Ancona»).
@@ -66,7 +66,7 @@ export const ALPHABET = [
   { letter: "U", name: "u",        ipa: "/u/",          say: "u",       word: "uva",     city: "Udine",       vowel: true },
   { letter: "V", name: "vu",       ipa: "/vu/",         say: "vu",      word: "vino",    city: "Venezia" },
   { letter: "Z", name: "zeta",     ipa: "/ˈdzɛta/",     say: "dzéta",   word: "zucchero", city: "Zara" },
-  // Letras extranjeras: solo aparecen en palabras de otros idiomas.
+  // Letras extranjeras: frecuentes en préstamos y nombres propios.
   { letter: "J", name: "i lunga",    ipa: "/i ˈlunɡa/",   say: "i lunga",    word: "jeans",    city: "Jolly",      foreign: true },
   { letter: "K", name: "cappa",      ipa: "/ˈkappa/",     say: "cappa",      word: "kiwi",     city: "Kursaal",    foreign: true },
   { letter: "W", name: "doppia vu",  ipa: "/ˈdoppja vu/", say: "doppia vu",  word: "web",      city: "Washington", foreign: true },
@@ -105,7 +105,7 @@ export const PRONUNCIATION_GROUPS = [
     ["h no suena", "ho, hanno, chi"],
   ] },
   { icon: "👯", title: "Consonantes dobles", color: "#60a5fa", rows: [
-    ["nono ≠ nonno", "nueve ≠ abuelo"],
+    ["nono ≠ nonno", "noveno ≠ abuelo"],
     ["sete ≠ sette", "sed ≠ siete"],
     ["pala ≠ palla", "pala ≠ pelota"],
   ] },

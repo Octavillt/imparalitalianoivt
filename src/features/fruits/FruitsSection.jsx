@@ -64,7 +64,7 @@ export default function FruitsSection() {
       <RuleBox icon="🧐" rule="Palabras con truco" color="#fbbf24">
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
-            🍇 <strong lang="it" style={{ color: "#e2e8f0" }}>l'uva</strong> es colectiva y va en singular. 🇲🇽 la uva.
+            🍇 <strong lang="it" style={{ color: "#e2e8f0" }}>L'uva</strong>, como nombre colectivo de la fruta, se usa aquí en singular; <span lang="it">le uve</span> puede referirse a sus variedades.
           </div>
           <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>
             🍑 <strong lang="it" style={{ color: "#e2e8f0" }}>la pesca</strong> con <strong style={{ color: "#f8fafc" }}>e abierta</strong> es el durazno; con{" "}

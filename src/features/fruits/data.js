@@ -15,14 +15,14 @@ export const FRUITS = [
   { it: "la pera", esp: "pera", emoji: "🍐", color: "#84cc16" },
   { it: "la ciliegia", esp: "cereza", emoji: "🍒", color: "#dc2626" },
   { it: "la pesca", esp: "durazno", emoji: "🍑", color: "#fb923c" },
-  { it: "il limone", esp: "limón", emoji: "🍋", color: "#facc15" },
+  { it: "il limone", esp: "limón amarillo", emoji: "🍋", color: "#facc15" },
   { it: "il cocco", esp: "coco", emoji: "🥥", color: "#78716c" },
   { it: "il melone", esp: "melón", emoji: "🍈", color: "#65a30d" },
   { it: "il kiwi", esp: "kiwi", emoji: "🥝", color: "#4ade80" },
   { it: "il mirtillo", esp: "arándano", emoji: "🫐", color: "#6366f1" },
   { it: "l'avocado", esp: "aguacate", emoji: "🥑", color: "#16a34a" },
   { it: "il pomodoro", esp: "jitomate", emoji: "🍅", color: "#b91c1c" },
-  { it: "il lime", esp: "lima", emoji: "🍋‍🟩", color: "#4ade80" },
+  { it: "il lime", esp: "limón verde", emoji: "🍋‍🟩", color: "#4ade80" },
   { it: "il melograno", esp: "granada", emoji: "🔴", color: "#be123c" },
 ];
 
@@ -69,7 +69,7 @@ export const FRUIT_PHRASES = [
 
 export const PRACTICE = [
   { question: "Escribe en italiano: la manzana.", answers: ["la mela"], explanation: "la mela = la manzana." },
-  { question: "Escribe en italiano: la naranja.", answers: ["l'arancia"], hint: "Feminino, empieza con vocal", explanation: "la naranja = l'arancia." },
+  { question: "Escribe en italiano: la naranja.", answers: ["l'arancia"], hint: "Femenino, empieza con vocal", explanation: "la naranja = l'arancia." },
   { question: "Escribe en italiano: el jitomate.", answers: ["il pomodoro"], explanation: "el jitomate = il pomodoro." },
   { question: "Elige el artículo correcto: (il / la) banana.", answers: ["la"], hint: "Femenino", explanation: "la banana: es femenino." },
   { question: "Elige el artículo correcto: (il / lo) zenzero.", answers: ["lo"], hint: "Empieza con z", explanation: "lo zenzero: las palabras que empiezan con s+consonante, z, gn… llevan lo." },
@@ -77,10 +77,10 @@ export const PRACTICE = [
   { question: "Escribe el plural: il pomodoro.", answers: ["i pomodori"], hint: "-o → -i", explanation: "il pomodoro → i pomodori." },
   { question: "Escribe el plural: il fungo.", answers: ["i funghi"], hint: "-go → -ghi", explanation: "il fungo → i funghi: la h mantiene la G fuerte." },
   { question: "Traduce al italiano: Esas son naranjas.", answers: ["Quelle sono arance", "Quelle sono arance."], hint: "Quelle + sono", explanation: "Esas son naranjas = Quelle sono arance." },
-  { question: "Traduce al italiano: Tengo dos plátanos.", answers: ["Ho due banane", "Ho due banane."], hint: "Avere → ho", explanation: "Tengo dos plátanos = Ho due banane." },
+  { question: "Traduce al italiano: Tengo dos plátanos.", answers: ["Ho due banane", "Ho due banane.", "Io ho due banane"], hint: "Avere → ho", explanation: "Tengo dos plátanos = Ho due banane." },
   { question: "Elige el significado de «il peperone».", answers: ["pimiento"], answerLang: "es", hint: "No es picante", explanation: "il peperone = el pimiento. Para el chile se dice peperoncino." },
   { question: "Elige el significado de «il peperoncino».", answers: ["chile"], answerLang: "es", hint: "El picante", explanation: "il peperoncino = el chile." },
-  { question: "Completa la fruta colectiva: l'___ (no va en plural).", answers: ["uva"], explanation: "l'uva = la uva; es colectiva y va en singular." },
+  { question: "Completa el nombre colectivo de la fruta: l'___.", answers: ["uva"], explanation: "L'uva nombra la uva como conjunto y aquí se usa en singular; uve se usa para variedades o tipos de uva." },
   { question: "Traduce al italiano: Quisiera un kilo de jitomates.", answers: ["Vorrei un chilo di pomodori", "Vorrei un chilo di pomodori."], hint: "Fórmula de cortesía", explanation: "Quisiera un kilo de jitomates = Vorrei un chilo di pomodori. «Vorrei» equivale a «quisiera»; el condicional se ve en niveles avanzados." },
   { question: "Elige el artículo correcto: (gli / i) spinaci.", answers: ["gli"], hint: "Empieza con sp", explanation: "gli spinaci: sp- lleva gli (artículo que se ve a fondo en Básico II)." },
 ];

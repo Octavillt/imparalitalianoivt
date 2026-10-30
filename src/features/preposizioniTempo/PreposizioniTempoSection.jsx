@@ -40,8 +40,7 @@ export default function PreposizioniTempoSection() {
       <TopicHeading topicId="preposizioniTempo" />
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 En español, «en» y «a» cubren muchas ideas distintas. El italiano las reparte:{" "}
-        <strong lang="it" style={{ color: "#f8fafc" }}>a, in, da, per, tra, su, di</strong>. Si la preposición encuentra un artículo, se escriben juntos:{" "}
-        <span lang="it">alla stazione, al bar, nel 2026</span>.
+        <strong lang="it" style={{ color: "#f8fafc" }}>a, in, da, per, tra, su, di</strong> expresan relaciones distintas. <span lang="it">A, da, di, in y su</span> se unen al artículo: <span lang="it">alla stazione, al bar, nel 2026</span>. <span lang="it">Per, tra y fra</span> se mantienen separados.
       </div>
       <Legend roles={["subject", "verb", "prep", "articolata", "art", "essere", "neg"]} />
       <RelatedTopic levelId="basico2" topicId="preposizioniArticolate" />

@@ -56,7 +56,7 @@ export const PLURAL_RULES = [
     ],
   },
   {
-    rule: "-co / -go → -chi / -ghi (la h mantiene la C y la G fuertes)",
+    rule: "-co / -go: el plural puede ser -chi / -ghi o -ci / -gi; aprende cada palabra. Ejemplos: giochi, laghi, amici, medici.",
     color: "#f87171",
     pairs: [
       { s: "il gioco", p: ["i gioch", "i"], esp: "el juego → los juegos" },
@@ -75,8 +75,8 @@ export const PLURAL_RULES = [
 ];
 
 export const IRREGULARS = [
-  { s: "l'uomo", p: "gli uomini", esp: "el hombre → los hombres" },
-  { s: "la mano", p: "le mani", esp: "la mano → las manos" },
+  { s: "l'uomo", p: ["gli uomini"], esp: "el hombre → los hombres" },
+  { s: "la mano", p: ["le mani"], esp: "la mano → las manos" },
 ];
 
 // Excepciones de género: el final engaña.
@@ -110,7 +110,7 @@ export const PRACTICE = [
   { question: "Escribe el plural: il gioco.", answers: ["i giochi"], hint: "-co → -chi", explanation: "il gioco → i giochi: la h mantiene la C fuerte." },
   { question: "Escribe el plural: l'amico.", answers: ["gli amici"], hint: "Excepción", explanation: "l'amico → gli amici: excepción, se queda en -ci sin h." },
   { question: "Escribe el plural: l'uomo.", answers: ["gli uomini"], hint: "Irregular", explanation: "l'uomo → gli uomini: irregular, hay que memorizarlo." },
-  { question: "Elige el género: il problema es (masculino / femenino).", answers: ["masculino"], hint: "Los -ma griegos", explanation: "il problema es masculino, como todos los sustantivos en -ma de origen griego." },
+  { question: "Elige el género: il problema es (masculino / femenino).", answers: ["masculino"], hint: "Los -ma griegos", explanation: "Il problema es masculino, como muchos sustantivos en -ma de origen griego, por ejemplo il sistema. No es una regla sin excepciones." },
   { question: "Elige el género: la mano es (masculina / femenina).", answers: ["femenina"], hint: "Excepción", explanation: "la mano es femenina, aunque termine en -o." },
   { question: "Traduce al italiano: la flor.", answers: ["il fiore"], hint: "Género distinto al español", explanation: "la flor = il fiore: en italiano es masculino." },
   { question: "Traduce al italiano: la leche.", answers: ["il latte"], hint: "Género distinto al español", explanation: "la leche = il latte: en italiano es masculino." },

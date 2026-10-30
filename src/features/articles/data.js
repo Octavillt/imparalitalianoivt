@@ -32,7 +32,7 @@ export const INDEFINITE = [
 // Usos donde el italiano sí pone artículo, igual que el español.
 export const WITH_ARTICLE = [
   { icon: "☕", use: "Cosas concretas de las que hablas", ex: "Il caffè è buono.", esp: "El café está bueno." },
-  { icon: "🗣️", use: "Idiomas que estudias", ex: "Studio l'italiano.", esp: "Estudio italiano." },
+  { icon: "🗣️", use: "Idiomas que estudias: artículo facultativo en este uso", ex: "Studio (l')italiano.", esp: "Estudio italiano." },
   { icon: "🍕", use: "Gustos", ex: "Amo la pizza.", esp: "Amo la pizza." },
   { icon: "🗺️", use: "Países", ex: "L'Italia è bella.", esp: "Italia es bonita." },
   { icon: "🕒", use: "La hora", ex: "Sono le tre.", esp: "Son las tres." },
@@ -76,8 +76,8 @@ export const ARTICLE_EXERCISE = [
 ];
 
 export const PRACTICE = [
-  { question: "Completa: ___ libro è sul tavolo.", answers: ["il"], hint: "Masculino singular que empieza con consonante", explanation: "Il libro: il acompaña a los masculinos singulares que empiezan con consonante." },
-  { question: "Completa: ___ studente è di Milano.", answers: ["lo"], hint: "Empieza con s + consonante", explanation: "Lo studente: ante s + consonante va lo (y uno)." },
+  { question: "Completa con el artículo determinativo: ___ libro è sul tavolo.", answers: ["il"], hint: "Masculino singular que empieza con consonante", explanation: "Il libro: il acompaña a los masculinos singulares que empiezan con consonante." },
+  { question: "Completa con el artículo determinativo: ___ studente è di Milano.", answers: ["lo"], hint: "Empieza con s + consonante", explanation: "Lo studente: ante s + consonante va lo (y uno)." },
   { question: "Elige el artículo determinativo: (l' / la) amica di Leslie.", answers: ["l'"], hint: "Empieza con vocal", explanation: "L'amica di Leslie: ante vocal el determinativo es l', en masculino y en femenino." },
   { question: "Elige la forma correcta: (il / lo) zaino.", answers: ["lo"], hint: "Fíjate en la primera letra", explanation: "Lo zaino: las palabras que empiezan con z llevan lo (y uno)." },
   { question: "Completa: ___ case sono grandi.", answers: ["le"], hint: "Plural de la", explanation: "Le case: el plural de la es le." },
@@ -87,7 +87,7 @@ export const PRACTICE = [
   { question: "Elige la forma correcta: (uno / un) studente.", answers: ["uno"], hint: "Empieza con s + consonante", explanation: "Uno studente: ante s + consonante va uno." },
   { question: "Elige la forma correcta: (il / lo) yogurt.", answers: ["lo"], hint: "La y se agrupa con z, gn, ps y s + consonante", explanation: "Lo yogurt: la y lleva lo en determinativo y uno en indeterminativo." },
   { question: "Elige la forma correcta: (un / uno) gnocco.", answers: ["uno"], hint: "Empieza con gn", explanation: "Uno gnocco: gn se trata como s + consonante, z, ps y y. Lleva uno." },
-  { question: "Completa: Studio ___ italiano.", answers: ["l'"], hint: "Los idiomas llevan artículo", explanation: "Studio l'italiano: los idiomas llevan artículo determinativo." },
+  { question: "Completa con el artículo determinativo: Studio ___ italiano.", answers: ["l'"], hint: "El nombre del idioma empieza con vocal", explanation: "Con artículo se dice Studio l'italiano; también es correcto Studio italiano, sin artículo." },
   { question: "Traduce al italiano: Roma es bonita.", answers: ["Roma è bella", "Roma è bella."], hint: "Las ciudades van sin artículo", explanation: "Roma è bella: las ciudades no llevan artículo." },
   { question: "Escribe Ø o 0 si no lleva artículo: ___ Leslie è qui.", answers: ["Ø", "0"], hint: "Nombre de persona", explanation: "Leslie è qui: los nombres de persona van sin artículo (Ø)." },
   { question: "Escribe Ø o 0 si no lleva artículo: Sono ___ insegnante.", answers: ["Ø", "0"], hint: "La profesión con essere", explanation: "Sono insegnante: con essere la profesión va sin artículo (Ø)." },

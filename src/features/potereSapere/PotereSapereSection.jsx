@@ -135,7 +135,7 @@ export default function PotereSapereSection() {
       </div>
 
       <SectionTitle color={COLOR}>❓ Preguntas y respuestas cortas</SectionTitle>
-      <p style={text}>La respuesta puede repetir el infinitivo. <span lang="it">Sì</span> lleva acento. En la negativa van <span lang="it">no</span> y <span lang="it">non</span>.</p>
+      <p style={text}>La respuesta puede repetir el infinitivo. <span lang="it">Sì</span> lleva acento. Puedes responder <span lang="it">No, Non so nuotare</span> o <span lang="it">No, non so nuotare</span>. <span lang="it">No</span> es la respuesta negativa; <span lang="it">non</span> niega el verbo.</p>
       {QA.map(item => <QaCard key={item.esp} q={item.q} a={item.a} esp={item.esp} />)}
     </div>
   );

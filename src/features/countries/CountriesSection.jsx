@@ -32,8 +32,7 @@ export default function CountriesSection() {
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Para decir <strong style={{ color: "#f8fafc" }}>de dónde eres</strong> y <strong style={{ color: "#f8fafc" }}>dónde vives</strong> usas{" "}
         <strong lang="it" style={{ color: "#60a5fa" }}>essere</strong> (<strong lang="it" style={{ color: "#60a5fa" }}>Sono di…</strong>) y el verbo{" "}
-        <strong lang="it" style={{ color: "#34d399" }}>abitare</strong> (<strong lang="it" style={{ color: "#34d399" }}>Abito a…</strong>). Las ciudades llevan{" "}
-        <strong style={{ color: "#fbbf24" }}>a</strong>; los países llevan <strong style={{ color: "#fbbf24" }}>in</strong>.
+        <strong lang="it" style={{ color: "#34d399" }}>abitare</strong> (<strong lang="it" style={{ color: "#34d399" }}>Abito a…</strong>). Como pauta general: <strong style={{ color: "#fbbf24" }}>a</strong> + ciudad e <strong style={{ color: "#fbbf24" }}>in</strong> + país. Hay excepciones: <span lang="it">a Cuba</span>; con países plurales se usa el artículo: <span lang="it">negli Stati Uniti, nei Paesi Bassi</span>.
       </div>
 
       <RuleBox icon="📐" rule="Fórmulas paso a paso" color="#fbbf24">
@@ -51,7 +50,7 @@ export default function CountriesSection() {
           <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "10px 14px" }}>
             <div style={{ color: "#f472b6", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "2px" }}>3 · Residencia</div>
             <div style={{ color: "#e2e8f0", fontSize: "13px", lineHeight: 1.6 }} lang="it">Dove abiti? → Abito a + ciudad / Abito in + país.</div>
-            <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "2px" }}>🇲🇽 ¿Dónde vives? → Vivo en… a con ciudades, in con países.</div>
+            <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "2px" }}>🇲🇽 ¿Dónde vives? → Vivo en… Como pauta general: a con ciudades e in con países; recuerda a Cuba y negli Stati Uniti.</div>
           </div>
         </div>
       </RuleBox>
@@ -87,7 +86,7 @@ export default function CountriesSection() {
         ))}
       </div>
 
-      <RuleBox icon="🧭" rule="A + ciudad · In + país · Di + origen" color="#fbbf24">
+      <RuleBox icon="🧭" rule="Pauta general: a + ciudad · in + país · di + origen" color="#fbbf24">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
           <strong lang="it" style={{ color: "#f8fafc" }}>Abito a Roma</strong> 🇲🇽 Vivo en Roma &nbsp;·&nbsp; <strong lang="it" style={{ color: "#f8fafc" }}>Abito in Italia</strong> 🇲🇽 Vivo en Italia &nbsp;·&nbsp;{" "}
           <strong lang="it" style={{ color: "#f8fafc" }}>Sono di Puebla</strong> 🇲🇽 Soy de Puebla.

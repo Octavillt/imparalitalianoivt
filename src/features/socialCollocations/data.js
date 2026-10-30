@@ -92,7 +92,7 @@ export const DIFFERENCES = [
 ];
 
 export const TARDI = [
-  { pts: ["Oggi ", ax("ho"), " ", pp("fatto"), " tardi ", ar("al"), " lavoro."], esp: "Hoy llegué tarde al trabajo." },
+  { pts: ["Oggi ", ax("ho"), " ", pp("fatto"), " tardi ", ar("al"), " lavoro."], esp: "Hoy se me hizo tarde en el trabajo." },
   { pts: ["Ieri sera ", ax("ho"), " ", pp("fatto"), " tardi."], esp: "Anoche me desvelé." },
 ];
 
@@ -141,7 +141,7 @@ export const PRACTICE = [
   { question: "Escribe en italiano: tener ganas de un helado.", answers: ["avere voglia di un gelato"], hint: "Voglia va seguido de di.", explanation: "Tener ganas de un helado = avere voglia di un gelato." },
   { question: "Escribe en italiano: echar una mano.", answers: ["dare una mano"], hint: "Se usa dare.", explanation: "Echar una mano = dare una mano." },
   { question: "Escribe en italiano: hacer fila.", answers: ["fare la fila"], hint: "Fila lleva el artículo la.", explanation: "Hacer fila = fare la fila." },
-  { question: "Completa: Ieri ___ una festa.", answers: ["ho fatto"], hint: "Fare, en passato prossimo, va con avere. El participio es fatto.", explanation: "Ieri ho fatto una festa. El auxiliar es ho y el participio es fatto." },
+  { question: "Completa en primera persona singular: Ieri ___ una festa. (fare, passato prossimo)", answers: ["ho fatto"], hint: "Fare, en passato prossimo, va con avere. El participio es fatto.", explanation: "Ieri ho fatto una festa. El auxiliar es ho y el participio es fatto." },
   { question: "Escribe en italiano, en femenino: Me perdí en Venecia.", answers: ["Mi sono persa a Venezia", "A Venezia mi sono persa"], hint: "Perdersi va con essere y el participio concuerda en femenino.", explanation: "Me perdí en Venecia, dicho por una mujer, es Mi sono persa a Venezia." },
   { question: "Escribe en italiano: Este sábado saldremos con los amigos.", answers: ["Sabato usciremo con gli amici", "Questo sabato usciremo con gli amici", "Sabato usciremo con i miei amici"], hint: "Nosotros es usciremo. Sin artículo, sabato es esa fecha.", explanation: "Este sábado saldremos con los amigos = Sabato usciremo con gli amici. Il sabato sería los sábados." },
   { question: "¿Qué significa «il sabato»? Escribe la traducción.", answers: ["los sábados", "cada sábado"], answerLang: "es", hint: "Con artículo, el día se repite cada semana.", explanation: "Il sabato = los sábados. Sabato, sin artículo, es un sábado concreto." },

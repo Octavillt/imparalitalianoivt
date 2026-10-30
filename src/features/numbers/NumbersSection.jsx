@@ -19,7 +19,7 @@ function diciParts(n, word) {
     return { before: word.slice(0, -4), highlight: "dici", after: "" };
   }
   if (n >= 17 && n <= 19 && word.startsWith("dici")) {
-    return { before: "dici", highlight: "dici", after: word.slice(4) };
+    return { before: "", highlight: "dici", after: word.slice(4) };
   }
   return null;
 }
@@ -94,7 +94,7 @@ export default function NumbersSection() {
       </div>
 
       <RuleBox icon="📐" rule="Números compuestos — centena + resto pegado" color="#fbbf24">
-        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7 }}>No hay «and» ni guiones: todo se escribe junto. La centena pierde la <em>o</em> solo ante otto y ottanta (centotto, centottanta); con uno se conserva: centouno.</p>
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7 }}>No se añade la conjunción «y» ni se usan guiones: la centena y el resto se escriben juntos. La centena pierde la <em>o</em> solo ante otto y ottanta (centotto, centottanta); con uno se conserva: centouno.</p>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           {COMPOUND_EXAMPLES.map(([n, word]) => (
             <div key={n} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px" }}>
@@ -129,7 +129,7 @@ export default function NumbersSection() {
       <SectionTitle color="#94a3b8">📞 Cellulare / Camera</SectionTitle>
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "10px" }}>
         <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
-          Los teléfonos y las habitaciones de hotel se leen <strong style={{ color: "#f8fafc" }}>dígito por dígito</strong> y el{" "}
+          Los teléfonos se pueden leer <strong style={{ color: "#f8fafc" }}>dígito por dígito</strong>. En las habitaciones de hotel también puede leerse el número completo: <span lang="it">camera centotré</span>. El{" "}
           <strong style={{ color: "#f8fafc" }}>0</strong> siempre es <strong lang="it" style={{ color: "#fbbf24" }}>zero</strong>.
         </div>
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>

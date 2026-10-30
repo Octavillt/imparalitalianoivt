@@ -57,7 +57,7 @@ export default function WhQuestionsSection() {
           color={COLOR}
         />
         <p style={{ color: "#94a3b8", fontSize: "13px", margin: "8px 0" }}>
-          Con <span lang="it">è</span>, <span lang="it">dove</span>, <span lang="it">come</span> y <span lang="it">cosa</span> se escriben juntas.
+          Ante <span lang="it">è</span>, <span lang="it">dove, come y cosa</span> suelen elidir la vocal final: <span lang="it">dov'è, com'è, cos'è</span>. También existen las formas sin elisión.
         </p>
         {ORDER_EXAMPLES.map(ex => (
           <div key={ex.esp} style={{ marginBottom: "8px" }}>
@@ -77,7 +77,7 @@ export default function WhQuestionsSection() {
 
       <RuleBox icon="✏️" rule="Apóstrofo: dov'è, com'è, cos'è" color={COLOR}>
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          <span lang="it">Dove</span>, <span lang="it">come</span> y <span lang="it">cosa</span> pierden la vocal final ante <span lang="it">è</span>: <span lang="it">dov'è, com'è, cos'è</span>.
+          <span lang="it">Dove, come y cosa</span> pueden perder la vocal final ante <span lang="it">è</span>: <span lang="it">dov'è, com'è, cos'è</span>.
           <span lang="it">Quale</span> ante <span lang="it">è</span> se escribe <span lang="it">Qual è</span>, separado y <strong style={{ color: "#f8fafc" }}>sin apóstrofo</strong>.
           <span lang="it">Che cos'è</span> es <span lang="it">che cosa</span> + <span lang="it">è</span>.
         </p>
@@ -106,7 +106,7 @@ export default function WhQuestionsSection() {
 
       <RuleBox icon="🔢" rule="Quanto concuerda con el sustantivo" color={COLOR}>
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          Si no hay sustantivo, se queda en <span lang="it">quanto</span>: <span lang="it">Quanto costa?</span> Si lo hay, concuerda en género y número.
+          Cuando pregunta por una cantidad de forma general, se usa <span lang="it">quanto: Quanto costa?</span> Como adjetivo o pronombre referido a algo concreto, concuerda: <span lang="it">Quante pizze vuoi? / Quante ne vuoi?</span>
           El masculino singular también es <span lang="it">quanto</span>: <span lang="it">quanto gelato</span>.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px", marginTop: "8px" }}>
