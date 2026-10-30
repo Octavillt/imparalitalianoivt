@@ -99,7 +99,7 @@ export default function DemosSection() {
           ))}
         </div>
         <p style={{ color: "#94a3b8", fontSize: "12px", marginTop: "8px" }}>
-          Ej: <strong lang="it" style={{ color: "#e2e8f0" }}>Quello è mio.</strong> 🇲🇽 Ése es mío.
+          Ej: <strong lang="it" style={{ color: "#e2e8f0" }}>Quello è mio.</strong> 🇲🇽 Ese es mío.
         </p>
       </RuleBox>
 

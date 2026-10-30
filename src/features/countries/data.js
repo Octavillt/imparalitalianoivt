@@ -10,7 +10,7 @@ export const COUNTRIES = [
   { flag: "🇨🇱", art: "il", name: "Cile", es: "Chile", natM: "cileno", natF: "cilena" },
   { flag: "🇻🇪", art: "il", name: "Venezuela", es: "Venezuela", natM: "venezuelano", natF: "venezuelana" },
   { flag: "🇧🇷", art: "il", name: "Brasile", es: "Brasil", natM: "brasiliano", natF: "brasiliana" },
-  { flag: "🗽", art: "gli", name: "Stati Uniti", es: "Estados Unidos", natM: "americano", natF: "americana" },
+  { flag: "🇺🇸", art: "gli", name: "Stati Uniti", es: "Estados Unidos", natM: "americano", natF: "americana" },
   { flag: "🇷🇺", art: "la", name: "Russia", es: "Rusia", natM: "russo", natF: "russa" },
   { flag: "🇦🇺", art: "l'", name: "Australia", es: "Australia", natM: "australiano", natF: "australiana" },
   { flag: "🇮🇳", art: "l'", name: "India", es: "India", natM: "indiano", natF: "indiana" },
@@ -45,7 +45,7 @@ export const NAT_GROUPS = [
   },
 ];
 
-// Nombres de ciudad: los italianos suelen distinto a los españoles.
+// Nombres de ciudad: en italiano suelen ser distintos.
 export const CITIES_IT = [
   ["Roma", "Roma"],
   ["Milano", "Milán"],
@@ -65,14 +65,15 @@ export const CITIES_FOREIGN = [
 
 export const ORIGIN_DIALOG = [
   { q: "Di dove sei?", qEsp: "¿De dónde eres?", a: "Sono di Puebla.", aEsp: "Soy de Puebla." },
-  { q: "Vengo dal Messico.", qEsp: "Vengo de México.", a: "Sono messicano.", aEsp: "Soy mexicano." },
+  { q: "Da dove vieni?", qEsp: "¿De dónde vienes?", a: "Vengo dal Messico.", aEsp: "Vengo de México." },
+  { q: "Di che nazionalità sei?", qEsp: "¿De qué nacionalidad eres?", a: "Sono messicano.", aEsp: "Soy mexicano." },
   { q: "Dove abiti?", qEsp: "¿Dónde vives?", a: "Abito a Roma.", aEsp: "Vivo en Roma." },
   { q: "Dove abita?", qEsp: "¿Dónde vive (usted)?", a: "Abito in Italia.", aEsp: "Vivo en Italia." },
 ];
 
 export const PRACTICE = [
   { question: "Completa: ___ dove sei?", answers: ["Di"], hint: "Preposición de origen", explanation: "Di dove sei? = ¿De dónde eres?" },
-  { question: "Traduce al italiano: ¿Dónde vives?", answers: ["Dove abiti?"], hint: "Abitare = vivir", explanation: "¿Dónde vives? = Dove abiti? Las ciudades llevan a." },
+  { question: "Traduce al italiano: ¿Dónde vives?", answers: ["Dove abiti?"], hint: "Abitare = vivir", explanation: "¿Dónde vives? = Dove abiti? Viene de abitare: tu abiti." },
   { question: "Traduce al italiano: Vivo en Roma.", answers: ["Abito a Roma", "Abito a Roma."], hint: "Ciudad → a", explanation: "Vivo en Roma = Abito a Roma." },
   { question: "Traduce al italiano: Vivo en Italia.", answers: ["Abito in Italia", "Abito in Italia."], hint: "País → in", explanation: "Vivo en Italia = Abito in Italia." },
   { question: "Completa: Vengo ___ Messico.", answers: ["dal"], hint: "Da + el país", explanation: "Vengo dal Messico: el país lleva artículo (il Messico), así que da + il = dal." },
@@ -83,6 +84,6 @@ export const PRACTICE = [
   { question: "Escribe cómo se dice «Nueva York» en italiano.", answers: ["Nuova York"], hint: "Dos palabras", explanation: "Nueva York = Nuova York." },
   { question: "Escribe cómo se dice «Londres» en italiano.", answers: ["Londra"], hint: "Termina en -a", explanation: "Londres = Londra." },
   { question: "Elige la nacionalidad de Francia: (francés / francese / francesa)", answers: ["francese"], hint: "Termina en -ese", explanation: "La nacionalidad de Francia es francese: igual para hombre y mujer." },
-  { question: "Traduce al italiano: Soy de México.", answers: ["Vengo dal Messico", "Sono del Messico"], hint: "El país lleva artículo", explanation: "Soy de México = Vengo dal Messico (o Sono del Messico): da + il Messico = dal." },
+  { question: "Traduce al italiano: Soy de México.", answers: ["Vengo dal Messico", "Sono del Messico", "Sono messicano"], hint: "El país lleva artículo", explanation: "Soy de México = Vengo dal Messico (o Sono del Messico): da + il Messico = dal. También puedes responder con la nacionalidad: Sono messicano." },
   { question: "Traduce al italiano: ¿Es usted de Roma?", answers: ["Lei è di Roma?", "È di Roma?"], hint: "Usted → Lei", explanation: "¿Es usted de Roma? = Lei è di Roma? Lei va con la tercera persona." },
 ];

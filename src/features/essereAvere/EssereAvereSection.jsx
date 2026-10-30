@@ -50,6 +50,10 @@ export default function EssereAvereSection() {
       <SectionTitle color="#f87171">🤲 Avere — tener</SectionTitle>
       <ConjugationGrid title="avere" color="#34d399" rows={AVERE_CONJ} />
 
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 16px", marginBottom: "14px", fontSize: "13px", color: "#94a3b8", lineHeight: 1.7 }}>
+        <strong lang="it" style={{ color: "#f8fafc" }}>Voi</strong> es «ustedes» entre personas de confianza; <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong> es «ellos» o «ellas».
+      </div>
+
       <RuleBox icon="🗣️" rule="El sujeto casi siempre se omite" color="#fbbf24">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
           Como en español, la terminación del verbo ya dice quién actúa: <strong lang="it" style={{ color: "#f8fafc" }}>Sono Octavio</strong> basta;{" "}
@@ -78,8 +82,9 @@ export default function EssereAvereSection() {
 
       <RuleBox icon="❓" rule="Pregunta — el mismo orden, con entonación de pregunta" color="#60a5fa">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          A diferencia del español, en italiano <strong style={{ color: "#f8fafc" }}>no se invierte</strong> el orden: solo cambia la entonación y se escribe{" "}
-          <strong style={{ color: "#f8fafc" }}>¿?</strong>. Las respuestas cortas usan <strong lang="it" style={{ color: "#34d399" }}>sì</strong> / <strong lang="it" style={{ color: "#f87171" }}>no</strong> seguidos de la oración completa.
+          Igual que en español, basta la entonación: el orden no cambia. Por escrito solo se pone <strong style={{ color: "#f8fafc" }}>?</strong> al final:{" "}
+          el italiano no usa <strong style={{ color: "#f8fafc" }}>¿</strong>. Las respuestas empiezan con{" "}
+          <strong lang="it" style={{ color: "#34d399" }}>sì</strong> o <strong lang="it" style={{ color: "#f87171" }}>no</strong>.
         </p>
       </RuleBox>
       {ESSERE_QA.map(({ q, a, esp }, i) => (
@@ -108,7 +113,7 @@ export default function EssereAvereSection() {
           ))}
         </div>
         <p style={{ color: "#94a3b8", fontSize: "12px", marginTop: "8px" }}>
-          El verbo <strong lang="it" style={{ color: "#e2e8f0" }}>stare</strong> («estar» para estados pasajeros) llega más adelante; con essere ya cubres lo esencial.
+          El verbo <strong lang="it" style={{ color: "#e2e8f0" }}>stare</strong> llega más adelante, en expresiones como <strong lang="it" style={{ color: "#e2e8f0" }}>Come stai?</strong> y <strong lang="it" style={{ color: "#e2e8f0" }}>Sto bene</strong>. Por ahora, con essere ya cubres lo esencial.
         </p>
       </RuleBox>
 

@@ -20,7 +20,7 @@ export const LEARNING_GUIDE = {
     answer: "Octavio è stanco. Leslie non ha fame. Hai sonno? Non va antes del verbo y la pregunta conserva el orden; solo cambia la entonación.",
   },
   countries: {
-    goal: "Decir tu origen, tu nacionalidad y tu ciudad de residencia con lecciones de Italia.",
+    goal: "Decir tu origen, tu nacionalidad y tu ciudad de residencia.",
     recall: ["essereAvere"],
     task: "Di que vienes de México, que eres mexicano y que vives en Roma.",
     answer: "Vengo dal Messico. Sono messicano. Abito a Roma. Las ciudades llevan a, los países in, y dal = da + il.",
@@ -40,13 +40,13 @@ export const LEARNING_GUIDE = {
   demonstratives: {
     goal: "Señalar objetos con questo y quello según la distancia, y ubicarlos con qui y lì.",
     recall: ["plural", "essereAvere"],
-    task: "Di «éste es un libro», «ésos son mis amigos» y «el café está aquí».",
+    task: "Di «este es un libro», «esos son mis amigos» y «el café está aquí».",
     answer: "Questo è un libro. Quelli sono i miei amici. Il caffè è qui. Quello, ante sustantivo, cambia como el artículo.",
   },
   fruits: {
     goal: "Nombrar frutas y verduras en italiano y usarlas en frases de identificación y cantidad.",
     recall: ["demonstratives", "plural"],
-    task: "Di que ésas son naranjas, que tienes dos plátanos y pide un kilo de jitomates.",
+    task: "Di que esas son naranjas, que tienes dos plátanos y que quisieras un kilo de jitomates.",
     answer: "Quelle sono arance. Ho due banane. Vorrei un chilo di pomodori. La frutta y la verdura son singulares colectivos.",
   },
 };

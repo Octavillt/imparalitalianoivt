@@ -25,7 +25,7 @@ export const TOPIC_FORMULAS = {
     rows: [
       row("Afirmación", "(Sujeto) + essere + complemento", "Sono a casa.", "(Yo) estoy en casa."),
       row("Negación", "(Sujeto) + non + verbo + complemento", "Non ho fame.", "No tengo hambre."),
-      row("Pregunta", "Verbo + sujeto + complemento + ?", "Sei italiana?", "¿Eres italiana?"),
+      row("Pregunta", "(Sujeto) + verbo + complemento + ?", "Sei italiana?", "¿Eres italiana?"),
       row("Edad", "Ho + número + anni", "Ho trent'anni.", "Tengo treinta años."),
       row("Usted", "Lei + è + complemento", "Lei è di Roma?", "¿Es usted de Roma?"),
     ],
@@ -60,9 +60,9 @@ export const TOPIC_FORMULAS = {
   demonstratives: {
     note: "Questo señala cerca; quello, lejos (ese y aquel). Ante sustantivo, quello cambia como el artículo.",
     rows: [
-      row("Cerca (sing.)", "Questo/Questa + è + sustantivo", "Questo è un libro.", "Éste es un libro."),
-      row("Cerca (pl.)", "Questi/Queste + sono + sustantivo", "Questi sono i miei amici.", "Éstos son mis amigos."),
-      row("Lejos sin sustantivo", "Quello/Quella/Quelli/Quelle + verbo", "Quello è mio.", "Ése es mío."),
+      row("Cerca (sing.)", "Questo/Questa + è + sustantivo", "Questo è un libro.", "Este es un libro."),
+      row("Cerca (pl.)", "Questi/Queste + sono + sustantivo", "Questi sono i miei amici.", "Estos son mis amigos."),
+      row("Lejos sin sustantivo", "Quello/Quella/Quelli/Quelle + verbo", "Quello è mio.", "Ese es mío."),
       row("Preguntar qué", "Che cos'è + demostrativo + ?", "Che cos'è questo?", "¿Qué es esto?"),
       row("Ubicar", "Sujeto + è + qui / lì", "Il caffè è qui.", "El café está aquí."),
     ],
@@ -70,10 +70,10 @@ export const TOPIC_FORMULAS = {
   fruits: {
     note: "La frutta y la verdura son singulares colectivos. Los plurales siguen las reglas de género y plural.",
     rows: [
-      row("Identificar", "Questo/Questa è + un/una + fruta", "Questa è una mela.", "Ésta es una manzana."),
-      row("Señalar (pl.)", "Quelli/Quelle sono + fruta en plural", "Quelle sono arance.", "Ésas son naranjas."),
+      row("Identificar", "Questo/Questa è + un/una + fruta", "Questa è una mela.", "Esta es una manzana."),
+      row("Señalar (pl.)", "Quelli/Quelle sono + fruta en plural", "Quelle sono arance.", "Esas son naranjas."),
       row("Cantidad", "Ho + número + fruta en plural", "Ho due banane.", "Tengo dos plátanos."),
-      row("Pedir con cortesía", "Vorrei + cantidad + di + plural", "Vorrei un chilo di pomodori.", "Quiero un kilo de jitomates."),
+      row("Pedir con cortesía", "Vorrei + cantidad + di + plural", "Vorrei un chilo di pomodori.", "Quisiera un kilo de jitomates."),
     ],
   },
 };
