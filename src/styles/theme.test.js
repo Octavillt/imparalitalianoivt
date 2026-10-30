@@ -51,7 +51,7 @@ describe("persistencia del tema", () => {
   });
 
   it("ignora un valor guardado inválido y cae al por defecto", () => {
-    localStorage.setItem("learningles.theme", "no-existe");
+    localStorage.setItem("imparalitalianoivt.theme", "no-existe");
     expect(loadThemeId()).toBe(DEFAULT_THEME);
   });
 });

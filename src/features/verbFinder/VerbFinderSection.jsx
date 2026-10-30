@@ -1,25 +1,25 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import FilterableList from "../../components/FilterableList";
-import IpaGroups from "../../components/IpaGroups";
+import PronunciationGroups from "../../components/PronunciationGroups";
 import Legend from "../../components/Legend";
-import RelatedTopic from "../../components/RelatedTopic";
 import Token from "../../components/Token";
 import { TOPIC_BY_ID } from "../../constants/topics";
 import { C } from "../../styles/colors";
-import { ED_PRONUNCIATION, REGULAR_RULES } from "../simplePast/data";
-import { VERB_BANK } from "./data";
-import { PATTERNS, PATTERN_BY_ID, lessonsFor, searchVerbs, verbPattern } from "./verbSearch";
+import { AUX_RULES, CONJUGATION_GROUPS, VERB_BANK } from "./data";
+import { GROUPS, searchVerbs, verbGroup } from "./verbSearch";
 import "./verbFinder.css";
 
-const FAVORITES_KEY = "learningles.favoriteVerbs";
-const BASES = new Set(VERB_BANK.map(verb => verb.base));
+const FAVORITES_KEY = "imparalitalianoivt.favoriteVerbs";
+const INFINITIVES = new Set(VERB_BANK.map(verb => verb.infinito));
 const LETTERS = Array.from({ length: 26 }, (_, index) => String.fromCharCode(65 + index));
 const TOPIC = TOPIC_BY_ID.verbFinder;
+const GROUP_LABEL = Object.fromEntries(GROUPS.map(g => [g.id, g.label]));
 
 const HIDE_OPTIONS = [
   { id: "none", label: "Nada" },
-  { id: "past", label: "Pasado" },
+  { id: "presente", label: "Presente" },
   { id: "participle", label: "Participio" },
+  { id: "aux", label: "Auxiliar" },
   { id: "es", label: "Español" },
 ];
 
@@ -34,25 +34,25 @@ function loadFavorites() {
   try {
     const saved = localStorage.getItem(FAVORITES_KEY);
     const parsed = saved ? JSON.parse(saved) : [];
-    return Array.isArray(parsed) ? parsed.filter(base => BASES.has(base)) : [];
+    return Array.isArray(parsed) ? parsed.filter(infinito => INFINITIVES.has(infinito)) : [];
   } catch {
     // localStorage no disponible: la sesión sigue, solo que no recuerda favoritos
     return [];
   }
 }
 
-function saveFavorites(bases) {
+function saveFavorites(infinitos) {
   try {
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(bases));
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(infinitos));
   } catch {
     // Si no se puede persistir, los favoritos viven igual en memoria
   }
 }
 
-function exactBase(term) {
+function exactInfinito(term) {
   if (!term) return null;
-  const base = term.trim().toLowerCase();
-  return BASES.has(base) ? base : null;
+  const infinito = term.trim().toLowerCase();
+  return INFINITIVES.has(infinito) ? infinito : null;
 }
 
 function countLabel(count, rawQuery) {
@@ -65,7 +65,7 @@ function countLabel(count, rawQuery) {
 function groupByLetter(items) {
   const groups = [];
   for (const item of items) {
-    const letter = item.verb.base[0].toUpperCase();
+    const letter = item.verb.infinito[0].toUpperCase();
     const current = groups[groups.length - 1];
     if (current?.letter === letter) current.items.push(item);
     else groups.push({ letter, items: [item] });
@@ -74,46 +74,34 @@ function groupByLetter(items) {
 }
 
 function MatchHint({ verb, matchedForm, matchedField }) {
-  if (matchedField === "past") {
+  if (matchedField === "presente") {
     return (
       <p className="vf-hint">
-        <span lang="en">{matchedForm}</span> es el pasado de <span lang="en">{verb.base}</span>
+        <span lang="it">{matchedForm}</span> es el presente (io) de <span lang="it">{verb.infinito}</span>
       </p>
     );
   }
   if (matchedField === "participle") {
     return (
       <p className="vf-hint">
-        <span lang="en">{matchedForm}</span> es el participio de <span lang="en">{verb.base}</span>
+        <span lang="it">{matchedForm}</span> es el participio de <span lang="it">{verb.infinito}</span>
       </p>
     );
   }
   if (matchedField === "es") {
     return (
       <p className="vf-hint">
-        <span lang="es">{matchedForm}</span> → <span lang="en">{verb.base}</span>
-      </p>
-    );
-  }
-  if (matchedField === "esPast") {
-    return (
-      <p className="vf-hint">
-        <span lang="es">{matchedForm}</span>
-        {" → "}
-        <span lang="en">{verb.past[0]}</span>
-        {" (pasado de "}
-        <span lang="en">{verb.base}</span>
-        )
+        <span lang="es">{matchedForm}</span> → <span lang="it">{verb.infinito}</span>
       </p>
     );
   }
   return null;
 }
 
-function PracticeCell({ hidden, label, base, onReveal, children }) {
+function PracticeCell({ hidden, label, infinito, onReveal, children }) {
   if (!hidden) return children;
   return (
-    <button type="button" className="vf-reveal" aria-label={`Mostrar ${label} de ${base}`} onClick={onReveal}>
+    <button type="button" className="vf-reveal" aria-label={`Mostrar ${label} de ${infinito}`} onClick={onReveal}>
       • • •
     </button>
   );
@@ -123,26 +111,24 @@ function VerbCard({
   verb, matchedForm, matchedField, hide, revealed, onReveal,
   open, onToggle, favorite, onFavorite,
 }) {
-  const moreId = `vf-more-${verb.base.replaceAll(" ", "-")}`;
-  const pattern = PATTERN_BY_ID[verbPattern(verb)];
-  const lessons = open ? lessonsFor(verb) : [];
-  const pastHidden = hide === "past" && !revealed.has(`${verb.base}:past`);
-  const partHidden = hide === "participle" && !revealed.has(`${verb.base}:participle`);
-  const esHidden = hide === "es" && !revealed.has(`${verb.base}:es`);
-  const esPastHidden = hide === "es" && !revealed.has(`${verb.base}:esPast`);
+  const moreId = `vf-more-${verb.infinito.replaceAll(" ", "-")}`;
+  const presenteHidden = hide === "presente" && !revealed.has(`${verb.infinito}:presente`);
+  const partHidden = hide === "participle" && !revealed.has(`${verb.infinito}:participle`);
+  const auxHidden = (hide === "aux" || hide === "participle") && !revealed.has(`${verb.infinito}:aux`);
+  const esHidden = hide === "es" && !revealed.has(`${verb.infinito}:es`);
 
   return (
-    <article className="vf-card" data-open={open ? "true" : "false"} aria-label={verb.base}>
+    <article className="vf-card" data-open={open ? "true" : "false"} aria-label={verb.infinito}>
       <div className="vf-card-row">
         <div className="vf-identity">
-          <span className="vf-mini">BASE</span>
+          <span className="vf-mini">INFINITIVO</span>
           <div className="vf-base">
-            <Token t={verb.base} r="verb" />
+            <Token t={verb.infinito} r="verb" />
             {verb.note && (
               <button
                 type="button"
                 className="vf-note"
-                aria-label={`Ver la nota de ${verb.base}`}
+                aria-label={`Ver la nota de ${verb.infinito}`}
                 aria-expanded={open}
                 aria-controls={moreId}
                 title="Tiene una nota: tócalo para leerla"
@@ -155,8 +141,8 @@ function VerbCard({
           <PracticeCell
             hidden={esHidden}
             label="significado"
-            base={verb.base}
-            onReveal={() => onReveal(`${verb.base}:es`)}
+            infinito={verb.infinito}
+            onReveal={() => onReveal(`${verb.infinito}:es`)}
           >
             <p className="vf-es" lang="es">{verb.es}</p>
           </PracticeCell>
@@ -164,25 +150,15 @@ function VerbCard({
         </div>
 
         <div className="vf-forms">
-          <div className="vf-form vf-form--past">
-            <span className="vf-mini">PASADO</span>
+          <div className="vf-form vf-form--present">
+            <span className="vf-mini">PRESENTE (IO)</span>
             <PracticeCell
-              hidden={pastHidden}
-              label="pasado"
-              base={verb.base}
-              onReveal={() => onReveal(`${verb.base}:past`)}
+              hidden={presenteHidden}
+              label="presente"
+              infinito={verb.infinito}
+              onReveal={() => onReveal(`${verb.infinito}:presente`)}
             >
-              <>
-                <Token t={verb.past.join(" / ")} r="past" />
-                <PracticeCell
-                  hidden={esPastHidden}
-                  label="pasado en español"
-                  base={verb.base}
-                  onReveal={() => onReveal(`${verb.base}:esPast`)}
-                >
-                  <p className="vf-es" lang="es">{verb.esPast}</p>
-                </PracticeCell>
-              </>
+              <Token t={verb.presente.join(" / ")} r="presente" />
             </PracticeCell>
           </div>
           <div className="vf-form vf-form--part">
@@ -190,10 +166,22 @@ function VerbCard({
             <PracticeCell
               hidden={partHidden}
               label="participio"
-              base={verb.base}
-              onReveal={() => onReveal(`${verb.base}:participle`)}
+              infinito={verb.infinito}
+              onReveal={() => onReveal(`${verb.infinito}:participle`)}
             >
-              <Token t={verb.participle.join(" / ")} r="participle" />
+              <>
+                <Token t={verb.participio.join(" / ")} r="participle" />
+                <PracticeCell
+                  hidden={auxHidden}
+                  label="auxiliar"
+                  infinito={verb.infinito}
+                  onReveal={() => onReveal(`${verb.infinito}:aux`)}
+                >
+                  <div className="vf-aux">
+                    <Token t={verb.ausiliare} r="aux" />
+                  </div>
+                </PracticeCell>
+              </>
             </PracticeCell>
           </div>
         </div>
@@ -203,8 +191,8 @@ function VerbCard({
             type="button"
             className="vf-icon"
             aria-pressed={favorite}
-            aria-label={favorite ? `Quitar ${verb.base} de Mis verbos` : `Guardar ${verb.base} en Mis verbos`}
-            onClick={() => onFavorite(verb.base)}
+            aria-label={favorite ? `Quitar ${verb.infinito} de Mis verbos` : `Guardar ${verb.infinito} en Mis verbos`}
+            onClick={() => onFavorite(verb.infinito)}
           >
             {favorite ? "★" : "☆"}
           </button>
@@ -223,24 +211,12 @@ function VerbCard({
       {open && (
         <div className="vf-more" id={moreId}>
           <p>
-            {pattern
-              ? <>{pattern.label} · <span className="vf-en" lang="en">{[verb.base, verb.past.join(" / "), verb.participle.join(" / ")].join(" · ")}</span></>
-              : <>Regular · <span className="vf-en" lang="en">{verb.base} → {verb.past[0]}</span></>}
+            {GROUP_LABEL[verb.gruppo]} · <span className="vf-it" lang="it">{[verb.infinito, verb.presente.join(" / "), verb.participio.join(" / ")].join(" · ")}</span>
+          </p>
+          <p>
+            Auxiliar en el passato prossimo: <span className="vf-it" lang="it">{verb.ausiliare}</span>
           </p>
           {verb.note && <p><strong>Nota:</strong> {verb.note}</p>}
-          {verb.ed && (
-            <p>-ed se pronuncia <span className="vf-en" lang="en">{verb.ed}</span></p>
-          )}
-          {lessons.length > 0 && (
-            <div>
-              <p>Aparece en:</p>
-              <div className="vf-lessons">
-                {lessons.map(lesson => (
-                  <RelatedTopic key={`${lesson.levelId}-${lesson.topicId}`} levelId={lesson.levelId} topicId={lesson.topicId} />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
     </article>
@@ -253,10 +229,10 @@ function VerbCard({
 function VerbFinderSection({ highlightTerm, highlightSeq }) {
   const [query, setQuery] = useState(() => highlightTerm ?? "");
   const [kind, setKind] = useState("all");
-  const [pattern, setPattern] = useState("all");
+  const [group, setGroup] = useState("all");
   const [hide, setHide] = useState("none");
   const [revealed, setRevealed] = useState(() => new Set());
-  const [expanded, setExpanded] = useState(() => exactBase(highlightTerm));
+  const [expanded, setExpanded] = useState(() => exactInfinito(highlightTerm));
   const [favorites, setFavorites] = useState(loadFavorites);
   const [appliedSeq, setAppliedSeq] = useState(highlightSeq);
 
@@ -267,8 +243,8 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
     setAppliedSeq(highlightSeq);
     setQuery(highlightTerm);
     setKind("all");
-    setPattern("all");
-    setExpanded(exactBase(highlightTerm));
+    setGroup("all");
+    setExpanded(exactInfinito(highlightTerm));
   }
 
   useEffect(() => {
@@ -287,40 +263,32 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
     let irregular = 0;
     let regular = 0;
     let saved = 0;
-    const byPattern = Object.fromEntries(PATTERNS.map(item => [item.id, 0]));
+    const byGroup = Object.fromEntries(GROUPS.map(item => [item.id, 0]));
     for (const verb of universe) {
-      if (verb.kind === "irregular") {
-        irregular += 1;
-        const id = verbPattern(verb);
-        if (byPattern[id] !== undefined) byPattern[id] += 1;
-      } else {
-        regular += 1;
-      }
-      if (favoriteSet.has(verb.base)) saved += 1;
+      if (verb.kind === "irregular") irregular += 1;
+      else regular += 1;
+      const id = verbGroup(verb);
+      if (byGroup[id] !== undefined) byGroup[id] += 1;
+      if (favoriteSet.has(verb.infinito)) saved += 1;
     }
-    return { all: universe.length, irregular, regular, favorites: saved, byPattern };
+    return { all: universe.length, irregular, regular, favorites: saved, byGroup };
   }, [universe, favoriteSet]);
 
   const visible = useMemo(() => {
-    const source = searched ?? VERB_BANK.map(verb => ({ verb, matchedForm: verb.base, matchedField: "base" }));
+    const source = searched ?? VERB_BANK.map(verb => ({ verb, matchedForm: verb.infinito, matchedField: "infinito" }));
     return source.filter(({ verb }) => {
-      if (kind === "favorites" && !favoriteSet.has(verb.base)) return false;
+      if (kind === "favorites" && !favoriteSet.has(verb.infinito)) return false;
       if (kind === "irregular" && verb.kind !== "irregular") return false;
       if (kind === "regular" && verb.kind !== "regular") return false;
-      if (kind === "irregular" && pattern !== "all" && verbPattern(verb) !== pattern) return false;
+      if (group !== "all" && verbGroup(verb) !== group) return false;
       return true;
     });
-  }, [searched, kind, pattern, favoriteSet]);
+  }, [searched, kind, group, favoriteSet]);
 
   const lettersPresent = useMemo(
-    () => new Set(visible.map(item => item.verb.base[0].toUpperCase())),
+    () => new Set(visible.map(item => item.verb.infinito[0].toUpperCase())),
     [visible],
   );
-
-  function chooseKind(next) {
-    setKind(next);
-    if (next !== "irregular") setPattern("all");
-  }
 
   function chooseHide(next) {
     if (next === hide) return;
@@ -328,9 +296,9 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
     setRevealed(new Set());
   }
 
-  function toggleFavorite(base) {
+  function toggleFavorite(infinito) {
     setFavorites(prev => (
-      prev.includes(base) ? prev.filter(item => item !== base) : [...prev, base]
+      prev.includes(infinito) ? prev.filter(item => item !== infinito) : [...prev, infinito]
     ));
   }
 
@@ -347,10 +315,10 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
   function renderCard(item) {
     return (
       <VerbCard
-        key={item.verb.base}
+        key={item.verb.infinito}
         verb={item.verb}
         matchedForm={item.matchedForm}
-        matchedField={trimmed ? item.matchedField : "base"}
+        matchedField={trimmed ? item.matchedField : "infinito"}
         hide={hide}
         revealed={revealed}
         onReveal={key => setRevealed(prev => {
@@ -358,9 +326,9 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
           next.add(key);
           return next;
         })}
-        open={expanded === item.verb.base}
-        onToggle={() => setExpanded(current => (current === item.verb.base ? null : item.verb.base))}
-        favorite={favoriteSet.has(item.verb.base)}
+        open={expanded === item.verb.infinito}
+        onToggle={() => setExpanded(current => (current === item.verb.infinito ? null : item.verb.infinito))}
+        favorite={favoriteSet.has(item.verb.infinito)}
         onFavorite={toggleFavorite}
       />
     );
@@ -370,22 +338,22 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
     <div className="vf">
       <header className="lesson-heading" style={{ "--lesson-accent": TOPIC.color }} data-search-skip>
         <p className="lesson-stage"><span>{TOPIC.stage}</span></p>
-        <h2>{TOPIC.label} — <span lang="en">{TOPIC.english}</span></h2>
+        <h2>{TOPIC.label} — <span lang="it">{TOPIC.italiano}</span></h2>
         <p className="lesson-goal">
-          Busca en inglés o en español, en cualquier forma: go, went, gone o ir. {VERB_BANK.length} verbos.
+          Busca en italiano o en español, en cualquier forma: andare, vado, andato o ir. {VERB_BANK.length} verbos.
         </p>
       </header>
 
       <FilterableList
         label="Buscar verbo"
-        placeholder="🔍 Busca: bring, brought, traer…"
+        placeholder="🔍 Busca: andare, vado, ir…"
         value={query}
         onChange={setQuery}
         stickyExtra={listShown ? (
           <div className="vf-cols" data-search-skip aria-hidden="true">
-            <span style={{ color: C.verb.fg }}>BASE</span>
-            <span style={{ color: C.past.fg }}>PASADO</span>
-            <span style={{ color: C.participle.fg }}>PARTICIPIO</span>
+            <span style={{ color: C.verb.fg }}>INFINITIVO</span>
+            <span style={{ color: C.presente.fg }}>PRESENTE (IO)</span>
+            <span style={{ color: C.participle.fg }}>PARTICIPIO · AUX.</span>
             <span className="vf-cols-actions" />
           </div>
         ) : null}
@@ -398,36 +366,34 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
                 type="button"
                 className="vf-chip"
                 aria-pressed={kind === option.id}
-                onClick={() => chooseKind(option.id)}
+                onClick={() => setKind(option.id)}
               >
                 {option.label} ({counts[option.id]})
               </button>
             ))}
           </div>
 
-          {kind === "irregular" && (
-            <div className="vf-chips" role="group" aria-label="Patrón del verbo irregular">
+          <div className="vf-chips" role="group" aria-label="Grupo de conjugación">
+            <button
+              type="button"
+              className="vf-chip"
+              aria-pressed={group === "all"}
+              onClick={() => setGroup("all")}
+            >
+              Todos los grupos ({counts.all})
+            </button>
+            {GROUPS.map(item => (
               <button
+                key={item.id}
                 type="button"
                 className="vf-chip"
-                aria-pressed={pattern === "all"}
-                onClick={() => setPattern("all")}
+                aria-pressed={group === item.id}
+                onClick={() => setGroup(item.id)}
               >
-                Todos los patrones ({counts.irregular})
+                {item.label} · {item.example} ({counts.byGroup[item.id]})
               </button>
-              {PATTERNS.map(item => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className="vf-chip"
-                  aria-pressed={pattern === item.id}
-                  onClick={() => setPattern(item.id)}
-                >
-                  {item.label} · {item.example} ({counts.byPattern[item.id]})
-                </button>
-              ))}
-            </div>
-          )}
+            ))}
+          </div>
 
           <div className="vf-chips" role="group" aria-label="Modo práctica: ocultar columna">
             <span className="vf-practice-label">Ocultar:</span>
@@ -462,12 +428,9 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
 
           <p className="vf-count" aria-live="polite">{countLabel(visible.length, query)}</p>
           <Legend
-            roles={["verb", "past", "participle"]}
+            roles={["verb", "presente", "participle", "aux"]}
             symbols={[{ icon: "ⓘ", label: "Nota: el verbo tiene una aclaración; tócalo para leerla" }]}
           />
-          <p className="vf-past-note" lang="es" data-search-skip>
-            El pasado en español va en 3.ª persona (él / ella): <span lang="en">asked</span> → preguntó. Según el contexto también puede traducirse como copretérito: <span lang="en">wanted</span> → quería, <span lang="en">was</span> → era / estaba.
-          </p>
         </div>
 
         {noFavoritesYet ? (
@@ -480,8 +443,7 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
               <>
                 <p>No encontramos «{trimmed}».</p>
                 <p>Prueba con otra forma o búscalo en español.</p>
-                <p>Si es un verbo regular, su pasado se forma con -ed (work → worked).</p>
-                <RelatedTopic levelId="basico5" topicId="simplePast" />
+                <p>Si es un verbo regular, su forma de «io» termina en -o: parlare → parlo.</p>
               </>
             ) : (
               <p>Sin resultados.</p>
@@ -502,25 +464,19 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
 
         <div data-search-skip>
           <details className="lesson-extension">
-            <summary>🔤 Símbolos de pronunciación (IPA)</summary>
-            <IpaGroups />
+            <summary>🔤 Guía de pronunciación</summary>
+            <PronunciationGroups />
           </details>
           <details className="lesson-extension">
-            <summary>📐 Pasado de los verbos regulares</summary>
-            <ul className="vf-rules">
-              {REGULAR_RULES.map(([forms, rule]) => (
-                <li key={forms}>
-                  <span className="vf-en" lang="en">{forms}</span> — {rule}
-                </li>
-              ))}
-            </ul>
-            {ED_PRONUNCIATION.map(group => (
-              <p key={group.sound}>
-                <span className="vf-en" lang="en">{group.sound}</span> {group.after}{" "}
-                Ejemplos: <span lang="en">{group.examples.join(", ")}</span>.
+            <summary>📐 Conjugación regular y auxiliares</summary>
+            {CONJUGATION_GROUPS.map(item => (
+              <p key={item.label}>
+                <span className="vf-it" lang="it">{item.label} ({item.example})</span>: {item.forms.join(", ")}.
               </p>
             ))}
-            <RelatedTopic levelId="basico5" topicId="simplePast" />
+            {AUX_RULES.map(rule => (
+              <p key={rule}>{rule}</p>
+            ))}
           </details>
         </div>
       </FilterableList>

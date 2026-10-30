@@ -2,13 +2,13 @@ import { useMemo, useState } from "react";
 import { spellWord } from "./spellWord";
 
 export default function SpellingBox() {
-  const [word, setWord] = useState("Hello");
+  const [word, setWord] = useState("mamma");
   const spelled = useMemo(() => spellWord(word), [word]);
 
   return (
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
       <label htmlFor="spelling-word" style={{ display: "block", color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
-        🔤 Escribe una palabra o tu nombre y mira cómo se deletrea en inglés
+        🔤 Escribe una palabra o tu nombre y mira cómo se deletrea en italiano
       </label>
 
       <input
@@ -21,7 +21,7 @@ export default function SpellingBox() {
         spellCheck={false}
         value={word}
         onChange={e => setWord(e.target.value)}
-        placeholder="Hello"
+        placeholder="mamma"
         style={{
           color: "#f8fafc", fontWeight: 800, width: "100%", maxWidth: "260px",
           background: "transparent", border: "none", borderBottom: "2px solid #334155",
@@ -33,17 +33,18 @@ export default function SpellingBox() {
         <div style={{ color: "#94a3b8", fontSize: "13px" }}>Escribe letras de la A a la Z 🙂</div>
       ) : (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
-          {spelled.map(({ letter, say }, i) => (
+          {spelled.map(({ letter, say, city }, i) => (
             <div key={`${letter}-${i}`} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "7px 10px", minWidth: "48px" }}>
               <div style={{ color: "#f472b6", fontWeight: 800, fontSize: "16px" }}>{letter}</div>
               <div style={{ color: "#94a3b8", fontSize: "11px" }}>{say}</div>
+              <div style={{ color: "#64748b", fontSize: "10px", fontStyle: "italic" }}>come {city}</div>
             </div>
           ))}
         </div>
       )}
 
       <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "12px" }}>
-        Se dicen una por una, separadas por un pequeño silencio.
+        En Italia se deletrea con nombres de ciudades para evitar confusiones.
       </div>
     </div>
   );

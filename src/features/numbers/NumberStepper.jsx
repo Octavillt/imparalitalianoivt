@@ -43,7 +43,7 @@ export default function NumberStepper() {
   return (
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
       <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
-        🔢 Escribe o ajusta el número (0 – {MAX_NUMBER.toLocaleString("en-US")}) y descubre cómo se dice
+        🔢 Escribe o ajusta el número (0 – {MAX_NUMBER.toLocaleString("it-IT", { useGrouping: "always" })}) y descubre cómo se dice
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "18px", marginBottom: "12px" }}>
@@ -64,7 +64,7 @@ export default function NumberStepper() {
           />
           <StepperButton onClick={() => change(-1)}>▼</StepperButton>
           <StepperButton onClick={() => change(-100)}>▼▼</StepperButton>
-          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>NUMBER</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>NUMERO</div>
         </div>
       </div>
 

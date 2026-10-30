@@ -157,7 +157,7 @@ export const THEMES = {
 export const THEME_ORDER = ["pizarra", "grafito", "carbon", "berenjena", "marino", "esmeralda", "vino", "indigo"];
 
 export const DEFAULT_THEME = "pizarra";
-const STORAGE_KEY = "learningles.theme";
+const STORAGE_KEY = "imparalitalianoivt.theme";
 
 export function loadThemeId() {
   try {
