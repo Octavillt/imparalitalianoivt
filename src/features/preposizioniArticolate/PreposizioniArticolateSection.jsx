@@ -4,6 +4,7 @@ import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import {
@@ -73,6 +74,7 @@ export default function PreposizioniArticolateSection() {
       </RuleBox>
 
       <SectionTitle color={COLOR}>📋 Tabla completa</SectionTitle>
+      <ScrollHint />
       <div style={{ overflowX: "auto", marginBottom: "16px" }}>
         <div style={{ minWidth: "640px", display: "grid", gridTemplateColumns: "0.7fr repeat(7, 1fr)", gap: "4px" }}>
           <div style={{ background: "var(--surface-deep, #0f172a)", color: "#94a3b8", fontWeight: 800, fontSize: "12px", padding: "8px" }} />

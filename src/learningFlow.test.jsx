@@ -10,11 +10,11 @@ import { scrollToAndHighlight } from "./constants/highlightMatch";
 const membership = {
   basico1: "numbers essereAvere countries family plural demonstratives fruits prepositions time dates verbs stareGerundio jobs vocabulary",
   basico2: "articles adjectives possessiveAdjectives preposizioniArticolate whQuestions presenteIndicativo verbiInfinito irregularVerbs",
-  basico3: "",
-  basico4: "",
+  basico3: "routineRiflessivi preposizioniTempo directions",
+  basico4: "bodyParts",
   basico5: "",
 };
-const TOTAL_LESSONS = 22;
+const TOTAL_LESSONS = 26;
 const studyLevels = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
 const openLevels = studyLevels.filter(level => level.available);
 
@@ -70,6 +70,11 @@ describe("Recorrido de aprendizaje", () => {
     fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico II →" }));
     expect(screen.getByRole("heading", { level: 2, name: /Artículos/ })).toBeInTheDocument();
     fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Verbos irregulares/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico III →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Rutinas, reflexivos y frecuencia/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Pedir y dar indicaciones/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico IV →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Partes del cuerpo/ })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Repasar todos los módulos →" }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
   });

@@ -7,6 +7,7 @@ import Legend from "../../components/Legend";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import Sentence from "../../components/Sentence";
+import ScrollHint from "../../components/ScrollHint";
 import Token from "../../components/Token";
 import { C } from "../../styles/colors";
 import {
@@ -37,6 +38,8 @@ const GRID = "1.1fr 1.1fr 1fr";
 
 function AdjectiveTable({ rows }) {
   return (
+    <>
+    <ScrollHint />
     <div style={{ overflowX: "auto", borderRadius: "10px" }}>
       <div style={{ minWidth: "620px" }}>
         <div style={{ maxHeight: "60vh", overflowY: "auto", background: "var(--surface, #1e293b)", borderRadius: "10px" }}>
@@ -81,6 +84,7 @@ function AdjectiveTable({ rows }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

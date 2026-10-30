@@ -212,4 +212,44 @@ export const TOPIC_FORMULAS = {
       row("Con essere", "Sono + participio", "Sono andato.", "He ido."),
     ],
   },
+  routineRiflessivi: {
+    note: "Voi equivale a ustedes. Non va antes del pronombre. En la negación, mai va con non.",
+    rows: [
+      row("Pronombre", "pronombre + verbo", "Mi alzo alle sette.", "Me levanto a las siete."),
+      row("Negación", "Non + pronombre + verbo", "Non mi alzo presto.", "No me levanto temprano."),
+      row("Frecuencia", "verbo + adverbio", "Mi alzo sempre alle sette.", "Me levanto siempre a las siete."),
+      row("Mai", "Non + verbo + mai", "Non bevo mai il caffè.", "No tomo nunca café."),
+      row("Ahora y rutina", "Di solito + presente, ma adesso + stare + gerundio", "Di solito lavoro a Roma, ma adesso sto lavorando a Milano.", "Normalmente trabajo en Roma, pero ahora estoy trabajando en Milán."),
+    ],
+  },
+  preposizioniTempo: {
+    note: "Alle, dal, nel y sul ya traen la preposición y el artículo. Tra y fra funcionan igual.",
+    rows: [
+      row("Ciudad y hora", "a + ciudad / alle + hora", "Arrivo a Roma alle otto.", "Llego a Roma a las ocho."),
+      row("País y transporte", "in + país / in + medio", "Vado in Italia in treno.", "Voy a Italia en tren."),
+      row("Desde cuándo", "presente + da + duración", "Studio italiano da due anni.", "Estudio italiano desde hace dos años."),
+      row("Dentro de", "tra o fra + plazo", "Parto tra un'ora.", "Salgo dentro de una hora."),
+      row("Cada cuánto", "volta o volte + al o alla + periodo", "Vado due volte alla settimana.", "Voy dos veces a la semana."),
+    ],
+  },
+  directions: {
+    note: "Scusi es de usted; scusa, de tú. Con artículo, accanto a se escribe accanto al.",
+    rows: [
+      row("Preguntar", "Scusi, dov'è + lugar?", "Scusi, dov'è la stazione?", "Disculpe, ¿dónde está la estación?"),
+      row("Tú", "imperativo de tú + dirección", "Gira a destra.", "Gira a la derecha."),
+      row("Usted", "imperativo de usted + dirección", "Vada sempre dritto.", "Siga siempre derecho."),
+      row("Ubicar", "lugar + è + referencia", "La farmacia è accanto al museo.", "La farmacia está junto al museo."),
+      row("La calle que toca", "Prendi + la prima o la seconda", "Prendi la prima a destra.", "Toma la primera a la derecha."),
+    ],
+  },
+  bodyParts: {
+    note: "Le braccia, le dita, le ginocchia, le labbra, le ossa y le sopracciglia son femeninos en plural. Con el cuerpo, el reflexivo lleva artículo.",
+    rows: [
+      row("Nombrar", "artículo + parte", "La testa.", "La cabeza."),
+      row("Describir", "avere + artículo + parte + adjetivo", "Ha gli occhi verdi.", "Tiene los ojos verdes."),
+      row("Dolor", "Mi fa male + singular / Mi fanno male + plural", "Mi fa male la testa.", "Me duele la cabeza."),
+      row("Aseo", "Mi lavo + artículo + parte", "Mi lavo i denti.", "Me lavo los dientes."),
+      row("Movimiento", "imperativo de tú + artículo + parte", "Alza le braccia.", "Levanta los brazos."),
+    ],
+  },
 };

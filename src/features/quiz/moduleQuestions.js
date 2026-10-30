@@ -19,6 +19,10 @@ import { PRACTICE as WH_QUESTIONS } from "../whQuestions/data";
 import { PRACTICE as PRESENTE_INDICATIVO } from "../presenteIndicativo/data";
 import { PRACTICE as VERBI_INFINITO } from "../verbiInfinito/data";
 import { PRACTICE as IRREGULAR_VERBS } from "../irregularVerbs/data";
+import { PRACTICE as ROUTINE } from "../routineRiflessivi/data";
+import { PRACTICE as PREP_TEMPO } from "../preposizioniTempo/data";
+import { PRACTICE as DIRECTIONS } from "../directions/data";
+import { PRACTICE as BODY_PARTS } from "../bodyParts/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -110,5 +114,9 @@ export const MODULE_QUESTIONS = [
   ...PRESENTE_INDICATIVO.map(row => ({ ...row, topic: "presenteIndicativo" })),
   ...VERBI_INFINITO.map(row => ({ ...row, topic: "verbiInfinito" })),
   ...IRREGULAR_VERBS.map(row => ({ ...row, topic: "irregularVerbs" })),
+  ...ROUTINE.map(row => ({ ...row, topic: "routineRiflessivi" })),
+  ...PREP_TEMPO.map(row => ({ ...row, topic: "preposizioniTempo" })),
+  ...DIRECTIONS.map(row => ({ ...row, topic: "directions" })),
+  ...BODY_PARTS.map(row => ({ ...row, topic: "bodyParts" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];
