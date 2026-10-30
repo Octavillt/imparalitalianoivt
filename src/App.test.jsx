@@ -53,9 +53,11 @@ describe("App — selector de color y niveles", () => {
   it("habilita los módulos migrados y Quiz, y bloquea los demás", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
+    for (const label of ["Básico II", "Básico III", "Básico IV"]) {
+      expect(screen.getByRole("button", { name: label })).toBeEnabled();
+    }
     expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeEnabled();
-    for (const label of [/^Básico III/, /^Básico IV/, /^Básico V/, /Verbos/]) {
+    for (const label of [/^Básico V/, /Verbos/]) {
       const locked = screen.getAllByRole("button", { name: label }).find(button => button.textContent.includes("🔒"));
       expect(locked).toBeDisabled();
     }
