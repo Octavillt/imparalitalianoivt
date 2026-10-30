@@ -157,4 +157,34 @@ export const LEARNING_GUIDE = {
     task: "Di que tiene los ojos verdes, que te duele la cabeza y da la instrucción de levantar los brazos.",
     answer: "Ha gli occhi verdi. Mi fa male la testa. Alza le braccia. Le braccia es el plural de il braccio; cuando duele una sola parte, se usa mi fa male.",
   },
+  potereSapere: {
+    goal: "Separar la habilidad aprendida, lo que se puede en ese momento y lo que se logra.",
+    recall: ["verbiInfinito", "bodyParts"],
+    task: "Di que sabes nadar, que hoy no puedes y que no logras estacionarte aquí.",
+    answer: "So nuotare, ma oggi non posso. Non riesco a parcheggiare qui. Sapere es la habilidad; potere, lo de hoy; riuscire a, si lo logras.",
+  },
+  partitivo: {
+    goal: "Pedir un poco de algo, contar unidades y preguntar cantidades.",
+    recall: ["articles", "preposizioniArticolate", "fruits", "potereSapere"],
+    task: "Pide un poco de pan, un kilo de jitomates y di que no tienes agua.",
+    answer: "Vorrei del pane. Vorrei un chilo di pomodori. Non ho acqua. Tras la medida, di va sin artículo; en esta negativa no va el partitivo.",
+  },
+  foodGroups: {
+    goal: "Nombrar grupos de alimentos, describir sabores y pedir en un restaurante.",
+    recall: ["fruits", "partitivo", "adjectives", "verbiInfinito"],
+    task: "Di que te gusta el pescado, que no te gustan los hongos y pide un plato de pasta y la cuenta.",
+    answer: "Mi piace il pesce. Non mi piacciono i funghi. Vorrei un piatto di pasta. Il conto, per favore. Con un singular se usa mi piace; con un plural, mi piacciono.",
+  },
+  exerciseWords: {
+    goal: "Dar instrucciones de ejercicio con tú, usted y ustedes, y describir un movimiento en curso.",
+    recall: ["bodyParts", "directions", "stareGerundio", "potereSapere"],
+    task: "Ordena levantar los brazos, pide de usted doblar las rodillas y di que Octavio está levantando una pesa.",
+    answer: "Alza le braccia. Pieghi le ginocchia. Octavio sta sollevando un peso. En -are, tú termina en -a y usted en -i.",
+  },
+  adverbsManner: {
+    goal: "Formar adverbios de modo y distinguirlos del adjetivo.",
+    recall: ["adjectives", "exerciseWords", "verbs"],
+    task: "Di que Leslie es una buena cantante, que canta bien y que Octavio habla despacio.",
+    answer: "Leslie è una buona cantante. Leslie canta bene. Octavio parla lentamente. Con essere va el adjetivo; con los demás verbos de la lección, el adverbio.",
+  },
 };

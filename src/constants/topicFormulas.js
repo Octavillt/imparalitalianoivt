@@ -252,4 +252,54 @@ export const TOPIC_FORMULAS = {
       row("Movimiento", "imperativo de tú + artículo + parte", "Alza le braccia.", "Levanta los brazos."),
     ],
   },
+  potereSapere: {
+    note: "So no lleva acento. Può lleva acento grave. Ante vocal, a puede escribirse ad.",
+    rows: [
+      row("Habilidad aprendida", "Sapere + infinitivo", "So nuotare.", "Sé nadar."),
+      row("Permiso o posibilidad", "Potere + infinitivo", "Posso entrare?", "¿Puedo entrar?"),
+      row("Lograr", "Riuscire a + infinitivo", "Non riesco a dormire.", "No logro dormir."),
+      row("Ante vocal", "Riuscire ad + infinitivo", "Non riesco ad aprire la porta.", "No logro abrir la puerta."),
+      row("Contraste", "Sapere, ma + poter o riuscire", "So nuotare, ma oggi non posso.", "Sé nadar, pero hoy no puedo."),
+    ],
+  },
+  partitivo: {
+    note: "En la frase negativa de esta lección se omite el partitivo. Abbastanza no cambia. Qualche va con singular.",
+    rows: [
+      row("Partitivo", "di + artículo", "Vorrei del pane.", "Quisiera un poco de pan."),
+      row("Un poco", "un po' di / un po' d'", "Prendo un po' d'acqua.", "Tomo un poco de agua."),
+      row("Varios, en singular", "qualche + singular", "Prendo qualche mela.", "Llevo algunas manzanas."),
+      row("Preguntar", "Quanta, quanti o quanto", "Quanta acqua bevi?", "¿Cuánta agua tomas?"),
+      row("Medida", "unidad + di + alimento", "Prendo un chilo di pomodori.", "Llevo un kilo de jitomates."),
+    ],
+  },
+  foodGroups: {
+    note: "L'uovo hace le uova. Il burro es la mantequilla y l'olio es el aceite.",
+    rows: [
+      row("Grupo", "artículo + nombre del grupo", "La frutta è fresca.", "La fruta está fresca."),
+      row("Gusto singular", "Mi piace + singular", "Mi piace il pesce.", "Me gusta el pescado."),
+      row("Gusto plural", "Non mi piacciono + plural", "Non mi piacciono i funghi.", "No me gustan los hongos."),
+      row("Pedir", "Vorrei + un plato", "Vorrei un piatto di pasta.", "Quisiera un plato de pasta."),
+      row("La cuenta", "Il conto + per favore", "Il conto, per favore.", "La cuenta, por favor."),
+    ],
+  },
+  exerciseWords: {
+    note: "Con ustedes se usa la forma del grupo. La negativa de tú lleva el infinitivo.",
+    rows: [
+      row("Tú, verbo en -are", "orden de tú en -a", "Alza le braccia.", "Levanta los brazos."),
+      row("Usted, verbo en -are", "orden de usted en -i", "Alzi le braccia.", "Levante los brazos."),
+      row("Tú, verbo en -ere", "orden de tú en -i", "Stendi le gambe.", "Estira las piernas."),
+      row("Usted, verbo en -ere", "orden de usted en -a", "Stenda le gambe.", "Estire las piernas."),
+      row("En curso", "stare + gerundio", "Octavio sta sollevando un peso.", "Octavio está levantando una pesa."),
+    ],
+  },
+  adverbsManner: {
+    note: "Molto va antes del adverbio. Piano puede ser en voz baja o despacio.",
+    rows: [
+      row("Desde -o", "femenino + mente", "Parla lentamente.", "Habla despacio."),
+      row("Desde -e", "adjetivo + mente", "Parla velocemente.", "Habla rápido."),
+      row("Desde -le o -re", "pierde la e + mente", "Parla facilmente.", "Habla con facilidad."),
+      row("Bien y mal", "bene o male", "Leslie canta bene.", "Leslie canta bien."),
+      row("Con essere", "essere + adjetivo", "Octavio è lento.", "Octavio es lento."),
+    ],
+  },
 };

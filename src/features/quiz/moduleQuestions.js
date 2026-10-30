@@ -23,6 +23,11 @@ import { PRACTICE as ROUTINE } from "../routineRiflessivi/data";
 import { PRACTICE as PREP_TEMPO } from "../preposizioniTempo/data";
 import { PRACTICE as DIRECTIONS } from "../directions/data";
 import { PRACTICE as BODY_PARTS } from "../bodyParts/data";
+import { PRACTICE as POTERE_SAPERE } from "../potereSapere/data";
+import { PRACTICE as PARTITIVO } from "../partitivo/data";
+import { PRACTICE as FOOD_GROUPS } from "../foodGroups/data";
+import { PRACTICE as EXERCISE_WORDS } from "../exerciseWords/data";
+import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -118,5 +123,10 @@ export const MODULE_QUESTIONS = [
   ...PREP_TEMPO.map(row => ({ ...row, topic: "preposizioniTempo" })),
   ...DIRECTIONS.map(row => ({ ...row, topic: "directions" })),
   ...BODY_PARTS.map(row => ({ ...row, topic: "bodyParts" })),
+  ...POTERE_SAPERE.map(row => ({ ...row, topic: "potereSapere" })),
+  ...PARTITIVO.map(row => ({ ...row, topic: "partitivo" })),
+  ...FOOD_GROUPS.map(row => ({ ...row, topic: "foodGroups" })),
+  ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
+  ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];
