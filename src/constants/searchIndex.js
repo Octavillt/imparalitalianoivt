@@ -1,5 +1,10 @@
 import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_VERBOS, TOPICS_QUIZ } from "./topics";
+import { LEVELS } from "./levels";
 import { isTopicAvailable } from "./topicAvailability";
+
+// Un tema de un nivel bloqueado (available: false) no se puede abrir: lo
+// buscable solo es lo que la navegación permite alcanzar.
+const LEVEL_AVAILABLE = Object.fromEntries(LEVELS.map(level => [level.id, level.available !== false]));
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
 // de palabras clave (italiano/español) representativas de su contenido, para
@@ -80,7 +85,7 @@ export function searchTopics(query, now = Date.now()) {
 
   const results = [];
   for (const entry of SEARCH_INDEX) {
-    if (!isTopicAvailable(entry, now)) continue;
+    if (!isTopicAvailable(entry, now) || !LEVEL_AVAILABLE[entry.levelId]) continue;
     const label = normalize(entry.label);
     const labelMatch = label.includes(q) || normalize(entry.italiano ?? "").includes(q);
     const matchedKeyword = !labelMatch

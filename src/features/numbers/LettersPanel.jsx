@@ -50,8 +50,7 @@ export default function LettersPanel() {
       <SectionTitle color={VOWEL_COLOR}>🅰️ Le vocali</SectionTitle>
       <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
         <strong style={{ color: VOWEL_COLOR }}>A · E · I · O · U</strong> son las cinco vocales; las otras{" "}
-        {CONSONANTS.length} letras tradicionales son consonantes. Cada letra tiene un{" "}
-        <strong style={{ color: "#e2e8f0" }}>nombre</strong> (con el que se deletrea) distinto del sonido que hace dentro de una palabra.
+        {CONSONANTS.length} letras tradicionales son consonantes. Las vocales se llaman igual que suenan; las consonantes tienen nombre propio (effe, erre, zeta), y ese nombre es el que se usa al deletrear.
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(132px, 1fr))", gap: "6px", marginBottom: "12px" }}>
         {VOWELS.map(v => (
@@ -64,7 +63,7 @@ export default function LettersPanel() {
           🌍 Las 5 letras extranjeras
         </div>
         <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
-          Aparecen solo en palabras tomadas de otros idiomas (como jeans, kiwi o yogurt); la práctica de deletreo no las usa.
+          Aparecen solo en palabras tomadas de otros idiomas (como jeans, kiwi o yogurt).
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(132px, 1fr))", gap: "6px" }}>
           {FOREIGN_LETTERS.map(l => (

@@ -88,8 +88,8 @@ export default function TimeSection() {
           </div>
         </div>
         <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "8px" }}>
-          A la una y a la doce en punto se usan las palabras sueltas: <strong lang="it" style={{ color: "#e2e8f0" }}>mezzogiorno</strong> (mediodía) y{" "}
-          <strong lang="it" style={{ color: "#e2e8f0" }}>mezzanotte</strong> (medianoche).
+          A las 12:00 del día y a las 00:00 se usan palabras propias, en singular: <strong lang="it" style={{ color: "#e2e8f0" }}>è mezzogiorno</strong> (mediodía) y{" "}
+          <strong lang="it" style={{ color: "#e2e8f0" }}>è mezzanotte</strong> (medianoche).
         </div>
       </RuleBox>
 

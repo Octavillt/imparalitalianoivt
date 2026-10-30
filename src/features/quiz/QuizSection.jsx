@@ -126,7 +126,7 @@ export default function QuizSection({ initialSelection }) {
                 style={{ width: "100%", padding: "13px 16px", borderRadius: "10px", border: "2px solid #334155", background: "var(--surface-deep, #0f172a)", color: "#fff", fontSize: "16px", boxSizing: "border-box", marginBottom: "10px", outline: "none" }}
               />
               {question.answerLang !== "es" && (
-                <div role="group" aria-label="Letras con acento" style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "10px" }}>
+                <div role="group" aria-label="Letras con acento" style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginBottom: "10px" }}>
                   {ACCENTS.map(ch => (
                     <button
                       key={ch}

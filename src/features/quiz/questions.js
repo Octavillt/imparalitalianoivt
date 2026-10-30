@@ -19,7 +19,7 @@ export const QUESTIONS = [
     topic: "numbers",
     question: "Escribe en italiano: 16.",
     answers: ["sedici"],
-    hint: "Termina igual que en español, pero con acento diferente…",
+    hint: "Del 11 al 16 terminan en -dici",
     explanation: "16 = sedici. Como los del 11 al 16, termina en -dici.",
   },
   {
@@ -75,7 +75,7 @@ export const QUESTIONS = [
     topic: "numbers",
     question: "Escribe en italiano: 100.",
     answers: ["cento"],
-    hint: "Suena casi igual que en español",
+    hint: "Se parece a «ciento», pero suena con ch",
     explanation: "100 = cento, sin artículo.",
   },
   {
@@ -117,7 +117,7 @@ export const QUESTIONS = [
     topic: "numbers",
     question: "¿Cómo se llama la letra R en italiano?",
     answers: ["erre"],
-    hint: "Doble letra, como el nombre de la E…",
+    hint: "Empieza con e y lleva doble r",
     explanation: "La R es erre /ˈɛrre/: se deletrea erre y se pronuncia fuerte.",
   },
   {
@@ -139,7 +139,7 @@ export const QUESTIONS = [
     question: "Completa el deletreo: M come ___ (ciudad).",
     answers: ["Milano"],
     hint: "La ciudad de la moda",
-    explanation: "M come Milano: con la M se deletrea «Milano».",
+    explanation: "M come Milano: al deletrear, cada letra se acompaña del nombre de una ciudad.",
   },
   {
     topic: "numbers",
@@ -232,7 +232,7 @@ export const QUESTIONS = [
     question: "Completa con è o sono: ___ l'una e mezza.",
     answers: ["È"],
     hint: "La una va en singular",
-    explanation: "È l'una e mezza: con la una si usa è (singular).",
+    explanation: "È l'una e mezza: con la una se usa è (singular).",
   },
   {
     topic: "time",
