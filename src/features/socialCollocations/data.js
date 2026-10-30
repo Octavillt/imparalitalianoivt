@@ -12,7 +12,7 @@ const es = t => ({ t, r: "essere" });
 export const SOCIAL_LIFE = [
   ["uscire con gli amici", "salir con los amigos"],
   ["divertirsi", "divertirse"],
-  ["vedersi", "verse, quedar"],
+  ["vedersi", "verse"],
   ["incontrarsi", "encontrarse"],
   ["conoscere", "conocer"],
   ["festeggiare", "festejar"],
@@ -97,7 +97,7 @@ export const TARDI = [
 ];
 
 // Conoscere es la primera vez. Incontrare es cruzarse con alguien.
-// Vedersi es quedar; incontrarsi es juntarse.
+// Vedersi es verse; incontrarsi es juntarse.
 export const SOCIAL_NOTES = [
   { pts: ["A Napoli ", ax("ho"), " ", pp("conosciuto"), " Leslie."], esp: "En Nápoles conocí a Leslie." },
   { pts: ["A Firenze ", ax("ho"), " ", pp("incontrato"), " Leslie."], esp: "En Florencia me encontré con Leslie." },

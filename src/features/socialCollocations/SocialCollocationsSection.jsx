@@ -49,7 +49,7 @@ export default function SocialCollocationsSection() {
       <RuleBox icon="👥" rule="No nombran la misma acción" color={COLOR}>
         <p style={text}>
           <span lang="it">Conoscere</span> es conocer a alguien. <span lang="it">Incontrare</span> es encontrarse con alguien.
-          <span lang="it"> Vedersi</span> es verse o quedar. <span lang="it">Incontrarsi</span> es encontrarse las personas.
+          <span lang="it"> Vedersi</span> es verse. <span lang="it">Incontrarsi</span> es encontrarse las personas.
         </p>
         {SOCIAL_NOTES.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
       </RuleBox>
