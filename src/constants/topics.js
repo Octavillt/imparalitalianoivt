@@ -25,6 +25,10 @@ export const TOPICS_BASICO2 = [
   { id: "adjectives", label: "🎨 Adjetivos y opuestos", italiano: "Aggettivi e contrari", color: "#0D9488", stage: "Describir y expresar pertenencia" },
   { id: "possessiveAdjectives", label: "🙋 Posesivos", italiano: "I possessivi", color: "#E879F9", stage: "Describir y expresar pertenencia" },
   { id: "preposizioniArticolate", label: "🔑 Di y preposiciones articuladas", italiano: "Di e preposizioni articolate", color: "#818CF8", stage: "Describir y expresar pertenencia" },
+  { id: "whQuestions", label: "❓ Palabras interrogativas", italiano: "Parole interrogative", color: "#22D3EE", stage: "Preguntar y hablar de hábitos" },
+  { id: "presenteIndicativo", label: "⏰ Presente indicativo", italiano: "Presente indicativo", color: "#38BDF8", stage: "Preguntar y hablar de hábitos" },
+  { id: "verbiInfinito", label: "🔄 Verbos + infinitivo", italiano: "Verbi + infinito", color: "#F472B6", stage: "Ampliar tus recursos" },
+  { id: "irregularVerbs", label: "🏃 Verbos irregulares", italiano: "Verbi irregolari", color: "#7C3AED", stage: "Ampliar tus recursos" },
 ];
 export const TOPICS_BASICO3 = [];
 export const TOPICS_BASICO4 = [];
