@@ -140,7 +140,7 @@ export const ADJECTIVE_BANK = [
 export const PRACTICE = [
   { question: "Completa: Leslie è più alta ___ Octavio.", answers: ["di"], hint: "Se comparan dos personas distintas.", explanation: "Leslie è più alta di Octavio. Entre dos personas va di." },
   { question: "Completa: Il coniglio è più grande ___ criceto.", answers: ["del"], hint: "Di se junta con il.", explanation: "Il coniglio è più grande del criceto. Di + il = del." },
-  { question: "Completa (que el avión): Il treno è meno caro ___.", answers: ["dell'aereo", "dell' aereo"], hint: "Aereo lleva l', y di se contrae con ese artículo.", explanation: "Il treno è meno caro dell'aereo. Di + l' = dell'." },
+  { question: "Completa (que el avión): Il treno è meno caro ___.", answers: ["dell'aereo"], hint: "Aereo lleva l', y di se contrae con ese artículo.", explanation: "Il treno è meno caro dell'aereo. Di + l' = dell'." },
   { question: "Completa (que el estudiante): Argelia è più alta ___.", answers: ["dello studente"], hint: "Studente lleva lo, porque empieza con s + consonante.", explanation: "Argelia è più alta dello studente. Di + lo = dello." },
   { question: "Escribe en italiano: Roma es más grande que Florencia.", answers: ["Roma è più grande di Firenze"], hint: "Estas ciudades van sin artículo, y di no se contrae.", explanation: "Roma es más grande que Florencia = Roma è più grande di Firenze." },
   { question: "Escribe en italiano: Los gatos son más pequeños que los perros.", answers: ["I gatti sono più piccoli dei cani"], hint: "Pequeños va en masculino plural. Di + i = dei.", explanation: "Los gatos son más pequeños que los perros = I gatti sono più piccoli dei cani." },

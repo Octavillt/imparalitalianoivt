@@ -18,8 +18,6 @@ export const TOPICS = [
   { id: "vocabulary", label: "🗣️ Conversación y vocabulario", italiano: "Saluti e presentazioni", color: "#FB923C", stage: "Integrar lo aprendido" },
 ];
 
-// Los módulos de las siguientes etapas aún no tienen temas: se desbloquean
-// al llegar su contenido.
 export const TOPICS_BASICO2 = [
   { id: "articles", label: "📖 Artículos", italiano: "Gli articoli", color: "#A3E635", stage: "Describir y expresar pertenencia" },
   { id: "adjectives", label: "🎨 Adjetivos y opuestos", italiano: "Aggettivi e contrari", color: "#0D9488", stage: "Describir y expresar pertenencia" },

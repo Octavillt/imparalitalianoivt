@@ -44,9 +44,12 @@ describe("Quiz general", () => {
     }
   });
 
-  it("no incluye los verbos en la mezcla mientras su módulo siga bloqueado", () => {
+  it("practica los verbos en su módulo sin que acaparen la mezcla general", () => {
     expect(getByTopic("mixed", "all", 0).some(q => q.verb)).toBe(false);
-    expect(getByTopic("verbPresent", "all", 0)).toHaveLength(0);
+    expect(getByTopic("verbPresent", "all", 0)).toHaveLength(VERB_BANK.length);
+    const module = getByTopic("mixed", "verbos", 0);
+    expect(module).toHaveLength(VERB_BANK.length * 4);
+    expect(module.every(q => q.verb)).toBe(true);
   });
 
   it("reinicia al cambiar filtros y no repite preguntas hasta agotar cada ronda", () => {
@@ -247,6 +250,12 @@ describe("Quiz — preguntas de verbos", () => {
     const { answers } = verbQuestion("verbAux", "finire");
     expect(checkAnswer("avere", answers)).toBe(true);
     expect(checkAnswer("essere", answers)).toBe(true);
+  });
+
+  it("acepta el significado sin la aclaración entre paréntesis", () => {
+    const q = verbQuestion("verbMeaning", "pranzare");
+    expect(checkAnswer("comer", q.answers, q.answerLang)).toBe(true);
+    expect(checkAnswer("comer (al mediodía)", q.answers, q.answerLang)).toBe(true);
   });
 
   it("acepta un solo significado, sin acentos", () => {
