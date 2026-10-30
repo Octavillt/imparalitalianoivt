@@ -112,6 +112,17 @@ describe("App — lecciones interactivas", () => {
   });
 });
 
+describe("App — enlaces entre temas", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("no muestra enlaces a módulos bloqueados", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(topics().getByRole("button", { name: "🏃 Verbos de uso diario" }));
+    expect(screen.queryByRole("button", { name: /Consulta los/ })).not.toBeInTheDocument();
+  });
+});
+
 describe("App — flecha para volver a la sección anterior", () => {
   beforeEach(() => localStorage.clear());
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { LEVELS } from "./constants/levels";
 import { LEARNING_GUIDE } from "./constants/learningGuide";
 import { TOPIC_FORMULAS } from "./constants/topicFormulas";
-import { QUESTIONS } from "./features/quiz/questions";
+import { QUESTIONS, looseNormalize, normalize } from "./features/quiz/questions";
 
 // Revisa el texto fuente de la app, sin las pruebas: atrapa errores frecuentes
 // de escritura en italiano y restos del proyecto de inglés.
@@ -29,6 +29,10 @@ describe("Calidad del italiano", () => {
     ["un' ante masculino", /\bun'(amico|albero|anno|uomo)\b/i],
     ["un sin apóstrofo ante femenino", /\bun (amica|ora|isola)\b/i],
     ["tre sin acento en compuestos", /\b(venti|trenta|quaranta|cinquanta|sessanta|settanta|ottanta|novanta|cento)tre\b/i],
+    ["preposición sin contraer", /\b(davanti|vicino|accanto) a (il|lo|la|i|gli|le)\b/i],
+    ["di ante país con artículo", /\bdi (Messico|Italia|Spagna|Francia)\b/],
+    ["italiano dentro del español", /\b(si dice|si usa|si escribe)\b/i],
+    ["vosotros en la traducción", /\b(sois|estáis|tenéis)\b/i],
   ])("sin %s", (_name, pattern) => {
     expect(matches(pattern)).toEqual([]);
   });
@@ -44,6 +48,17 @@ describe("Sin restos del proyecto de inglés", () => {
     ["expresiones inglesas", /o'clock|going to|to be\b|hour hand/i],
   ])("sin %s", (_name, pattern) => {
     expect(matches(pattern)).toEqual([]);
+  });
+});
+
+describe("Banco de preguntas", () => {
+  it("no acepta como válida una respuesta en italiano sin su acento", () => {
+    const mismatched = QUESTIONS.filter(q => q.answerLang !== "es").flatMap(q => q.answers
+      .filter(answer => q.answers.some(other => other !== answer
+        && normalize(other) !== normalize(answer)
+        && looseNormalize(other) === looseNormalize(answer)))
+      .map(answer => `${q.question} → ${answer}`));
+    expect(mismatched).toEqual([]);
   });
 });
 
