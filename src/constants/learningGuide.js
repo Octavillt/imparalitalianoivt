@@ -133,4 +133,58 @@ export const LEARNING_GUIDE = {
     task: "Escribe la forma de io de andare y de dare, y el participio de fare.",
     answer: "Vado. Dà. Fatto. Dà lleva acento para distinguirse de la preposición da.",
   },
+  routineRiflessivi: {
+    goal: "Contar tu rutina con verbos reflexivos, negar y decir cada cuánto haces algo.",
+    recall: ["presenteIndicativo", "stareGerundio", "time"],
+    task: "Di que te levantas siempre a las siete, que no te levantas temprano y que normalmente trabajas en Roma, pero ahora estás trabajando en Milán.",
+    answer: "Mi alzo sempre alle sette. Non mi alzo presto. Di solito lavoro a Roma, ma adesso sto lavorando a Milano. Non va antes del pronombre y sempre suele ir después del verbo.",
+  },
+  preposizioniTempo: {
+    goal: "Elegir la preposición de tiempo y de lugar, contraerla con el artículo y decir desde cuándo, cuánto y cada cuánto.",
+    recall: ["preposizioniArticolate", "prepositions", "dates", "routineRiflessivi"],
+    task: "Di que llegas a Roma a las ocho, que estudias italiano desde hace dos años y que sales para Florencia dentro de una hora.",
+    answer: "Arrivo a Roma alle otto. Studio italiano da due anni. Parto per Firenze tra un'ora. Alle une a con le; da, con el presente, equivale a «desde hace».",
+  },
+  directions: {
+    goal: "Pedir y dar indicaciones en la ciudad, con tú y con usted, y ubicar un lugar.",
+    recall: ["preposizioniTempo", "prepositions", "vocabulary"],
+    task: "Con usted, pregunta dónde está la estación, indica girar a la derecha y responde que la farmacia está junto al museo.",
+    answer: "Scusi, dov'è la stazione? Giri a destra. La farmacia è accanto al museo. Scusi va con usted; accanto a, con il, se escribe accanto al.",
+  },
+  bodyParts: {
+    goal: "Nombrar las partes del cuerpo, describirlas, decir qué te duele y dar una instrucción de movimiento.",
+    recall: ["plural", "adjectives", "routineRiflessivi", "directions"],
+    task: "Di que tiene los ojos verdes, que te duele la cabeza y da la instrucción de levantar los brazos.",
+    answer: "Ha gli occhi verdi. Mi fa male la testa. Alza le braccia. Le braccia es el plural de il braccio; cuando duele una sola parte, se usa mi fa male.",
+  },
+  potereSapere: {
+    goal: "Separar la habilidad aprendida, lo que se puede en ese momento y lo que se logra.",
+    recall: ["verbiInfinito", "bodyParts"],
+    task: "Di que sabes nadar, que hoy no puedes y que no logras estacionarte aquí.",
+    answer: "So nuotare, ma oggi non posso. Non riesco a parcheggiare qui. Sapere es la habilidad; potere, lo de hoy; riuscire a, si lo logras.",
+  },
+  partitivo: {
+    goal: "Pedir un poco de algo, contar unidades y preguntar cantidades.",
+    recall: ["articles", "preposizioniArticolate", "fruits", "potereSapere"],
+    task: "Pide un poco de pan, un kilo de jitomates y di que no tienes agua.",
+    answer: "Vorrei del pane. Vorrei un chilo di pomodori. Non ho acqua. Tras la medida, di va sin artículo; en esta negativa no va el partitivo.",
+  },
+  foodGroups: {
+    goal: "Nombrar grupos de alimentos, describir sabores y pedir en un restaurante.",
+    recall: ["fruits", "partitivo", "adjectives", "verbiInfinito"],
+    task: "Di que te gusta el pescado, que no te gustan los hongos y pide un plato de pasta y la cuenta.",
+    answer: "Mi piace il pesce. Non mi piacciono i funghi. Vorrei un piatto di pasta. Il conto, per favore. Con un singular se usa mi piace; con un plural, mi piacciono.",
+  },
+  exerciseWords: {
+    goal: "Dar instrucciones de ejercicio con tú, usted y ustedes, y describir un movimiento en curso.",
+    recall: ["bodyParts", "directions", "stareGerundio", "potereSapere"],
+    task: "Ordena levantar los brazos, pide de usted doblar las rodillas y di que Octavio está levantando una pesa.",
+    answer: "Alza le braccia. Pieghi le ginocchia. Octavio sta sollevando un peso. En -are, tú termina en -a y usted en -i.",
+  },
+  adverbsManner: {
+    goal: "Formar adverbios de modo y distinguirlos del adjetivo.",
+    recall: ["adjectives", "exerciseWords", "verbs"],
+    task: "Di que Leslie es una buena cantante, que canta bien y que Octavio habla despacio.",
+    answer: "Leslie è una buona cantante. Leslie canta bene. Octavio parla lentamente. Con essere va el adjetivo; con los demás verbos de la lección, el adverbio.",
+  },
 };

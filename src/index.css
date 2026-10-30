@@ -483,3 +483,18 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
   align-items: center;
 }
 .scroll-arrows button:hover { filter: brightness(1.2); }
+
+/* Tablas con desplazamiento horizontal: el aviso solo cabe en el teléfono. */
+.scroll-hint {
+  display: none;
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-muted, #94a3b8);
+}
+
+@media (max-width: 640px) {
+  .scroll-hint {
+    display: block;
+  }
+}

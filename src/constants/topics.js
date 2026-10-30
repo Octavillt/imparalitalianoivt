@@ -30,8 +30,19 @@ export const TOPICS_BASICO2 = [
   { id: "verbiInfinito", label: "🔄 Verbos + infinitivo", italiano: "Verbi + infinito", color: "#F472B6", stage: "Ampliar tus recursos" },
   { id: "irregularVerbs", label: "🏃 Verbos irregulares", italiano: "Verbi irregolari", color: "#7C3AED", stage: "Ampliar tus recursos" },
 ];
-export const TOPICS_BASICO3 = [];
-export const TOPICS_BASICO4 = [];
+export const TOPICS_BASICO3 = [
+  { id: "routineRiflessivi", label: "🔁 Rutinas, reflexivos y frecuencia", italiano: "Routine, riflessivi e frequenza", color: "#0EA5E9", stage: "Conectar lo aprendido" },
+  { id: "preposizioniTempo", label: "📍 Preposiciones de tiempo y lugar", italiano: "Preposizioni di tempo e luogo", color: "#FB923C", stage: "Conectar lo aprendido" },
+  { id: "directions", label: "🗺️ Pedir y dar indicaciones", italiano: "Chiedere e dare indicazioni", color: "#14B8A6", stage: "Usar el italiano en la ciudad" },
+];
+export const TOPICS_BASICO4 = [
+  { id: "bodyParts", label: "🧍 Partes del cuerpo", italiano: "Il corpo umano", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
+  { id: "potereSapere", label: "💪 Potere, sapere y riuscire", italiano: "Potere, sapere e riuscire", color: "#38BDF8", stage: "Expresar habilidades" },
+  { id: "partitivo", label: "🧺 Partitivo y cantidades", italiano: "Partitivo e quantità", color: "#F59E0B", stage: "Hablar de alimentos y cantidades" },
+  { id: "foodGroups", label: "🍽️ Grupos de alimentos", italiano: "Gruppi alimentari", color: "#22C55E", stage: "Hablar de alimentos y cantidades" },
+  { id: "exerciseWords", label: "🏋️ Ejercicio físico", italiano: "Esercizio fisico", color: "#A78BFA", stage: "Describir movimientos y dar instrucciones" },
+  { id: "adverbsManner", label: "🎶 Adverbios de modo", italiano: "Avverbi di modo", color: "#F472B6", stage: "Explicar cómo se realiza una acción" },
+];
 export const TOPICS_BASICO5 = [];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.

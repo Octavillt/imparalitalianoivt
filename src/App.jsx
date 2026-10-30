@@ -29,6 +29,15 @@ import WhQuestionsSection from "./features/whQuestions/WhQuestionsSection";
 import PresenteIndicativoSection from "./features/presenteIndicativo/PresenteIndicativoSection";
 import VerbiInfinitoSection from "./features/verbiInfinito/VerbiInfinitoSection";
 import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
+import RoutineRiflessiviSection from "./features/routineRiflessivi/RoutineRiflessiviSection";
+import PreposizioniTempoSection from "./features/preposizioniTempo/PreposizioniTempoSection";
+import DirectionsSection from "./features/directions/DirectionsSection";
+import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
+import PotereSapereSection from "./features/potereSapere/PotereSapereSection";
+import PartitivoSection from "./features/partitivo/PartitivoSection";
+import FoodGroupsSection from "./features/foodGroups/FoodGroupsSection";
+import ExerciseWordsSection from "./features/exerciseWords/ExerciseWordsSection";
+import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import VerbFinderSection  from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -61,6 +70,15 @@ const SECTIONS = {
   presenteIndicativo: PresenteIndicativoSection,
   verbiInfinito:  VerbiInfinitoSection,
   irregularVerbs: IrregularVerbsSection,
+  routineRiflessivi: RoutineRiflessiviSection,
+  preposizioniTempo: PreposizioniTempoSection,
+  directions: DirectionsSection,
+  bodyParts: BodyPartsSection,
+  potereSapere: PotereSapereSection,
+  partitivo: PartitivoSection,
+  foodGroups: FoodGroupsSection,
+  exerciseWords: ExerciseWordsSection,
+  adverbsManner: AdverbsMannerSection,
   quiz:           QuizSection,
   verbFinder:     VerbFinderSection,
 };
