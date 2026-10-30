@@ -265,7 +265,7 @@ describe("Verbos a la mano", () => {
   it("abre el verbo que llega desde el buscador", () => {
     renderSection({ highlightTerm: "andare", highlightSeq: 1 });
     expect(cards()).toEqual(["andare"]);
-    expect(screen.getByText(/ir|andare/, { selector: ".vf-more *" })).toBeInTheDocument();
+    expect(screen.getByText(/Auxiliar en el passato prossimo/)).toBeInTheDocument();
   });
 
   it("incluye la guía de pronunciación y la conjugación", () => {
