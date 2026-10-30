@@ -35,32 +35,6 @@ import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
 import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
 import { PRACTICE as COMPARATIVES } from "../comparatives/data";
 
-// Une las partes de una oración con tokens en un solo texto plano. Las
-// siguientes etapas la usarán con sus propios ejercicios de lección.
-export const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
-
-// Reutiliza los ejercicios de las lecciones para mantener una sola fuente.
-export function completeSentences(topic, rows) {
-  return rows.map(row => ({
-    topic,
-    question: `Escribe la oración completa en italiano: ${row.q || row.a || row.esp}`,
-    answers: [sentence(row.pts)],
-    hint: row.q || row.a ? row.esp : "Usa el vocabulario de la lección.",
-    explanation: `${sentence(row.pts)} — ${row.esp}`,
-  }));
-}
-
-export function missingToken(topic, rows) {
-  return rows.map(row => ({
-    topic,
-    question: `Completa el espacio${topic === "articles" ? " (escribe Ø o 0 si no lleva artículo)" : ""}: ${row.pts.map(p => typeof p === "string" ? p : "___").join("")}`,
-    // Ø no está en el teclado: el 0 cuenta como la misma respuesta.
-    answers: row.pts.filter(p => typeof p !== "string").flatMap(p => p.t === "Ø" ? ["Ø", "0"] : [p.t]),
-    hint: row.esp,
-    explanation: sentence(row.pts),
-  }));
-}
-
 // Una pregunta de cada tipo por verbo del banco de consulta.
 function verbBankQuestions(v) {
   const { infinito, presente, participio, ausiliare, es, note } = v;

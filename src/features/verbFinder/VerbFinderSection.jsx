@@ -219,16 +219,16 @@ function VerbCard({
             Auxiliar en el passato prossimo: <span className="vf-it" lang="it">{verb.ausiliare}</span>
           </p>
           {verb.note && <p><strong>Nota:</strong> {verb.note}</p>}
-        </div>
-      )}
-      {open && lessons.length > 0 && (
-        <div>
-          <p>Aparece en:</p>
-          <div className="vf-lessons">
-            {lessons.map(lesson => (
-              <RelatedTopic key={`${lesson.levelId}-${lesson.topicId}`} levelId={lesson.levelId} topicId={lesson.topicId} />
-            ))}
-          </div>
+          {lessons.length > 0 && (
+            <div>
+              <p>Aparece en:</p>
+              <div className="vf-lessons">
+                {lessons.map(lesson => (
+                  <RelatedTopic key={`${lesson.levelId}-${lesson.topicId}`} levelId={lesson.levelId} topicId={lesson.topicId} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </article>
