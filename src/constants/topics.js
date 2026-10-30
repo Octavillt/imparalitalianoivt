@@ -20,7 +20,12 @@ export const TOPICS = [
 
 // Los módulos de las siguientes etapas aún no tienen temas: se desbloquean
 // al llegar su contenido.
-export const TOPICS_BASICO2 = [];
+export const TOPICS_BASICO2 = [
+  { id: "articles", label: "📖 Artículos", italiano: "Gli articoli", color: "#A3E635", stage: "Describir y expresar pertenencia" },
+  { id: "adjectives", label: "🎨 Adjetivos y opuestos", italiano: "Aggettivi e contrari", color: "#0D9488", stage: "Describir y expresar pertenencia" },
+  { id: "possessiveAdjectives", label: "🙋 Posesivos", italiano: "I possessivi", color: "#E879F9", stage: "Describir y expresar pertenencia" },
+  { id: "preposizioniArticolate", label: "🔑 Di y preposiciones articuladas", italiano: "Di e preposizioni articolate", color: "#818CF8", stage: "Describir y expresar pertenencia" },
+];
 export const TOPICS_BASICO3 = [];
 export const TOPICS_BASICO4 = [];
 export const TOPICS_BASICO5 = [];

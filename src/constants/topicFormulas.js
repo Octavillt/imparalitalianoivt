@@ -133,4 +133,43 @@ export const TOPIC_FORMULAS = {
       row("Despedirse", "Arrivederci! / A domani!", "A domani!", "¡Hasta mañana!"),
     ],
   },
+  articles: {
+    note: "El plural «unos» (dei, degli, delle) se ve en Básico IV.",
+    rows: [
+      row("Determinativo", "Artículo + sustantivo", "Il caffè è buono.", "El café está bueno."),
+      row("s + consonante, z, gn, ps, y", "lo / uno + sustantivo", "Lo studente è di Milano.", "El estudiante es de Milán."),
+      row("Ante vocal", "l' + sustantivo; un + masculino; un' + femenino", "Un amico e un'amica.", "Un amigo y una amiga."),
+      row("Sin artículo", "Ø + nombre, ciudad o profesión con essere", "Roma è bella.", "Roma es bonita."),
+    ],
+  },
+  adjectives: {
+    note: "Bello, ante sustantivo, cambia como el artículo. Buono, en singular, cambia como un.",
+    rows: [
+      row("Después del sustantivo", "Artículo + sustantivo + adjetivo", "Una macchina rossa.", "Un carro rojo."),
+      row("Antes del sustantivo", "Artículo + adjetivo frecuente + sustantivo", "Un nuovo libro.", "Un libro nuevo."),
+      row("Después de essere", "Sujeto + essere + adjetivo", "I gelati sono buoni.", "Los helados están buenos."),
+      row("Grupo mixto", "Persona + e + persona + sono + plural masculino", "Octavio e Leslie sono stanchi.", "Octavio y Leslie están cansados."),
+      row("Contrarios", "Adjetivo / su contrario", "Caldo o freddo.", "Caliente o frío."),
+    ],
+  },
+  possessiveAdjectives: {
+    note: "Con un familiar en singular no va artículo (mia madre), salvo loro. En plural sí: le mie sorelle.",
+    rows: [
+      row("Con objeto", "Artículo + posesivo + sustantivo", "Il mio libro è qui.", "Mi libro está aquí."),
+      row("Según lo poseído", "Artículo de la cosa + posesivo", "La sua casa è grande.", "Su casa es grande."),
+      row("Loro", "Artículo + loro + sustantivo", "I loro libri sono nuovi.", "Sus libros son nuevos."),
+      row("Después de essere", "Sustantivo + essere + posesivo", "Questo libro è mio.", "Este libro es mío."),
+      row("Familiar en singular", "Posesivo + familiar", "Mia madre è di Roma.", "Mi mamá es de Roma."),
+    ],
+  },
+  preposizioniArticolate: {
+    note: "Con, per, tra y fra no se unen al artículo. Un nombre de persona va sin él.",
+    rows: [
+      row("Pertenencia", "Sustantivo + di + nombre", "Il libro di Leslie.", "El libro de Leslie."),
+      row("Di + artículo", "di + il = del", "La macchina del professore.", "El carro del profesor."),
+      row("A + artículo", "a + il = al", "Vado al bar.", "Voy al bar."),
+      row("Da + artículo", "da + il = dal", "Vengo dal Messico.", "Vengo de México."),
+      row("In + artículo", "in + la = nella", "Le chiavi sono nella borsa.", "Las llaves están en la bolsa."),
+    ],
+  },
 };

@@ -12,7 +12,7 @@ export const LEVELS = [
     outcome: "Puedes saludar, presentarte y despedirte, identificar objetos, decir la hora y describir una acción en curso.",
   },
   {
-    id: "basico2", label: "Básico II", available: false, topics: TOPICS_BASICO2,
+    id: "basico2", label: "Básico II", available: true, topics: TOPICS_BASICO2,
     purpose: "Describir, preguntar y hablar de hábitos",
     description: "Retoma essere, el género y el presente progresivo de Básico I. Añade artículos, adjetivos y posesivos; después construye preguntas y conjuga el presente.",
     bridge: "En Básico III combinarás estas estructuras para hablar de rutinas, horarios y lugares.",
