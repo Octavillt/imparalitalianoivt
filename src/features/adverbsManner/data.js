@@ -1,5 +1,6 @@
 // Adverbios de modo. El par es [adjetivo, adverbio].
-// En -le y -re se pierde la e antes de mente. Buono y cattivo no siguen esa vía.
+// En vocal + le/re se pierde la e antes de mente. Bene y male son las
+// formas básicas de bien y mal; cattivamente tiene un sentido propio.
 const su = t => ({ t, r: "subject" });
 const vb = t => ({ t, r: "verb" });
 const es = t => ({ t, r: "essere" });
@@ -26,8 +27,8 @@ export const FORMATION_RULES = [
     ],
   },
   {
-    title: "En -le o -re se pierde la e",
-    description: "La e final no se conserva. Facil y mente, juntas, forman facilmente.",
+    title: "En -le o -re precedidos de vocal se pierde la e",
+    description: "Si -le o -re van precedidos de vocal, se elimina la e final: facile → facilmente, regolare → regolarmente. No se generaliza a celebre → celebremente.",
     examples: [
       ["facile → facilmente", "fácil → con facilidad"],
       ["gentile → gentilmente", "amable → con amabilidad"],
@@ -101,11 +102,11 @@ export const PRACTICE = [
   { question: "Escribe el adverbio de difficile.", answers: ["difficilmente"], hint: "Termina en -le: se pierde la e.", explanation: "Difficile → difficilmente." },
   { question: "Escribe el adverbio de felice.", answers: ["felicemente"], hint: "Termina en -e: la e se queda y se añade mente.", explanation: "Felice → felicemente." },
   { question: "Escribe el adverbio de buono.", answers: ["bene"], hint: "No lleva -mente.", explanation: "Buono → bene." },
-  { question: "Escribe el adverbio de cattivo.", answers: ["male"], hint: "No lleva -mente.", explanation: "Cattivo → male." },
+  { question: "Escribe el adverbio básico que significa mal, opuesto de bene.", answers: ["male"], hint: "La respuesta de este ejercicio es male, sin -mente", explanation: "Para decir mal se usa male. También existe cattivamente, con el sentido de con maldad o de mala manera." },
   { question: "Escribe en italiano: Leslie es una buena cantante.", answers: ["Leslie è una buona cantante"], hint: "Con essere va el adjetivo, en femenino: buona.", explanation: "Leslie es una buena cantante = Leslie è una buona cantante." },
   { question: "Escribe en italiano: Leslie canta bien.", answers: ["Leslie canta bene"], hint: "Con cantare va el adverbio bene.", explanation: "Leslie canta bien = Leslie canta bene." },
   { question: "Escribe en italiano: La pizza está buena.", answers: ["La pizza è buona"], hint: "Pizza es femenino: buona.", explanation: "La pizza está buena = La pizza è buona." },
-  { question: "Escribe en italiano: Cocinas bien.", answers: ["Cucini bene"], hint: "Tú de cucinare es cucini. El adverbio es bene.", explanation: "Cocinas bien = Cucini bene." },
+  { question: "Escribe en italiano: Cocinas bien.", answers: ["Cucini bene", "Tu cucini bene"], hint: "Tú de cucinare es cucini. El adverbio es bene.", explanation: "Cocinas bien = Cucini bene." },
   { question: "Escribe en italiano: Octavio es lento.", answers: ["Octavio è lento"], hint: "Con essere va el adjetivo.", explanation: "Octavio es lento = Octavio è lento." },
   { question: "Escribe en italiano: Octavio habla despacio.", answers: ["Octavio parla lentamente", "Octavio parla piano"], hint: "El adverbio de lento es lentamente. Piano también puede ser despacio.", explanation: "Octavio habla despacio = Octavio parla lentamente. Octavio parla piano también se dice." },
   { question: "Escribe en italiano: Habla muy bien.", answers: ["Parla molto bene"], hint: "Molto va antes del adverbio.", explanation: "Habla muy bien = Parla molto bene." },
@@ -113,10 +114,10 @@ export const PRACTICE = [
   { question: "Escribe la respuesta: Come canta Octavio? Canta bien.", answers: ["Canta bene"], hint: "Bien, con un verbo, es bene.", explanation: "Canta bien = Canta bene." },
   { question: "Escribe en italiano: Habla en voz baja.", answers: ["Parla piano"], hint: "Piano no lleva -mente. También puede significar despacio.", explanation: "Habla en voz baja = Parla piano." },
   { question: "Escribe en italiano: Canta fuerte.", answers: ["Canta forte"], hint: "Forte no lleva -mente.", explanation: "Canta fuerte = Canta forte." },
-  { question: "Escribe en italiano: Cantamos juntos.", answers: ["Cantiamo insieme"], hint: "Insieme no lleva -mente.", explanation: "Cantamos juntos = Cantiamo insieme." },
-  { question: "Escribe en italiano: Vengo con gusto.", answers: ["Vengo volentieri"], hint: "Volentieri no lleva -mente.", explanation: "Vengo con gusto = Vengo volentieri." },
-  { question: "Escribe en italiano: Llego temprano.", answers: ["Arrivo presto"], hint: "Presto puede ser temprano. En otra frase puede ser pronto: Torno presto.", explanation: "Llego temprano = Arrivo presto." },
-  { question: "Escribe en italiano: Regreso pronto.", answers: ["Torno presto"], hint: "En esta frase presto es pronto.", explanation: "Regreso pronto = Torno presto." },
-  { question: "Escribe en italiano: Llego tarde.", answers: ["Arrivo tardi"], hint: "Tardi no lleva -mente.", explanation: "Llego tarde = Arrivo tardi." },
+  { question: "Escribe en italiano: Cantamos juntos.", answers: ["Cantiamo insieme", "Noi cantiamo insieme"], hint: "Insieme no lleva -mente.", explanation: "Cantamos juntos = Cantiamo insieme." },
+  { question: "Escribe en italiano: Vengo con gusto.", answers: ["Vengo volentieri", "Io vengo volentieri"], hint: "Volentieri no lleva -mente.", explanation: "Vengo con gusto = Vengo volentieri." },
+  { question: "Escribe en italiano: Llego temprano.", answers: ["Arrivo presto", "Io arrivo presto"], hint: "Presto puede ser temprano. En otra frase puede ser pronto: Torno presto.", explanation: "Llego temprano = Arrivo presto." },
+  { question: "Escribe en italiano: Regreso pronto.", answers: ["Torno presto", "Io torno presto"], hint: "En esta frase presto es pronto.", explanation: "Regreso pronto = Torno presto." },
+  { question: "Escribe en italiano: Llego tarde.", answers: ["Arrivo tardi", "Io arrivo tardi"], hint: "Tardi no lleva -mente.", explanation: "Llego tarde = Arrivo tardi." },
   { question: "Escribe en italiano: Levanta los brazos despacio.", answers: ["Alza le braccia lentamente", "Alza le braccia piano"], hint: "Braccia es el plural de il braccio.", explanation: "Levanta los brazos despacio = Alza le braccia lentamente. Alza le braccia piano también se dice." },
 ];

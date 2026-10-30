@@ -63,7 +63,7 @@ export default function LettersPanel() {
           🌍 Las 5 letras extranjeras
         </div>
         <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
-          Aparecen solo en palabras tomadas de otros idiomas (como jeans, kiwi o yogurt).
+          Aparecen principalmente en préstamos y nombres propios; por ejemplo, jeans, kiwi, yogurt, Jacopo y Jesi.
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(132px, 1fr))", gap: "6px" }}>
           {FOREIGN_LETTERS.map(l => (

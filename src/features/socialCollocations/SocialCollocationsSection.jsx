@@ -59,7 +59,7 @@ export default function SocialCollocationsSection() {
       <RuleBox icon="⚠️" rule="Estas no salen palabra por palabra" color={COLOR}>
         {DIFFERENCES.map(([it, es]) => <Pair key={it} it={it} es={es} />)}
         <p style={text}>
-          <span lang="it">Fare tardi</span> cambia con la frase. En el trabajo es llegar tarde. De noche, es desvelarse.
+          <span lang="it">Fare tardi</span> puede ser tardarse o quedarse hasta tarde: <span lang="it">ho fatto tardi al lavoro</span>. Por la noche, también puede ser desvelarse.
         </p>
         {TARDI.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}
       </RuleBox>

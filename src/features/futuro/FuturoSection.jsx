@@ -61,7 +61,7 @@ export default function FuturoSection() {
       <div style={{ ...card, ...text }}>
         💡 El <strong style={{ color: "#f8fafc" }}>futuro semplice</strong> sirve para un plan, para una predicción y también para una suposición sobre lo que pasa ahora.
         <strong lang="it" style={{ color: "#f8fafc" }}> Voi</strong> equivale a ustedes; <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong>, a ellos o ellas.
-        <span lang="it"> Lei</span>, de usted, va con mayúscula y usa la forma de <span lang="it">lui / lei</span>.
+        <span lang="it"> Lei</span>, de usted, suele escribirse con mayúscula y usa la forma de <span lang="it">lui / lei</span>.
       </div>
       <Legend roles={["subject", "verb", "essere", "presente", "neg", "wh", "desinenza"]} />
 
@@ -156,7 +156,7 @@ export default function FuturoSection() {
           example={[{ t: "Non", r: "neg" }, { t: "andrò", r: "verb" }, { t: "a Roma.", color: "#94a3b8" }]}
           color={COLOR}
         />
-        <p style={text}>La palabra interrogativa, si la hay, va primero. <span lang="it">Lei</span> de usted lleva mayúscula.</p>
+        <p style={text}>La palabra interrogativa, si la hay, va primero. <span lang="it">Lei</span> de usted suele escribirse con mayúscula.</p>
         <RelatedTopic levelId="basico2" topicId="whQuestions" />
       </RuleBox>
       {NEGATIVE.map(item => <ExampleCard key={item.esp} pts={item.pts} esp={item.esp} />)}

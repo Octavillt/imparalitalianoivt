@@ -101,11 +101,9 @@ export default function PreposizioniArticolateSection() {
         </div>
       </RuleBox>
 
-      <RuleBox icon="🚫" rule="Con, per, tra y fra no se contraen" color={COLOR}>
+      <RuleBox icon="🚫" rule="Per, tra y fra separados; con admite contracción" color={COLOR}>
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          Estas cuatro se quedan separadas del artículo: <strong lang="it" style={{ color: "#f8fafc" }}>con il professore</strong>,{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>per la mamma</strong>. <strong lang="it" style={{ color: "#f8fafc" }}>fra</strong> funciona igual que{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>tra</strong>. En italiano hablado aún se oye <strong lang="it" style={{ color: "#f8fafc" }}>col</strong> (<span lang="it">con + il</span>), pero <strong lang="it" style={{ color: "#f8fafc" }}>con il</strong> siempre es correcto.
+          <span lang="it">Per, tra y fra</span> se mantienen separados. <span lang="it">Con</span> puede mantenerse separado o contraerse: <span lang="it">con il / col; con i / coi</span>. Las formas separadas siempre son correctas.
         </p>
         {NO_CONTRACT.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
       </RuleBox>

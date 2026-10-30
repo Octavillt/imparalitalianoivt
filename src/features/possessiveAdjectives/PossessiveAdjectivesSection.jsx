@@ -83,12 +83,7 @@ export default function PossessiveAdjectivesSection() {
 
       <RuleBox icon="👪" rule="Regla ya vista — los familiares" color="#CA8A04">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          Con un familiar <strong style={{ color: "#f8fafc" }}>en singular</strong> el posesivo va{" "}
-          <strong style={{ color: "#f8fafc" }}>sin artículo</strong>: <strong lang="it" style={{ color: "#f8fafc" }}>mia madre</strong>,{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>tuo fratello</strong>. En <strong style={{ color: "#f8fafc" }}>plural</strong> vuelve el artículo:{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>le mie sorelle</strong>, <strong lang="it" style={{ color: "#f8fafc" }}>i tuoi fratelli</strong>.{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong> es la excepción y sí lo lleva:{" "}
-          <strong lang="it" style={{ color: "#f8fafc" }}>la loro madre</strong>.
+          Con un nombre de parentesco singular simple normalmente se omite el artículo: <span lang="it">mia madre, tuo fratello</span>. Con un adjetivo antepuesto o un diminutivo se usa: <span lang="it">la mia cara sorella, il mio fratellino</span>. En plural y con <span lang="it">loro</span> también se usa artículo.
         </p>
         <RelatedTopic levelId="basico1" topicId="family" />
       </RuleBox>

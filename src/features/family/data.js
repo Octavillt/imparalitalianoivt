@@ -65,14 +65,15 @@ export const FAMILY_TREE = [
 // Parejas que suelen confundir al hispanohablante.
 export const FAMILY_TRAPS = [
   { word: "i genitori", esp: "los padres", warn: "No significa «los parientes»." },
-  { word: "i parenti", esp: "los parientes", warn: "Es la familia extendida, no los padres." },
+  { word: "i parenti", esp: "los parientes", warn: "Significa los parientes en general; para decir específicamente los padres se usa i genitori." },
   { word: "il nipote", esp: "el sobrino… y también el nieto", warn: "El contexto decide cuál es." },
   { word: "i fratelli", esp: "los hermanos", warn: "Sirve también para un grupo de hermanos y hermanas." },
 ];
 
-// Regla central: posesivo sin artículo en singular; con artículo en plural.
+// Parentesco singular simple: normalmente sin artículo, salvo loro;
+// con adjetivo antepuesto o diminutivo y en plural se usa artículo.
 export const POSS_RULES = [
-  { caso: "Familiar en singular", regla: "sin artículo", ex: "mia madre, mio padre, tuo fratello, sua sorella", esp: "mi madre, mi padre, tu hermano, su hermana" },
+  { caso: "Familiar en singular sin modificadores (salvo loro)", regla: "normalmente sin artículo", ex: "mia madre, tuo fratello; la mia cara sorella, il mio fratellino", esp: "mi madre, tu hermano; con adjetivo antepuesto o diminutivo se usa artículo: mi querida hermana, mi hermanito" },
   { caso: "Familiar en plural", regla: "con artículo", ex: "i miei genitori, le mie sorelle, i tuoi fratelli", esp: "mis padres, mis hermanas, tus hermanos" },
   { caso: "mamma y papà", regla: "admiten las dos formas", ex: "mia mamma / la mia mamma", esp: "mi mamá (cualquiera de las dos)" },
   { caso: "loro (de ellos)", regla: "siempre con artículo", ex: "la loro madre", esp: "su madre (de ellos)" },
@@ -96,12 +97,12 @@ export const PRACTICE = [
   { question: "Escribe en italiano: los abuelos.", answers: ["i nonni"], explanation: "i nonni = los abuelos." },
   { question: "Elige la palabra correcta: (i genitori / i parenti) significa «los padres».", answers: ["i genitori"], hint: "No son los parientes", explanation: "i genitori = los padres. i parenti son los parientes." },
   { question: "Escribe una de las dos traducciones de «il nipote».", answers: ["sobrino", "nieto"], answerLang: "es", hint: "Tiene dos significados", explanation: "il nipote puede ser el sobrino o el nieto; el contexto decide." },
-  { question: "Completa: Questa è ___ sorella.", answers: ["mia"], hint: "Posesivo sin artículo", explanation: "Questa è mia sorella = Esta es mi hermana. En singular va sin artículo." },
-  { question: "Completa: Questi sono i ___ genitori.", answers: ["miei"], hint: "Plural: lleva artículo", explanation: "Questi sono i miei genitori = Estos son mis padres. En plural, i miei." },
+  { question: "Completa: Questa è ___ sorella. (mi hermana)", answers: ["mia"], hint: "Posesivo sin artículo", explanation: "Questa è mia sorella = Esta es mi hermana. En singular va sin artículo." },
+  { question: "Completa: Questi sono i ___ genitori. (mis padres)", answers: ["miei"], hint: "Plural: lleva artículo", explanation: "Questi sono i miei genitori = Estos son mis padres. En plural, i miei." },
   { question: "Elige la forma correcta: (mio / il mio) padre.", answers: ["mio"], hint: "Familiar en singular", explanation: "mio padre: con familiar en singular el posesivo va sin artículo." },
   { question: "Elige la forma correcta: (i miei / miei) fratelli.", answers: ["i miei"], hint: "Plural", explanation: "i miei fratelli: en plural el posesivo lleva artículo." },
-  { question: "Traduce al italiano: ¿Tienes hermanos?", answers: ["Hai fratelli?"], hint: "Avere → hai", explanation: "¿Tienes hermanos? = Hai fratelli?" },
-  { question: "Traduce al italiano: No tengo hermanos.", answers: ["Non ho fratelli", "Non ho fratelli."], hint: "Non antes del verbo", explanation: "No tengo hermanos = Non ho fratelli." },
+  { question: "Traduce al italiano: ¿Tienes hermanos?", answers: ["Hai fratelli?", "Tu hai fratelli?"], hint: "Avere → hai", explanation: "¿Tienes hermanos? = Hai fratelli?" },
+  { question: "Traduce al italiano: No tengo hermanos.", answers: ["Non ho fratelli", "Non ho fratelli.", "Io non ho fratelli"], hint: "Non antes del verbo", explanation: "No tengo hermanos = Non ho fratelli." },
   { question: "Escribe en italiano: la esposa.", answers: ["la moglie"], hint: "No se parece al español", explanation: "la moglie = la esposa." },
   { question: "Escribe en italiano: el esposo.", answers: ["il marito"], hint: "Se parece a «marido»", explanation: "il marito = el esposo." },
   { question: "Traduce al italiano: Esta es mi hermana.", answers: ["Questa è mia sorella", "Questa è mia sorella."], hint: "Questa è…", explanation: "Esta es mi hermana = Questa è mia sorella." },

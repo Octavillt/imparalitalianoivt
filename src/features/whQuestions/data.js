@@ -19,7 +19,7 @@ export const WH_WORDS = [
   { word: "A che ora", es: "¿A qué hora?", use: "La hora de un hecho", example: "A che ora parti?", esp: "¿A qué hora sales?" },
 ];
 
-// Orden: palabra + verbo + sujeto. Con è, dove, come y cosa se escriben juntas.
+// Orden: palabra + verbo + sujeto. Ante è, dove, come y cosa pueden elidirse.
 export const ORDER_EXAMPLES = [
   { pts: [wh("Dov'"), es("è"), " ", su("Leslie"), "?"], esp: "¿Dónde está Leslie?" },
   { pts: [wh("Di dov'"), es("è"), " ", su("Octavio"), "?"], esp: "¿De dónde es Octavio?" },
@@ -73,9 +73,9 @@ export const WH_QA = [
 
 export const PRACTICE = [
   { question: "Escribe la palabra italiana para «quién».", answers: ["chi"], hint: "Pregunta por una persona.", explanation: "Chi pregunta por una persona: Chi è quella ragazza?" },
-  { question: "Escribe la palabra italiana para «dónde».", answers: ["dove"], hint: "Pregunta por un lugar.", explanation: "Dove pregunta por un lugar. Con è se escribe dov'è." },
+  { question: "Escribe la palabra italiana para «dónde».", answers: ["dove"], hint: "Pregunta por un lugar.", explanation: "Dove pregunta por un lugar. Ante è suele elidirse: dov'è; también puede escribirse dove è." },
   { question: "Escribe la palabra italiana para «cuándo».", answers: ["quando"], hint: "Pregunta por el momento.", explanation: "Quando pregunta por el momento: Quando parti?" },
-  { question: "Escribe la palabra italiana para «cómo».", answers: ["come"], hint: "Pregunta por el modo o la descripción.", explanation: "Come pregunta por el modo: Come si chiama la tua amica? Con è se escribe com'è." },
+  { question: "Escribe la palabra italiana para «cómo».", answers: ["come"], hint: "Pregunta por el modo o la descripción.", explanation: "Come pregunta por el modo: Come si chiama la tua amica? Ante è suele elidirse: com'è; también puede escribirse come è." },
   { question: "Escribe la palabra italiana para «por qué».", answers: ["perché"], hint: "Lleva acento agudo en la última vocal.", explanation: "Perché pregunta la causa y también introduce la respuesta: Perché studio italiano." },
   { question: "Escribe dove unido a è.", answers: ["Dov'è"], hint: "Se pierde la e de dove.", explanation: "Dov'è = dove + è. El apóstrofo marca la vocal que se pierde." },
   { question: "Escribe come unido a è.", answers: ["Com'è"], hint: "Se pierde la e de come.", explanation: "Com'è = come + è." },
