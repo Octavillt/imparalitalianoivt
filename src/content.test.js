@@ -29,6 +29,7 @@ describe("Calidad del italiano", () => {
     ["un' ante masculino", /\bun'(amico|albero|anno|uomo)\b/i],
     ["un sin apóstrofo ante femenino", /\bun (amica|ora|isola)\b/i],
     ["tre sin acento en compuestos", /\b(venti|trenta|quaranta|cinquanta|sessanta|settanta|ottanta|novanta|cento)tre\b/i],
+    ["qual è con apóstrofo", /\bqual'è\b/i],
     ["preposición sin contraer", /\b(davanti|vicino|accanto) a (il|lo|la|i|gli|le)\b/i],
     ["di ante país con artículo", /\bdi (Messico|Italia|Spagna|Francia)\b/],
     ["italiano dentro del español", /\b(si dice|si usa|si escribe)\b/i],
