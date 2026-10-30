@@ -145,7 +145,7 @@ export const PRACTICE = [
   { question: "Escribe la forma de «tu» de volere.", answers: ["vuoi"], hint: "Es una forma breve.", explanation: "Volere → vuoi." },
   { question: "Escribe la forma de «voi» de volere.", answers: ["volete"], hint: "La forma de ustedes no lleva gli.", explanation: "Volere, en ustedes, es volete. Noi sí lleva gli: vogliamo." },
   { question: "Escribe la forma de «loro» de volere.", answers: ["vogliono"], hint: "Loro equivale a ellos o ellas.", explanation: "Volere → vogliono." },
-  { question: "Escribe la forma de «lui / lei» de potere.", answers: ["può"], hint: "Lleva acento grave.", explanation: "Potere → può. El acento grave distingue la forma." },
+  { question: "Escribe la forma de «lui / lei» de potere.", answers: ["può"], hint: "Lleva acento grave.", explanation: "Potere → può. Se escribe con acento grave." },
   { question: "Escribe la forma de «noi» de potere.", answers: ["possiamo"], hint: "Lleva dos s.", explanation: "Potere → possiamo." },
   { question: "Escribe la forma de «noi» de dovere.", answers: ["dobbiamo"], hint: "La raíz de noi pasa a dob-.", explanation: "Dovere → dobbiamo. En ustedes es dovete." },
   { question: "Escribe la forma de «voi» de dovere.", answers: ["dovete"], hint: "Voi equivale a ustedes.", explanation: "Dovere → dovete." },

@@ -186,7 +186,7 @@ export const TOPIC_FORMULAS = {
     note: "Voi equivale a ustedes. En loro, parlano, credono y dormono llevan el golpe al inicio: PAR-la-no. Ese acento no se escribe.",
     rows: [
       row("Modelo -are", "raíz + o, i, a, iamo, ate, ano", "Io parlo italiano.", "Yo hablo italiano."),
-      row("Negación", "Non + verbo en presente", "Non lavoro il sabato.", "No trabajo el sábado."),
+      row("Negación", "Non + verbo en presente", "Non lavoro il sabato.", "No trabajo los sábados."),
       row("Pregunta", "Verbo en presente + ?", "Lavori a Roma?", "¿Trabajas en Roma?"),
       row("Hábito", "Presente + complemento de rutina", "Studio italiano ogni giorno.", "Estudio italiano todos los días."),
       row("Ahora", "Che cosa fai? — respuesta en presente", "Mangio una pizza.", "Como una pizza."),

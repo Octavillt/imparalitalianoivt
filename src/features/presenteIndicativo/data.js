@@ -51,14 +51,14 @@ export const SPELLING_GROUPS = [
   },
   {
     title: "-ciare y -giare: una sola i",
-    text: "En mangiare, la i no se escribe dos veces. Cae cuando la terminación ya empieza con i: mangi, mangiamo, mangiate. Sigue en mangio, mangia y mangiano.",
+    text: "En mangiare, la i no se escribe dos veces. Cae cuando la terminación ya empieza con i: mangi, mangiamo. Sigue en mangio, mangia, mangiate y mangiano.",
     models: [
       model("mangiare", "-giare", ["io", "i", "ia", "iamo", "iate", "iano"], yo("yo como", "tú comes", "él / ella come", "nosotros comemos", "ustedes comen", "ellos / ellas comen"), "mang"),
     ],
   },
   {
     title: "-iare: tampoco se duplica la i",
-    text: "En studiare la i no se escribe dos veces: studi, studiamo, studiate. Lo mismo pasa en verbos como cambiare: cambi, cambiamo.",
+    text: "En studiare la i no se escribe dos veces: studi, studiamo. Lo mismo pasa en verbos como cambiare: cambi, cambiamo.",
     models: [
       model("studiare", "-iare", ["io", "i", "ia", "iamo", "iate", "iano"], yo("yo estudio", "tú estudias", "él / ella estudia", "nosotros estudiamos", "ustedes estudian", "ellos / ellas estudian"), "stud"),
     ],
@@ -98,7 +98,7 @@ export const USES = [
 ];
 
 export const NEGATIVE = [
-  { pts: [ng("Non"), " ", vb("lavoro"), " il sabato."], esp: "No trabajo el sábado." },
+  { pts: [ng("Non"), " ", vb("lavoro"), " il sabato."], esp: "No trabajo los sábados." },
   { pts: [su("Leslie"), " ", ng("non"), " ", vb("dorme"), "."], esp: "Leslie no duerme." },
   { pts: [ng("Non"), " ", vb("capisco"), "."], esp: "No entiendo." },
 ];
@@ -148,7 +148,7 @@ export const PRACTICE = [
   { question: "Escribe la forma de «noi» de studiare.", answers: ["studiamo"], hint: "En studiare la i no se duplica.", explanation: "Studiare → studiamo." },
   { question: "Escribe la forma de «io» de partire.", answers: ["parto"], hint: "Partire no agrega -isc-.", explanation: "Partire → parto. Sigue el modelo de dormire, no el de capire." },
   { question: "Escribe la forma de «io» de finire.", answers: ["finisco"], hint: "Finire sí agrega -isc- en io.", explanation: "Finire → finisco. En noi es finiamo, sin -isc-." },
-  { question: "Escribe: No trabajo el sábado.", answers: ["Non lavoro il sabato", "Io non lavoro il sabato"], hint: "Non va antes del verbo.", explanation: "No trabajo el sábado = Non lavoro il sabato." },
+  { question: "Escribe: No trabajo los sábados.", answers: ["Non lavoro il sabato", "Io non lavoro il sabato"], hint: "Non va antes del verbo.", explanation: "No trabajo los sábados = Non lavoro il sabato. Il sabato significa cada sábado." },
   { question: "Escribe la pregunta, sin cambiar el orden: ¿Trabajas en Roma?", answers: ["Lavori a Roma?", "Tu lavori a Roma?"], hint: "La pregunta conserva el orden. Roma lleva a.", explanation: "¿Trabajas en Roma? = Lavori a Roma? Solo cambia la entonación." },
   { question: "Escribe: Leslie trabaja en Roma.", answers: ["Leslie lavora a Roma"], hint: "La ciudad lleva a, sin artículo.", explanation: "Leslie trabaja en Roma = Leslie lavora a Roma." },
   { question: "Escribe: Octavio lee un libro.", answers: ["Octavio legge un libro"], hint: "Leggere, con él, es legge.", explanation: "Octavio lee un libro = Octavio legge un libro." },

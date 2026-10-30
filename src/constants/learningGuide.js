@@ -118,7 +118,7 @@ export const LEARNING_GUIDE = {
   presenteIndicativo: {
     goal: "Conjugar el presente de -are, -ere e -ire, negar con non y preguntar sin cambiar el orden.",
     recall: ["whQuestions", "verbs", "stareGerundio"],
-    task: "Di que Leslie trabaja en Roma, que no trabajas el sábado y pregunta si trabajas en Roma.",
+    task: "Di que Leslie trabaja en Roma, que no trabajas los sábados y pregunta si trabajas en Roma.",
     answer: "Leslie lavora a Roma. Non lavoro il sabato. Lavori a Roma? Non va antes del verbo y la pregunta no cambia el orden.",
   },
   verbiInfinito: {
