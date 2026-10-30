@@ -37,6 +37,11 @@ export const TOPICS_BASICO3 = [
 ];
 export const TOPICS_BASICO4 = [
   { id: "bodyParts", label: "🧍 Partes del cuerpo", italiano: "Il corpo umano", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
+  { id: "potereSapere", label: "💪 Potere, sapere y riuscire", italiano: "Potere, sapere e riuscire", color: "#38BDF8", stage: "Expresar habilidades" },
+  { id: "partitivo", label: "🧺 Partitivo y cantidades", italiano: "Partitivo e quantità", color: "#F59E0B", stage: "Hablar de alimentos y cantidades" },
+  { id: "foodGroups", label: "🍽️ Grupos de alimentos", italiano: "Gruppi alimentari", color: "#22C55E", stage: "Hablar de alimentos y cantidades" },
+  { id: "exerciseWords", label: "🏋️ Ejercicio físico", italiano: "Esercizio fisico", color: "#A78BFA", stage: "Describir movimientos y dar instrucciones" },
+  { id: "adverbsManner", label: "🎶 Adverbios de modo", italiano: "Avverbi di modo", color: "#F472B6", stage: "Explicar cómo se realiza una acción" },
 ];
 export const TOPICS_BASICO5 = [];
 

@@ -319,6 +319,48 @@ const SEARCH_KEYWORDS = {
     "piedi", "pelle", "osso", "ossa", "mi fa male", "mal di testa", "cuerpo",
     "cabeza", "brazo", "pierna", "rodilla", "dolor",
   ],
+  potereSapere: [
+    "potere", "sapere", "riuscire", "posso", "puoi", "può", "possiamo", "potete",
+    "possono", "so", "sai", "sappiamo", "sapete", "sanno", "riesco", "riesci",
+    "riesce", "riusciamo", "riuscite", "riescono", "so nuotare", "posso entrare",
+    "non riesco", "ad aprire", "nuotare", "cucinare", "ballare", "guidare",
+    "sciare", "disegnare", "chitarra", "parcheggiare", "venezia", "saber", "poder", "lograr",
+    "permiso", "habilidad", "nadar", "manejar", "estacionarme",
+  ],
+  partitivo: [
+    "partitivo", "del pane", "dello zucchero", "dell'acqua", "della pasta",
+    "dei pomodori", "degli spaghetti", "delle mele", "un po'", "un po' di",
+    "alcuni", "alcune", "qualche", "molta acqua", "pochi pomodori", "tante mele",
+    "troppo zucchero", "abbastanza", "quanta", "quanti", "quante", "quanto costa",
+    "chilo", "etto", "litro", "bottiglia", "fetta", "bicchiere", "tazza",
+    "scatola", "lattina", "pacco", "non ho pane", "ne voglio", "cantidad",
+    "jitomates", "azúcar", "manzanas",
+  ],
+  foodGroups: [
+    "cereali", "frutta", "verdura", "proteine", "latticini", "grassi", "dolci",
+    "bevande", "uovo", "uova", "burro", "aceto", "olio", "pesce", "salsa",
+    "succo", "prosciutto", "mozzarella", "yogurt", "cioccolato", "gelato",
+    "torta", "caffè", "tè", "vino", "birra", "colazione", "pranzo", "cena",
+    "spuntino", "dolce", "salato", "amaro", "aspro", "piccante", "saporito",
+    "crudo", "cotto", "caldo", "freddo", "vegetariana", "allergico", "noci",
+    "conto", "vorrei", "piace", "piacciono", "funghi", "mantequilla", "vinagre",
+    "aceite", "jugo", "pescado", "desayuno", "tentempié", "restaurante",
+  ],
+  exerciseWords: [
+    "alzare", "alza", "alzi", "alzando", "abbassare", "piegare", "pieghi",
+    "stendere", "stendi", "stenda", "girare", "saltare", "spingere", "spinga",
+    "tirare", "sollevare", "sollevando", "alzate", "piegate", "ginnastica",
+    "stretching", "palestra", "tappetino", "peso", "pausa", "braccia",
+    "ginocchia", "imperativo", "gerundio", "levantar", "doblar", "estirar",
+    "empujar", "jalar", "gimnasio", "tapete",
+  ],
+  adverbsManner: [
+    "avverbio", "lentamente", "velocemente", "attentamente", "sicuramente",
+    "facilmente", "gentilmente", "regolarmente", "felicemente", "difficilmente",
+    "bene", "male", "piano", "forte", "insieme", "volentieri", "presto", "tardi",
+    "buona cantante", "canta bene", "molto bene", "come canta", "adverbio",
+    "lentamente", "despacio", "bien", "mal", "modo",
+  ],
 };
 
 function buildIndex() {
