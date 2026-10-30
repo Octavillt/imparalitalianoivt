@@ -137,7 +137,7 @@ La barra **à, è, é, ì, ò, ù** aparece cuando se responde en italiano e ins
 
 ### Pruebas automáticas
 
-La verificación completa finaliza con **324 pruebas aprobadas en 24 archivos**, sin modificar las pruebas existentes. También terminan correctamente la revisión estática y la compilación de producción; esta última conserva una advertencia no bloqueante sobre el tamaño del paquete principal.
+La verificación completa finaliza con **324 pruebas aprobadas en 24 archivos**. También terminan correctamente la revisión estática y la compilación de producción; esta última conserva una advertencia no bloqueante sobre el tamaño del paquete principal.
 
 Las pruebas cubren:
 
