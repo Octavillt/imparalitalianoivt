@@ -101,14 +101,14 @@ export const EXAMPLES = [
   { pts: [vb("Vai"), " sempre dritto e ", vb("gira"), " ", pr("a"), " sinistra ", ar("al"), " semaforo."], esp: "Sigue derecho y gira a la izquierda en el semáforo." },
   { pts: [vb("Prendi"), " ", art("la"), " prima ", pr("a"), " destra."], esp: "Toma la primera a la derecha." },
   { pts: [vb("Attraversa"), " ", art("la"), " piazza. ", art("Il"), " museo ", es("è"), " ", ar("all'angolo"), "."], esp: "Cruza la plaza. El museo está en la esquina." },
-  { pts: [art("La"), " banca ", es("è"), " ", pr("a"), " destra."], esp: "La banca está a la derecha." },
+  { pts: [art("La"), " banca ", es("è"), " ", pr("a"), " destra."], esp: "El banco está a la derecha." },
   { pts: [art("La"), " farmacia ", es("è"), " accanto ", ar("al"), " museo."], esp: "La farmacia está junto al museo." },
   { pts: [vb("Vada"), " sempre dritto."], esp: "Siga siempre derecho." },
 ];
 
 export const MISTAKES = [
   { wrong: "Come arrivo a la stazione.", right: "Come arrivo alla stazione.", note: "A + la se escribe alla." },
-  { wrong: "La farmacia è accanto + a + il museo.", right: "La farmacia è accanto al museo.", note: "Accanto a, cuando sigue il, se escribe accanto al." },
+  { wrong: "La farmacia è accanto a il museo.", right: "La farmacia è accanto al museo.", note: "Accanto a, cuando sigue il, se escribe accanto al." },
   { wrong: "Gira a la destra.", right: "Gira a destra.", note: "La instrucción es a destra, sin artículo." },
   { wrong: "Scusi, vai sempre dritto.", right: "Scusi, vada sempre dritto.", note: "Scusi va con usted y el imperativo es vada. Con tú: Scusa, vai sempre dritto. Va', con apóstrofo, también es imperativo de tú." },
 ];
@@ -130,10 +130,10 @@ export const PRACTICE = [
   { question: "Escribe, de usted: Tome la segunda a la izquierda.", answers: ["Prenda la seconda a sinistra"], hint: "Con usted, prendere hace prenda.", explanation: "Tome la segunda a la izquierda = Prenda la seconda a sinistra." },
   { question: "Escribe, de tú: Cruza la plaza.", answers: ["Attraversa la piazza"], hint: "El imperativo de tú de attraversare es attraversa.", explanation: "Cruza la plaza = Attraversa la piazza." },
   { question: "Escribe, de usted: Cruce el puente.", answers: ["Attraversi il ponte"], hint: "Con usted, attraversare hace attraversi.", explanation: "Cruce el puente = Attraversi il ponte." },
-  { question: "Escribe en italiano: La banca está a la derecha.", answers: ["La banca è a destra"], hint: "El verbo è lleva acento grave. A destra no lleva artículo.", explanation: "La banca está a la derecha = La banca è a destra." },
+  { question: "Escribe en italiano: El banco está a la derecha.", answers: ["La banca è a destra"], hint: "El verbo è lleva acento grave. A destra no lleva artículo.", explanation: "El banco está a la derecha = La banca è a destra." },
   { question: "Escribe en italiano: La farmacia está junto al museo.", answers: ["La farmacia è accanto al museo"], hint: "Accanto a + il se escribe accanto al.", explanation: "La farmacia está junto al museo = La farmacia è accanto al museo." },
   { question: "Escribe, de usted: Disculpe, ¿dónde está la estación?", answers: ["Scusi, dov'è la stazione?"], hint: "Scusi es de usted. Dove y è se escriben dov'è.", explanation: "Disculpe, ¿dónde está la estación? = Scusi, dov'è la stazione?" },
-  { question: "Escribe, de tú: ¿Hay una farmacia aquí cerca?", answers: ["Scusa, c'è una farmacia qui vicino?"], hint: "Scusa es de tú. C'è lleva acento grave.", explanation: "¿Hay una farmacia aquí cerca? = Scusa, c'è una farmacia qui vicino?" },
+  { question: "Escribe, de tú: ¿Hay una farmacia aquí cerca?", answers: ["Scusa, c'è una farmacia qui vicino?", "C'è una farmacia qui vicino?"], hint: "Scusa es de tú. C'è lleva acento grave.", explanation: "¿Hay una farmacia aquí cerca? = Scusa, c'è una farmacia qui vicino?" },
   { question: "Escribe en italiano: ¿Cómo llego a la estación?", answers: ["Come arrivo alla stazione?"], hint: "A + la se escribe alla.", explanation: "¿Cómo llego a la estación? = Come arrivo alla stazione?" },
   { question: "Elige el imperativo de tú de andare: (vai / vada).", answers: ["vai", "va'"], hint: "En tú se usa vai. Vada es de usted. Va', con apóstrofo, también es imperativo de tú.", explanation: "El imperativo de tú es vai. Va' también. Vada es la forma de usted." },
   { question: "Elige el imperativo de usted de andare: (vada / vai).", answers: ["vada"], hint: "Con usted se usa vada.", explanation: "El imperativo de usted de andare es vada. Vai es la forma de tú." },
