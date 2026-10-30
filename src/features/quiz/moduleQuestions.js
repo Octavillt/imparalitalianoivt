@@ -1,4 +1,10 @@
 import { VERB_BANK } from "../verbFinder/data";
+import { PRACTICE as ESSERE_AVERE } from "../essereAvere/data";
+import { PRACTICE as COUNTRIES } from "../countries/data";
+import { PRACTICE as FAMILY } from "../family/data";
+import { PRACTICE as PLURAL } from "../plural/data";
+import { PRACTICE as DEMONSTRATIVES } from "../demonstratives/data";
+import { PRACTICE as FRUITS } from "../fruits/data";
 
 // Une las partes de una oración con tokens en un solo texto plano. Las
 // siguientes etapas la usarán con sus propios ejercicios de lección.
@@ -70,5 +76,11 @@ function verbBankQuestions(v) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...ESSERE_AVERE.map(row => ({ ...row, topic: "essereAvere" })),
+  ...COUNTRIES.map(row => ({ ...row, topic: "countries" })),
+  ...FAMILY.map(row => ({ ...row, topic: "family" })),
+  ...PLURAL.map(row => ({ ...row, topic: "plural" })),
+  ...DEMONSTRATIVES.map(row => ({ ...row, topic: "demonstratives" })),
+  ...FRUITS.map(row => ({ ...row, topic: "fruits" })),
   ...VERB_BANK.flatMap(verbBankQuestions),
 ];

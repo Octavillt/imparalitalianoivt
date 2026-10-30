@@ -3,6 +3,12 @@
 // El campo `italiano` muestra el nombre del tema tal como se aprende.
 export const TOPICS = [
   { id: "numbers", label: "🔢 Números y alfabeto", italiano: "Numeri e alfabeto", color: "#DB2777", stage: "Primeras bases" },
+  { id: "essereAvere", label: "✅ Essere y avere", italiano: "Essere e avere", color: "#DC2626", stage: "Primeras bases" },
+  { id: "countries", label: "🌎 Países y nacionalidades", italiano: "Paesi e nazionalità", color: "#0EA5E9", stage: "Hablar de ti y de otras personas" },
+  { id: "family", label: "👪 La familia", italiano: "La famiglia", color: "#CA8A04", stage: "Hablar de ti y de otras personas" },
+  { id: "plural", label: "➕ Género y plural", italiano: "Maschile, femminile e plurale", color: "#059669", stage: "Nombrar y ubicar cosas" },
+  { id: "demonstratives", label: "👉 Demostrativos", italiano: "Questo e quello", color: "#D97706", stage: "Nombrar y ubicar cosas" },
+  { id: "fruits", label: "🍎 Frutas y verduras", italiano: "Frutta e verdura", color: "#ea580c", stage: "Nombrar y ubicar cosas" },
   { id: "time", label: "🕐 La hora", italiano: "Che ora è?", color: "#0284C7", stage: "Ubicarte en el tiempo" },
 ];
 
