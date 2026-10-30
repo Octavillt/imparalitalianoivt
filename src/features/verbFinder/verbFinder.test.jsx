@@ -43,12 +43,15 @@ function regularForms(item) {
 // En «io» parecen regulares, pero el resto de su presente no lo es.
 const IRREGULAR_BEYOND_IO = ["dare", "stare"];
 
+// «farsi la doccia» es una frase de la rutina, no una entrada del banco.
+const ROUTINE_SINGLE_VERBS = ROUTINE_VERBS.filter(([infinito]) => !infinito.includes(" "));
+
 const LESSON_VERBS = {
   verbs: VERBS.map(([infinito]) => infinito),
   presenteIndicativo: [...CONJUGATION_MODELS, ...ISC_MODELS].map(item => item.verb),
   irregularVerbs: IRREGULAR_VERBS.map(item => item.inf),
   verbiInfinito: VERB_PATTERNS.map(item => item.verb),
-  routineRiflessivi: ROUTINE_VERBS.map(([infinito]) => infinito),
+  routineRiflessivi: ROUTINE_SINGLE_VERBS.map(([infinito]) => infinito),
   exerciseWords: EXERCISE_WORDS.map(item => item.it),
   passatoProssimo: [...IRREGULAR_PARTICIPLES, ...ESSERE_VERBS].map(([infinito]) => infinito),
 };
@@ -132,7 +135,7 @@ describe("banco de verbos", () => {
     for (const [infinito, participio] of IRREGULAR_PARTICIPLES) {
       expect(verb(infinito).participio, infinito).toContain(participio);
     }
-    for (const [infinito, presente] of ROUTINE_VERBS) {
+    for (const [infinito, presente] of ROUTINE_SINGLE_VERBS) {
       expect(verb(infinito).presente, infinito).toContain(presente);
     }
     for (const [infinito] of ESSERE_VERBS) {
