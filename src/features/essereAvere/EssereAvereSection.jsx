@@ -51,7 +51,7 @@ export default function EssereAvereSection() {
       <ConjugationGrid title="avere" color="#34d399" rows={AVERE_CONJ} />
 
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 16px", marginBottom: "14px", fontSize: "13px", color: "#94a3b8", lineHeight: 1.7 }}>
-        <strong lang="it" style={{ color: "#f8fafc" }}>Voi</strong> es «ustedes» entre personas de confianza; <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong> es «ellos» o «ellas».
+        <strong lang="it" style={{ color: "#f8fafc" }}>Voi</strong> significa «ustedes», tanto en situaciones informales como en el tratamiento plural corriente; <strong lang="it" style={{ color: "#f8fafc" }}>loro</strong> significa «ellos» o «ellas».
       </div>
 
       <RuleBox icon="🗣️" rule="El sujeto casi siempre se omite" color="#fbbf24">
@@ -95,9 +95,9 @@ export default function EssereAvereSection() {
         </div>
       ))}
 
-      <RuleBox icon="🎩" rule="Lei con mayúscula — «usted»" color="#c084fc">
+      <RuleBox icon="🎩" rule="Lei — tratamiento de usted" color="#c084fc">
         <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7, marginTop: "6px" }}>
-          <strong lang="it" style={{ color: "#f8fafc" }}>Lei</strong> con mayúscula significa <strong style={{ color: "#f8fafc" }}>usted</strong> y va con la tercera persona, igual que «él/ella»:{" "}
+          <strong lang="it" style={{ color: "#f8fafc" }}>Lei</strong>, como tratamiento de <strong style={{ color: "#f8fafc" }}>usted</strong>, suele escribirse con mayúscula y va con la tercera persona, igual que «él/ella». Al inicio de una oración también puede significar «ella»: el contexto lo aclara.{" "}
           <strong lang="it" style={{ color: "#c084fc" }}>Lei è di Roma?</strong> 🇲🇽 ¿Es usted de Roma? La cortesía italiana usa mucho usted, sobre todo con desconocidos.
         </p>
       </RuleBox>

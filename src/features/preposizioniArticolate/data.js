@@ -45,7 +45,8 @@ export const BUILD_STEPS = [
   { sum: "in + gli", result: "negli", why: "in cambia a ne- y gli no duplica nada: negli." },
 ];
 
-// con, per, tra y fra se quedan separadas aunque haya artículo.
+// Aquí con se muestra separado; col y coi también son válidos.
+// Per, tra y fra se mantienen separados del artículo.
 export const NO_CONTRACT = [
   { pts: [{ t: "Leslie", r: "subject" }, " ", verb("parla"), " ", pr("con"), " ", art("il"), " ", masc("professore"), "."], esp: "Leslie habla con el profesor." },
   { pts: [art("Il"), " ", masc("gelato"), " ", es("è"), " ", pr("per"), " ", art("la"), " ", fem("mamma"), "."], esp: "El helado es para mamá." },
@@ -100,8 +101,8 @@ export const PRACTICE = [
   { question: "Completa: I libri ___ studenti sono sul tavolo.", answers: ["degli"], hint: "Di + gli", explanation: "I libri degli studenti: di + gli = degli." },
   { question: "Completa: Le borse ___ ragazze sono qui.", answers: ["delle"], hint: "Di + le", explanation: "Le borse delle ragazze sono qui = Las bolsas de las chicas están aquí. di + le = delle." },
   { question: "Elige la forma correcta: i gelati (dei / degli) ragazzi.", answers: ["dei"], hint: "Ragazzi lleva el artículo i", explanation: "I gelati dei ragazzi: di + i = dei. Degli va con gli, como en gli studenti." },
-  { question: "Traduce al italiano: Voy al bar.", answers: ["Vado al bar"], hint: "A + il = al", explanation: "Voy al bar = Vado al bar. a + il = al." },
-  { question: "Traduce al italiano: Vengo de México.", answers: ["Vengo dal Messico"], hint: "Da + il Messico", explanation: "Vengo de México = Vengo dal Messico. El país lleva artículo y da se contrae: dal." },
+  { question: "Traduce al italiano: Voy al bar.", answers: ["Vado al bar", "Io vado al bar"], hint: "A + il = al", explanation: "Voy al bar = Vado al bar. a + il = al." },
+  { question: "Traduce al italiano: Vengo de México.", answers: ["Vengo dal Messico", "Io vengo dal Messico"], hint: "Da + il Messico", explanation: "Vengo de México = Vengo dal Messico. El país lleva artículo y da se contrae: dal." },
   { question: "Completa: Il libro è ___ tavolo. (sobre la mesa)", answers: ["sul"], hint: "Su + il", explanation: "Il libro è sul tavolo = El libro está sobre la mesa. su + il = sul." },
   { question: "Completa: Le chiavi sono ___ borsa.", answers: ["nella"], hint: "In + la", explanation: "Le chiavi sono nella borsa = Las llaves están en la bolsa. in + la = nella." },
   { question: "Completa: Vado ___ dottore.", answers: ["dal"], hint: "Con el doctor se usa da, no a", explanation: "Vado dal dottore = Voy al doctor. da + il = dal: indica el lugar de esa persona." },

@@ -61,7 +61,7 @@ export const PRACTICE = [
   { question: "Elige la forma correcta: Leslie sta (leggendo / leggiendo).", answers: ["leggendo"], hint: "No existe -iendo", explanation: "Leslie sta leggendo: en italiano no existe -iendo; -ere forma -endo." },
   { question: "Elige la forma correcta: Sto (facendo / farendo).", answers: ["facendo"], hint: "Fare es irregular", explanation: "Sto facendo: el gerundio de fare es facendo (irregular)." },
   { question: "Elige la forma correcta: Sto (bevendo / bevando).", answers: ["bevendo"], hint: "Bere es irregular", explanation: "Sto bevendo: el gerundio de bere es bevendo (irregular)." },
-  { question: "Traduce al italiano: ¿Qué estás haciendo?", answers: ["Che cosa stai facendo?", "Che cosa stai facendo"], hint: "Fare → facendo", explanation: "¿Qué estás haciendo? = Che cosa stai facendo?" },
+  { question: "Traduce al italiano: ¿Qué estás haciendo?", answers: ["Che cosa stai facendo?", "Cosa stai facendo?", "Che stai facendo?"], hint: "Fare → facendo", explanation: "¿Qué estás haciendo? = Che cosa stai facendo?" },
   { question: "Traduce al italiano: Octavio está cocinando la pasta.", answers: ["Octavio sta cucinando la pasta", "Octavio sta cucinando la pasta."], hint: "Stare + gerundio", explanation: "Octavio está cocinando la pasta = Octavio sta cucinando la pasta." },
   { question: "Completa: Voi ___ studiando? (stare)", answers: ["state"], hint: "Forma de voi", explanation: "Voi state studiando? = ¿Ustedes están estudiando? Voi = ustedes." },
   { question: "¿Qué significa «Come stai?» en español? Escribe la frase completa.", answers: ["¿Cómo estás?", "cómo estás?"], answerLang: "es", hint: "Stare también sirve para «estar»", explanation: "Come stai? = ¿Cómo estás? Respuesta: Sto bene = Estoy bien." },

@@ -73,17 +73,17 @@ export const ORIGIN_DIALOG = [
 
 export const PRACTICE = [
   { question: "Completa: ___ dove sei?", answers: ["Di"], hint: "Preposición de origen", explanation: "Di dove sei? = ¿De dónde eres?" },
-  { question: "Traduce al italiano: ¿Dónde vives?", answers: ["Dove abiti?"], hint: "Abitare = vivir", explanation: "¿Dónde vives? = Dove abiti? Viene de abitare: tu abiti." },
-  { question: "Traduce al italiano: Vivo en Roma.", answers: ["Abito a Roma", "Abito a Roma."], hint: "Ciudad → a", explanation: "Vivo en Roma = Abito a Roma." },
-  { question: "Traduce al italiano: Vivo en Italia.", answers: ["Abito in Italia", "Abito in Italia."], hint: "País → in", explanation: "Vivo en Italia = Abito in Italia." },
+  { question: "Traduce al italiano: ¿Dónde vives?", answers: ["Dove abiti?", "Dove vivi?"], hint: "Abitare = vivir", explanation: "¿Dónde vives? = Dove abiti? Viene de abitare: tu abiti." },
+  { question: "Traduce al italiano: Vivo en Roma.", answers: ["Abito a Roma", "Abito a Roma.", "Vivo a Roma", "Io vivo a Roma", "Io abito a Roma"], hint: "Ciudad → a", explanation: "Vivo en Roma = Abito a Roma." },
+  { question: "Traduce al italiano: Vivo en Italia.", answers: ["Abito in Italia", "Abito in Italia.", "Vivo in Italia", "Io vivo in Italia", "Io abito in Italia"], hint: "País → in", explanation: "Vivo en Italia = Abito in Italia." },
   { question: "Completa: Vengo ___ Messico.", answers: ["dal"], hint: "Da + el país", explanation: "Vengo dal Messico: el país lleva artículo (il Messico), así que da + il = dal." },
   { question: "Elige la preposición: Abito (a / in) Roma.", answers: ["a"], hint: "¿Ciudad o país?", explanation: "Abito a Roma: las ciudades llevan a." },
   { question: "Elige la preposición: Abito (a / in) Italia.", answers: ["in"], hint: "¿Ciudad o país?", explanation: "Abito in Italia: los países llevan in." },
   { question: "Elige la forma correcta: Octavio è (messicano / messicana).", answers: ["messicano"], hint: "Concuerda con Octavio", explanation: "Octavio è messicano; Argelia è messicana." },
   { question: "Elige la forma correcta: Leslie è (argentino / argentina).", answers: ["argentina"], hint: "Concuerda con Leslie", explanation: "Leslie è argentina: las nacionalidades en -o/-a cambian según la persona." },
-  { question: "Escribe cómo se dice «Nueva York» en italiano.", answers: ["Nuova York"], hint: "Dos palabras", explanation: "Nueva York = Nuova York." },
+  { question: "Escribe cómo se dice «Nueva York» en italiano.", answers: ["New York", "Nuova York"], hint: "Se usa normalmente el nombre New York", explanation: "Nueva York = New York; también existe la variante Nuova York." },
   { question: "Escribe cómo se dice «Londres» en italiano.", answers: ["Londra"], hint: "Termina en -a", explanation: "Londres = Londra." },
   { question: "Elige la nacionalidad de Francia: (francés / francese / francesa)", answers: ["francese"], hint: "Termina en -ese", explanation: "La nacionalidad de Francia es francese: igual para hombre y mujer." },
-  { question: "Traduce al italiano: Soy de México.", answers: ["Vengo dal Messico", "Sono del Messico", "Sono messicano"], hint: "El país lleva artículo", explanation: "Soy de México = Vengo dal Messico (o Sono del Messico): da + il Messico = dal. También puedes responder con la nacionalidad: Sono messicano." },
+  { question: "Expresa tu procedencia o nacionalidad mexicana en italiano.", answers: ["Vengo dal Messico", "Sono del Messico", "Sono messicano", "Sono messicana", "Io vengo dal Messico", "Io sono del Messico", "Io sono messicano", "Io sono messicana"], hint: "El país lleva artículo", explanation: "Vengo dal Messico expresa procedencia; Sono messicano/messicana expresa nacionalidad." },
   { question: "Traduce al italiano: ¿Es usted de Roma?", answers: ["Lei è di Roma?", "È di Roma?"], hint: "Usted → Lei", explanation: "¿Es usted de Roma? = Lei è di Roma? Lei va con la tercera persona." },
 ];

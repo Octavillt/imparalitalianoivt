@@ -7,7 +7,7 @@ export const GREETINGS = [
   ["Salve!", "¡Hola! (neutro, para todos)", "neutral"],
   ["Buongiorno!", "¡Buenos días!", "neutral"],
   ["Buon pomeriggio!", "¡Buenas tardes!", "neutral"],
-  ["Buonasera!", "¡Buenas noches! (al llegar)", "neutral"],
+  ["Buonasera!", "¡Buenas tardes! / ¡Buenas noches! (al saludar, según la hora y el uso local)", "neutral"],
   ["Buonanotte!", "¡Buenas noches! (al irse a dormir)", "neutral"],
 ];
 
@@ -35,7 +35,7 @@ export const HOW_ARE_YOU = [
   ["Come sta?", "¿Cómo está? (usted)", "formal"],
   ["Sto bene, grazie.", "Estoy bien, gracias.", "neutral"],
   ["E tu?", "¿Y tú?", "informal"],
-  ["Così così.", "Así así.", "informal"],
+  ["Così così.", "Más o menos.", "informal"],
   ["Non c'è male.", "No está mal.", "informal"],
 ];
 
@@ -81,7 +81,7 @@ export const PRACTICE = [
   { question: "Traduce al español: Piacere!", answers: ["¡Mucho gusto!", "mucho gusto"], answerLang: "es", hint: "Se dice al presentarse", explanation: "Piacere! = ¡Mucho gusto!" },
   { question: "Elige la opción correcta: (Buongiorno / Buonanotte) se dice al irse a dormir.", answers: ["Buonanotte"], hint: "Notte = noche", explanation: "Buonanotte se dice al irse a dormir; Buongiorno se dice por el día." },
   { question: "Completa: Sto ___, grazie. (estoy bien)", answers: ["bene"], hint: "Bene = bien", explanation: "Sto bene, grazie = Estoy bien, gracias." },
-  { question: "Traduce al español: Così così.", answers: ["Así así"], answerLang: "es", hint: "Respuesta típica a «¿cómo estás?»", explanation: "Così così = Así así." },
+  { question: "Traduce al español: Così così.", answers: ["Más o menos", "Regular", "Así así"], answerLang: "es", hint: "Respuesta equivalente a más o menos", explanation: "Così così = Más o menos / Regular." },
   { question: "Completa: ___ è Octavio. (este es, presentando)", answers: ["Questo"], hint: "Demostrativo masculino singular", explanation: "Questo è Octavio = Este es Octavio." },
   { question: "Completa: Questa ___ Leslie. (esta es)", answers: ["è"], hint: "Verbo ser/estar", explanation: "Questa è Leslie = Esta es Leslie." },
   { question: "Traduce al español: Grazie.", answers: ["gracias"], answerLang: "es", hint: "Cortesía", explanation: "Grazie = Gracias." },

@@ -126,7 +126,7 @@ export default function PassatoProssimoSection() {
 
       <SectionTitle color={COLOR}>🏃 Participios irregulares</SectionTitle>
       <p style={text}>
-        No salen de <span lang="it">-ato</span>, <span lang="it">-uto</span> ni <span lang="it">-ito</span>.
+        No se obtienen todos aplicando mecánicamente las tres reglas al infinitivo; memoriza sus formas completas, incluso cuando terminan en <span lang="it">-ato</span> o <span lang="it">-uto</span>, como <span lang="it">stato</span> y <span lang="it">venuto</span>.
         <span lang="it"> Visto</span> es la forma frecuente de <span lang="it">vedere</span>; <span lang="it">veduto</span> también existe.
         <span lang="it"> Perso</span> es la forma frecuente de <span lang="it">perdere</span>; <span lang="it">perduto</span> también existe.
         <span lang="it"> Essere</span> y <span lang="it">stare</span> comparten la forma <span lang="it">stato</span>, y la frase dice cuál es: <span lang="it">Sono stato a Roma</span> es «estuve en Roma»; <span lang="it">Sono stato male</span> es «estuve mal».

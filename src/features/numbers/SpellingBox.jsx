@@ -34,7 +34,7 @@ export default function SpellingBox() {
       ) : (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
           {spelled.map(({ letter, say, city }, i) => (
-            <div key={`${letter}-${i}`} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "7px 10px", minWidth: "48px" }}>
+            <div key={`${letter}-${i}`} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "7px 10px", minWidth: "48px", maxWidth: "100%", overflowWrap: "anywhere" }}>
               <div style={{ color: "#f472b6", fontWeight: 800, fontSize: "16px" }}>{letter}</div>
               <div style={{ color: "#94a3b8", fontSize: "11px" }}>{say}</div>
               <div style={{ color: "#64748b", fontSize: "10px", fontStyle: "italic" }}>come {city}</div>

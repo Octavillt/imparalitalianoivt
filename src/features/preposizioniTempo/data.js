@@ -238,8 +238,8 @@ export const PRACTICE = [
   { question: "Escribe en italiano: en verano.", answers: ["in estate", "d'estate"], hint: "La forma de la lección es in estate. D'estate también se usa.", explanation: "En verano = in estate. D'estate también se dice." },
   { question: "Escribe en italiano: en julio.", answers: ["in luglio", "a luglio"], hint: "La forma de la lección es in luglio. A luglio también existe.", explanation: "En julio = in luglio. A luglio también se dice." },
   { question: "Escribe en italiano: en 2026.", answers: ["nel 2026"], hint: "In + il = nel.", explanation: "En 2026 = nel 2026." },
-  { question: "Escribe en italiano: Vengo de Roma.", answers: ["Vengo da Roma"], hint: "El origen de un desplazamiento va con da.", explanation: "Vengo de Roma = Vengo da Roma. Sono di Roma es otra frase: soy de Roma." },
-  { question: "Escribe en italiano: Estudio italiano desde hace dos años.", answers: ["Studio italiano da due anni"], hint: "El verbo se queda en presente.", explanation: "Estudio italiano desde hace dos años = Studio italiano da due anni." },
+  { question: "Escribe en italiano: Vengo de Roma.", answers: ["Vengo da Roma", "Io vengo da Roma"], hint: "El origen de un desplazamiento va con da.", explanation: "Vengo de Roma = Vengo da Roma. Sono di Roma es otra frase: soy de Roma." },
+  { question: "Escribe en italiano: Estudio italiano desde hace dos años.", answers: ["Studio italiano da due anni", "Io studio italiano da due anni"], hint: "El verbo se queda en presente.", explanation: "Estudio italiano desde hace dos años = Studio italiano da due anni." },
   { question: "Escribe en italiano: durante dos horas.", answers: ["per due ore"], hint: "La duración cerrada va con per.", explanation: "Durante dos horas = per due ore." },
   { question: "Escribe en italiano: Salgo para Roma.", answers: ["Parto per Roma"], hint: "El destino del viaje va con per.", explanation: "Salgo para Roma = Parto per Roma." },
   { question: "Escribe en italiano: dentro de una hora.", answers: ["tra un'ora", "fra un'ora"], hint: "Tra y fra valen igual. Un'ora lleva apóstrofo.", explanation: "Dentro de una hora = tra un'ora o fra un'ora." },
@@ -250,5 +250,5 @@ export const PRACTICE = [
   { question: "Escribe en italiano: dos veces a la semana.", answers: ["due volte alla settimana"], hint: "Alla = a + la. De dos en adelante se usa volte.", explanation: "Dos veces a la semana = due volte alla settimana." },
   { question: "Escribe en italiano: de las nueve a las cinco.", answers: ["dalle nove alle cinque"], hint: "Dalle = da + le. Alle = a + le.", explanation: "De las nueve a las cinco = dalle nove alle cinque." },
   { question: "Elige la forma escrita de da + il: (dal / da il).", answers: ["dal"], hint: "La preposición y el artículo se escriben juntos.", explanation: "Da + il = dal. Da il no se escribe separado." },
-  { question: "Escribe en italiano: Voy al doctor.", answers: ["Vado dal dottore"], hint: "El lugar de una persona va con da, y da + il = dal.", explanation: "Voy al doctor = Vado dal dottore." },
+  { question: "Escribe en italiano: Voy al doctor.", answers: ["Vado dal dottore", "Io vado dal dottore"], hint: "El lugar de una persona va con da, y da + il = dal.", explanation: "Voy al doctor = Vado dal dottore." },
 ];

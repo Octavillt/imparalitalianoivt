@@ -139,7 +139,7 @@ export default function RoutineRiflessiviSection() {
         ))}
       </div>
       <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "8px" }}>
-        <span lang="it">La sera</span> es la noche en la que todavía estás en pie. <span lang="it">La notte</span> es cuando ya es muy tarde. <span lang="it">Alle sette</span> es a las siete: <span lang="it">a + le</span>.
+        <span lang="it">La sera</span> comprende el final de la tarde y el comienzo de la noche; <span lang="it">la notte</span> designa el periodo nocturno, estés despierto o dormido. <span lang="it">Alle sette</span> significa a las siete: <span lang="it">a + le</span>.
       </p>
       <RelatedTopic levelId="basico1" topicId="time" />
 
