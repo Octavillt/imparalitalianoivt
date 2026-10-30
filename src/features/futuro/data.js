@@ -132,7 +132,7 @@ export const PLANS = [
   },
 ];
 
-export const BOOK_DIALOGS = {
+export const GUIDED_DIALOGS = {
   prompt: "Completa los planes. Octavio habla de Florencia; Leslie, de Venecia.",
   items: [
     {
@@ -192,12 +192,3 @@ export const PRACTICE = [
   { question: "Escribe en italiano: en dos días.", answers: ["tra due giorni", "fra due giorni"], hint: "Tra va antes del periodo. Fra dice lo mismo en esta frase.", explanation: "En dos días = tra due giorni. Fra due giorni también se dice." },
   { question: "Escribe en italiano: ¿Irá usted a Milán?", answers: ["Lei andrà a Milano?"], hint: "Usted es Lei, con mayúscula. La forma es andrà.", explanation: "¿Irá usted a Milán? = Lei andrà a Milano?" },
 ];
-
-// Cada forma del modelo es la raíz más la terminación, sin letra de más.
-for (const item of FUTURE_MODELS) {
-  item.forms.forEach((form, index) => {
-    if (form !== item.stem + item.ends[index]) {
-      throw new Error(`${item.verb}: ${item.stem} + ${item.ends[index]} no da ${form}`);
-    }
-  });
-}

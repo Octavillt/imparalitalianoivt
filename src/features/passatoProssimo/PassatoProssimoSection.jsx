@@ -24,9 +24,9 @@ import {
   MARKERS,
   MAI,
   STORY,
-  BOOK_STORY,
-  BOOK_NEGATIVES,
-  BOOK_CONVERSATION,
+  GUIDED_STORY,
+  GUIDED_NEGATIVES,
+  GUIDED_CONVERSATION,
   PATTERN_PARTS,
 } from "./data";
 
@@ -232,36 +232,36 @@ export default function PassatoProssimoSection() {
 
       <SectionTitle color={COLOR}>📘 Práctica guiada</SectionTitle>
       <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
-        <div style={text}>📝 {BOOK_STORY.prompt}</div>
+        <div style={text}>📝 {GUIDED_STORY.prompt}</div>
         <ol style={{ ...text, paddingLeft: "20px" }}>
-          {BOOK_STORY.lines.map(([prompt]) => <li key={prompt} lang="it">{prompt}</li>)}
+          {GUIDED_STORY.lines.map(([prompt]) => <li key={prompt} lang="it">{prompt}</li>)}
         </ol>
         <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
           <summary>Ver el relato completo</summary>
-          {BOOK_STORY.lines.map(([, answer]) => <p key={answer} lang="it" style={text}>{answer}</p>)}
+          {GUIDED_STORY.lines.map(([, answer]) => <p key={answer} lang="it" style={text}>{answer}</p>)}
         </details>
       </div>
       <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
-        <div style={text}>✏️ {BOOK_NEGATIVES.prompt}</div>
+        <div style={text}>✏️ {GUIDED_NEGATIVES.prompt}</div>
         <ol style={{ ...text, paddingLeft: "20px" }}>
-          {BOOK_NEGATIVES.rows.map(([prompt]) => <li key={prompt} lang="it">{prompt}</li>)}
+          {GUIDED_NEGATIVES.rows.map(([prompt]) => <li key={prompt} lang="it">{prompt}</li>)}
         </ol>
         <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
           <summary>Ver las negaciones</summary>
           <ol style={{ ...text, paddingLeft: "20px" }}>
-            {BOOK_NEGATIVES.rows.map(([, answer]) => <li key={answer} lang="it">{answer}</li>)}
+            {GUIDED_NEGATIVES.rows.map(([, answer]) => <li key={answer} lang="it">{answer}</li>)}
           </ol>
         </details>
       </div>
       <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
-        <div style={text}>💬 {BOOK_CONVERSATION.prompt}</div>
+        <div style={text}>💬 {GUIDED_CONVERSATION.prompt}</div>
         <div lang="it" style={text}>
-          {BOOK_CONVERSATION.blanks.map(line => <div key={line}>{line}</div>)}
+          {GUIDED_CONVERSATION.blanks.map(line => <div key={line}>{line}</div>)}
         </div>
         <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
           <summary>Ver la conversación completa</summary>
           <div lang="it" style={text}>
-            {BOOK_CONVERSATION.answers.map(line => <div key={line}>{line}</div>)}
+            {GUIDED_CONVERSATION.answers.map(line => <div key={line}>{line}</div>)}
           </div>
         </details>
       </div>

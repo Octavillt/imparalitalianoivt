@@ -47,6 +47,9 @@ export const TOPICS_BASICO5 = [
   { id: "passatoProssimo", label: "⏪ Passato prossimo", italiano: "Il passato prossimo", color: "#FB7185", stage: "Contar lo que pasó" },
   { id: "imperfetto", label: "⏳ Imperfetto", italiano: "L'imperfetto", color: "#F59E0B", stage: "Contar lo que pasó" },
   { id: "futuro", label: "🗓️ Futuro semplice", italiano: "Il futuro semplice", color: "#34D399", stage: "Hacer planes" },
+  { id: "socialCollocations", label: "🎉 Vida social y colocaciones", italiano: "Collocazioni con fare, prendere, dare e avere", color: "#FBBF24", stage: "Contar experiencias y planes" },
+  { id: "moneyCareer", label: "💰 Dinero y planes de carrera", italiano: "Soldi e carriera", color: "#10B981", stage: "Hablar de dinero y de tu futuro" },
+  { id: "comparatives", label: "⚖️ Comparativos", italiano: "I comparativi", color: "#60A5FA", stage: "Comparar personas, animales y cosas" },
 ];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.
