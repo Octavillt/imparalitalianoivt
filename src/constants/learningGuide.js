@@ -109,4 +109,28 @@ export const LEARNING_GUIDE = {
     task: "Di «el libro de Leslie», «voy al bar» y «vengo de México».",
     answer: "Il libro di Leslie. Vado al bar. Vengo dal Messico. Leslie no lleva artículo; al = a + il y dal = da + il.",
   },
+  whQuestions: {
+    goal: "Preguntar con chi, che cosa, dove, quando, come, perché, quanto y quale, y contestar con una frase breve.",
+    recall: ["vocabulary", "time", "countries", "preposizioniArticolate"],
+    task: "Pregunta dónde está Leslie, de dónde es Octavio y por qué estás aquí. Responde que estudias italiano.",
+    answer: "Dov'è Leslie? Di dov'è Octavio? Perché sei qui? — Perché studio italiano. Dove se junta con è: dov'è. Qual è va sin apóstrofo.",
+  },
+  presenteIndicativo: {
+    goal: "Conjugar el presente de -are, -ere e -ire, negar con non y preguntar sin cambiar el orden.",
+    recall: ["whQuestions", "verbs", "stareGerundio"],
+    task: "Di que Leslie trabaja en Roma, que no trabajas el sábado y pregunta si trabajas en Roma.",
+    answer: "Leslie lavora a Roma. Non lavoro il sabato. Lavori a Roma? Non va antes del verbo y la pregunta no cambia el orden.",
+  },
+  verbiInfinito: {
+    goal: "Encadenar un verbo y un infinitivo, con a, con di o sin preposición, y decir qué te gusta.",
+    recall: ["presenteIndicativo", "verbs"],
+    task: "Di que te gusta leer, que quieres comer y que intentas estudiar cada día.",
+    answer: "Mi piace leggere. Voglio mangiare. Cerco di studiare ogni giorno. Volere va sin preposición; cercare di significa intentar.",
+  },
+  irregularVerbs: {
+    goal: "Reconocer el presente irregular y el participio passato de los verbos frecuentes.",
+    recall: ["presenteIndicativo", "verbiInfinito", "essereAvere"],
+    task: "Escribe la forma de io de andare y de dare, y el participio de fare.",
+    answer: "Vado. Dà. Fatto. Dà lleva acento para distinguirse de la preposición da.",
+  },
 };

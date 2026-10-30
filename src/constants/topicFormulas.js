@@ -172,4 +172,44 @@ export const TOPIC_FORMULAS = {
       row("In + artículo", "in + la = nella", "Le chiavi sono nella borsa.", "Las llaves están en la bolsa."),
     ],
   },
+  whQuestions: {
+    note: "Perché lleva acento agudo y sirve para preguntar y para responder. Qual è va sin apóstrofo.",
+    rows: [
+      row("Orden", "Palabra interrogativa + verbo + sujeto", "Dov'è Leslie?", "¿Dónde está Leslie?"),
+      row("Causa", "Perché + pregunta — Perché + respuesta", "Perché studio italiano.", "Porque estudio italiano."),
+      row("Cantidad", "Quanto, quanta, quanti o quante + sustantivo", "Quante sorelle hai?", "¿Cuántas hermanas tienes?"),
+      row("Número", "Quale + singular; quali + plural", "Quali pizze prendi?", "¿Cuáles pizzas pides?"),
+      row("Origen", "Di dove + è", "Di dov'è Octavio?", "¿De dónde es Octavio?"),
+    ],
+  },
+  presenteIndicativo: {
+    note: "Voi equivale a ustedes. En loro, parlano, credono y dormono llevan el golpe al inicio: PAR-la-no. Ese acento no se escribe.",
+    rows: [
+      row("Modelo -are", "raíz + o, i, a, iamo, ate, ano", "Io parlo italiano.", "Yo hablo italiano."),
+      row("Negación", "Non + verbo en presente", "Non lavoro il sabato.", "No trabajo el sábado."),
+      row("Pregunta", "Verbo en presente + ?", "Lavori a Roma?", "¿Trabajas en Roma?"),
+      row("Hábito", "Presente + complemento de rutina", "Studio italiano ogni giorno.", "Estudio italiano todos los días."),
+      row("Ahora", "Che cosa fai? — respuesta en presente", "Mangio una pizza.", "Como una pizza."),
+    ],
+  },
+  verbiInfinito: {
+    note: "Sapere más infinitivo es saber hacer algo. La diferencia con potere se ve en Básico IV.",
+    rows: [
+      row("Gustar", "Mi piace + infinitivo", "Mi piace leggere.", "Me gusta leer."),
+      row("Plural", "Mi piacciono + sustantivo plural", "Mi piacciono le fragole.", "Me gustan las fresas."),
+      row("Sin preposición", "Volere, potere, dovere, sapere o preferire + infinitivo", "Devo studiare.", "Debo estudiar."),
+      row("Con a", "Verbo + a + infinitivo", "Vado a mangiare.", "Voy a comer."),
+      row("Con di", "Verbo + di + infinitivo", "Cerco di studiare.", "Intento estudiar."),
+    ],
+  },
+  irregularVerbs: {
+    note: "El participio entra en el passato prossimo, en Básico V. La muestra de esta lección es Ho mangiato, Ho fatto y Sono andato.",
+    rows: [
+      row("Presente", "Infinitivo irregular → forma de io", "Andare → vado.", "Ir → voy."),
+      row("Acento", "Dà, con acento grave", "Leslie dà un gelato.", "Leslie da un helado."),
+      row("Participio", "Infinitivo → participio passato", "Scrivere → scritto.", "Escribir → escrito."),
+      row("Con avere", "Ho + participio", "Ho fatto.", "He hecho."),
+      row("Con essere", "Sono + participio", "Sono andato.", "He ido."),
+    ],
+  },
 };
