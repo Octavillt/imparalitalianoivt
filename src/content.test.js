@@ -14,7 +14,8 @@ const SOURCES = Object.entries(import.meta.glob(
 function matches(pattern) {
   return SOURCES.flatMap(([file, text]) => text.split("\n")
     .map((line, index) => ({ file, line: index + 1, text: line.trim().slice(0, 100) }))
-    .filter(({ text: content }) => pattern.test(content)));
+    // Las listas de errores frecuentes muestran a propósito la forma incorrecta.
+    .filter(({ text: content }) => !content.includes("wrong:") && pattern.test(content)));
 }
 
 describe("Calidad del italiano", () => {
