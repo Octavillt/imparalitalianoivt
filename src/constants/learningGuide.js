@@ -85,4 +85,28 @@ export const LEARNING_GUIDE = {
     task: "Saluda a Leslie, pregúntale cómo se llama, de dónde es y a qué se dedica; despídete hasta mañana.",
     answer: "Ciao! Come ti chiami? Di dove sei? Che lavoro fai? A domani! Con amigos usas tu; con desconocidos, Lei.",
   },
+  articles: {
+    goal: "Elegir el artículo según el género, el número y la letra inicial, y reconocer cuándo no se escribe.",
+    recall: ["plural", "time", "jobs"],
+    task: "Di «el libro», «el estudiante», «la amiga», «un amigo», «una amiga» y que Leslie está aquí.",
+    answer: "Il libro. Lo studente. L'amica. Un amico. Un'amica. Leslie è qui. Un amico va sin apóstrofo; un'amica lo lleva.",
+  },
+  adjectives: {
+    goal: "Concordar el adjetivo en género y número, colocarlo y reconocer los contrarios frecuentes.",
+    recall: ["articles", "demonstratives"],
+    task: "Di «un carro rojo», «Octavio y Leslie están cansados» y «los helados están buenos».",
+    answer: "Una macchina rossa. Octavio e Leslie sono stanchi. I gelati sono buoni. En un grupo mixto se usa el masculino plural.",
+  },
+  possessiveAdjectives: {
+    goal: "Expresar de quién es algo con el posesivo, concordando con lo que se posee.",
+    recall: ["family", "articles"],
+    task: "Di «mi libro», «la casa de Octavio», «el libro de Leslie» y «mi mamá».",
+    answer: "Il mio libro. La sua casa. Il suo libro. Mia madre. El posesivo concuerda con lo poseído; mamá en singular va sin artículo.",
+  },
+  preposizioniArticolate: {
+    goal: "Decir de quién es algo con di y unir a, da, di, in y su con el artículo.",
+    recall: ["articles", "possessiveAdjectives", "prepositions", "countries"],
+    task: "Di «el libro de Leslie», «voy al bar» y «vengo de México».",
+    answer: "Il libro di Leslie. Vado al bar. Vengo dal Messico. Leslie no lleva artículo; al = a + il y dal = da + il.",
+  },
 };
