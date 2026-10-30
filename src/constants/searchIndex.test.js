@@ -33,8 +33,7 @@ describe("searchTopics", () => {
     expect(searchTopics("xyzabc")).toEqual([]);
   });
 
-  it("no ofrece temas de módulos bloqueados", () => {
-    expect(searchTopics("verbos a la mano")).toEqual([]);
-    expect(searchTopics("verbFinder")).toEqual([]);
+  it("ofrece el módulo de verbos", () => {
+    expect(searchTopics("verbos a la mano").some(r => r.topicId === "verbFinder")).toBe(true);
   });
 });
