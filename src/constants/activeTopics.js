@@ -1,7 +1,7 @@
 // Recuerda, por nivel, cuál fue el último tema visitado — así al cambiar
 // entre Básico I/II/III y volver, la app regresa a donde te quedaste.
 
-const STORAGE_KEY = "learningles.activeTopics";
+const STORAGE_KEY = "imparalitalianoivt.activeTopics";
 
 export function loadActiveTopics() {
   try {

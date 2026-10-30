@@ -36,7 +36,7 @@ export default function DigitalClock() {
             {String(hour).padStart(2, "0")}
           </div>
           <StepperButton onClick={() => changeHour(-1)}>▼</StepperButton>
-          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>HOUR</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>HORA</div>
         </div>
 
         <div style={{ color: "#f8fafc", fontWeight: 800, fontSize: "34px" }}>:</div>

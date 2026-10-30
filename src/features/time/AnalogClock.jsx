@@ -114,7 +114,7 @@ export default function AnalogClock() {
         <line x1={CENTER} y1={CENTER} x2={minuteEnd.x} y2={minuteEnd.y} stroke="#fb923c" strokeWidth="4" strokeLinecap="round" />
         <circle cx={CENTER} cy={CENTER} r="5" fill="#f8fafc" />
 
-        {/* minute hand grab area drawn first so the (longer) hour hand wins overlap near the center */}
+        {/* Área táctil de la manecilla de los minutos dibujada primero para que la (más corta) manecilla de las horas gane el solapamiento cerca del centro */}
         <line
           x1={CENTER} y1={CENTER} x2={minuteEnd.x} y2={minuteEnd.y}
           stroke="transparent" strokeWidth="30" strokeLinecap="round"
@@ -130,8 +130,8 @@ export default function AnalogClock() {
       </svg>
 
       <div style={{ display: "flex", justifyContent: "center", gap: "14px", marginTop: "8px", fontSize: "11px" }}>
-        <span style={{ color: "#38bdf8", fontWeight: 700 }}>● hour hand</span>
-        <span style={{ color: "#fb923c", fontWeight: 700 }}>● minute hand</span>
+        <span style={{ color: "#38bdf8", fontWeight: 700 }}>● manecilla de las horas</span>
+        <span style={{ color: "#fb923c", fontWeight: 700 }}>● manecilla de los minutos</span>
       </div>
 
       <div style={{ marginTop: "14px", background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "12px" }}>
