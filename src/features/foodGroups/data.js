@@ -169,7 +169,7 @@ export const CONVERSATION = [
   ["Sì, grazie. E un'acqua, per favore.", "Sí, gracias. Y un agua, por favor."],
   ["Vuole altro?", "¿Desea algo más?"],
   ["No, grazie. Il conto, per favore.", "No, gracias. La cuenta, por favor."],
-  ["Ecco a lei.", "Aquí tiene."],
+  ["Ecco a Lei.", "Aquí tiene."],
 ];
 
 export const PRACTICE = [

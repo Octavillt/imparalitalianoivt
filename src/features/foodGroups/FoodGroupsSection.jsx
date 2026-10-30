@@ -28,7 +28,7 @@ export default function FoodGroupsSection() {
       <Legend roles={["verb", "art", "adj", "neg", "essere", "subject", "prep", "articolata"]} />
 
       <SectionTitle color={COLOR}>🛒 Los grupos</SectionTitle>
-      <p style={text}>Un alimento puede mirarse desde otro nutriente. Aquí cada uno está en el grupo de la lista.</p>
+      <p style={text}>Algunos alimentos podrían estar en más de un grupo; aquí cada uno aparece en uno solo.</p>
       {FOOD_GROUPS.map(group => (
         <RuleBox key={group.name} icon={group.icon} rule={`${group.name} — ${group.translation}`} color={COLOR}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "8px", margin: "12px 0" }}>
