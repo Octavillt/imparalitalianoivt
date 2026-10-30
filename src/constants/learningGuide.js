@@ -49,4 +49,40 @@ export const LEARNING_GUIDE = {
     task: "Di que esas son naranjas, que tienes dos plátanos y que quisieras un kilo de jitomates.",
     answer: "Quelle sono arance. Ho due banane. Vorrei un chilo di pomodori. La frutta y la verdura son singulares colectivos.",
   },
+  prepositions: {
+    goal: "Ubicar personas y objetos con le preposizioni di luogo y decir qué hay con c'è y ci sono.",
+    recall: ["essereAvere", "fruits"],
+    task: "Di que el libro está debajo de la mesa, que hay una silla en la cocina y pregunta si hay un banco cerca.",
+    answer: "Il libro è sotto il tavolo. C'è una sedia in cucina. C'è una banca qui vicino? Usa c'è con singular y ci sono con plural.",
+  },
+  dates: {
+    goal: "Decir días, meses y fechas con il + número + mes, y leer el año como número entero.",
+    recall: ["numbers", "time"],
+    task: "Di que hoy es jueves, que es 30 de octubre y que tu cumpleaños es el 3 de abril.",
+    answer: "Oggi è giovedì. Oggi è il 30 ottobre. Il mio compleanno è il 3 aprile. Días y meses van en minúscula; solo el día 1 usa ordinal.",
+  },
+  verbs: {
+    goal: "Reconocer infinitivos en -are, -ere e -ire y usarlos en oraciones con sujeto y complemento.",
+    recall: ["countries", "essereAvere"],
+    task: "Di que Leslie estudia italiano, que Octavio come pizza y que Argelia lee un libro.",
+    answer: "Leslie studia italiano. Octavio mangia la pizza. Argelia legge un libro. Usamos la forma de lui/lei como anticipo de la conjugación.",
+  },
+  stareGerundio: {
+    goal: "Describir lo que pasa ahora con stare + gerundio: sto mangiando, sta leggendo, non sto dormendo.",
+    recall: ["verbs", "essereAvere"],
+    task: "Di que estás comiendo, que Leslie está leyendo y que no estás durmiendo.",
+    answer: "Sto mangiando. Leslie sta leggendo. Non sto dormendo. El gerundio es -ando para -are y -endo para -ere e -ire; no existe -iendo.",
+  },
+  jobs: {
+    goal: "Preguntar y decir la profesión con sono y faccio, los lugares de trabajo y qué hace ahora cada quien.",
+    recall: ["stareGerundio", "countries"],
+    task: "Di que eres maestro sin artículo, que trabajas en una escuela y que Argelia es mesera que está sirviendo café.",
+    answer: "Sono insegnante. Lavoro in una scuola. Argelia è cameriera. Sta servendo il caffè. Con essere va sin artículo; con fare, con artículo.",
+  },
+  vocabulary: {
+    goal: "Saludar, presentarte, responder cómo estás, despedirte y mantener una conversación breve con tu y Lei.",
+    recall: ["jobs", "family", "countries", "essereAvere"],
+    task: "Saluda a Leslie, pregúntale cómo se llama, de dónde es y a qué se dedica; despídete hasta mañana.",
+    answer: "Ciao! Come ti chiami? Di dove sei? Che lavoro fai? A domani! Con amigos usas tu; con desconocidos, Lei.",
+  },
 };
