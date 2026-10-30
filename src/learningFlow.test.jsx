@@ -9,12 +9,12 @@ import { scrollToAndHighlight } from "./constants/highlightMatch";
 // Pertenencia exacta de las lecciones ya migradas; crece con cada etapa.
 const membership = {
   basico1: "numbers essereAvere countries family plural demonstratives fruits prepositions time dates verbs stareGerundio jobs vocabulary",
-  basico2: "",
+  basico2: "articles adjectives possessiveAdjectives preposizioniArticolate",
   basico3: "",
   basico4: "",
   basico5: "",
 };
-const TOTAL_LESSONS = 14;
+const TOTAL_LESSONS = 18;
 const studyLevels = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
 const openLevels = studyLevels.filter(level => level.available);
 
@@ -61,12 +61,15 @@ describe("Recorrido de aprendizaje", () => {
     }
   }, 15000);
 
-  it("avanza dentro del módulo y sin siguiente módulo lleva al repaso", () => {
+  it("avanza dentro del módulo, cruza al siguiente y sin más módulos lleva al repaso", () => {
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*Essere y avere/ }));
     expect(screen.getByRole("heading", { level: 2, name: /Essere y avere/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Tema anterior.*Números/ })).toBeInTheDocument();
     fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Conversación y vocabulario/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico II →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Artículos/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Di y preposiciones articuladas/ }));
     fireEvent.click(screen.getByRole("button", { name: "Repasar todos los módulos →" }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
   });
