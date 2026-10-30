@@ -302,4 +302,34 @@ export const TOPIC_FORMULAS = {
       row("Con essere", "essere + adjetivo", "Octavio è lento.", "Octavio es lento."),
     ],
   },
+  passatoProssimo: {
+    note: "Con avere y el objeto después, el participio queda en -o. Con essere, concuerda con el sujeto. Una misma frase cubre comí y he comido.",
+    rows: [
+      row("Con avere", "auxiliar de avere + participio", "Ho mangiato la pizza.", "Comí pizza."),
+      row("Con essere", "auxiliar de essere + participio", "Sono andato a Roma.", "Fui a Roma."),
+      row("Concordancia", "participio en -o, -a, -i o -e", "Leslie è andata a Roma.", "Leslie fue a Roma."),
+      row("Negación", "non + auxiliar + participio", "Non sono andata.", "No fui."),
+      row("Pregunta", "(palabra interrogativa +) auxiliar + participio + ?", "Dove sei andato?", "¿Adónde fuiste?"),
+    ],
+  },
+  imperfetto: {
+    note: "El imperfetto se parece al copretérito. Un hecho ya cerrado, en un momento concreto, va en passato prossimo.",
+    rows: [
+      row("Hábito", "da bambino o da bambina + imperfetto", "Da bambina abitavo a Napoli.", "De niña vivía en Nápoles."),
+      row("Descripción", "imperfetto de essere + cualidad", "Era una bella giornata.", "Hacía un día bonito."),
+      row("En curso", "mentre + imperfetto", "Mentre mangiavo, leggevo.", "Mientras comía, leía."),
+      row("Hecho cerrado", "marcador concreto + passato prossimo", "Ieri ho mangiato una pizza.", "Ayer comí una pizza."),
+      row("Fondo y hecho", "mentre + imperfetto, y un passato prossimo", "Mentre studiavo, Leslie è arrivata.", "Mientras yo estudiaba, Leslie llegó."),
+    ],
+  },
+  futuro: {
+    note: "En -are, la a pasa a e. Con un marcador de tiempo, el presente también sitúa un plan.",
+    rows: [
+      row("Plan", "marcador + futuro semplice", "L'anno prossimo andrò in Italia.", "El año que viene iré a Italia."),
+      row("Predicción", "futuro de lo que se anticipa", "Domani pioverà.", "Mañana lloverá."),
+      row("Hipótesis", "futuro sobre lo que pasa ahora", "Sarà a casa.", "Debe de estar en casa."),
+      row("Plan en presente", "marcador + presente", "Domani vado a Roma.", "Mañana voy a Roma."),
+      row("Negación", "non + futuro", "Non andrò a Roma.", "No iré a Roma."),
+    ],
+  },
 };

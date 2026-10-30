@@ -5,6 +5,7 @@ import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
+import ScrollHint from "../../components/ScrollHint";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import Token from "../../components/Token";
@@ -133,6 +134,8 @@ export default function VerbiInfinitoSection() {
         {rows.length === 0 ? (
           <p style={{ color: "#94a3b8", fontSize: "14px" }}>No hay coincidencias para «{filter.trim()}».</p>
         ) : (
+          <>
+          <ScrollHint />
           <div style={{ overflowX: "auto", borderRadius: "10px" }}>
             <div style={{ minWidth: "560px" }}>
               <div style={{ display: "grid", gridTemplateColumns: GRID, gap: "8px" }}>
@@ -163,6 +166,7 @@ export default function VerbiInfinitoSection() {
               ))}
             </div>
           </div>
+          </>
         )}
       </FilterableList>
     </div>

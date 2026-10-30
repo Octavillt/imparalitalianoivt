@@ -12,9 +12,9 @@ const membership = {
   basico2: "articles adjectives possessiveAdjectives preposizioniArticolate whQuestions presenteIndicativo verbiInfinito irregularVerbs",
   basico3: "routineRiflessivi preposizioniTempo directions",
   basico4: "bodyParts potereSapere partitivo foodGroups exerciseWords adverbsManner",
-  basico5: "",
+  basico5: "passatoProssimo imperfetto futuro",
 };
-const TOTAL_LESSONS = 31;
+const TOTAL_LESSONS = 34;
 const studyLevels = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
 const openLevels = studyLevels.filter(level => level.available);
 
@@ -76,6 +76,9 @@ describe("Recorrido de aprendizaje", () => {
     fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico IV →" }));
     expect(screen.getByRole("heading", { level: 2, name: /Partes del cuerpo/ })).toBeInTheDocument();
     fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Adverbios de modo/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico V →" }));
+    expect(screen.getByRole("heading", { level: 2, name: /Passato prossimo/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Futuro semplice/ }));
     fireEvent.click(screen.getByRole("button", { name: "Repasar todos los módulos →" }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
   });

@@ -43,7 +43,11 @@ export const TOPICS_BASICO4 = [
   { id: "exerciseWords", label: "🏋️ Ejercicio físico", italiano: "Esercizio fisico", color: "#A78BFA", stage: "Describir movimientos y dar instrucciones" },
   { id: "adverbsManner", label: "🎶 Adverbios de modo", italiano: "Avverbi di modo", color: "#F472B6", stage: "Explicar cómo se realiza una acción" },
 ];
-export const TOPICS_BASICO5 = [];
+export const TOPICS_BASICO5 = [
+  { id: "passatoProssimo", label: "⏪ Passato prossimo", italiano: "Il passato prossimo", color: "#FB7185", stage: "Contar lo que pasó" },
+  { id: "imperfetto", label: "⏳ Imperfetto", italiano: "L'imperfetto", color: "#F59E0B", stage: "Contar lo que pasó" },
+  { id: "futuro", label: "🗓️ Futuro semplice", italiano: "Il futuro semplice", color: "#34D399", stage: "Hacer planes" },
+];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.
 export const TOPICS_VERBOS = [

@@ -33,7 +33,7 @@ export const LEVELS = [
     outcome: "Puedes nombrar partes del cuerpo, dar instrucciones, expresar habilidades, preguntar por cantidades, describir alimentos y explicar cómo se realiza una acción.",
   },
   {
-    id: "basico5", label: "Básico V", available: false, topics: TOPICS_BASICO5,
+    id: "basico5", label: "Básico V", available: true, topics: TOPICS_BASICO5,
     purpose: "Contar experiencias pasadas y hacer planes",
     description: "Retoma los verbos irregulares de Básico II para contar lo que pasó con el passato prossimo y el imperfetto. Usa el futuro semplice para tus planes, practica colocaciones con fare, prendere, dare y avere, habla de dinero y carrera, y cierra comparando personas y cosas.",
     bridge: "Al terminar, practica Básico V o combina los cinco módulos en el Quiz.",
