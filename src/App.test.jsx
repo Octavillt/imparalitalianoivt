@@ -62,7 +62,10 @@ describe("App — selector de color y niveles", () => {
 
   it("la barra de temas muestra solo los temas disponibles de Básico I", () => {
     render(<App />);
-    expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual(["🔢 Números y alfabeto", "🕐 La hora"]);
+    expect(topics().getAllByRole("button").map(button => button.textContent)).toEqual([
+      "🔢 Números y alfabeto", "✅ Essere y avere", "🌎 Países y nacionalidades", "👪 La familia",
+      "➕ Género y plural", "👉 Demostrativos", "🍎 Frutas y verduras", "🕐 La hora",
+    ]);
   });
 
   it("Números incluye cifras, alfabeto, vocales y pronunciación", async () => {
